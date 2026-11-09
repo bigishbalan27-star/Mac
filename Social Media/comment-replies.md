@@ -1,6 +1,6 @@
-# Comment replies — awaiting approval (9 Nov 2026)
+# Comment replies — posted 9 Nov 2026
 
-Unanswered comments from your followers. Nothing has been posted yet.
+All 13 replies below were approved and posted on 9 Nov 2026.
 
 | Reel | Comment | Proposed reply |
 |---|---|---|
