@@ -69,7 +69,8 @@ Edit tips: film-at-his-height clips work best. Use a playful "investigation" sou
 Posting the original clip as-is (no edit), so the caption carries the "hotel inspector" idea.
 
 > Our little hotel inspector is on duty 🕵️👶
-> Every corner of our Mykonos hotel checked, tested and approved… final verdict: 10/10 🏆
+> Bathroom ✅ Bed ✅ Toy car parking spot ✅
+> Mykonos room officially approved 🏆
 > Parents, what does your little one check first in a hotel? 👇
 >
 > #HotelReview #ToddlerTravel #TravelWithKids #Mykonos #FamilyHoliday #KidsTravel #DadLife #UKMallu
