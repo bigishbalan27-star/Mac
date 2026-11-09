@@ -65,6 +65,15 @@ Edit tips: film-at-his-height clips work best. Use a playful "investigation" sou
 >
 > #HotelReview #ToddlerTravel #TravelWithKids #Mykonos #FamilyHoliday #KidsTravel #DadLife #UKMallu
 
+### Final caption (original clip 20261016_104247) — scheduled Thu 13 Nov, 5:30 pm UK
+Posting the original clip as-is (no edit), so the caption carries the "hotel inspector" idea.
+
+> Our little hotel inspector is on duty 🕵️👶
+> Every corner of our Mykonos hotel checked, tested and approved… final verdict: 10/10 🏆
+> Parents, what does your little one check first in a hotel? 👇
+>
+> #HotelReview #ToddlerTravel #TravelWithKids #Mykonos #FamilyHoliday #KidsTravel #DadLife #UKMallu
+
 ---
 
 ## Reel 3 — "Bonfire night through his eyes"
