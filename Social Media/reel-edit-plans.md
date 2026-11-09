@@ -12,20 +12,20 @@ Format for every reel: 9:16 vertical, 15–30 seconds, on-screen text in the mid
 
 | Time | Clip | On-screen text |
 |---|---|---|
-| 0–1 s | Best-looking dish, close-up | **What a family eats in Mykonos 🇬🇷 (with prices)** |
-| 1–4 s | Breakfast | ☕ Breakfast — £__ |
-| 4–7 s | Lunch / gyros | 🥙 Gyros — £__ |
-| 7–10 s | Salad / seafood | 🥗 Greek salad — £__ |
-| 10–13 s | Dessert / drinks | 🍦 Dessert — £__ |
-| 13–17 s | Family eating, your son reacting | 🍽️ Dinner by the sea — £__ |
-| 17–20 s | Sea view / sunset | **Total for the day: £__ — worth it? 💙** |
+| 0–1 s | Best-looking dish, close-up | **What we ate in Mykonos 🇬🇷 (with prices)** |
+| 1–4 s | Dish 1 | 🍽️ €10–20 |
+| 4–7 s | Dish 2 | 🍽️ €10–20 |
+| 7–10 s | Dish 3 | 🍽️ €10–20 |
+| 10–13 s | Dish 4 | 🍽️ €10–20 |
+| 13–17 s | Family eating, your son reacting | Most dishes: €10–20 💶 |
+| 17–20 s | Sea view / sunset | **Cheaper than you thought? 💙** |
 
-Edit tips: cut every 2–3 s, match cuts to the beat, add a "pop" sound when each price appears.
+Edit tips: cut every 2–3 s, match cuts to the beat, add a "pop" sound when each price appears. Swap "Dish 1–4" for the real dish names (e.g. 🥙 Gyros, 🥗 Greek salad) and use the exact price if you remember it.
 
 **Caption**
 
-> What a family of 3 actually eats in a day in Mykonos 🇬🇷🍽️
-> Gyros, Greek salad, fresh seafood and way too much ice cream… and it was cheaper than we expected!
+> What we actually ate in Mykonos as a family 🇬🇷🍽️
+> Most dishes cost just €10–20 each — way cheaper than we expected for Mykonos!
 > Which dish would you try first? 👇 Save this for your Greece trip 📌
 > Full family film on YouTube — link in bio 🎬
 >
