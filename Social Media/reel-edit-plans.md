@@ -31,6 +31,16 @@ Edit tips: cut every 2–3 s, match cuts to the beat, add a "pop" sound when eac
 >
 > #MykonosFood #GreekFood #Mykonos #FamilyTravel #TravelWithKids #FoodieTravel #GreekIslands #UKMallu
 
+### Final caption (original video) — scheduled Tue 11 Nov, 5:30 pm UK
+Posting the original 24 s video as-is (no on-screen text), so the caption carries the prices.
+
+> What we actually ate in Mykonos as a family 🇬🇷🍽️
+> Shrimp pasta, big breakfasts, fresh fruit and sea views with every meal… and most dishes cost just €10–20 each!
+> Which dish would you try first? 👇 Save this for your Greece trip 📌
+> Full family film on YouTube — link in bio 🎬
+>
+> #MykonosFood #GreekFood #Mykonos #FamilyTravel #TravelWithKids #FoodieTravel #GreekIslands #UKMallu
+
 ---
 
 ## Reel 2 — "Our hotel, reviewed by a toddler"
