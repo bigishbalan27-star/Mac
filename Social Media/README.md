@@ -51,16 +51,15 @@ Data pulled 9 Nov 2026 from Instagram/YouTube insights (48 reels posted in 2026)
 
 Every post needs a preview and your OK before it goes live. Nothing repeats shots from posts since 11 Oct.
 
-| Date (5:30 pm) | Reel | Footage | Status |
+| Date (5:30 pm) | Reel | File | Status |
 |---|---|---|---|
-| Thu 12 Nov | Our little hotel inspector 🕵️ | Drive: Son mykonos → `20261016_104247.mp4` (7.8 s) | Ready, waiting for your OK |
-| Sat 14 Nov | Beach day in Mykonos… in October 🏖️ | Drive: Saturday reel → `VID-20261013-WA0016.mp4` (13.7 s) | Ready, waiting for your OK |
-| Mon 16 Nov | Breakfast with a sea view ☕🌊 | Food video, first ~10 s (eggs, avocado, bread, juice) | Needs splitting from the food video |
-| Wed 18 Nov | Our last morning in Mykonos 🤍 (carousel) | Box: 16 Oct photos (hug, son on terrace, couple selfie + 2 more) | Needs 2 replacement photos + posting route |
-| Fri 20 Nov | Swimming in the Aegean… in October 🌊 (20°C) | Drive: Saturday reel → `20261013_125644.mp4` (82 s) | Needs trimming to ~20 s |
-| Sun 22 Nov | Mykonos lunch & dessert 🍽️🍦 | Food video, last ~13 s (stew, fruit, chicken & chips, ice cream) | Needs splitting from the food video |
-| Sun 7 Mar 2027 | Mother's Day 💐 | Box: `20261016_102745.jpg`, `20261016_102644.jpg` (mum & son kiss) | Reserved, do not use before then |
+| Thu 12 Nov | Our little hotel inspector 🕵️ | Picsart cinematic render | ✅ Approved, scheduled |
+| Mon 16 Nov | Breakfast with a sea view ☕🌊 | Picsart cinematic render (11 s) | Scheduled, waiting for your OK on the caption |
+| Wed 18 Nov | Our last morning in Mykonos 🤍 (carousel) | 4 Box photos | Approved. Waiting for Picsart upload; otherwise reminder at 5 pm to post from your phone |
+| Sun 22 Nov | Mykonos, from lunch to dessert 🍽️🍦 | Picsart cinematic render (12.7 s) | Scheduled, waiting for your OK on the caption |
+| Sun 7 Mar 2027 | Mother's Day 💐 | Box mum-and-son photos | 🔒 Reserved |
 
+Already posted by you (removed from schedule): beach bucket & spade, October swim.
 The old full-length food reel (planned for Tue 10 Nov) is **on hold**: it's being split into the 16 Nov and 22 Nov reels.
 Ideas for later: car follow-up (the 1,300-view car reel), Christmas markets, Mallu Christmas in the UK.
 
