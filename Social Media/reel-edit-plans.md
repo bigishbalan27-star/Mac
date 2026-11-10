@@ -192,6 +192,6 @@ Grade: LUT (teal_orange outdoors / creamy_portrait indoors / golden_hour food) +
 | Thu 12 Nov hotel inspector (7.8 s) | mykonos-hotel-inspector-cinematic.mp4 | https://gcdn.picsart.com/media-engine/d143814f-0196-4557-9eca-8adc728daf25.mp4 |
 | Sat 14 Nov beach day (13.7 s) | mykonos-beach-day-cinematic.mp4 | https://gcdn.picsart.com/media-engine/21b6ef46-e436-40ff-ba5e-1e713196414e.mp4 |
 | Mon 16 Nov breakfast (11 s) | mykonos-breakfast-sea-view-cinematic.mp4 | https://gcdn.picsart.com/media-engine/8bec1d69-b37f-4f65-85c2-918ba008cdac.mp4 |
-| Fri 20 Nov October swim (24 s: walk in, swim, walk out) | mykonos-october-swim-cinematic.mp4 | rendering (Picsart job 57603fb0-51f8-4149-b861-5f8270675583) |
+| Fri 20 Nov October swim (24 s: walk in, swim, walk out) | mykonos-october-swim-cinematic.mp4 | https://gcdn.picsart.com/media-engine/602bd314-83bf-455c-b018-518165292fc0.mp4 |
 | Sun 22 Nov lunch & dessert (12.7 s) | mykonos-lunch-dessert-cinematic.mp4 | https://gcdn.picsart.com/media-engine/6ff46941-ca3d-47dd-bd21-af92e4e16eae.mp4 |
 | Wed 18 Nov carousel | 4 photos, waiting for upload to Picsart | n/a |
