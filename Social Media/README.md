@@ -47,20 +47,22 @@ Data pulled 9 Nov 2026 from Instagram/YouTube insights (48 reels posted in 2026)
 
 ---
 
-## 3. Next 2 weeks (9–22 Nov)
+## 3. Mykonos series, one idea per post (updated 10 Nov)
 
-| Date | Pillar | Reel | Footage |
+Every post needs a preview and your OK before it goes live. Nothing repeats shots from posts since 11 Oct.
+
+| Date (5:30 pm) | Reel | Footage | Status |
 |---|---|---|---|
-| Mon 9 | — | **Fix Diwali caption** (see above) + reply to comments | — |
-| Tue 10 | Travel guide | "What a family week in Mykonos actually cost us" — price text over clips | Greece backlog |
-| Thu 12 | Dad & son | "His first holiday abroad vs. now" — toddler-at-the-airport hook | Greece + older clips |
-| Sat 14 | UK trips | "Bonfire night in Swindon — 3 things we'd do differently with a toddler" | Bonfire clips |
-| Mon 16 | Cars (test) | Follow-up to the 1,300-view car reel — same style, hook in 1 s | New |
-| Wed 18 | Travel guide | "Mykonos with a toddler: 5 things nobody tells you" | Greece backlog |
-| Fri 20 | UK trips | "Christmas market season starts — where we're going first" | New (Bath/Oxford/Winchester etc.) |
-| Sun 22 | Malayali UK | "How a Mallu family does Christmas in the UK" teaser / question post | New |
+| Thu 12 Nov | Our little hotel inspector 🕵️ | Drive: Son mykonos → `20261016_104247.mp4` (7.8 s) | Ready, waiting for your OK |
+| Sat 14 Nov | Beach day in Mykonos… in October 🏖️ | Drive: Saturday reel → `VID-20261013-WA0016.mp4` (13.7 s) | Ready, waiting for your OK |
+| Mon 16 Nov | Breakfast with a sea view ☕🌊 | Food video, first ~10 s (eggs, avocado, bread, juice) | Needs splitting from the food video |
+| Wed 18 Nov | Our last morning in Mykonos 🤍 (carousel) | Box: 16 Oct photos (hug, son on terrace, couple selfie + 2 more) | Needs 2 replacement photos + posting route |
+| Fri 20 Nov | Swimming in the Aegean… in October 🌊 (20°C) | Drive: Saturday reel → `20261013_125644.mp4` (82 s) | Needs trimming to ~20 s |
+| Sun 22 Nov | Mykonos lunch & dessert 🍽️🍦 | Food video, last ~13 s (stew, fruit, chicken & chips, ice cream) | Needs splitting from the food video |
+| Sun 7 Mar 2027 | Mother's Day 💐 | Box: `20261016_102745.jpg`, `20261016_102644.jpg` (mum & son kiss) | Reserved, do not use before then |
 
-Caption drafts for the first two are in `captions.md`.
+The old full-length food reel (planned for Tue 10 Nov) is **on hold**: it's being split into the 16 Nov and 22 Nov reels.
+Ideas for later: car follow-up (the 1,300-view car reel), Christmas markets, Mallu Christmas in the UK.
 
 ---
 
