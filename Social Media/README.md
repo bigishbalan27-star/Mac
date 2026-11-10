@@ -47,18 +47,18 @@ Data pulled 9 Nov 2026 from Instagram/YouTube insights (48 reels posted in 2026)
 
 ---
 
-## 3. Next 2 weeks (10–23 Nov)
+## 3. Next 2 weeks (9–22 Nov)
 
 | Date | Pillar | Reel | Footage |
 |---|---|---|---|
-| Mon 10 | — | **Fix Diwali caption** (see above) + reply to comments | — |
-| Tue 11 | Travel guide | "What a family week in Mykonos actually cost us" — price text over clips | Greece backlog |
-| Thu 13 | Dad & son | "His first holiday abroad vs. now" — toddler-at-the-airport hook | Greece + older clips |
-| Sat 15 | UK trips | "Bonfire night in Swindon — 3 things we'd do differently with a toddler" | Bonfire clips |
-| Mon 17 | Cars (test) | Follow-up to the 1,300-view car reel — same style, hook in 1 s | New |
-| Wed 19 | Travel guide | "Mykonos with a toddler: 5 things nobody tells you" | Greece backlog |
-| Fri 21 | UK trips | "Christmas market season starts — where we're going first" | New (Bath/Oxford/Winchester etc.) |
-| Sun 23 | Malayali UK | "How a Mallu family does Christmas in the UK" teaser / question post | New |
+| Mon 9 | — | **Fix Diwali caption** (see above) + reply to comments | — |
+| Tue 10 | Travel guide | "What a family week in Mykonos actually cost us" — price text over clips | Greece backlog |
+| Thu 12 | Dad & son | "His first holiday abroad vs. now" — toddler-at-the-airport hook | Greece + older clips |
+| Sat 14 | UK trips | "Bonfire night in Swindon — 3 things we'd do differently with a toddler" | Bonfire clips |
+| Mon 16 | Cars (test) | Follow-up to the 1,300-view car reel — same style, hook in 1 s | New |
+| Wed 18 | Travel guide | "Mykonos with a toddler: 5 things nobody tells you" | Greece backlog |
+| Fri 20 | UK trips | "Christmas market season starts — where we're going first" | New (Bath/Oxford/Winchester etc.) |
+| Sun 22 | Malayali UK | "How a Mallu family does Christmas in the UK" teaser / question post | New |
 
 Caption drafts for the first two are in `captions.md`.
 

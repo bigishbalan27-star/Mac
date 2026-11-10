@@ -8,7 +8,7 @@ Format for every reel: 9:16 vertical, 15–30 seconds, on-screen text in the mid
 ---
 
 ## Reel 1 — "What we ate in Mykonos (with prices)"
-**Post:** Tue 11 Nov · **Footage:** Food we eat in MYKONOS.mp4 · **Length:** ~20 s
+**Post:** Tue 10 Nov · **Footage:** Food we eat in MYKONOS.mp4 · **Length:** ~20 s
 
 | Time | Clip | On-screen text |
 |---|---|---|
@@ -31,7 +31,7 @@ Edit tips: cut every 2–3 s, match cuts to the beat, add a "pop" sound when eac
 >
 > #MykonosFood #GreekFood #Mykonos #FamilyTravel #TravelWithKids #FoodieTravel #GreekIslands #UKMallu
 
-### Final caption (original video) — scheduled Tue 11 Nov, 5:30 pm UK
+### Final caption (original video) — scheduled Tue 10 Nov, 5:30 pm UK
 Posting the original 24 s video as-is (no on-screen text), so the caption carries the prices.
 
 > What we actually ate in Mykonos as a family 🇬🇷🍽️
@@ -44,7 +44,7 @@ Posting the original 24 s video as-is (no on-screen text), so the caption carrie
 ---
 
 ## Reel 2 — "Our hotel, reviewed by a toddler"
-**Post:** Thu 13 Nov · **Footage:** Son mykonos folder → 16 Oct clips (20261016_103454 / 103458 / 104015 / 104247) · **Length:** ~20 s
+**Post:** Thu 12 Nov · **Footage:** Son mykonos folder → 16 Oct clips (20261016_103454 / 103458 / 104015 / 104247) · **Length:** ~20 s
 
 | Time | Clip | On-screen text |
 |---|---|---|
@@ -65,7 +65,7 @@ Edit tips: film-at-his-height clips work best. Use a playful "investigation" sou
 >
 > #HotelReview #ToddlerTravel #TravelWithKids #Mykonos #FamilyHoliday #KidsTravel #DadLife #UKMallu
 
-### Final caption (original clip 20261016_104247) — scheduled Thu 13 Nov, 5:30 pm UK
+### Final caption (original clip 20261016_104247) — scheduled Thu 12 Nov, 5:30 pm UK
 Posting the original clip as-is (no edit), so the caption carries the "hotel inspector" idea.
 
 > Our little hotel inspector is on duty 🕵️👶
@@ -77,7 +77,7 @@ Posting the original clip as-is (no edit), so the caption carries the "hotel ins
 
 ---
 
-## Reel 3 — FINAL: "Beach day in Mykonos… in October" (scheduled Sat 15 Nov, 5:30 pm UK)
+## Reel 3 — FINAL: "Beach day in Mykonos… in October" (scheduled Sat 14 Nov, 5:30 pm UK)
 **Footage:** Raw → Saturday reel → `VID-20261013-WA0016.mp4` (13.7 s, son with bucket in the sand; posted as-is)
 
 > Beach day in Mykonos… in October 🏖️🇬🇷
@@ -89,7 +89,7 @@ Posting the original clip as-is (no edit), so the caption carries the "hotel ins
 ---
 
 ## (Not used) "Swimming in Mykonos… in October?"
-**Post:** Sat 15 Nov, 5:30 pm · **Footage:** Raw → Saturday reel → `20261013_125644.mp4` (82 s), **waiting for a trimmed 20–30 s copy** (walk in → swim → walk out, skip the sunbed shots ~0:20–0:40)
+**Post:** Sat 14 Nov, 5:30 pm · **Footage:** Raw → Saturday reel → `20261013_125644.mp4` (82 s), **waiting for a trimmed 20–30 s copy** (walk in → swim → walk out, skip the sunbed shots ~0:20–0:40)
 Water temperature: **about 20 °C** (for replying to guesses in comments).
 
 > Swimming in Mykonos… in the middle of October 🌊🇬🇷
@@ -103,7 +103,7 @@ Pinned reply once guesses come in: "It was about 20°C 🌊 Cooler than summer b
 ---
 
 ## (Dropped) Bonfire night through his eyes. Too close to the 6 Nov fireworks reel
-**Post:** Sat 15 Nov · **Footage:** Bonfire 2026.mp4 · **Length:** ~15 s
+**Post:** Sat 14 Nov · **Footage:** Bonfire 2026.mp4 · **Length:** ~15 s
 **Only post this if the video shows his face reacting.** If it's only fireworks, use it as a Story instead (you posted fireworks on 6 Nov already).
 
 | Time | Clip | On-screen text |
@@ -124,7 +124,7 @@ Pinned reply once guesses come in: "It was about 20°C 🌊 Cooler than summer b
 ---
 
 ## Reel 4 — "Is Mykonos toddler-friendly? Honest answer"
-**Post:** Wed 19 Nov · **Footage:** Son mykonos folder → 13 Oct (20261013_104025, beach) + 15 Oct (20261015_160754 / 160926) · **Length:** ~25 s
+**Post:** Wed 18 Nov · **Footage:** Son mykonos folder → 13 Oct (20261013_104025, beach) + 15 Oct (20261015_160754 / 160926) · **Length:** ~25 s
 
 | Time | Clip | On-screen text |
 |---|---|---|

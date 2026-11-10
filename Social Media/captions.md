@@ -1,6 +1,6 @@
 # Caption drafts
 
-## Tue 11 Nov — Mykonos cost breakdown
+## Tue 10 Nov — Mykonos cost breakdown
 **On-screen hook (first 1 s):** "Mykonos with a toddler — what it REALLY cost 💸"
 
 > Everyone said Mykonos was too expensive for a family. So here's exactly what we spent 👇
@@ -16,7 +16,7 @@
 
 *(Fill in the £ amounts — real numbers are what get saves.)*
 
-## Thu 13 Nov — Dad & son
+## Thu 12 Nov — Dad & son
 **On-screen hook:** "Taking a toddler abroad? Here's how it went…"
 
 > Passports, snacks, 100 questions and one very excited little traveller ✈️👶
