@@ -77,7 +77,21 @@ Posting the original clip as-is (no edit), so the caption carries the "hotel ins
 
 ---
 
-## Reel 3 — "Bonfire night through his eyes"
+## Reel 3 (replaces bonfire) — "Swimming in Mykonos… in October?"
+**Post:** Sat 15 Nov, 5:30 pm · **Footage:** Raw → Saturday reel → `20261013_125644.mp4` (82 s), **waiting for a trimmed 20–30 s copy** (walk in → swim → walk out, skip the sunbed shots ~0:20–0:40)
+Water temperature: **about 20 °C** (for replying to guesses in comments).
+
+> Swimming in Mykonos… in the middle of October 🌊🇬🇷
+> Grey skies, a cruise ship on the horizon and the Aegean almost to myself.
+> Guess the water temperature 👇 Answer in the comments!
+>
+> #Mykonos #OctoberHalfTerm #AegeanSea #GreekIslands #TravelInOctober #FamilyTravel #DadLife #UKMallu
+
+Pinned reply once guesses come in: "It was about 20°C 🌊 Cooler than summer but totally swimmable, perfect for October half-term!"
+
+---
+
+## (Dropped) Bonfire night through his eyes. Too close to the 6 Nov fireworks reel
 **Post:** Sat 15 Nov · **Footage:** Bonfire 2026.mp4 · **Length:** ~15 s
 **Only post this if the video shows his face reacting.** If it's only fireworks, use it as a Story instead (you posted fireworks on 6 Nov already).
 
