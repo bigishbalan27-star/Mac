@@ -155,23 +155,29 @@ Pinned reply once guesses come in: "It was about 20°C 🌊 Cooler than summer b
 
 ---
 
-## Wed 18 Nov — CAROUSEL: "Our last morning in Mykonos" (proposed, awaiting approval)
-Format: photo carousel (our 2 carousels this year averaged ~570 views vs ~250 for a typical reel).
-Source: Box → "Mykonos pic". **Checked against every post since 11 Oct, and none of these shots have been used.**
+## Wed 18 Nov — CAROUSEL: "Our last morning in Mykonos" (v3, awaiting approval)
+Format: photo carousel. Source: Box → "Mykonos pic". Checked against every post since 11 Oct, and none of these shots have been used. No mum-and-son kissing photos (reserved for Mother's Day).
 
 | # | Box file | Shot |
 |---|---|---|
-| 1 (cover) | 20261016_102740.jpg | Son laughing in mum's arms, beach + white village behind |
+| 1 (cover) | 20261016_102334.jpg | Dad carrying son at the end of the beach boardwalk, looking out to sea |
 | 2 | 20261016_103410.jpg | Son walking the white hotel terrace with his toy |
-| 3 | 20261016_102745.jpg | Mum and son kiss on the beach |
-| 4 | 20261016_102512.jpg | Couple selfie by the beach wall |
-| 5 | 20261016_102644.jpg | Mum and son, forehead to forehead, big sky |
-
-Rejected as repeats of recent posts: hotel doorway / white door (17 Oct reel), windmills (23 Oct, 24 Oct, 8 Nov), bougainvillea café / Chora lanes / Paraportiani / seaside chapel (8 Nov), harbour & bay shots (11 Oct, 12 Oct, 8 Nov), Little Venice seawall (24 Oct).
+| 3 | 20261016_103603.heic | Mum and son on the sofa in the hotel lobby |
+| 4 | 20261016_102557.heic | Couple selfie, white village behind |
 
 > Our last morning in Mykonos 🤍🇬🇷
-> Bags packed, one last walk by the beach and lots of cuddles before saying goodbye 🥹
+> One last walk to the sea, one last look around the hotel… and a little boy who'd happily stay forever 🥹
 > 5 nights, 3 of us, memories for a lifetime.
 > What was your favourite moment from our Mykonos trip? 👇
 >
-> #Mykonos #FamilyTravel #TravelWithKids #GreekIslands #MumAndSon #FamilyMemories #UKMallu #MalayaliInUK
+> #Mykonos #FamilyTravel #TravelWithKids #GreekIslands #DadAndSon #FamilyMemories #UKMallu #MalayaliInUK
+
+---
+
+## Sun 7 Mar 2027 — MOTHER'S DAY (reserved, do not use before then)
+Box → "Mykonos pic", 16 Oct beach, mum and son:
+- 20261016_102740.jpg: son laughing in mum's arms (best cover)
+- 20261016_102745.jpg: kiss
+- 20261016_102644.jpg: forehead to forehead
+- 20261016_101916.heic: mum kissing son, sea behind
+- 20261016_102630.heic: hug (hair over face; backup only)
