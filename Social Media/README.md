@@ -54,7 +54,7 @@ Every post needs a preview and your OK before it goes live. Nothing repeats shot
 | Date (5:30 pm) | Reel | File | Status |
 |---|---|---|---|
 | Thu 12 Nov | Our little hotel inspector 🕵️ | Picsart cinematic render | ✅ Approved, scheduled |
-| Tue 10 Nov (6:37 pm) | Breakfast with a sea view ☕🌊 | Picsart cinematic render (11 s) | ✅ Posted: https://www.instagram.com/reel/DfkkMezGZfJ/ |
+| Tue 10 Nov | Breakfast with a sea view ☕🌊 | Picsart cinematic render (11 s) + Instagram music | ✅ Reposted from your phone with Instagram music (first post without music, DfkkMezGZfJ, deleted) |
 | Wed 18 Nov | Our last morning in Mykonos 🤍 (carousel) | 4 Box photos | Approved. Waiting for Picsart upload; otherwise reminder at 5 pm to post from your phone |
 | Sun 22 Nov | Mykonos, from lunch to dessert 🍽️🍦 | Picsart cinematic render (12.7 s) | ✅ Approved, scheduled |
 | Sun 7 Mar 2027 | Mother's Day 💐 | Box mum-and-son photos | 🔒 Reserved |
