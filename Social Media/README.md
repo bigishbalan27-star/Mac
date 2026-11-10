@@ -53,7 +53,7 @@ Every post needs a preview and your OK before it goes live. Nothing repeats shot
 
 | Date (5:30 pm) | Reel | File | Status |
 |---|---|---|---|
-| Thu 12 Nov | Our little hotel inspector 🕵️ | Picsart cinematic render | ✅ Approved, scheduled |
+| Thu 12 Nov | Mykonos Bay Hotel, officially inspected 🕵️✅ | Picsart v4, 15 s, opens on hotel sign, music | ✅ Approved, scheduled |
 | Tue 10 Nov | Breakfast with a sea view ☕🌊 | Picsart cinematic render (11 s) + Instagram music | ✅ Reposted from your phone with Instagram music (first post without music, DfkkMezGZfJ, deleted) |
 | Wed 18 Nov | Our last morning in Mykonos 🤍 (carousel) | 4 Box photos | Approved. Waiting for Picsart upload; otherwise reminder at 5 pm to post from your phone |
 | Sun 22 Nov | Mykonos, from lunch to dessert 🍽️🍦 | Picsart cinematic render (12.7 s) | ✅ Approved, scheduled |
