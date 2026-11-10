@@ -155,32 +155,23 @@ Pinned reply once guesses come in: "It was about 20°C 🌊 Cooler than summer b
 
 ---
 
-## Wed 18 Nov — CAROUSEL: "Mykonos photo spots we loved" (proposed, awaiting approval)
-Format change: a photo carousel, not a reel. Our 2 carousels this year averaged ~570 views vs ~250 for a typical reel.
-Source: Box → "Mykonos pic" folder (418 files).
+## Wed 18 Nov — CAROUSEL: "Our last morning in Mykonos" (proposed, awaiting approval)
+Format: photo carousel (our 2 carousels this year averaged ~570 views vs ~250 for a typical reel).
+Source: Box → "Mykonos pic". **Checked against every post since 11 Oct, and none of these shots have been used.**
 
 | # | Box file | Shot |
 |---|---|---|
-| 1 (cover) | 20261016_102740.jpg | Son laughing in mum's arms on the beach, white houses behind |
-| 2 | PSX_20261013_212429.jpg | Dad framed in the hotel's white doorway, big clouds |
-| 3 | IMG_2013.JPG | Windmills with mum and son |
-| 4 | IMG_2017.JPG | Kato Mili windmills, wide |
-| 5 | PSX_20261015_094700.jpg | Old Port sea wall, Chora behind |
-| 6 | IMG_2061.JPG | Cruise ships in the bay |
-| 7 | 20261014_120342.jpg | Blue-balcony house |
-| 8 | PSX_20261013_213024.jpg | Rooftop lunch with sea view |
+| 1 (cover) | 20261016_102740.jpg | Son laughing in mum's arms, beach + white village behind |
+| 2 | 20261016_103410.jpg | Son walking the white hotel terrace with his toy |
+| 3 | 20261016_102745.jpg | Mum and son kiss on the beach |
+| 4 | 20261016_102512.jpg | Couple selfie by the beach wall |
+| 5 | 20261016_102644.jpg | Mum and son, forehead to forehead, big sky |
 
-Skipped: IMG_2045 (a stranger is clearly in shot), img_2123 (brand shopfront).
+Rejected as repeats of recent posts: hotel doorway / white door (17 Oct reel), windmills (23 Oct, 24 Oct, 8 Nov), bougainvillea café / Chora lanes / Paraportiani / seaside chapel (8 Nov), harbour & bay shots (11 Oct, 12 Oct, 8 Nov), Little Venice seawall (24 Oct).
 
-> Save this for your Mykonos trip 📌 Our favourite family photo spots 🇬🇷
-> 📍 Beach hugs with the white village behind
-> 📍 Our hotel's white doorways
-> 📍 Kato Mili windmills (busy, so go early or late)
-> 📍 The Old Port sea wall with Chora behind
-> 📍 The bay, with cruise ships drifting past
-> 📍 Blue balconies everywhere you look
-> 📍 Lunch with a sea view
-> Which one's your favourite? 👇
-> Full family film on YouTube — link in bio 🎬
+> Our last morning in Mykonos 🤍🇬🇷
+> Bags packed, one last walk by the beach and lots of cuddles before saying goodbye 🥹
+> 5 nights, 3 of us, memories for a lifetime.
+> What was your favourite moment from our Mykonos trip? 👇
 >
-> #Mykonos #MykonosPhotoSpots #GreekIslands #FamilyTravel #TravelWithKids #Cyclades #UKFamilyTravel #UKMallu
+> #Mykonos #FamilyTravel #TravelWithKids #GreekIslands #MumAndSon #FamilyMemories #UKMallu #MalayaliInUK
