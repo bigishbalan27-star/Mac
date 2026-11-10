@@ -203,3 +203,10 @@ Track: "Upbeat Summer" by Caldena, Pixabay Music (royalty-free, no attribution r
 | Thu 12 Nov hotel inspector (room sound at 30%, music 70%, 1 s fade-out) | https://gcdn.picsart.com/media-engine/4e944ecf-1668-46c3-839c-13cf497ea72f.mp4 |
 | Sun 22 Nov lunch & dessert (music 80%, 1.2 s fade-out) | https://gcdn.picsart.com/media-engine/f1261363-676d-4c95-aed2-ea30745b1eec.mp4 |
 Rule from now on: every reel gets royalty-free music baked in before posting (API posts can't use Instagram's music library).
+
+## Hotel reel v3 (10 Nov), longer, no hands
+9.4 s: terrace run (103454, cropped to remove arm) → holding toys (104015) → inspecting the bed (5 s, 0.95–5.3 s of original, zoomed 8%).
+Grade: creamy_portrait fade 30 + vignette + warmer temperature on new clips. Music: Upbeat Summer at 80%.
+https://gcdn.picsart.com/media-engine/d6359e1f-f289-4b8b-a222-1ba75cec6cff.mp4 (Picsart Drive: mykonos-hotel-inspector-9s-music-v3.mp4)
+Sources in Drive "Saturday reel" folder: 1zwMGzbNQDICplMAmDt5Wc59rNWApLohA (103454 cropped), 11KJzVK9QwfOeUNHG1d6ghOKDh-c8Epv2 (104015).
+Avoid 103845 0–2 s: wife in full view.
