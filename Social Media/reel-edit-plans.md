@@ -210,3 +210,8 @@ Grade: creamy_portrait fade 30 + vignette + warmer temperature on new clips. Mus
 https://gcdn.picsart.com/media-engine/d6359e1f-f289-4b8b-a222-1ba75cec6cff.mp4 (Picsart Drive: mykonos-hotel-inspector-9s-music-v3.mp4)
 Sources in Drive "Saturday reel" folder: 1zwMGzbNQDICplMAmDt5Wc59rNWApLohA (103454 cropped), 11KJzVK9QwfOeUNHG1d6ghOKDh-c8Epv2 (104015).
 Avoid 103845 0–2 s: wife in full view.
+
+## Hotel reel v4 (10 Nov), opens on the hotel sign
+15 s: Mykonos Bay Hotel sign by the sea (20261012_154049_1, 2.0–5.3 s) → terrace run → lobby pan (20261016_103657, 4.8–7.0 s; wife is in 0–4.5 s) → holding toys → inspecting the bed.
+https://gcdn.picsart.com/media-engine/abe2038e-0f15-419e-bb7f-9dd975b90923.mp4 (Picsart Drive: mykonos-bay-hotel-inspector-15s-music-v4.mp4)
+Drive sources: sign 1um2uEnJcl15YR3Px48o9KuQbUSlP6NnJ, lobby 1FfN2j2urXrXxf-B0f4GNKDqEiP3cYTGE.
