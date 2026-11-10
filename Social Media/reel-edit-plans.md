@@ -152,3 +152,35 @@ Pinned reply once guesses come in: "It was about 20°C 🌊 Cooler than summer b
 - **Reel 1:** rough price of each dish in the food video.
 - **All reels:** tell me if a clip isn't what I've guessed above.
 - When a reel is edited, save it to **AI Video Studio → Exports** (e.g. `mykonos-food_v1.mp4`) and tell me. I'll check it and get it posted.
+
+---
+
+## Wed 18 Nov — CAROUSEL: "Mykonos photo spots we loved" (proposed, awaiting approval)
+Format change: a photo carousel, not a reel. Our 2 carousels this year averaged ~570 views vs ~250 for a typical reel.
+Source: Box → "Mykonos pic" folder (418 files).
+
+| # | Box file | Shot |
+|---|---|---|
+| 1 (cover) | 20261016_102740.jpg | Son laughing in mum's arms on the beach, white houses behind |
+| 2 | PSX_20261013_212429.jpg | Dad framed in the hotel's white doorway, big clouds |
+| 3 | IMG_2013.JPG | Windmills with mum and son |
+| 4 | IMG_2017.JPG | Kato Mili windmills, wide |
+| 5 | PSX_20261015_094700.jpg | Old Port sea wall, Chora behind |
+| 6 | IMG_2061.JPG | Cruise ships in the bay |
+| 7 | 20261014_120342.jpg | Blue-balcony house |
+| 8 | PSX_20261013_213024.jpg | Rooftop lunch with sea view |
+
+Skipped: IMG_2045 (a stranger is clearly in shot), img_2123 (brand shopfront).
+
+> Save this for your Mykonos trip 📌 Our favourite family photo spots 🇬🇷
+> 📍 Beach hugs with the white village behind
+> 📍 Our hotel's white doorways
+> 📍 Kato Mili windmills (busy, so go early or late)
+> 📍 The Old Port sea wall with Chora behind
+> 📍 The bay, with cruise ships drifting past
+> 📍 Blue balconies everywhere you look
+> 📍 Lunch with a sea view
+> Which one's your favourite? 👇
+> Full family film on YouTube — link in bio 🎬
+>
+> #Mykonos #MykonosPhotoSpots #GreekIslands #FamilyTravel #TravelWithKids #Cyclades #UKFamilyTravel #UKMallu
