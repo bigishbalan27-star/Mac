@@ -77,7 +77,18 @@ Posting the original clip as-is (no edit), so the caption carries the "hotel ins
 
 ---
 
-## Reel 3 (replaces bonfire) — "Swimming in Mykonos… in October?"
+## Reel 3 — FINAL: "Beach day in Mykonos… in October" (scheduled Sat 15 Nov, 5:30 pm UK)
+**Footage:** Raw → Saturday reel → `VID-20261013-WA0016.mp4` (13.7 s, son with bucket in the sand; posted as-is)
+
+> Beach day in Mykonos… in October 🏖️🇬🇷
+> Warm sand, a 20°C sea and one very busy little builder 🪣
+> Would you do a beach holiday at October half-term? 👇
+>
+> #Mykonos #OctoberHalfTerm #BeachDay #ToddlerTravel #TravelWithKids #GreekIslands #FamilyTravel #UKMallu
+
+---
+
+## (Not used) "Swimming in Mykonos… in October?"
 **Post:** Sat 15 Nov, 5:30 pm · **Footage:** Raw → Saturday reel → `20261013_125644.mp4` (82 s), **waiting for a trimmed 20–30 s copy** (walk in → swim → walk out, skip the sunbed shots ~0:20–0:40)
 Water temperature: **about 20 °C** (for replying to guesses in comments).
 
