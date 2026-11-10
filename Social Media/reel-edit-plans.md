@@ -195,3 +195,11 @@ Grade: LUT (teal_orange outdoors / creamy_portrait indoors / golden_hour food) +
 | Fri 20 Nov October swim (24 s: walk in, swim, walk out) | mykonos-october-swim-cinematic.mp4 | https://gcdn.picsart.com/media-engine/602bd314-83bf-455c-b018-518165292fc0.mp4 |
 | Sun 22 Nov lunch & dessert (12.7 s) | mykonos-lunch-dessert-cinematic.mp4 | https://gcdn.picsart.com/media-engine/6ff46941-ca3d-47dd-bd21-af92e4e16eae.mp4 |
 | Wed 18 Nov carousel | 4 photos, waiting for upload to Picsart | n/a |
+
+## Music versions (10 Nov), these are what gets posted
+Track: "Upbeat Summer" by Caldena, Pixabay Music (royalty-free, no attribution required): https://pixabay.com/music/soft-house-upbeat-summer-617557/
+| Post | URL |
+|---|---|
+| Thu 12 Nov hotel inspector (room sound at 30%, music 70%, 1 s fade-out) | https://gcdn.picsart.com/media-engine/4e944ecf-1668-46c3-839c-13cf497ea72f.mp4 |
+| Sun 22 Nov lunch & dessert (music 80%, 1.2 s fade-out) | https://gcdn.picsart.com/media-engine/f1261363-676d-4c95-aed2-ea30745b1eec.mp4 |
+Rule from now on: every reel gets royalty-free music baked in before posting (API posts can't use Instagram's music library).
