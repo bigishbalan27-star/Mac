@@ -226,3 +226,5 @@ v3 (stylish, 21 s): added curl (084004 4.0–6.6), leg-raise finish (091727 5.0�
 https://gcdn.picsart.com/media-engine/5898ebda-fd7f-425e-9f2e-27075fda6d4b.mp4
 v4 (24 s): added seated cable row (20261111_090424, 0.5–3.3 s) after the overhead clip.
 https://gcdn.picsart.com/media-engine/ae555bcd-53ce-4830-ad1e-a9cfc52993ad.mp4
+v5 (21.5 s, no repeats): removed second curl. Order: curl (hook) → sign → lying cable → overhead → seated row → leg raise → stand-up → walk-in → mirror wide (payoff).
+https://gcdn.picsart.com/media-engine/e5713251-53f2-48f6-830e-68b2da22fefc.mp4
