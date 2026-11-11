@@ -215,3 +215,10 @@ Avoid 103845 0–2 s: wife in full view.
 15 s: Mykonos Bay Hotel sign by the sea (20261012_154049_1, 2.0–5.3 s) → terrace run → lobby pan (20261016_103657, 4.8–7.0 s; wife is in 0–4.5 s) → holding toys → inspecting the bed.
 https://gcdn.picsart.com/media-engine/abe2038e-0f15-419e-bb7f-9dd975b90923.mp4 (Picsart Drive: mykonos-bay-hotel-inspector-15s-music-v4.mp4)
 Drive sources: sign 1um2uEnJcl15YR3Px48o9KuQbUSlP6NnJ, lobby 1FfN2j2urXrXxf-B0f4GNKDqEiP3cYTGE.
+
+## Wed 11 Nov: dad gym reel (heart hook)
+14.5 s: front cable curl (hook text "I don't train / to look good...") → Simply Gym sign → lying cable → overhead cable → leg raise → wide mirror shot (payoff "...I train to keep / up with my son").
+Enhancement: denoise + sharpen + contrast in ffmpeg, then teal_orange fade 20 + vignette + contrast in Picsart.
+Music: "Epic Emotional and Motivational Cinematic Piano" by _Music_for_Creators_ (Pixabay, royalty-free), 85%, 1.2 s fade-out.
+https://gcdn.picsart.com/media-engine/215d276f-a38d-4bc6-b58d-2e202b59da70.mp4
+Note: a gym member is visible in the background at about 7.5 s (overhead clip).
