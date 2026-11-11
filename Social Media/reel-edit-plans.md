@@ -238,3 +238,5 @@ v9 (22.25 s): music changed to "Strongman speed up Brazilian phonk gym" by RSNCE
 https://gcdn.picsart.com/media-engine/ba310b7a-f2fa-4307-a8fc-82d215e21d46.mp4
 v10 (22.25 s, NO music): for posting from the phone with an Instagram library song (Sahara – Hensonn / Close Eyes – DVRST / Power – Kanye). Those songs are copyrighted, so they can't be baked into the file or added via the API.
 https://gcdn.picsart.com/media-engine/1366d3d4-7370-4cf6-96c6-ecb0cc3847d7.mp4 (Picsart Drive: dad-gym-reel-v10-no-music.mp4)
+Cover (1080x1920 JPEG): seated row frame, same grade, "I DON'T TRAIN / to look good..." kept inside the 4:5 grid-safe area.
+https://gcdn.picsart.com/media-engine/c24b40ae-a458-49b6-a948-ec9c3cbdd2df.jpg (Picsart Drive: dad-gym-reel-cover.jpg)
