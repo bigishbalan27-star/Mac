@@ -224,3 +224,5 @@ https://gcdn.picsart.com/media-engine/215d276f-a38d-4bc6-b58d-2e202b59da70.mp4
 Note: a gym member is visible in the background at about 7.5 s (overhead clip).
 v3 (stylish, 21 s): added curl (084004 4.0–6.6), leg-raise finish (091727 5.0–7.4) and walk-in (084238 2.4–4.2). Text is Bebas Neue white + Great Vibes gold script over a soft top gradient (no black box).
 https://gcdn.picsart.com/media-engine/5898ebda-fd7f-425e-9f2e-27075fda6d4b.mp4
+v4 (24 s): added seated cable row (20261111_090424, 0.5–3.3 s) after the overhead clip.
+https://gcdn.picsart.com/media-engine/ae555bcd-53ce-4830-ad1e-a9cfc52993ad.mp4
