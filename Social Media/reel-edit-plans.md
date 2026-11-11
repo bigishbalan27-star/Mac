@@ -236,3 +236,5 @@ v8 (22.25 s): music changed to "Sport Gym Motivational Workout" by AliveTunesMus
 https://gcdn.picsart.com/media-engine/a1ea5308-6ef5-4a47-9545-a490250f66e7.mp4
 v9 (22.25 s): music changed to "Strongman speed up Brazilian phonk gym" by RSNCE Phonk Music (Pixabay, royalty-free, ~136 BPM), from 18 s into the track (full-energy section), 85% with 1 s fade-out. Video unchanged.
 https://gcdn.picsart.com/media-engine/ba310b7a-f2fa-4307-a8fc-82d215e21d46.mp4
+v10 (22.25 s, NO music): for posting from the phone with an Instagram library song (Sahara – Hensonn / Close Eyes – DVRST / Power – Kanye). Those songs are copyrighted, so they can't be baked into the file or added via the API.
+https://gcdn.picsart.com/media-engine/1366d3d4-7370-4cf6-96c6-ecb0cc3847d7.mp4 (Picsart Drive: dad-gym-reel-v10-no-music.mp4)
