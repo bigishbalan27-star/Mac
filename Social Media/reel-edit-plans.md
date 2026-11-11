@@ -230,3 +230,5 @@ v5 (21.5 s, no repeats): removed second curl. Order: curl (hook) → sign → ly
 https://gcdn.picsart.com/media-engine/e5713251-53f2-48f6-830e-68b2da22fefc.mp4
 v6 (21.35 s): Simply Gym sign now punch-in zooms 1x→1.9x (re-cut from 4K, extra colour). Mirror shot re-cut from 4K at 1.8x→2.0x slow push so he's closer; payoff text moved to the bottom over a soft gradient so it doesn't cover his face.
 https://gcdn.picsart.com/media-engine/eb43ec41-b5c7-455b-9420-b35941ae9b16.mp4
+v7 (22.25 s): gym sign removed; seated row extended to 4.6 s (090424, 0.5–5.1 s). Caption: no age mention.
+https://gcdn.picsart.com/media-engine/99efd822-695b-43f6-b6c8-629a9434b6a7.mp4
