@@ -222,3 +222,5 @@ Enhancement: denoise + sharpen + contrast in ffmpeg, then teal_orange fade 20 + 
 Music: "Epic Emotional and Motivational Cinematic Piano" by _Music_for_Creators_ (Pixabay, royalty-free), 85%, 1.2 s fade-out.
 https://gcdn.picsart.com/media-engine/215d276f-a38d-4bc6-b58d-2e202b59da70.mp4
 Note: a gym member is visible in the background at about 7.5 s (overhead clip).
+v3 (stylish, 21 s): added curl (084004 4.0–6.6), leg-raise finish (091727 5.0–7.4) and walk-in (084238 2.4–4.2). Text is Bebas Neue white + Great Vibes gold script over a soft top gradient (no black box).
+https://gcdn.picsart.com/media-engine/5898ebda-fd7f-425e-9f2e-27075fda6d4b.mp4
