@@ -234,3 +234,5 @@ v7 (22.25 s): gym sign removed; seated row extended to 4.6 s (090424, 0.5–5.1 
 https://gcdn.picsart.com/media-engine/99efd822-695b-43f6-b6c8-629a9434b6a7.mp4
 v8 (22.25 s): music changed to "Sport Gym Motivational Workout" by AliveTunesMusic (Pixabay, royalty-free, ~89 BPM, beat from 0.3 s), 90% with 1.2 s fade-out. Video unchanged from v7.
 https://gcdn.picsart.com/media-engine/a1ea5308-6ef5-4a47-9545-a490250f66e7.mp4
+v9 (22.25 s): music changed to "Strongman speed up Brazilian phonk gym" by RSNCE Phonk Music (Pixabay, royalty-free, ~136 BPM), from 18 s into the track (full-energy section), 85% with 1 s fade-out. Video unchanged.
+https://gcdn.picsart.com/media-engine/ba310b7a-f2fa-4307-a8fc-82d215e21d46.mp4
