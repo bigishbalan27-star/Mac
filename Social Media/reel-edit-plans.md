@@ -228,3 +228,5 @@ v4 (24 s): added seated cable row (20261111_090424, 0.5–3.3 s) after the overh
 https://gcdn.picsart.com/media-engine/ae555bcd-53ce-4830-ad1e-a9cfc52993ad.mp4
 v5 (21.5 s, no repeats): removed second curl. Order: curl (hook) → sign → lying cable → overhead → seated row → leg raise → stand-up → walk-in → mirror wide (payoff).
 https://gcdn.picsart.com/media-engine/e5713251-53f2-48f6-830e-68b2da22fefc.mp4
+v6 (21.35 s): Simply Gym sign now punch-in zooms 1x→1.9x (re-cut from 4K, extra colour). Mirror shot re-cut from 4K at 1.8x→2.0x slow push so he's closer; payoff text moved to the bottom over a soft gradient so it doesn't cover his face.
+https://gcdn.picsart.com/media-engine/eb43ec41-b5c7-455b-9420-b35941ae9b16.mp4
