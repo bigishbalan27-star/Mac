@@ -20,3 +20,7 @@ All 13 replies below were approved and posted on 9 Nov 2026.
 | Dad gym reel (11 Nov) | prabhakaran_kadappuram_veedu: "❤️❤️❤️" | Thank you so much! 🙏❤️ |
 
 Still to fix on the phone (Instagram's API can't edit captions): add missing # to "MalayaliInUK FamilyFirst" (gym) and "TravelWithKids FoodieTravel UKMallu" (breakfast); move the Diwali caption from the comment into the caption.
+Update 12 Nov: Instagram now allows max 5 hashtags. Use these when editing on the phone:
+- Gym reel: #DadLife #FitDad #DadAndSon #UKMallu #MalayaliInUK
+- Breakfast reel: #Mykonos #HolidayBreakfast #FamilyTravel #TravelWithKids #UKMallu
+Scheduled posts (Thu hotel, Wed carousel reminder, Sun lunch) updated to 5 hashtags.

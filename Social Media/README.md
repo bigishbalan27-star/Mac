@@ -41,7 +41,7 @@ Data pulled 9 Nov 2026 from Instagram/YouTube insights (48 reels posted in 2026)
    - 👶 **Dad & son moments** — milestones, firsts
    - Gym/home/car-only content → Stories, not the grid (except one car test).
 3. **First 1 second = the best shot + text on screen.** E.g. open on the turquoise water, *then* the walk.
-4. **Every caption:** hook line → 1–2 lines of story/value → one question → 5–8 specific hashtags (always `#UKMallu`).
+4. **Every caption:** hook line → 1–2 lines of story/value → one question → **max 5 hashtags** (Instagram's limit since Nov 2026; always `#UKMallu`).
 5. **Reply to every comment within the first hour** of posting.
 6. **Every travel reel ends with "Full film on YouTube — link in bio"** to push The roaming lens.
 
