@@ -26,7 +26,7 @@ Data pulled 9 Nov 2026 from Instagram/YouTube insights (48 reels posted in 2026)
 1. **Hooks.** 2 in 3 viewers swipe away within 3 s. The first frame is often a walk-in or a slow pan.
 2. **Off-niche posts underperform.** Gym motivation (avg ~200 views, 1–9 likes), home décor (75 views), night drive (46). They confuse the algorithm about who to show you to.
 3. **Batch dumping.** Several days had 2–3 reels within hours (11 Oct, 14 Jun, 21 Jun, 27 Jun). Each one steals reach from the others.
-4. **Yesterday's Diwali reel has no caption** — the caption was posted as a comment instead. Captions are searchable; comments aren't. **Fix:** open the reel → ⋯ → Edit → paste the caption from the comment, then delete the comment.
+4. ~~Diwali reel had no caption~~ ✅ Fixed 12 Nov: caption added (5 hashtags) and the duplicate comment deleted.
 5. **Comments go unanswered** — replies in the first hour are one of the strongest signals you control.
 
 ---
