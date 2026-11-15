@@ -14,11 +14,12 @@
 :root {
   --board: #1b1a18;
   --break: #0b0b0a;
-  --rail: #5d5a53;
+  --rail: #a8a9a5;
+  --rail-dim: #55554f;
   --ink: #16140f;
-  --card: #f4f0e6;
-  --on-board: #f4f0e6;
-  --on-board-soft: #cbc4b4;
+  --card: #f5f5f1;
+  --on-board: #f5f5f1;
+  --on-board-soft: #c6c6bf;
   --blue: #8dbbe8;
   --green: #86c990;
   --pink: #f3a3b8;
@@ -39,7 +40,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 4rem;
-  scrollbar-color: var(--rail) var(--break);
+  scrollbar-color: var(--rail-dim) var(--break);
   -webkit-text-size-adjust: 100%;
 }
 
@@ -70,7 +71,12 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px
 code {
   font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   font-size: 0.9em;
+  white-space: nowrap;
 }
+
+.val, .fields span, .job-note, .steps li, .seg span, .panel-head p, .lede { text-wrap: pretty; }
+
+:root { view-transition-name: none; }
 
 .skip {
   position: absolute;
@@ -115,7 +121,7 @@ code {
   gap: 2rem;
   min-height: 3.25rem;
   padding: 0 var(--gutter);
-  border-bottom: 1px solid var(--rail);
+  border-bottom: 3px solid var(--rail);
 }
 .nav a { text-decoration: none; }
 .brand { font-size: 1.375rem; letter-spacing: 0.04em; margin-right: auto; }
@@ -156,10 +162,10 @@ h1 {
   margin-top: 1.25rem;
   max-width: 62ch;
   font-size: 1.1875rem;
-  color: #3a362c;
+  color: #33342f;
 }
 .header-actions { display: grid; gap: 0.9rem; justify-items: start; }
-.action-note { font-size: 0.9375rem; color: #3a362c; max-width: 26ch; }
+.action-note { font-size: 0.9375rem; color: #33342f; max-width: 26ch; }
 
 .action {
   display: inline-flex;
@@ -198,7 +204,7 @@ h1 {
 
 /* ---------- the board ---------- */
 
-.board { display: grid; gap: 3px; padding-bottom: 3px; }
+.board { display: grid; gap: 3px; border-bottom: 3px solid var(--rail); }
 
 .legend, .group, .folder {
   display: grid;
@@ -212,7 +218,6 @@ h1 {
   color: var(--on-board-soft);
   padding-block: 0.45rem;
   background: var(--board);
-  border-top: 1px solid var(--rail);
 }
 .legend span + span, .folder p { padding-left: 1.5rem; }
 
@@ -245,7 +250,14 @@ h1 {
   font-size: 1rem;
   line-height: 1.35;
 }
-.field { display: none; }
+.field {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 
 @keyframes deal {
   from { transform: translateX(7%); clip-path: inset(0 0 0 100%); }
@@ -319,11 +331,11 @@ h1 {
   max-width: 16em;
 }
 .panel-head p { max-width: 60ch; color: var(--on-board-soft); font-size: 1.125rem; }
-.on-card .panel-head p { color: #3a362c; }
+.on-card .panel-head p { color: #33342f; }
 
 /* ---------- job lanes ---------- */
 
-.lanes { display: grid; gap: 3px; border-block: 1px solid var(--rail); padding-block: 3px; }
+.lanes { display: grid; gap: 3px; border-block: 3px solid var(--rail); padding-block: 3px; }
 .lane { display: grid; grid-template-columns: minmax(9rem, 22%) minmax(0, 1fr); gap: 3px; min-height: 6.5rem; }
 .lane-name {
   display: flex;
@@ -338,8 +350,6 @@ h1 {
 .slot {
   display: grid;
   background: var(--break);
-  outline: 1px dashed var(--rail);
-  outline-offset: -7px;
 }
 
 .job {
@@ -358,7 +368,7 @@ h1 {
   letter-spacing: 0.01em;
   overflow-wrap: anywhere;
 }
-.job-text { font-size: 1rem; line-height: 1.35; color: #3a362c; max-width: 70ch; }
+.job-text { font-size: 1rem; line-height: 1.35; color: #33342f; max-width: 70ch; }
 
 .job-controls {
   display: grid;
@@ -406,11 +416,11 @@ h1 {
   line-height: 1;
   margin-bottom: 0.6rem;
 }
-.order dd p:not(.big) { max-width: 66ch; color: #3a362c; }
+.order dd p:not(.big) { max-width: 66ch; color: #33342f; }
 
 /* ---------- notes fields ---------- */
 
-.fields { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.fields { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-block: 3px solid var(--rail); }
 .fields li { display: grid; align-content: start; gap: 0.35rem; padding: 1.4rem 1.25rem 1.6rem; }
 .fields li + li { border-left: 1px solid rgb(22 20 15 / 0.4); }
 .fields strong {
@@ -424,7 +434,7 @@ h1 {
 
 /* ---------- filename ---------- */
 
-.filename { display: grid; grid-template-columns: 2.4fr 1.1fr 1.5fr 1.1fr; gap: 3px; }
+.filename { display: grid; grid-template-columns: 2.4fr 1.1fr 1.5fr 1.1fr; gap: 3px; border-block: 3px solid var(--rail); padding-block: 3px; }
 .seg { display: grid; align-content: start; gap: 0.75rem; padding: 1.25rem 1.25rem 1.5rem; }
 .seg b {
   font-family: var(--display);
@@ -502,10 +512,13 @@ h1 {
   .group span { grid-column: auto; padding-left: 0; }
   .folder { padding-block: 0.9rem 1rem; row-gap: 0.45rem; min-height: 0; }
   .folder h2 { padding-block: 0; font-size: 2rem; }
-  .folder p { display: block; padding: 0; border-left: 0; }
+  .folder p { display: grid; grid-template-columns: 4.6rem minmax(0, 1fr); align-items: baseline; padding: 0; border-left: 0; }
   .field {
-    display: inline-block;
-    min-width: 4.6rem;
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
     font-family: var(--display);
     font-weight: 800;
     font-size: 1.0625rem;

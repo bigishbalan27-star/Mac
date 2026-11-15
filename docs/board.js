@@ -81,8 +81,13 @@
     timer = setTimeout(function () { advance(); tick(); }, beat);
   }
 
+  var taken = false;
+
   button.addEventListener("click", function () {
+    taken = true;
     stopPlaying();
+    // Announce changes only once the visitor is driving.
+    strip.setAttribute("aria-live", "polite");
     advance();
   });
 
@@ -126,13 +131,20 @@
   }, { rootMargin: "0px 0px -12% 0px", threshold: 0.15 });
   watched.forEach(function (el) { seen.observe(el); });
 
+  // Autoplay runs only while the lanes are on screen, and never after
+  // the visitor has pressed the button.
   var lanes = document.querySelector(".lanes");
-  var played = false;
+  var wait = null;
   var onLanes = new IntersectionObserver(function (entries) {
-    if (played || !entries[0].isIntersecting) return;
-    played = true;
-    onLanes.disconnect();
-    setTimeout(tick, 900);
+    if (taken) { onLanes.disconnect(); return; }
+    if (entries[0].isIntersecting) {
+      if (!timer && !wait && index < steps.length - 1) {
+        wait = setTimeout(function () { wait = null; if (!taken) tick(); }, 900);
+      }
+    } else {
+      if (wait) { clearTimeout(wait); wait = null; }
+      stopPlaying();
+    }
   }, { threshold: 0.6 });
   if (lanes) onLanes.observe(lanes);
 })();
