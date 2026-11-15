@@ -1,0 +1,528 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-15T00:00:00Z",
+  "title": "Design System: AI Video Studio",
+  "extensions": {
+    "colorMeta": {
+      "red": {
+        "role": "primary",
+        "displayName": "Slate Red",
+        "canonical": "#c9341f",
+        "tonalRamp": [
+          "oklch(15% 0.066 32)",
+          "oklch(27% 0.114 32)",
+          "oklch(39% 0.162 32)",
+          "oklch(51% 0.190 32)",
+          "oklch(63% 0.190 32)",
+          "oklch(75% 0.162 32)",
+          "oklch(86% 0.105 32)",
+          "oklch(95% 0.048 32)"
+        ]
+      },
+      "red-deep": {
+        "role": "primary",
+        "displayName": "Slate Red, Pressed",
+        "canonical": "#a82a18",
+        "tonalRamp": [
+          "oklch(15% 0.058 32)",
+          "oklch(27% 0.099 32)",
+          "oklch(39% 0.140 32)",
+          "oklch(51% 0.165 32)",
+          "oklch(63% 0.165 32)",
+          "oklch(75% 0.140 32)",
+          "oklch(86% 0.091 32)",
+          "oklch(95% 0.041 32)"
+        ]
+      },
+      "on-red": {
+        "role": "primary",
+        "displayName": "Chalk on Red",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0.000 105)",
+          "oklch(27% 0.000 105)",
+          "oklch(39% 0.000 105)",
+          "oklch(51% 0.000 105)",
+          "oklch(63% 0.000 105)",
+          "oklch(75% 0.000 105)",
+          "oklch(86% 0.000 105)",
+          "oklch(95% 0.000 105)"
+        ]
+      },
+      "blue": {
+        "role": "secondary",
+        "displayName": "Reference Blue",
+        "canonical": "#8dbbe8",
+        "tonalRamp": [
+          "oklch(15% 0.030 250)",
+          "oklch(27% 0.051 250)",
+          "oklch(39% 0.072 250)",
+          "oklch(51% 0.085 250)",
+          "oklch(63% 0.085 250)",
+          "oklch(75% 0.072 250)",
+          "oklch(86% 0.047 250)",
+          "oklch(95% 0.021 250)"
+        ]
+      },
+      "green": {
+        "role": "secondary",
+        "displayName": "Approved Green",
+        "canonical": "#86c990",
+        "tonalRamp": [
+          "oklch(15% 0.038 148)",
+          "oklch(27% 0.066 148)",
+          "oklch(39% 0.093 148)",
+          "oklch(51% 0.110 148)",
+          "oklch(63% 0.110 148)",
+          "oklch(75% 0.093 148)",
+          "oklch(86% 0.061 148)",
+          "oklch(95% 0.028 148)"
+        ]
+      },
+      "pink": {
+        "role": "secondary",
+        "displayName": "Brand Pink",
+        "canonical": "#f3a3b8",
+        "tonalRamp": [
+          "oklch(15% 0.035 5)",
+          "oklch(27% 0.060 5)",
+          "oklch(39% 0.085 5)",
+          "oklch(51% 0.100 5)",
+          "oklch(63% 0.100 5)",
+          "oklch(75% 0.085 5)",
+          "oklch(86% 0.055 5)",
+          "oklch(95% 0.025 5)"
+        ]
+      },
+      "yellow": {
+        "role": "secondary",
+        "displayName": "Raw Yellow",
+        "canonical": "#f4c935",
+        "tonalRamp": [
+          "oklch(15% 0.056 92)",
+          "oklch(27% 0.096 92)",
+          "oklch(39% 0.136 92)",
+          "oklch(51% 0.160 92)",
+          "oklch(63% 0.160 92)",
+          "oklch(75% 0.136 92)",
+          "oklch(86% 0.088 92)",
+          "oklch(95% 0.040 92)"
+        ]
+      },
+      "orange": {
+        "role": "secondary",
+        "displayName": "Export Orange",
+        "canonical": "#f2924a",
+        "tonalRamp": [
+          "oklch(15% 0.049 55)",
+          "oklch(27% 0.084 55)",
+          "oklch(39% 0.119 55)",
+          "oklch(51% 0.140 55)",
+          "oklch(63% 0.140 55)",
+          "oklch(75% 0.119 55)",
+          "oklch(86% 0.077 55)",
+          "oklch(95% 0.035 55)"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Card White",
+        "canonical": "#f5f5f1",
+        "tonalRamp": [
+          "oklch(15% 0.002 105)",
+          "oklch(27% 0.003 105)",
+          "oklch(39% 0.004 105)",
+          "oklch(51% 0.005 105)",
+          "oklch(63% 0.005 105)",
+          "oklch(75% 0.004 105)",
+          "oklch(86% 0.003 105)",
+          "oklch(95% 0.001 105)"
+        ]
+      },
+      "board": {
+        "role": "neutral",
+        "displayName": "Vinyl Black",
+        "canonical": "#1b1a18",
+        "tonalRamp": [
+          "oklch(15% 0.001 85)",
+          "oklch(27% 0.002 85)",
+          "oklch(39% 0.003 85)",
+          "oklch(51% 0.004 85)",
+          "oklch(63% 0.004 85)",
+          "oklch(75% 0.003 85)",
+          "oklch(86% 0.002 85)",
+          "oklch(95% 0.001 85)"
+        ]
+      },
+      "break": {
+        "role": "neutral",
+        "displayName": "Break Black",
+        "canonical": "#0b0b0a",
+        "tonalRamp": [
+          "oklch(15% 0.001 100)",
+          "oklch(27% 0.001 100)",
+          "oklch(39% 0.002 100)",
+          "oklch(51% 0.002 100)",
+          "oklch(63% 0.002 100)",
+          "oklch(75% 0.002 100)",
+          "oklch(86% 0.001 100)",
+          "oklch(95% 0.001 100)"
+        ]
+      },
+      "rail": {
+        "role": "neutral",
+        "displayName": "Aluminium",
+        "canonical": "#a8a9a5",
+        "tonalRamp": [
+          "oklch(15% 0.002 110)",
+          "oklch(27% 0.003 110)",
+          "oklch(39% 0.004 110)",
+          "oklch(51% 0.005 110)",
+          "oklch(63% 0.005 110)",
+          "oklch(75% 0.004 110)",
+          "oklch(86% 0.003 110)",
+          "oklch(95% 0.001 110)"
+        ]
+      },
+      "rail-dim": {
+        "role": "neutral",
+        "displayName": "Aluminium, Shaded",
+        "canonical": "#55554f",
+        "tonalRamp": [
+          "oklch(15% 0.003 105)",
+          "oklch(27% 0.005 105)",
+          "oklch(39% 0.007 105)",
+          "oklch(51% 0.008 105)",
+          "oklch(63% 0.008 105)",
+          "oklch(75% 0.007 105)",
+          "oklch(86% 0.004 105)",
+          "oklch(95% 0.002 105)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Strip Ink",
+        "canonical": "#16140f",
+        "tonalRamp": [
+          "oklch(15% 0.003 90)",
+          "oklch(27% 0.006 90)",
+          "oklch(39% 0.009 90)",
+          "oklch(51% 0.010 90)",
+          "oklch(63% 0.010 90)",
+          "oklch(75% 0.009 90)",
+          "oklch(86% 0.006 90)",
+          "oklch(95% 0.003 90)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "#33342f",
+        "tonalRamp": [
+          "oklch(15% 0.003 115)",
+          "oklch(27% 0.005 115)",
+          "oklch(39% 0.008 115)",
+          "oklch(51% 0.009 115)",
+          "oklch(63% 0.009 115)",
+          "oklch(75% 0.008 115)",
+          "oklch(86% 0.005 115)",
+          "oklch(95% 0.002 115)"
+        ]
+      },
+      "on-board": {
+        "role": "neutral",
+        "displayName": "Chalk",
+        "canonical": "#f5f5f1",
+        "tonalRamp": [
+          "oklch(15% 0.002 105)",
+          "oklch(27% 0.003 105)",
+          "oklch(39% 0.004 105)",
+          "oklch(51% 0.005 105)",
+          "oklch(63% 0.005 105)",
+          "oklch(75% 0.004 105)",
+          "oklch(86% 0.003 105)",
+          "oklch(95% 0.001 105)"
+        ]
+      },
+      "on-board-soft": {
+        "role": "neutral",
+        "displayName": "Chalk, Soft",
+        "canonical": "#c6c6bf",
+        "tonalRamp": [
+          "oklch(15% 0.003 105)",
+          "oklch(27% 0.005 105)",
+          "oklch(39% 0.008 105)",
+          "oklch(51% 0.009 105)",
+          "oklch(63% 0.009 105)",
+          "oklch(75% 0.008 105)",
+          "oklch(86% 0.005 105)",
+          "oklch(95% 0.002 105)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page headline on the header strip; closing panel heading."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings on panels."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "The name on a strip; lane and field names."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Literal file names and numerals shown large, in real case."
+      },
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "One-line claim beside a tab in a ruled list."
+      },
+      "action": {
+        "displayName": "Action",
+        "purpose": "Action button and folder tabs."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Break strips, navigation, footer, step counter."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Paragraph under the display headline; section intros."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default reading text."
+      },
+      "cell": {
+        "displayName": "Cell",
+        "purpose": "Text inside a strip's field."
+      }
+    },
+    "shadows": [
+      {
+        "name": "action-lift",
+        "value": "0 6px 14px -6px rgb(0 0 0 / 0.55)",
+        "purpose": "Action button at rest."
+      },
+      {
+        "name": "action-lift-hover",
+        "value": "0 10px 18px -8px rgb(0 0 0 / 0.6)",
+        "purpose": "Action button on hover, raised 2px."
+      },
+      {
+        "name": "action-lift-pressed",
+        "value": "0 2px 6px -3px rgb(0 0 0 / 0.6)",
+        "purpose": "Action button pressed, set down 1px."
+      },
+      {
+        "name": "loose-strip",
+        "value": "0 8px 18px -8px rgb(0 0 0 / 0.7)",
+        "purpose": "The travelling job strip only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The single curve for every entrance and state change."
+      },
+      {
+        "name": "deal",
+        "value": "720ms ease-out; translateX(7%) + clip-path inset from the right; stagger 70ms on load (after 120ms), 80ms on scroll",
+        "purpose": "Strips, lanes and list rows arriving on the board."
+      },
+      {
+        "name": "drop",
+        "value": "620ms ease-out; translateY(-18%) + clip-path inset from the bottom; stagger 80ms",
+        "purpose": "Cells: field cells and filename segments."
+      },
+      {
+        "name": "rise",
+        "value": "800ms (900ms for the page headline) ease-out; translateY(0.35em) + clip-path; lede and actions delayed 180ms",
+        "purpose": "Headings and numbered steps rising through a clip."
+      },
+      {
+        "name": "rule",
+        "value": "900ms ease-out; scaleX(0) to 1 from the left",
+        "purpose": "The top rule of a ruled list or step list drawing in."
+      },
+      {
+        "name": "job-move",
+        "value": "520ms ease-out view transition (view-transition-name: job-strip)",
+        "purpose": "The job strip travelling between lanes."
+      },
+      {
+        "name": "job-beat",
+        "value": "2600ms linear, 3px red line scaleX along the strip's bottom edge; starts 900ms after the lanes are 60% in view",
+        "purpose": "Progress of each self-played step; stops for good on the first button press and pauses off screen."
+      },
+      {
+        "name": "action-press",
+        "value": "160ms ease-out (background, transform, box-shadow); arrow 200ms translateX(4px)",
+        "purpose": "Action button hover and press."
+      },
+      {
+        "name": "reveal-trigger",
+        "value": "IntersectionObserver, threshold 0.15, rootMargin 0 0 -12% 0, once",
+        "purpose": "When a scroll entrance fires."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "no .motion class, no autoplay, no transitions, view-transition animations off, scroll-behavior auto",
+        "purpose": "Everything is visible and static under prefers-reduced-motion or without JavaScript."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack",
+        "value": "60rem"
+      },
+      {
+        "name": "single-column",
+        "value": "44rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Action Button",
+      "kind": "button",
+      "refersTo": "button-action",
+      "description": "The one red control. Its label says what happens next.",
+      "html": "<button class=\"ds-action\" type=\"button\"><span>Open the repo on GitHub</span><svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-action { display: inline-flex; align-items: center; gap: 0.85rem; padding: 0.95rem 1.25rem 0.95rem 1.4rem; border: 0; border-radius: 2px; background: var(--red, #c9341f); color: #fff; font-family: var(--display, 'Sofia Sans Extra Condensed', 'Arial Narrow', sans-serif); font-weight: 700; font-size: 1.5rem; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase; text-decoration: none; cursor: pointer; box-shadow: 0 6px 14px -6px rgb(0 0 0 / 0.55); transition: background-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), transform 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), box-shadow 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-action:hover { background: var(--red-deep, #a82a18); transform: translateY(-2px); box-shadow: 0 10px 18px -8px rgb(0 0 0 / 0.6); } .ds-action:active { transform: translateY(1px); box-shadow: 0 2px 6px -3px rgb(0 0 0 / 0.6); } .ds-action:focus-visible { outline: 3px solid var(--yellow, #f4c935); outline-offset: 3px; } .ds-arrow { width: 1.4rem; height: 1.4rem; fill: none; stroke: currentColor; stroke-width: 2.25; stroke-linecap: square; transition: transform 200ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-action:hover .ds-arrow { transform: translateX(4px); } @media (prefers-reduced-motion: reduce) { .ds-action, .ds-arrow { transition: none; } }"
+    },
+    {
+      "name": "Action Button, On Red",
+      "kind": "button",
+      "refersTo": "button-action-on-red",
+      "description": "The action inverted for use inside the red closing panel.",
+      "html": "<div class=\"ds-close\"><a class=\"ds-action ds-on-red\" href=\"#\"><span>Open the repo on GitHub</span><svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></a></div>",
+      "css": ".ds-action { display: inline-flex; align-items: center; gap: 0.85rem; padding: 0.95rem 1.25rem 0.95rem 1.4rem; border: 0; border-radius: 2px; background: var(--red, #c9341f); color: #fff; font-family: var(--display, 'Sofia Sans Extra Condensed', 'Arial Narrow', sans-serif); font-weight: 700; font-size: 1.5rem; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase; text-decoration: none; cursor: pointer; box-shadow: 0 6px 14px -6px rgb(0 0 0 / 0.55); transition: background-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), transform 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), box-shadow 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-action:hover { background: var(--red-deep, #a82a18); transform: translateY(-2px); box-shadow: 0 10px 18px -8px rgb(0 0 0 / 0.6); } .ds-action:active { transform: translateY(1px); box-shadow: 0 2px 6px -3px rgb(0 0 0 / 0.6); } .ds-action:focus-visible { outline: 3px solid var(--yellow, #f4c935); outline-offset: 3px; } .ds-arrow { width: 1.4rem; height: 1.4rem; fill: none; stroke: currentColor; stroke-width: 2.25; stroke-linecap: square; transition: transform 200ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-action:hover .ds-arrow { transform: translateX(4px); } @media (prefers-reduced-motion: reduce) { .ds-action, .ds-arrow { transition: none; } } .ds-close { background: var(--red, #c9341f); padding: 2rem; } .ds-action.ds-on-red { background: var(--card, #f5f5f1); color: var(--ink, #16140f); } .ds-action.ds-on-red:hover { background: #fff; } .ds-close .ds-action:focus-visible { outline-color: var(--card, #f5f5f1); }"
+    },
+    {
+      "name": "Navigation Break Strip",
+      "kind": "nav",
+      "refersTo": "nav-break",
+      "description": "Sticky break strip with brand, section links and a full-height red repository cell.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-brand\" href=\"#\">AI Video Studio</a><nav><a href=\"#\">The board</a><a href=\"#\">One job</a><a href=\"#\">Style order</a></nav><a class=\"ds-nav-repo\" href=\"#\">Open the repo on GitHub</a></header>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 2rem; min-height: 3.25rem; padding: 0 0 0 1.5rem; border-bottom: 3px solid var(--rail, #a8a9a5); background: var(--break, #0b0b0a); color: var(--on-board, #f5f5f1); font-family: var(--display, 'Sofia Sans Extra Condensed', 'Arial Narrow', sans-serif); font-weight: 700; font-size: 1.125rem; letter-spacing: 0.06em; text-transform: uppercase; } .ds-nav a { color: inherit; text-decoration: none; } .ds-brand { font-size: 1.375rem; letter-spacing: 0.04em; margin-right: auto; } .ds-nav nav { display: flex; gap: 1.75rem; } .ds-nav nav a { color: var(--on-board-soft, #c6c6bf); padding: 0.9rem 0; } .ds-nav nav a:hover { color: var(--on-board, #f5f5f1); text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; } .ds-nav-repo { align-self: stretch; display: flex; align-items: center; padding: 0 1.25rem; background: var(--red, #c9341f); color: #fff !important; } .ds-nav-repo:hover { background: var(--red-deep, #a82a18); } .ds-nav a:focus-visible { outline: 3px solid var(--yellow, #f4c935); outline-offset: 3px; }"
+    },
+    {
+      "name": "Board: Break Strip and Folder Strips",
+      "kind": "custom",
+      "refersTo": "folder-strip",
+      "description": "The unit of the system: a break strip heading a group, then folder-coloured strips with ruled fields.",
+      "html": "<div class=\"ds-board\"><div class=\"ds-break ds-row\"><strong>Jobs</strong><span>One per video</span></div><article class=\"ds-strip ds-row ds-yellow\"><h3>Raw</h3><p>One subfolder per video: clips, audio, B-roll and a notes.md.</p><p>Each subfolder is one editing job.</p></article><article class=\"ds-strip ds-row ds-orange\"><h3>Exports</h3><p>Rendered drafts, versioned and named after their Raw folder.</p><p>You review here.</p></article></div>",
+      "css": ".ds-board { display: grid; gap: 3px; background: var(--board, #1b1a18); border-bottom: 3px solid var(--rail, #a8a9a5); font-family: var(--text, 'Sofia Sans', system-ui, sans-serif); } .ds-row { display: grid; grid-template-columns: minmax(13rem, 22%) minmax(0, 1fr) minmax(0, 1fr); padding: 0 1.5rem; } .ds-break { align-items: baseline; padding-block: 0.35rem; background: var(--break, #0b0b0a); color: var(--on-board, #f5f5f1); font-family: var(--display, 'Sofia Sans Extra Condensed', 'Arial Narrow', sans-serif); font-weight: 700; font-size: 1.125rem; letter-spacing: 0.06em; text-transform: uppercase; } .ds-break strong { font-weight: 800; font-size: 1.25rem; } .ds-break span { grid-column: 2 / -1; padding-left: 1.5rem; color: var(--on-board-soft, #c6c6bf); font-weight: 600; } .ds-strip { align-items: center; min-height: 3.6rem; color: var(--ink, #16140f); } .ds-yellow { background: var(--yellow, #f4c935); } .ds-orange { background: var(--orange, #f2924a); } .ds-strip h3 { margin: 0; font-family: var(--display, 'Sofia Sans Extra Condensed', 'Arial Narrow', sans-serif); font-weight: 800; font-size: 2.25rem; line-height: 1; letter-spacing: 0.01em; text-transform: uppercase; padding-block: 0.45rem; } .ds-strip p { margin: 0; align-self: stretch; display: flex; align-items: center; padding: 0.4rem 1.5rem; border-left: 1px solid rgb(22 20 15 / 0.4); font-size: 1rem; line-height: 1.35; }"
+    },
+    {
+      "name": "Lanes and Job Strip",
+      "kind": "custom",
+      "refersTo": "job-strip",
+      "description": "Folder-coloured lane names beside black slots; one loose white strip travels between them.",
+      "html": "<div class=\"ds-lanes\"><div class=\"ds-lane\"><div class=\"ds-lane-name ds-l-yellow\">Raw</div><div class=\"ds-slot\"><div class=\"ds-job\"><p class=\"ds-job-file\">Raw/2026-11-podcast-ep12/</p><p class=\"ds-job-text\">Clips, audio, B-roll and a notes.md go into one subfolder. That subfolder is the job.</p></div></div></div><div class=\"ds-lane\"><div class=\"ds-lane-name ds-l-orange\">Exports</div><div class=\"ds-slot\"></div></div></div>",
+      "css": ".ds-lanes { display: grid; gap: 3px; border-block: 3px solid var(--rail, #a8a9a5); padding-block: 3px; background: var(--board, #1b1a18); font-family: var(--text, 'Sofia Sans', system-ui, sans-serif); } .ds-lane { display: grid; grid-template-columns: minmax(9rem, 22%) minmax(0, 1fr); gap: 3px; min-height: 6.5rem; } .ds-lane-name { display: flex; align-items: center; padding: 0.75rem 1.25rem; color: var(--ink, #16140f); font-family: var(--display, 'Sofia Sans Extra Condensed', 'Arial Narrow', sans-serif); font-weight: 800; font-size: 1.875rem; line-height: 1; text-transform: uppercase; } .ds-l-yellow { background: var(--yellow, #f4c935); } .ds-l-orange { background: var(--orange, #f2924a); } .ds-slot { display: grid; background: var(--break, #0b0b0a); } .ds-job { position: relative; display: grid; align-content: center; gap: 0.2rem; padding: 0.85rem 1.5rem; background: var(--card, #f5f5f1); color: var(--ink, #16140f); box-shadow: 0 8px 18px -8px rgb(0 0 0 / 0.7); } .ds-job p { margin: 0; } .ds-job-file { font-family: var(--display, 'Sofia Sans Extra Condensed', 'Arial Narrow', sans-serif); font-weight: 800; font-size: clamp(1.75rem, 3.2vw, 2.5rem); line-height: 1; letter-spacing: 0.01em; overflow-wrap: anywhere; } .ds-job-text { font-size: 1rem; line-height: 1.35; color: #33342f; max-width: 70ch; }"
+    },
+    {
+      "name": "Folder Tabs",
+      "kind": "chip",
+      "refersTo": "tab",
+      "description": "A folder's name as a flat, square, non-interactive chip in its folder colour.",
+      "html": "<div class=\"ds-tabs\"><span class=\"ds-tab ds-tab-ink\">Editing Style</span><span class=\"ds-tab ds-tab-green\">Approved Videos</span><span class=\"ds-tab ds-tab-blue\">References</span><span class=\"ds-tab ds-tab-pink\">Brand Kit</span></div>",
+      "css": ".ds-tabs { display: flex; flex-wrap: wrap; gap: 1rem; padding: 1.5rem; background: var(--card, #f5f5f1); } .ds-tab { display: inline-block; padding: 0.4rem 0.85rem 0.35rem; color: var(--ink, #16140f); font-family: var(--display, 'Sofia Sans Extra Condensed', 'Arial Narrow', sans-serif); font-weight: 800; font-size: 1.5rem; line-height: 1; text-transform: uppercase; } .ds-tab-ink { background: var(--ink, #16140f); color: var(--card, #f5f5f1); } .ds-tab-green { background: var(--green, #86c990); } .ds-tab-blue { background: var(--blue, #8dbbe8); } .ds-tab-pink { background: var(--pink, #f3a3b8); }"
+    },
+    {
+      "name": "Ruled List Row",
+      "kind": "custom",
+      "refersTo": "tab",
+      "description": "On card: a 2px ink rule, then rows of tab plus statement and body, separated by hairlines.",
+      "html": "<dl class=\"ds-order\"><div><dt><span class=\"ds-otab\">Approved Videos</span></dt><dd><p class=\"ds-big\">Your own finished work is matched first.</p><p>Every edit you sign off becomes the best example of your style.</p></dd></div></dl>",
+      "css": ".ds-order { margin: 0; padding: 0 1.5rem; background: var(--card, #f5f5f1); color: var(--ink, #16140f); font-family: var(--text, 'Sofia Sans', system-ui, sans-serif); font-size: 1.0625rem; line-height: 1.5; } .ds-order > div { display: grid; grid-template-columns: minmax(11rem, 22%) minmax(0, 1fr); gap: 1rem 2rem; padding-block: 1.75rem 2rem; border-top: 2px solid var(--ink, #16140f); border-bottom: 1px solid rgb(22 20 15 / 0.35); } .ds-order dd, .ds-order p { margin: 0; } .ds-otab { display: inline-block; padding: 0.4rem 0.85rem 0.35rem; background: var(--green, #86c990); font-family: var(--display, 'Sofia Sans Extra Condensed', 'Arial Narrow', sans-serif); font-weight: 800; font-size: 1.5rem; line-height: 1; text-transform: uppercase; } .ds-big { font-family: var(--display, 'Sofia Sans Extra Condensed', 'Arial Narrow', sans-serif); font-weight: 700; font-size: clamp(1.875rem, 3.2vw, 2.75rem); line-height: 1; margin-bottom: 0.6rem !important; } .ds-order dd p:not(.ds-big) { max-width: 66ch; color: #33342f; }"
+    },
+    {
+      "name": "Field Cells",
+      "kind": "custom",
+      "refersTo": "field-cell",
+      "description": "One strip cut into equal cells by hairlines, each a field name over one line of text.",
+      "html": "<ul class=\"ds-fields\"><li><strong>Target</strong><span>The platform and the length.</span></li><li><strong>Hook</strong><span>The key message or hook.</span></li><li><strong>Deadline</strong><span>When the final version is due.</span></li></ul>",
+      "css": ".ds-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; border-block: 3px solid var(--rail, #a8a9a5); background: var(--yellow, #f4c935); color: var(--ink, #16140f); font-family: var(--text, 'Sofia Sans', system-ui, sans-serif); } .ds-fields li { display: grid; align-content: start; gap: 0.35rem; padding: 1.4rem 1.25rem 1.6rem; } .ds-fields li + li { border-left: 1px solid rgb(22 20 15 / 0.4); } .ds-fields strong { font-family: var(--display, 'Sofia Sans Extra Condensed', 'Arial Narrow', sans-serif); font-weight: 800; font-size: 2rem; line-height: 1; text-transform: uppercase; } .ds-fields span { font-size: 1rem; line-height: 1.35; }"
+    },
+    {
+      "name": "Filename Segments",
+      "kind": "custom",
+      "refersTo": "filename-segment",
+      "description": "A literal file name split into strips, each on the colour of the folder it comes from.",
+      "html": "<div class=\"ds-filename\"><div class=\"ds-seg ds-s-yellow\"><b>podcast-ep12</b><span>Matches its folder in Raw.</span></div><div class=\"ds-seg ds-s-orange\"><b>_v2</b><span>The version number.</span></div><div class=\"ds-seg ds-s-blue\"><b>_9x16</b><span>The platform cut.</span></div><div class=\"ds-seg ds-s-white\"><b>.mp4</b><span>The rendered file.</span></div></div>",
+      "css": ".ds-filename { display: grid; grid-template-columns: 2.4fr 1.1fr 1.5fr 1.1fr; gap: 3px; border-block: 3px solid var(--rail, #a8a9a5); padding-block: 3px; background: var(--board, #1b1a18); font-family: var(--text, 'Sofia Sans', system-ui, sans-serif); } .ds-seg { display: grid; align-content: start; gap: 0.75rem; padding: 1.25rem 1.25rem 1.5rem; color: var(--ink, #16140f); } .ds-s-yellow { background: var(--yellow, #f4c935); } .ds-s-orange { background: var(--orange, #f2924a); } .ds-s-blue { background: var(--blue, #8dbbe8); } .ds-s-white { background: var(--card, #f5f5f1); } .ds-seg b { font-family: var(--display, 'Sofia Sans Extra Condensed', 'Arial Narrow', sans-serif); font-weight: 800; font-size: clamp(2.5rem, 5.6vw, 5rem); line-height: 0.9; overflow-wrap: anywhere; } .ds-seg span { font-size: 1rem; line-height: 1.35; max-width: 34ch; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Production Stripboard",
+    "overview": "The interface is a film production stripboard: a warm black vinyl board, thin aluminium rails, and matte card strips laid edge to edge. Every piece of content is a strip or a cell on a strip. A strip has a colour that says which folder it belongs to, a name in extra-condensed capitals, and fields separated by hairline rules. Black break strips with white capitals divide the board into groups. Nothing floats, nothing glows, nothing is rounded into a card.\n\nDensity is that of a working board rather than a brochure: full-width rows, 3px of board showing between strips, text set close to its rule. Space is spent between sections, not inside strips. The page alternates the dark board and a single off-white card surface, and ends on one red panel that holds the action.\n\nThe system was written to refuse the dark gradient product page with a glowing timeline mock-up. It has no gradients, no imagery, and no raster assets; the board itself is the picture.",
+    "keyCharacteristics": [
+      "One material: flat matte strips on a near-black board, separated by 3px gaps and 3px aluminium rails.",
+      "Six card colours, one per folder, always with the same dark ink on top.",
+      "Red means the action and nothing else.",
+      "Extra-condensed capitals name things; a plain humanist sans explains them.",
+      "Hairline rules divide a strip into fields, the way a real strip is ruled.",
+      "Motion deals strips onto the board; it never decorates."
+    ],
+    "rules": [
+      {
+        "name": "The Red Is The Action Rule",
+        "body": "Red appears only where the visitor acts or where the action is in progress: the action button, the repository cell, the closing panel, the job's progress line. It is never a folder colour, never an accent on a heading, never a status.",
+        "section": "colors"
+      },
+      {
+        "name": "The Folder Colour Rule",
+        "body": "A card colour names a folder. Blue is References, green is Approved Videos, white is Editing Style, pink is Brand Kit, yellow is Raw, orange is Exports. A colour is never reused for decoration or for a second meaning.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Ink Rule",
+        "body": "Every card colour carries Strip Ink text. The six colours were chosen light enough for it; no strip takes white text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Capitals Name, Sentences Explain Rule",
+        "body": "Extra-condensed capitals are for the name of a thing on the board: a folder, a section, a field, an action. Anything that explains is Sofia Sans in sentence case. Condensed type never runs past one or two lines.",
+        "section": "typography"
+      },
+      {
+        "name": "The Exact Name Rule",
+        "body": "A literal file or folder name keeps its real case and punctuation, even at figure size (`podcast-ep12`, `_9x16`, `Raw/2026-11-podcast-ep12/`). Uppercasing is for labels, never for something the visitor will type.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only What Moves Is Lifted Rule",
+        "body": "A shadow means \"this can be picked up\": the action button and the travelling job strip. Fixed strips, panels, tabs and cells never take one.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** build every new block as a strip, a break strip, or a set of cells on the board grid, edge to edge, with 3px gaps and 3px Aluminium rails.",
+      "**Do** keep each folder on its colour everywhere: blue References, green Approved Videos, white Editing Style, pink Brand Kit, yellow Raw, orange Exports.",
+      "**Do** set all text on a card colour in Strip Ink, and supporting text on card in Soft Ink.",
+      "**Do** keep red for the action: one red button per view, plus the repository cell and the closing panel.",
+      "**Do** name things in Sofia Sans Extra Condensed capitals at weight 800 and explain them in Sofia Sans at 400, capped in `ch`.",
+      "**Do** show literal file and folder names in their real case, in monospace within text or in Figure type when they are the subject.",
+      "**Do** separate fields with a 1px hairline of Strip Ink at 40% and a 1.5rem inset.",
+      "**Do** bring strips in with deal, drop or rise on the single ease-out curve, once, and leave them visible when motion is reduced."
+    ],
+    "donts": [
+      "**Don't** use gradients, glows, or a product or timeline mock-up; the board is the image.",
+      "**Don't** round a strip, cell, tab or panel. Only the action button has a radius (2px).",
+      "**Don't** put a shadow on anything fixed. Only the action button and the travelling job strip are lifted.",
+      "**Don't** use red for a folder, a heading accent or a status, and don't use a folder colour for decoration.",
+      "**Don't** put white text on a card colour.",
+      "**Don't** wrap content in a centred max-width container or float it as a card with space all round; strips run full width.",
+      "**Don't** set running text in the condensed face, or uppercase a file name.",
+      "**Don't** fade things in; entrances are clipped and travel a short distance."
+    ]
+  }
+}
