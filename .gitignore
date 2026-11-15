@@ -2,3 +2,5 @@
 .claude/skills/impeccable/scripts/bin/
 # Taste skill build state
 .taste-skill/
+# Python virtual environment
+.venv/
