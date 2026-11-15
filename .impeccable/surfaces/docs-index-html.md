@@ -23,7 +23,7 @@ OWN-WORLD: Matte card strips on a warm black vinyl board with thin aluminium rai
 
 STORY: The visitor sees six folders, understands that four teach the editor a style and two carry each job, watches one job move through, and opens the repository to copy it.
 
-FIRST VIEWPORT: A black break strip as navigation. Under it a tall white header strip spanning the full width, carrying the headline in extra-condensed capitals at up to 6rem, one line of explanation, and the red action at its right end. Directly below, the six folder strips stacked full width, split by two break strips into "style" and "jobs", all visible at 1440 by 900.
+FIRST VIEWPORT: A black break strip as navigation. Under it a tall white header strip spanning the full width, carrying the headline in extra-condensed capitals at up to 6rem, a short explanation (three sentences, kept because they carry the four-folders-for-style, two-for-jobs offer), and the red action at its right end. Directly below, the six folder strips stacked full width, split by two break strips into "style" and "jobs", all visible at 1440 by 900.
 
 SIGNATURE INTERACTION: One job strip slides between three lanes (Raw, Exports, Approved Videos) through five steps, using view transitions, with a single button that names each next action. MOTION GRAMMAR (widened at the owner's request for more animation): strips are dealt onto the board on load; each later section deals, drops or rises its strips in once as it scrolls into view; headings rise through a clip; the job strip plays its five steps by itself once, with a red progress line, until the visitor presses the button. All exponential ease-out, all off under reduced motion.
 
