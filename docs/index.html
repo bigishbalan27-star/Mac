@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Video Studio: six folders that teach an AI editor your style</title>
+<meta name="description" content="AI Video Studio is a plain folder workspace for AI video editing. Four folders hold your style. Two carry each video from raw footage to a draft you approve.">
+<meta name="theme-color" content="#1b1a18">
+<link rel="preload" href="fonts/sofia-sans-extra-condensed-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/sofia-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#board">Skip to the board</a>
+
+<header class="break nav">
+  <a class="brand" href="#top">AI Video Studio</a>
+  <nav aria-label="Page sections">
+    <a href="#board">The board</a>
+    <a href="#job">One job</a>
+    <a href="#style">Style order</a>
+    <a href="#notes">Job notes</a>
+  </nav>
+  <a class="nav-repo" href="https://github.com/bigishbalan27-star/Mac/tree/main/AI%20Video%20Studio">Open the repo</a>
+</header>
+
+<main id="top">
+
+  <section class="strip header-strip" aria-labelledby="title">
+    <div class="header-copy">
+      <h1 id="title">Six folders that teach an AI editor your style.</h1>
+      <p class="lede">AI Video Studio is a plain folder workspace for AI video editing. Four folders hold your style. Two carry each video from raw footage to a draft you approve.</p>
+    </div>
+    <div class="header-actions">
+      <a class="action" href="https://github.com/bigishbalan27-star/Mac/tree/main/AI%20Video%20Studio">
+        <span>Copy the workspace on GitHub</span>
+        <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+      </a>
+      <p class="action-note">A public repository of folders and READMEs. No app to install.</p>
+    </div>
+  </section>
+
+  <section id="board" class="board" aria-label="The six folders">
+    <div class="break legend" aria-hidden="true">
+      <span>Folder</span><span>What goes in it</span><span>How it is used</span>
+    </div>
+
+    <div class="break group"><strong>Style</strong><span>Set once, kept up to date</span></div>
+
+    <article class="strip folder c-blue" style="--i:0">
+      <h2>References</h2>
+      <p><span class="field">Goes in</span><span class="val">Videos whose style you like, or a <code>links.md</code> of URLs.</span></p>
+      <p><span class="field">Used for</span><span class="val">Studied for look and feel. Inspiration only, never copied into your edits.</span></p>
+    </article>
+    <article class="strip folder c-green" style="--i:1">
+      <h2>Approved Videos</h2>
+      <p><span class="field">Goes in</span><span class="val">Final exports you have signed off.</span></p>
+      <p><span class="field">Used for</span><span class="val">The best example of your style. New edits are matched to these first.</span></p>
+    </article>
+    <article class="strip folder c-white" style="--i:2">
+      <h2>Editing Style</h2>
+      <p><span class="field">Goes in</span><span class="val">Your written rules: pacing, captions, zooms, transitions, music, aspect ratios.</span></p>
+      <p><span class="field">Used for</span><span class="val">Every edit follows these rules.</span></p>
+    </article>
+    <article class="strip folder c-pink" style="--i:3">
+      <h2>Brand Kit</h2>
+      <p><span class="field">Goes in</span><span class="val">Logos, colours, fonts, intros and outros, music you have licensed.</span></p>
+      <p><span class="field">Used for</span><span class="val">Pulled into every edit so videos stay on-brand.</span></p>
+    </article>
+
+    <div class="break group"><strong>Jobs</strong><span>One per video</span></div>
+
+    <article class="strip folder c-yellow" style="--i:4">
+      <h2>Raw</h2>
+      <p><span class="field">Goes in</span><span class="val">One subfolder per video: clips, audio, B-roll and a <code>notes.md</code>.</span></p>
+      <p><span class="field">Used for</span><span class="val">Each subfolder is one editing job.</span></p>
+    </article>
+    <article class="strip folder c-orange" style="--i:5">
+      <h2>Exports</h2>
+      <p><span class="field">Goes in</span><span class="val">Rendered drafts, versioned and named after their Raw folder.</span></p>
+      <p><span class="field">Used for</span><span class="val">You review here. The version you approve moves to Approved Videos.</span></p>
+    </article>
+  </section>
+
+  <section id="job" class="panel on-board" aria-labelledby="job-title">
+    <div class="panel-head">
+      <h2 id="job-title">One job, moved across the board.</h2>
+      <p>A video goes from <code>Raw/</code> to <code>Exports/</code> as a draft, then to <code>Approved Videos/</code> once you sign it off. Watch this one play, or move it yourself.</p>
+    </div>
+
+    <div class="lanes">
+      <div class="lane" data-lane="raw">
+        <div class="lane-name c-yellow">Raw</div>
+        <div class="slot"></div>
+      </div>
+      <div class="lane" data-lane="exports">
+        <div class="lane-name c-orange">Exports</div>
+        <div class="slot"></div>
+      </div>
+      <div class="lane" data-lane="approved">
+        <div class="lane-name c-green">Approved Videos</div>
+        <div class="slot"></div>
+      </div>
+    </div>
+
+    <div class="job-controls">
+      <button class="action" type="button" id="advance">
+        <span id="advance-label">Hand the job to the editor</span>
+        <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+      </button>
+      <p class="step" id="step-count">Step 1 of 5</p>
+      <p class="job-note">An example job. Its file names are the ones the workspace READMEs use.</p>
+    </div>
+
+    <div class="job strip c-white" id="job-strip" aria-live="polite">
+      <p class="job-file" id="job-file">Raw/2026-11-podcast-ep12/</p>
+      <p class="job-text" id="job-text">Clips, audio, B-roll and a notes.md go into one subfolder. That subfolder is the job.</p>
+    </div>
+  </section>
+
+  <section id="style" class="panel on-card" aria-labelledby="style-title">
+    <div class="panel-head">
+      <h2 id="style-title">What the editor learns from, and what wins.</h2>
+      <p>Four folders describe your style. They do not carry equal weight.</p>
+    </div>
+    <dl class="order">
+      <div>
+        <dt><span class="tab c-white-tab">Editing Style</span></dt>
+        <dd>
+          <p class="big">Written rules apply to every edit.</p>
+          <p>Pacing, cut frequency, caption font and position, music volume, aspect ratios per platform. Plus plain do's and don'ts, such as “never use star wipes” or “always cut silences over 0.5s”.</p>
+        </dd>
+      </div>
+      <div>
+        <dt><span class="tab c-green">Approved Videos</span></dt>
+        <dd>
+          <p class="big">Your own finished work is matched first.</p>
+          <p>Every edit you sign off becomes the best example of your style. New edits are matched to these before anything in References.</p>
+        </dd>
+      </div>
+      <div>
+        <dt><span class="tab c-blue">References</span></dt>
+        <dd>
+          <p class="big">Other people's videos come second.</p>
+          <p>They show the look and feel you are after: pacing, captions, transitions, colour, music, hooks. They are inspiration only and are never copied into your edits.</p>
+        </dd>
+      </div>
+      <div>
+        <dt><span class="tab c-pink">Brand Kit</span></dt>
+        <dd>
+          <p class="big">Your assets go into every edit.</p>
+          <p>Logos, brand colours, fonts, intro and outro clips, lower thirds, and music you own or have licensed.</p>
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <section id="notes" class="panel on-board" aria-labelledby="notes-title">
+    <div class="panel-head">
+      <h2 id="notes-title">Every job starts with a notes.md.</h2>
+      <p>Each subfolder in <code>Raw/</code> is one video. Its <code>notes.md</code> answers five things before any cutting starts.</p>
+    </div>
+    <ul class="strip fields c-yellow">
+      <li><strong>Target</strong><span>The platform and the length.</span></li>
+      <li><strong>Hook</strong><span>The key message or hook.</span></li>
+      <li><strong>Must keep</strong><span>The moments that have to stay in.</span></li>
+      <li><strong>Cut</strong><span>Anything that has to go.</span></li>
+      <li><strong>Deadline</strong><span>When the final version is due.</span></li>
+    </ul>
+
+    <div class="panel-head second">
+      <h2 id="names-title">Drafts name themselves.</h2>
+      <p>Every export carries the name of its job, a version, and the platform it was cut for, so nothing in <code>Exports/</code> needs explaining.</p>
+    </div>
+    <div class="filename" role="group" aria-label="The parts of an export file name: podcast-ep12_v2_9x16.mp4">
+      <div class="seg c-yellow"><b>podcast-ep12</b><span>Matches its folder in Raw.</span></div>
+      <div class="seg c-orange"><b>_v2</b><span>The version number. Each new draft counts up.</span></div>
+      <div class="seg c-blue"><b>_9x16</b><span>The platform cut: <code>_9x16</code> for Reels, TikTok and Shorts, <code>_16x9</code> for YouTube.</span></div>
+      <div class="seg c-white"><b>.mp4</b><span>The rendered file.</span></div>
+    </div>
+    <p class="aside">A <code>feedback.md</code> beside the drafts holds your notes on each one.</p>
+  </section>
+
+  <section id="copy" class="panel close" aria-labelledby="copy-title">
+    <h2 id="copy-title">Copy the board.</h2>
+    <ol class="steps">
+      <li><strong>Take the folders.</strong> Open the repository and download or fork the <code>AI Video Studio</code> folder.</li>
+      <li><strong>Write your rules.</strong> Put a style guide in <code>Editing Style/</code> and your assets in <code>Brand Kit/</code>.</li>
+      <li><strong>Start a job.</strong> Make a subfolder in <code>Raw/</code>, add your footage and a <code>notes.md</code>.</li>
+    </ol>
+    <div class="close-actions">
+      <a class="action on-red" href="https://github.com/bigishbalan27-star/Mac/tree/main/AI%20Video%20Studio">
+        <span>Open the repository</span>
+        <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+      </a>
+      <p>Keep large video files in Descript or Google Drive and note the links in the repo. GitHub limits files to 100 MB.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="break foot">
+  <span>AI Video Studio</span>
+  <span>A folder workspace for AI video editing</span>
+  <a href="#top">Back to the top</a>
+</footer>
+
+<script src="board.js"></script>
+</body>
+</html>
