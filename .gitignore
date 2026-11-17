@@ -4,3 +4,7 @@
 .taste-skill/
 # Python virtual environment
 .venv/
+
+# graphify machine-local state
+graphify-out/.graphify_python
+graphify-out/.graphify_root
