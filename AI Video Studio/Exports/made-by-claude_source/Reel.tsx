@@ -886,8 +886,8 @@ export const Reel: React.FC = () => {
         <Captions t={t} dark={dark} />
         <Stage t={t} />
       </div>
-      <div style={{position: 'absolute', bottom: 300, left: 0, right: 0, textAlign: 'center', fontFamily: MONO, fontSize: 22, letterSpacing: 2, color: mix('#B5B2AA', '#55555C', dark)}}>
-        made with claude · ai video studio
+      <div style={{position: 'absolute', bottom: 300, left: 0, right: 0, textAlign: 'center', fontFamily: MONO, fontSize: 26, fontWeight: 700, letterSpacing: 2, color: mix('#9E9B93', '#6A6A72', dark)}}>
+        @bigishbalan · made with claude
       </div>
       <Audio src={staticFile('vo_b.mp3')} />
       <Audio src={staticFile('sfx.wav')} volume={0.55} />

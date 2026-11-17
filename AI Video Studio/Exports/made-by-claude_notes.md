@@ -12,4 +12,4 @@
 ## Before posting
 
 - Keyword CTA is **STUDIO**. Have the DM reply ready (link to this repo / the six-folder setup).
-- The footer reads "made with claude · ai video studio". Change it if you want your handle there instead.
+- v1 footer: "made with claude · ai video studio". **v2 footer: "@bigishbalan · made with claude"** (otherwise identical). The source in `made-by-claude_source/` is the v2 version.
