@@ -1,134 +1,188 @@
 {
   ".impeccable/design.json": {
-    "mtime": 1794935628.5636702,
-    "seen": 1794935968.0973208,
+    "mtime": 1794946603.1084793,
+    "seen": 1794948369.0303917,
     "ast_hash": "5246ce6cad57ee0d3625b174d8e37422",
     "semantic_hash": "5246ce6cad57ee0d3625b174d8e37422"
   },
   "docs/board.js": {
-    "mtime": 1794935628.564592,
-    "seen": 1794935968.0973275,
+    "mtime": 1794946603.10928,
+    "seen": 1794948369.0304055,
     "ast_hash": "3574e34cf771d1d83967e5c0aa7d7a53",
     "semantic_hash": "3574e34cf771d1d83967e5c0aa7d7a53"
   },
   "scripts/quantize_model.py": {
-    "mtime": 1794935628.5649338,
-    "seen": 1794935968.0973299,
+    "mtime": 1794946603.1098592,
+    "seen": 1794948369.030408,
     "ast_hash": "b71839ca2e81205f6a1485392760cd4a",
     "semantic_hash": "b71839ca2e81205f6a1485392760cd4a"
   },
   ".impeccable/surfaces/docs-index-html.md": {
-    "mtime": 1794935628.5640717,
-    "seen": 1794935968.0973315,
+    "mtime": 1794946603.108866,
+    "seen": 1794948369.0304089,
     "ast_hash": "3103e1c22f678e35e68269611142badf",
     "semantic_hash": "3103e1c22f678e35e68269611142badf"
   },
   "AI Video Studio/Approved Videos/README.md": {
-    "mtime": 1794935628.5641372,
-    "seen": 1794935968.097333,
+    "mtime": 1794946603.108921,
+    "seen": 1794948369.0304105,
     "ast_hash": "48120aafe1479509fc27a91225f4008e",
     "semantic_hash": "48120aafe1479509fc27a91225f4008e"
   },
   "AI Video Studio/Brand Kit/README.md": {
-    "mtime": 1794935628.564168,
-    "seen": 1794935968.097334,
+    "mtime": 1794946603.1089468,
+    "seen": 1794948369.0304115,
     "ast_hash": "19876cfe3226f183626df533417ba8de",
     "semantic_hash": "19876cfe3226f183626df533417ba8de"
   },
   "AI Video Studio/Editing Style/README.md": {
-    "mtime": 1794935628.5642014,
-    "seen": 1794935968.0973353,
+    "mtime": 1794946603.108969,
+    "seen": 1794948369.030413,
     "ast_hash": "0359896368d83e2ec2954226721be596",
     "semantic_hash": "0359896368d83e2ec2954226721be596"
   },
   "AI Video Studio/Exports/README.md": {
-    "mtime": 1794935628.5642312,
-    "seen": 1794935968.0973365,
+    "mtime": 1794946603.109001,
+    "seen": 1794948369.0304139,
     "ast_hash": "01b8d9b4f7f36de6be28a7e99c9cac45",
     "semantic_hash": "01b8d9b4f7f36de6be28a7e99c9cac45"
   },
   "AI Video Studio/README.md": {
-    "mtime": 1794935628.5642312,
-    "seen": 1794935968.097338,
+    "mtime": 1794946603.109001,
+    "seen": 1794948369.0304165,
     "ast_hash": "7d35fb610f2258f03a180836e35e63d4",
     "semantic_hash": "7d35fb610f2258f03a180836e35e63d4"
   },
   "AI Video Studio/Raw/README.md": {
-    "mtime": 1794935628.5642726,
-    "seen": 1794935968.097339,
+    "mtime": 1794946603.1090355,
+    "seen": 1794948369.0304174,
     "ast_hash": "0190a5dc3db9080958673ed64f7183ca",
     "semantic_hash": "0190a5dc3db9080958673ed64f7183ca"
   },
   "AI Video Studio/References/README.md": {
-    "mtime": 1794935628.5643158,
-    "seen": 1794935968.0973399,
+    "mtime": 1794946603.1090639,
+    "seen": 1794948369.0304186,
     "ast_hash": "b17e070992c4155ec2bb0676eb2fafbe",
     "semantic_hash": "b17e070992c4155ec2bb0676eb2fafbe"
   },
   "CLAUDE.md": {
-    "mtime": 1794935628.5643158,
-    "seen": 1794935968.0973413,
+    "mtime": 1794946603.1090639,
+    "seen": 1794948369.0304203,
     "ast_hash": "dfe5fa7939121e96d61b54077cc9ab84",
     "semantic_hash": "dfe5fa7939121e96d61b54077cc9ab84"
   },
   "DESIGN.md": {
-    "mtime": 1794935628.5643158,
-    "seen": 1794935968.097342,
+    "mtime": 1794946603.1090639,
+    "seen": 1794948369.030421,
     "ast_hash": "9047ad7ec90993ee4d054c8c461e7925",
     "semantic_hash": "9047ad7ec90993ee4d054c8c461e7925"
   },
   "PRODUCT.md": {
-    "mtime": 1794935628.5643158,
-    "seen": 1794935968.0973427,
+    "mtime": 1794946603.1090639,
+    "seen": 1794948369.030422,
     "ast_hash": "8f0403fa42a378806b25efc0acda33e9",
     "semantic_hash": "8f0403fa42a378806b25efc0acda33e9"
   },
   "Social Media/README.md": {
-    "mtime": 1794935628.5643158,
-    "seen": 1794935968.0973437,
+    "mtime": 1794946603.1090639,
+    "seen": 1794948369.030423,
     "ast_hash": "c0ad2ae432bd7d627e0f0ee6bba310ed",
     "semantic_hash": "c0ad2ae432bd7d627e0f0ee6bba310ed"
   },
   "Social Media/captions.md": {
-    "mtime": 1794935628.564592,
-    "seen": 1794935968.0973444,
+    "mtime": 1794946603.10928,
+    "seen": 1794948369.030424,
     "ast_hash": "0f3d7c4cd107291e5300619006edd5a1",
     "semantic_hash": "0f3d7c4cd107291e5300619006edd5a1"
   },
   "Social Media/comment-replies.md": {
-    "mtime": 1794935628.564592,
-    "seen": 1794935968.0973458,
+    "mtime": 1794946603.10928,
+    "seen": 1794948369.0304253,
     "ast_hash": "a1e0af45fc78a98af9e9674e7f66d2ee",
     "semantic_hash": "a1e0af45fc78a98af9e9674e7f66d2ee"
   },
   "Social Media/reel-edit-plans.md": {
-    "mtime": 1794935628.564592,
-    "seen": 1794935968.0973465,
+    "mtime": 1794946603.10928,
+    "seen": 1794948369.030427,
     "ast_hash": "b1d35ca604f8c8ffefd25ba713c5ab26",
     "semantic_hash": "b1d35ca604f8c8ffefd25ba713c5ab26"
   },
   "Social Media/youtube-retitles.md": {
-    "mtime": 1794935628.564592,
-    "seen": 1794935968.0973475,
+    "mtime": 1794946603.10928,
+    "seen": 1794948369.0304282,
     "ast_hash": "83baca2bc6e82a4b6203e806ea18f7f9",
     "semantic_hash": "83baca2bc6e82a4b6203e806ea18f7f9"
   },
   "docs/fonts/OFL.txt": {
-    "mtime": 1794935628.5648358,
-    "seen": 1794935968.0973487,
+    "mtime": 1794946603.109445,
+    "seen": 1794948369.0304294,
     "ast_hash": "f1f76634ec5cb08900af98310c5ee430",
     "semantic_hash": "f1f76634ec5cb08900af98310c5ee430"
   },
   "docs/index.html": {
-    "mtime": 1794935628.5649338,
-    "seen": 1794935968.0973494,
+    "mtime": 1794946603.10948,
+    "seen": 1794948369.0304303,
     "ast_hash": "1785c7720127a3f38a6484a80c87119b",
     "semantic_hash": "1785c7720127a3f38a6484a80c87119b"
   },
   "requirements.txt": {
-    "mtime": 1794935628.5649338,
-    "seen": 1794935968.0973504,
+    "mtime": 1794946603.1098592,
+    "seen": 1794948369.030431,
     "ast_hash": "92f3cbcfe99890be025ce3ad63d67dfd",
     "semantic_hash": "92f3cbcfe99890be025ce3ad63d67dfd"
+  },
+  "AI Video Studio/Exports/made-by-claude_source/Reel.tsx": {
+    "mtime": 1794948318.8195534,
+    "seen": 1794948369.030397,
+    "ast_hash": "8c276129454cf8854d3e7fb587814f39",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_source/Root.tsx": {
+    "mtime": 1794948071.086972,
+    "seen": 1794948369.030399,
+    "ast_hash": "32da82d8997e82dfeb07c509cf18a4f4",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_source/index.ts": {
+    "mtime": 1794948071.0870082,
+    "seen": 1794948369.0304005,
+    "ast_hash": "9ee40eb67e6f76be1d6ef928fe4b694f",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_source/remotion.config.ts": {
+    "mtime": 1794948071.087092,
+    "seen": 1794948369.0304017,
+    "ast_hash": "4252634be9f09ba5bc3ebb260d80b529",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_source/sfx.py": {
+    "mtime": 1794948071.0870616,
+    "seen": 1794948369.0304027,
+    "ast_hash": "189e23c0016693bd445b6332119f32a2",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_source/words.json": {
+    "mtime": 1794948071.087035,
+    "seen": 1794948369.0304039,
+    "ast_hash": "15a26a1a8b4d3d540f7575803dc9d7cd",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_notes.md": {
+    "mtime": 1794948318.8310468,
+    "seen": 1794948369.0304148,
+    "ast_hash": "77da4b6d224544827a2ed6831fd2989a",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_v1_9x16.mp4": {
+    "mtime": 1794948071.080496,
+    "seen": 1794948369.030432,
+    "ast_hash": "c6a5c013453e768f29b793404d7cfb41",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_v2_9x16.mp4": {
+    "mtime": 1794948318.8153493,
+    "seen": 1794948369.030433,
+    "ast_hash": "91ee17ebce5b996bede7e94c8a54568f",
+    "semantic_hash": ""
   }
 }
