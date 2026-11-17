@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "remocn": {
+      "source": {
+        "source": "directory",
+        "path": "./.claude/marketplaces/remocn"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "remocn@remocn": true
+  }
+}
