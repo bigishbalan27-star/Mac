@@ -5,6 +5,12 @@
         "source": "directory",
         "path": "./.claude/marketplaces/remocn"
       }
+    },
+    "buildwithclaude": {
+      "source": {
+        "source": "github",
+        "repo": "davepoon/buildwithclaude"
+      }
     }
   },
   "enabledPlugins": {
