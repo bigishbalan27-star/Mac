@@ -132,9 +132,9 @@
     "semantic_hash": "92f3cbcfe99890be025ce3ad63d67dfd"
   },
   "AI Video Studio/Exports/made-by-claude_source/Reel.tsx": {
-    "mtime": 1794948318.8195534,
-    "seen": 1794948369.030397,
-    "ast_hash": "8c276129454cf8854d3e7fb587814f39",
+    "mtime": 1794951267.2995079,
+    "seen": 1794951268.7834575,
+    "ast_hash": "9295108c4e55868a097d6f0c1f1ffa2c",
     "semantic_hash": ""
   },
   "AI Video Studio/Exports/made-by-claude_source/Root.tsx": {
@@ -161,16 +161,10 @@
     "ast_hash": "189e23c0016693bd445b6332119f32a2",
     "semantic_hash": ""
   },
-  "AI Video Studio/Exports/made-by-claude_source/words.json": {
-    "mtime": 1794948071.087035,
-    "seen": 1794948369.0304039,
-    "ast_hash": "15a26a1a8b4d3d540f7575803dc9d7cd",
-    "semantic_hash": ""
-  },
   "AI Video Studio/Exports/made-by-claude_notes.md": {
-    "mtime": 1794948318.8310468,
-    "seen": 1794948369.0304148,
-    "ast_hash": "77da4b6d224544827a2ed6831fd2989a",
+    "mtime": 1794951267.3150852,
+    "seen": 1794951268.783485,
+    "ast_hash": "ae0465b464024524f0da301b7b420bb3",
     "semantic_hash": ""
   },
   "AI Video Studio/Exports/made-by-claude_v1_9x16.mp4": {
@@ -183,6 +177,48 @@
     "mtime": 1794948318.8153493,
     "seen": 1794948369.030433,
     "ast_hash": "91ee17ebce5b996bede7e94c8a54568f",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_source/build_timing.py": {
+    "mtime": 1794951267.299969,
+    "seen": 1794951268.7834642,
+    "ast_hash": "9c1252b1517b09abbb890ec432589b02",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_source/sfx2.py": {
+    "mtime": 1794949114.4545474,
+    "seen": 1794949116.2866476,
+    "ast_hash": "3cc9cb970d5fd21dd2508e5803a14db1",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_source/timing.ts": {
+    "mtime": 1794951267.2998128,
+    "seen": 1794951268.7834713,
+    "ast_hash": "b04d4eb6e9000f1bf5aaa5750b375f76",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_v3_9x16.mp4": {
+    "mtime": 1794949114.4473777,
+    "seen": 1794949116.2867165,
+    "ast_hash": "b48bfe7e841ad1b1802e7295b0b2f520",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_source/voice_clone_gen.py": {
+    "mtime": 1794951267.3015683,
+    "seen": 1794951268.783473,
+    "ast_hash": "da5db9b393c587866dd43b9660a01186",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_source/voice_clone_regen.py": {
+    "mtime": 1794951267.3031206,
+    "seen": 1794951268.7834742,
+    "ast_hash": "c9de88892c6b4c041c7b33d828cb8043",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_v4_9x16.mp4": {
+    "mtime": 1794951267.2954547,
+    "seen": 1794951268.7835045,
+    "ast_hash": "267e11607ba55380d5c171dc23e5cb63",
     "semantic_hash": ""
   }
 }
