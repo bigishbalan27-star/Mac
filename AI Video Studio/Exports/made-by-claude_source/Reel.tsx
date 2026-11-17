@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Audio, interpolate, spring, staticFile, useCurrentFrame, Easing, delayRender, continueRender} from 'remotion';
-import WORDS from './words.json';
+import {WORDS, STYLE as STYLE_RAW, PAGES as PAGES_RAW, ANCHORS, END} from './timing';
 
 const SANS = 'ReelSans';
 const SERIF = 'ReelSerif';
@@ -16,7 +16,7 @@ if (typeof document !== 'undefined') {
 }
 
 export const FPS = 30;
-export const TOTAL_FRAMES = Math.round(41.2 * FPS);
+export const TOTAL_FRAMES = Math.ceil(END * FPS);
 
 // ---------- palette ----------
 const BG = '#F6F5F1';
@@ -33,6 +33,20 @@ const NIGHT = '#0E0E10';
 
 type W = {w: string; s: number; e: number};
 const words = WORDS as W[];
+// map real (new voiceover) time -> original animation timeline, piecewise linear between word anchors
+const warp = (t: number) => {
+  const A = ANCHORS as [number, number][];
+  if (t <= A[0][0]) return A[0][1] + (t - A[0][0]);
+  for (let i = 1; i < A.length; i++) {
+    if (t <= A[i][0]) {
+      const [n0, o0] = A[i - 1];
+      const [n1, o1] = A[i];
+      return o0 + ((t - n0) / Math.max(1e-6, n1 - n0)) * (o1 - o0);
+    }
+  }
+  const [nL, oL] = A[A.length - 1];
+  return oL + (t - nL);
+};
 
 // ---------- helpers ----------
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
@@ -139,16 +153,8 @@ const MiniRef: React.FC<{kind: 0 | 1 | 2; w: number; h: number}> = ({kind, w, h}
 
 // ---------- captions ----------
 type Style = 'k' | 'e' | 'c' | 'm' | 's' | 'p';
-const STYLE: Record<number, Style> = {
-  3: 'k', 5: 'c', 7: 's', 8: 'e', 12: 'k', 13: 'e', 17: 'k', 18: 'k', 20: 'k', 24: 'e', 27: 'k', 31: 'e', 32: 'k', 34: 'k', 36: 'k', 41: 'e',
-  44: 'k', 46: 'e', 48: 'k', 53: 'e', 54: 'k', 59: 'k', 62: 'e', 65: 'e', 66: 'e', 67: 'e', 71: 'k', 75: 'k', 78: 'e', 82: 'k', 83: 'e',
-  86: 'k', 87: 'k', 89: 'k', 91: 'k', 95: 'm', 96: 'c', 99: 'k', 101: 'k', 103: 'e', 109: 'k', 111: 'e', 114: 'k', 117: 'k', 120: 'k',
-  121: 'e', 124: 'k', 125: 'k', 126: 'k', 127: 'p', 133: 'e',
-};
-const PAGES: [number, number][] = [
-  [0, 5], [6, 8], [9, 18], [19, 24], [25, 28], [29, 32], [33, 36], [37, 41], [42, 46], [47, 54], [55, 59], [60, 67], [68, 71], [72, 78],
-  [79, 83], [84, 87], [88, 89], [90, 95], [96, 99], [100, 103], [104, 109], [110, 114], [115, 121], [122, 125], [126, 133],
-];
+const STYLE = STYLE_RAW as unknown as Record<number, Style>;
+const PAGES = PAGES_RAW as [number, number][];
 
 const Captions: React.FC<{t: number; dark: number}> = ({t, dark}) => {
   let pi = 0;
@@ -444,7 +450,7 @@ const S_Pattern: React.FC<SP> = ({t}) => {
   const lower = sp(t, 14.9);
   const X0 = 110, X1 = 970, secs = 8;
   const px = (s: number) => X0 + ((X1 - X0) * s) / secs;
-  const capWords = ['captions', 'that', 'land', 'on', 'the', 'exact', 'word'];
+  const capWords = ['words', 'on', 'screen', 'right', 'on', 'time'];
   return (
     <>
       <div style={{position: 'absolute', left: CX - 210, top: 10, width: 420, height: 76, borderRadius: 38, background: INK, color: '#fff', fontFamily: MONO, fontWeight: 700, fontSize: 28, letterSpacing: 3,
@@ -479,7 +485,7 @@ const S_Pattern: React.FC<SP> = ({t}) => {
           const at = 15.2 + i * 0.22;
           const k = sp(t, at, {damping: 11});
           const x = 10 + capWords.slice(0, i).reduce((acc, w) => acc + w.length * 15.5 + 46, 0);
-          const hot = c === 'exact' && t > 16.35;
+          const hot = c === 'time' && t > 16.7;
           return (
             <React.Fragment key={i}>
               <div style={{position: 'absolute', left: x + 50, top: 70, width: 3, height: 140 * k, borderLeft: `3px dashed ${hot ? BLUE : '#BDB9B0'}`}} />
@@ -498,9 +504,9 @@ const SCRIPT_LINES = [
   'This reel was made by Claude.',
   'Not edited. Made.',
   'I gave it three reels I liked…',
-  'So it watched them.',
-  'And it found the pattern…',
-  'Then it wrote this script.',
+  'It watched them, slowly by slowly.',
+  'It found the pattern…',
+  'Then it wrote the script,',
   'Comment STUDIO…',
 ];
 const S_Script: React.FC<SP> = ({t}) => {
@@ -545,7 +551,7 @@ const S_Voice: React.FC<SP> = ({t}) => {
   const pick = lin(t, 20.95, 21.2);
   const panel = 1 - lin(t, 21.4, 21.7);
   const wave = sp(t, 21.5);
-  const sylls = ['syl', 'la', 'ble'];
+  const sylls = ['in', 'sync'];
   return (
     <>
       <div style={{position: 'absolute', left: 140, top: 40, width: 800, opacity: panel, transform: `translateY(${(1 - panel) * -60}px)`}}>
@@ -573,7 +579,7 @@ const S_Voice: React.FC<SP> = ({t}) => {
         {Array.from({length: 27}).map((_, i) => (
           <div key={i} style={{position: 'absolute', left: 114 + i * 30, top: 172, width: 3, height: i % 3 === 0 ? 22 : 12, background: INK, opacity: lin(t, 21.6 + i * 0.015, 21.7 + i * 0.015)}} />
         ))}
-        {['timed', 'every', 'caption'].map((w, i) => {
+        {['matched', 'every', 'word'].map((w, i) => {
           const k = sp(t, 21.68 + i * 0.32, {damping: 11});
           return <div key={w} style={{position: 'absolute', left: 130 + i * 190, top: 240, fontFamily: MONO, fontWeight: 700, fontSize: 30, background: '#fff', border: `2px solid ${INK}`, color: INK, padding: '8px 16px', borderRadius: 10, opacity: k, transform: `translateY(${(1 - k) * 40}px)`}}>{w}</div>;
         })}
@@ -581,7 +587,7 @@ const S_Voice: React.FC<SP> = ({t}) => {
           const k = sp(t, 23.0 + i * 0.1, {damping: 9});
           return <div key={s} style={{position: 'absolute', left: 520 + i * 125, top: 360, fontFamily: MONO, fontWeight: 800, fontSize: 40, background: BLUE, color: '#fff', padding: '10px 20px', borderRadius: 12, opacity: k, transform: `scale(${k}) translateY(${(1 - k) * 40}px)`}}>{s}</div>;
         })}
-        <div style={{position: 'absolute', left: 520, top: 340, width: 360, opacity: lin(t, 23.0, 23.3), fontFamily: MONO, fontSize: 20, color: MUTE, letterSpacing: 2, transform: 'translateY(110px)'}}>SYLLABLE-LEVEL SYNC</div>
+        <div style={{position: 'absolute', left: 520, top: 340, width: 360, opacity: lin(t, 23.0, 23.3), fontFamily: MONO, fontSize: 20, color: MUTE, letterSpacing: 2, transform: 'translateY(110px)'}}>WORD-LEVEL SYNC</div>
       </div>
     </>
   );
@@ -864,7 +870,8 @@ const Stage: React.FC<{t: number}> = ({t}) => {
 
 export const Reel: React.FC = () => {
   const frame = useCurrentFrame();
-  const t = frame / FPS;
+  const tr = frame / FPS;
+  const t = warp(tr);
   const darkIn = lin(t, 23.78, 23.98, 0, 1, Easing.out(Easing.quad));
   const reveal = lin(t, 29.3, 29.62, 0, 1, Easing.inOut(Easing.cubic));
   const dark = darkIn * (1 - lin(t, 29.38, 29.5));
@@ -883,14 +890,14 @@ export const Reel: React.FC = () => {
         maskImage: 'radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%)', WebkitMaskImage: 'radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%)'}} />
       <div style={{opacity: intro}}>
         <Tracker t={t} dark={dark} />
-        <Captions t={t} dark={dark} />
+        <Captions t={tr} dark={dark} />
         <Stage t={t} />
       </div>
       <div style={{position: 'absolute', bottom: 300, left: 0, right: 0, textAlign: 'center', fontFamily: MONO, fontSize: 26, fontWeight: 700, letterSpacing: 2, color: mix('#9E9B93', '#6A6A72', dark)}}>
         @bigishbalan · made with claude
       </div>
-      <Audio src={staticFile('vo_b.mp3')} />
-      <Audio src={staticFile('sfx.wav')} volume={0.55} />
+      <Audio src={staticFile('vo2_b.mp3')} />
+      <Audio src={staticFile('sfx2.wav')} volume={0.55} />
     </AbsoluteFill>
   );
 };
