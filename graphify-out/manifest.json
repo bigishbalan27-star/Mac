@@ -132,9 +132,9 @@
     "semantic_hash": "92f3cbcfe99890be025ce3ad63d67dfd"
   },
   "AI Video Studio/Exports/made-by-claude_source/Reel.tsx": {
-    "mtime": 1794948318.8195534,
-    "seen": 1794948369.030397,
-    "ast_hash": "8c276129454cf8854d3e7fb587814f39",
+    "mtime": 1794949114.452792,
+    "seen": 1794949116.2866323,
+    "ast_hash": "cf34c7222dbd49246cffb9cb0b288e2f",
     "semantic_hash": ""
   },
   "AI Video Studio/Exports/made-by-claude_source/Root.tsx": {
@@ -161,16 +161,10 @@
     "ast_hash": "189e23c0016693bd445b6332119f32a2",
     "semantic_hash": ""
   },
-  "AI Video Studio/Exports/made-by-claude_source/words.json": {
-    "mtime": 1794948071.087035,
-    "seen": 1794948369.0304039,
-    "ast_hash": "15a26a1a8b4d3d540f7575803dc9d7cd",
-    "semantic_hash": ""
-  },
   "AI Video Studio/Exports/made-by-claude_notes.md": {
-    "mtime": 1794948318.8310468,
-    "seen": 1794948369.0304148,
-    "ast_hash": "77da4b6d224544827a2ed6831fd2989a",
+    "mtime": 1794949114.4716706,
+    "seen": 1794949116.2866657,
+    "ast_hash": "b73a50182d99e3c5ca7fcfdc594b2a63",
     "semantic_hash": ""
   },
   "AI Video Studio/Exports/made-by-claude_v1_9x16.mp4": {
@@ -183,6 +177,30 @@
     "mtime": 1794948318.8153493,
     "seen": 1794948369.030433,
     "ast_hash": "91ee17ebce5b996bede7e94c8a54568f",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_source/build_timing.py": {
+    "mtime": 1794949114.4545748,
+    "seen": 1794949116.2866387,
+    "ast_hash": "ffa43c72e7d22452aa39a2608385b1aa",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_source/sfx2.py": {
+    "mtime": 1794949114.4545474,
+    "seen": 1794949116.2866476,
+    "ast_hash": "3cc9cb970d5fd21dd2508e5803a14db1",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_source/timing.ts": {
+    "mtime": 1794949114.4528956,
+    "seen": 1794949116.2866488,
+    "ast_hash": "8bc38c015c87241c81b0b73deb3ce38c",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/made-by-claude_v3_9x16.mp4": {
+    "mtime": 1794949114.4473777,
+    "seen": 1794949116.2867165,
+    "ast_hash": "b48bfe7e841ad1b1802e7295b0b2f520",
     "semantic_hash": ""
   }
 }
