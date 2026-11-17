@@ -11,12 +11,19 @@
         "source": "github",
         "repo": "davepoon/buildwithclaude"
       }
+    },
+    "marketingskills": {
+      "source": {
+        "source": "github",
+        "repo": "coreyhaines31/marketingskills"
+      }
     }
   },
   "enabledPlugins": {
     "remocn@remocn": true,
     "agents-media-content@buildwithclaude": true,
     "agents-sales-marketing@buildwithclaude": true,
-    "agents-design-experience@buildwithclaude": true
+    "agents-design-experience@buildwithclaude": true,
+    "marketing-skills@marketingskills": true
   }
 }
