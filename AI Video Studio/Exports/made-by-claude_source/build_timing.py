@@ -1,5 +1,5 @@
 import json,re
-W=json.load(open('public/words2_b.json'))
+W=json.load(open('public/words3.json'))
 norm=lambda s: re.sub(r'[^a-z]','',s.lower())
 def finder():
     cur=[0]

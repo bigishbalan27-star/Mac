@@ -896,7 +896,7 @@ export const Reel: React.FC = () => {
       <div style={{position: 'absolute', bottom: 300, left: 0, right: 0, textAlign: 'center', fontFamily: MONO, fontSize: 26, fontWeight: 700, letterSpacing: 2, color: mix('#9E9B93', '#6A6A72', dark)}}>
         @bigishbalan · made with claude
       </div>
-      <Audio src={staticFile('vo2_b.mp3')} />
+      <Audio src={staticFile('vo3.mp3')} />
       <Audio src={staticFile('sfx2.wav')} volume={0.55} />
     </AbsoluteFill>
   );
