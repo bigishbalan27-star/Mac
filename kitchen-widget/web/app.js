@@ -176,8 +176,10 @@
       $("inTemp").textContent = num(i.temperature, 1);
       $("inUnit").textContent = cfg.units.temperature === "fahrenheit" ? "°F" : "°C";
       $("inHum").textContent = i.humidity !== null && i.humidity !== undefined ? "💧 " + Math.round(i.humidity) + "%" : "";
-      $("inCo2").textContent = i.co2 !== null && i.co2 !== undefined ? "CO₂ " + Math.round(i.co2) + " ppm" : "";
-      $("inNote").textContent = i.humidity > 65 ? "Humid - open a window or run the hood" : "";
+      $("inCo2").textContent = i.co2 !== null && i.co2 !== undefined ? "CO₂ " + Math.round(i.co2) + " ppm"
+        : (i.target !== null && i.target !== undefined ? "Heating set to " + num(i.target, 1) + "°" : "");
+      $("inNote").textContent = i.humidity > 65 ? "Humid - open a window or run the hood"
+        : (i.source === "esi" ? (i.name || "ESi thermostat") + (i.online === false || i.online === "0" ? " (offline)" : "") : "");
     });
   }
 

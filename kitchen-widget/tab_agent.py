@@ -448,7 +448,8 @@ def _redact(msg):
     """Never let credentials echoed by the API reach logs or the screen."""
     msg = re.sub(r"got invalid value \{.*?\};", "got invalid value [hidden];", msg)
     eon = CONFIG.get("meter", {}).get("eon", {})
-    for secret in (eon.get("password"), eon.get("api_key")):
+    esi = CONFIG.get("indoor", {}).get("esi", {})
+    for secret in (eon.get("password"), eon.get("api_key"), esi.get("password")):
         if secret and len(secret) > 4:
             msg = msg.replace(secret, "[hidden]")
     msg = re.sub(r"sk_live_\w+", "sk_live_[hidden]", msg)
@@ -579,10 +580,73 @@ def eon_usage(cfg):
     return out
 
 
+# --- ESi Centro thermostat (UK) ---------------------------------------------
+# No official API. These are the calls the ESi Centro app makes, as used by
+# the community library pyesicentro (PyPI) and the Moby's Heat dashboard
+# (github.com/cs97jjm3/mobys-heat). Temperatures come back in tenths of a degree.
+
+ESI_BASE = "https://esiheating.uksouth.cloudapp.azure.com/centro/"
+_esi = {"user_id": None, "token": None, "at": 0}
+
+
+def esi_call(method, name, params):
+    url = ESI_BASE + name + "?" + urllib.parse.urlencode(params)
+    req = urllib.request.Request(url, method=method, data=b"" if method == "POST" else None)
+    req.add_header("User-Agent", "kitchen-tab-agent/1.0")
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return json.loads(r.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        raise RuntimeError(f"ESi HTTP {e.code}") from None
+    except urllib.error.URLError as e:
+        raise RuntimeError(f"ESi unreachable: {e.reason}") from None
+
+
+def esi_login(email, password):
+    res = esi_call("POST", "login", {"email": email, "password": password})
+    if res.get("error_code") != 0 or not res.get("user"):
+        raise RuntimeError("ESi login failed: " + _redact(str(res.get("message") or "check email/password")))
+    _esi.update(user_id=res["user"]["id"], token=res["user"]["token"], at=time.time())
+
+
+def esi_devices(cfg):
+    if not _esi["token"] or time.time() - _esi["at"] > 1500:  # tokens last ~30 min
+        esi_login(cfg.get("email", ""), cfg.get("password", ""))
+    params = {"device_type": "02", "user_id": _esi["user_id"], "token": _esi["token"]}
+    res = esi_call("GET", "getDeviceList", params)
+    if res.get("statu") is not True:  # token expired? log in once more
+        esi_login(cfg.get("email", ""), cfg.get("password", ""))
+        params.update(user_id=_esi["user_id"], token=_esi["token"])
+        res = esi_call("GET", "getDeviceList", params)
+    return res.get("devices") or []
+
+
+def _tenths(v):
+    try:
+        return int(v) / 10
+    except (TypeError, ValueError):
+        return None
+
+
+def esi_indoor(cfg):
+    devs = esi_devices(cfg)
+    if not devs:
+        raise RuntimeError("ESi: no thermostats on this account")
+    want = (cfg.get("device_name") or "").strip().lower()
+    d = next((x for x in devs if want and str(x.get("device_name", "")).lower() == want), devs[0])
+    return {"temperature": _tenths(d.get("inside_temparature")),
+            "target": _tenths(d.get("current_temprature")),
+            "humidity": None, "co2": None,
+            "name": d.get("device_name"), "online": d.get("online"),
+            "source": "esi"}
+
+
 def get_indoor():
     i = CONFIG.get("indoor", {})
     if DEMO:
         return {"temperature": 21.4, "humidity": 48, "source": "demo"}
+    if str(i.get("source", "")).lower() in ("esi", "esi centro", "esicentro"):
+        return esi_indoor(i.get("esi", {}))
     if i.get("source") == "homeassistant":
         e = i.get("entities", {})
         return {"temperature": ha_value(e.get("temperature")),
@@ -712,7 +776,10 @@ class Handler(SimpleHTTPRequestHandler):
                 mttl = max(mttl, 1800)
             return self.send_json(cached("meter", mttl, get_meter))
         if path == "/api/indoor":
-            return self.send_json(cached("indoor", ttl.get("indoor", 30), get_indoor))
+            ittl = ttl.get("indoor", 30)
+            if str(CONFIG.get("indoor", {}).get("source", "")).lower().startswith("esi"):
+                ittl = max(ittl, 120)
+            return self.send_json(cached("indoor", ittl, get_indoor))
         if path == "/api/device":
             return self.send_json(dict(_device_state))
         return super().do_GET()
@@ -736,6 +803,42 @@ def serve(port, bind):
 # --------------------------------------------------------------------------
 # cli
 # --------------------------------------------------------------------------
+
+def cmd_setup_esi():
+    """Ask for the ESi Centro login, test it, list thermostats, save."""
+    import getpass
+    print("ESi thermostat setup - use the same login as the ESi Centro app.")
+    email = input("ESi Centro email: ").strip()
+    password = getpass.getpass("ESi Centro password (hidden): ")
+    CONFIG.setdefault("indoor", {})["esi"] = {"email": email, "password": password}
+    try:
+        devs = esi_devices({"email": email, "password": password})
+    except Exception as e:
+        print("Could not log in:", _redact(str(e)))
+        return 1
+    if not devs:
+        print("Logged in, but no thermostats on this account.")
+        return 1
+    for n, d in enumerate(devs, 1):
+        print(f"  {n}. {d.get('device_name')}: room {_tenths(d.get('inside_temparature'))}°C, "
+              f"set to {_tenths(d.get('current_temprature'))}°C")
+    pick = devs[0]
+    if len(devs) > 1:
+        a = input(f"Which one is the kitchen? [1-{len(devs)}]: ").strip()
+        if a.isdigit() and 1 <= int(a) <= len(devs):
+            pick = devs[int(a) - 1]
+    path = CONFIG_PATH if os.path.exists(CONFIG_PATH) else EXAMPLE_PATH
+    with open(path, encoding="utf-8") as f:
+        cfg = json.load(f)
+    cfg.setdefault("indoor", {}).update(
+        source="esi", esi={"email": email, "password": password,
+                           "device_name": pick.get("device_name")})
+    with open(CONFIG_PATH, "w", encoding="utf-8") as f:
+        json.dump(cfg, f, indent=2)
+    print(f"Saved. The Indoors tile will show '{pick.get('device_name')}'. "
+          "Restart the board: python3 tab_agent.py run")
+    return 0
+
 
 def cmd_check():
     exe = adb_path()
@@ -768,7 +871,7 @@ def main():
     global CONFIG, DEMO
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("command", choices=["check", "run", "serve"], nargs="?",
+    ap.add_argument("command", choices=["check", "run", "serve", "setup-esi"], nargs="?",
                     default="run")
     ap.add_argument("--port", type=int, default=None)
     ap.add_argument("--lan", action="store_true",
@@ -783,6 +886,8 @@ def main():
 
     if a.command == "check":
         sys.exit(cmd_check())
+    if a.command == "setup-esi":
+        sys.exit(cmd_setup_esi())
 
     if a.command == "run":
         if adb_path():
