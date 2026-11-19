@@ -134,7 +134,8 @@ button:active { background: var(--line); transform: scale(.97); }
 #timerList { list-style: none; margin: .7em 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; overflow: auto; }
 #timerList li { display: flex; align-items: center; justify-content: space-between; gap: 8px; background: var(--tile-2); border-radius: 14px; padding: .4em .5em .4em .9em; }
 #timerList li.empty { background: none; color: var(--ink-3); padding: 0; font-size: clamp(13px, 1.2vw, 17px); }
-#timerList .left { font-size: clamp(28px, 3.2vw, 50px); font-weight: 300; }
+#timerList .left { font-size: clamp(24px, 2.8vw, 50px); font-weight: 300; white-space: nowrap; }
+#timerList .ctl button { padding: .45em .6em; }
 #timerList li.done .left { color: var(--hot); }
 #timerList .ctl { display: flex; gap: 6px; }
 
@@ -150,10 +151,30 @@ footer {
   font-size: 12px; color: var(--ink-3);
 }
 
-#alarm { position: fixed; inset: 0; background: rgba(240,122,90,.92); display: grid; place-items: center; z-index: 10; animation: pulse 1s infinite alternate; }
+#alarm { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(240,122,90,.92); display: grid; place-items: center; z-index: 10; animation: pulse 1s infinite alternate; }
 #alarm[hidden], [hidden] { display: none !important; }
 #alarm > div { display: flex; flex-direction: column; align-items: center; gap: 24px; }
 #alarm strong { font-size: clamp(40px, 7vw, 110px); color: #fff; font-weight: 600; }
 #alarm button { font-size: 32px; padding: .5em 2em; background: #fff; color: #222; border: 0; }
 @keyframes pulse { to { background: rgba(200,80,50,.95); } }
 @media (prefers-reduced-motion: reduce) { #alarm { animation: none; } }
+
+/* Older Chrome (e.g. Android 5 tablets) has no clamp(): use vw sizes */
+@supports not (width: clamp(1px, 1vw, 2px)) {
+  #hm { font-size: 13.5vw; } .sec { font-size: 3vw; } .ampm { font-size: 2.4vw; }
+  .date { font-size: 2.9vw; } .sun { font-size: 1.6vw; }
+  .w-icon { font-size: 6vw; } .w-temp { font-size: 8vw; } .w-desc { font-size: 2vw; }
+  .w-meta, .hours div, #days li { font-size: 1.5vw; }
+  .big span { font-size: 5.6vw; } .big small, .stats dd, .indoor .row { font-size: 1.9vw; }
+  .label, .stats dt, .note, button, #timerList li.empty { font-size: 1.3vw; }
+  #timerList .left { font-size: 2.8vw; }
+  .tile { padding: 1.6vw; }
+}
+@media (max-aspect-ratio: 1/1) {
+  @supports not (width: clamp(1px, 1vw, 2px)) {
+    #hm { font-size: 22vw; } .date { font-size: 5vw; } .w-temp { font-size: 13vw; } .w-icon { font-size: 10vw; }
+    .big span { font-size: 9vw; } .stats dd, .w-desc { font-size: 3.4vw; }
+    .label, .stats dt, .note, button, .w-meta, .hours div, #days li, .sun { font-size: 2.6vw; }
+    #timerList .left { font-size: 5.5vw; }
+  }
+}
