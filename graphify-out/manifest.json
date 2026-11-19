@@ -388,5 +388,47 @@
     "seen": 1795055643.6904366,
     "ast_hash": "e7dd934116a036acb56a73d0c596e5ca",
     "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/claude-skill-setup_source/Reel.tsx": {
+    "mtime": 1795056097.8824563,
+    "seen": 1795056099.0545561,
+    "ast_hash": "c6b6f2da72de862d9e0173083afa3664",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/claude-skill-setup_source/Root.tsx": {
+    "mtime": 1795056097.8825068,
+    "seen": 1795056099.0545602,
+    "ast_hash": "658a683c60637ae50af3bd51b601bd72",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/claude-skill-setup_source/index.ts": {
+    "mtime": 1795056097.8825426,
+    "seen": 1795056099.054562,
+    "ast_hash": "9ee40eb67e6f76be1d6ef928fe4b694f",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/claude-skill-setup_source/remotion.config.ts": {
+    "mtime": 1795056097.8826115,
+    "seen": 1795056099.0545635,
+    "ast_hash": "4252634be9f09ba5bc3ebb260d80b529",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/claude-skill-setup_source/sfx.py": {
+    "mtime": 1795056097.8825808,
+    "seen": 1795056099.0545652,
+    "ast_hash": "5b89770d5a70717debdebf5886ecd75e",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/claude-skill-setup_notes.md": {
+    "mtime": 1795056097.8840497,
+    "seen": 1795056099.0546107,
+    "ast_hash": "e98f216a56061924d15f32a74161533f",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/Exports/claude-skill-setup_v1_9x16.mp4": {
+    "mtime": 1795056097.879477,
+    "seen": 1795056099.054662,
+    "ast_hash": "20ec699681e44baf35840870aa497116",
+    "semantic_hash": ""
   }
 }

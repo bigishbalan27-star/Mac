@@ -1,17 +1,17 @@
 # Graph Report - mac  (2026-11-19)
 
 ## Corpus Check
-- 55 files · ~45,808 words
+- 61 files · ~48,937 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 14 file(s) not represented in the graph (top: (none) 11, .woff2 2, .css 1)
 
 ## Summary
-- 463 nodes · 712 edges · 33 communities (27 shown, 6 thin omitted)
-- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 63 edges (avg confidence: 0.87)
+- 516 nodes · 837 edges · 34 communities (27 shown, 7 thin omitted)
+- Extraction: 92% EXTRACTED · 8% INFERRED · 0% AMBIGUOUS · INFERRED: 64 edges (avg confidence: 0.87)
 - Token cost: 276,026 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `12ca10b1`
+- Built from commit: `9ecec56d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -24,7 +24,7 @@
 - ACT 2 — REVIEW (Claude ↔ Codex)
 - validate.yml
 - ML Python Dependencies
-- test_runner.py
+- claude-skill-setup_source/Reel.tsx
 - Board Animation Script
 - Graphify Usage Rules
 - numpy
@@ -48,18 +48,19 @@
 - Viral swipe file: UK Malayali family creators
 - Editing Style
 - Mykonos Cost Breakdown Caption
+- claude-skill-setup_v1_9x16
 
 ## God Nodes (most connected - your core abstractions)
 1. `RunnerTests` - 41 edges
 2. `sp()` - 19 edges
 3. `run()` - 19 edges
-4. `Reel Edit Plans (Mykonos & Bonfire)` - 17 edges
+4. `Reel Edit Plans (Mykonos & Bonfire)` - 18 edges
 5. `lin()` - 15 edges
-6. `RunError` - 14 edges
-7. `Social Media Playbook` - 13 edges
-8. `AI Video Studio Landing Page (docs/index.html)` - 10 edges
-9. `Asterisk()` - 9 edges
-10. `snapshot()` - 9 edges
+6. `Reel()` - 14 edges
+7. `RunError` - 14 edges
+8. `Social Media Playbook` - 13 edges
+9. `sp()` - 11 edges
+10. `lin()` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Surface Brief: Landing Page` --semantically_similar_to--> `No Fabricated Evidence Constraint`  [INFERRED] [semantically similar]
@@ -76,7 +77,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (33 total, 6 thin omitted)
+## Communities (34 total, 7 thin omitted)
 
 ### Community 0 - "Social Media Playbook"
 Cohesion: 0.15
@@ -87,12 +88,12 @@ Cohesion: 0.06
 Nodes (35): Visitor Mode: Persuade (open the repository), Surface Brief: Landing Page, Action Button Component, Design System: AI Video Studio, Full-Bleed Three-Column Board Grid, Break Strip Component, Closing Panel, Color Tokens (board, card, folder colours, red) (+27 more)
 
 ### Community 3 - "Reel.tsx"
-Cohesion: 0.08
-Nodes (55): Asterisk(), Captions(), Card(), CHAPTERS, Check(), CHIPS, clamp, CODE (+47 more)
+Cohesion: 0.09
+Nodes (53): Asterisk(), Captions(), Card(), CHAPTERS, Check(), CHIPS, clamp, CODE (+45 more)
 
 ### Community 4 - "runner.py"
-Cohesion: 0.16
-Nodes (17): check_approval(), cli_prefix(), codex_effective_settings(), codex_mcp_servers(), command(), digest(), execute(), git() (+9 more)
+Cohesion: 0.07
+Nodes (23): finder(), f(), load_words(), main(), validate(), check_approval(), cli_prefix(), codex_effective_settings() (+15 more)
 
 ### Community 5 - "ACT 2 — REVIEW (Claude ↔ Codex)"
 Cohesion: 0.06
@@ -106,17 +107,17 @@ Nodes (18): jobs, validate, os, name, on, pull_request, push, permissions (+10 m
 Cohesion: 0.29
 Nodes (8): accelerate 1.15.0, auto-round 0.16.1, NVIDIA CUDA 13 Runtime Packages, datasets 5.2.0, huggingface_hub 2.4.0, Python Dependencies (requirements.txt), torch 2.15.0, transformers 5.23.0
 
-### Community 8 - "test_runner.py"
-Cohesion: 0.08
-Nodes (6): finder(), f(), load_words(), main(), validate(), main()
+### Community 8 - "claude-skill-setup_source/Reel.tsx"
+Cohesion: 0.10
+Nodes (42): Arrow(), Asterisk(), Cap, Captions(), Card(), CardHead(), chapterOf(), CHAPTERS (+34 more)
 
 ### Community 9 - "Board Animation Script"
 Cohesion: 0.70
 Nodes (4): advance(), render(), stopPlaying(), tick()
 
 ### Community 11 - "numpy"
-Cohesion: 0.21
-Nodes (12): add(), chime(), click(), inv(), pop(), thump(), whoosh(), chime() (+4 more)
+Cohesion: 0.15
+Nodes (16): chime(), click(), pop(), whoosh(), add(), chime(), click(), inv() (+8 more)
 
 ### Community 12 - "ACT 2 — REVIEW (Claude ↔ Codex)"
 Cohesion: 0.14
@@ -188,23 +189,23 @@ Nodes (5): Caption Drafts, Mykonos Cost Breakdown Caption, Guide-Style Captions,
 
 ## Knowledge Gaps
 - **24 isolated node(s):** `Driven by passion Car Reel`, `Weekly Routine`, `graphify-out Knowledge Graph`, `Graphify Usage Rules (CLAUDE.md)`, `Break Strip Component` (+19 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 189 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 204 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `RunnerTests` connect `RunnerTests` to `test_runner.py`?**
-  _High betweenness centrality (0.038) - this node is a cross-community bridge._
+- **Why does `RunnerTests` connect `RunnerTests` to `runner.py`?**
+  _High betweenness centrality (0.033) - this node is a cross-community bridge._
 - **What connects `Driven by passion Car Reel`, `Weekly Routine`, `graphify-out Knowledge Graph` to the rest of the system?**
   _24 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `RunnerTests` be split into smaller, more focused modules?**
   _Cohesion score 0.08362369337979095 - nodes in this community are weakly interconnected._
-- **Why does `Reel Edit Plans (Mykonos & Bonfire)` connect `Reel Edit Plans (Mykonos & Bonfire)` to `Social Media Playbook`, `Mykonos Cost Breakdown Caption`, `AI Video Studio`, `Editing Style`?**
-  _High betweenness centrality (0.010) - this node is a cross-community bridge._
+- **Why does `Reel Edit Plans (Mykonos & Bonfire)` connect `Reel Edit Plans (Mykonos & Bonfire)` to `Social Media Playbook`, `Mykonos Cost Breakdown Caption`, `AI Video Studio`, `Viral swipe file: UK Malayali family creators`, `Editing Style`?**
+  _High betweenness centrality (0.008) - this node is a cross-community bridge._
 - **Should `AI Video Studio Landing Page (docs/index.html)` be split into smaller, more focused modules?**
   _Cohesion score 0.05568627450980392 - nodes in this community are weakly interconnected._
 - **Why does `Social Media Playbook` connect `Social Media Playbook` to `Mykonos Cost Breakdown Caption`, `Reel Edit Plans (Mykonos & Bonfire)`, `Viral swipe file: UK Malayali family creators`?**
-  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Should `Reel.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.07615018508725542 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08571428571428572 - nodes in this community are weakly interconnected._
