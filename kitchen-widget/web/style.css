@@ -280,3 +280,9 @@ body.night #frame .ph.on { opacity: .75; }
   #ticker { display: block; white-space: normal; font-size: 4vw; margin-bottom: 6px; }
   #meta { margin-left: 0; }
 }
+
+/* drawn weather icons */
+svg.wx { display: inline-block; vertical-align: middle; overflow: visible; }
+.w-icon svg.wx { width: 1em; height: 1em; }
+.hours .i svg.wx { width: 1.6em; height: 1.6em; }
+#days li svg.wx { width: 1.5em; height: 1.5em; }

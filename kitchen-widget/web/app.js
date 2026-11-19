@@ -7,23 +7,54 @@
   function $(id) { return document.getElementById(id); }
   var cfg = { clock_24h: true, night_mode: {}, units: {} };
 
+  /* Weather icons are drawn as small inline SVG pictures: the 2014 emoji font on
+     Android 5 tablets has no rain / snow / fog / thunder symbols (they show as boxes). */
   var WMO = {
-    0: ["Clear", "☀️", "🌙"], 1: ["Mostly clear", "🌤️", "🌙"],
-    2: ["Partly cloudy", "⛅", "☁️"], 3: ["Overcast", "☁️", "☁️"],
-    45: ["Fog", "🌫️"], 48: ["Freezing fog", "🌫️"],
-    51: ["Light drizzle", "🌦️"], 53: ["Drizzle", "🌦️"], 55: ["Heavy drizzle", "🌧️"],
-    56: ["Freezing drizzle", "🌧️"], 57: ["Freezing drizzle", "🌧️"],
-    61: ["Light rain", "🌦️"], 63: ["Rain", "🌧️"], 65: ["Heavy rain", "🌧️"],
-    66: ["Freezing rain", "🌧️"], 67: ["Freezing rain", "🌧️"],
-    71: ["Light snow", "🌨️"], 73: ["Snow", "🌨️"], 75: ["Heavy snow", "❄️"], 77: ["Snow grains", "🌨️"],
-    80: ["Showers", "🌦️"], 81: ["Showers", "🌧️"], 82: ["Violent showers", "⛈️"],
-    85: ["Snow showers", "🌨️"], 86: ["Snow showers", "❄️"],
-    95: ["Thunderstorm", "⛈️"], 96: ["Thunder & hail", "⛈️"], 99: ["Thunder & hail", "⛈️"]
+    0: ["Clear", "clear"], 1: ["Mostly clear", "fair"], 2: ["Partly cloudy", "partly"], 3: ["Overcast", "cloud"],
+    45: ["Fog", "fog"], 48: ["Freezing fog", "fog"],
+    51: ["Light drizzle", "drizzle"], 53: ["Drizzle", "drizzle"], 55: ["Heavy drizzle", "rain"],
+    56: ["Freezing drizzle", "sleet"], 57: ["Freezing drizzle", "sleet"],
+    61: ["Light rain", "drizzle"], 63: ["Rain", "rain"], 65: ["Heavy rain", "rain"],
+    66: ["Freezing rain", "sleet"], 67: ["Freezing rain", "sleet"],
+    71: ["Light snow", "snow"], 73: ["Snow", "snow"], 75: ["Heavy snow", "snow"], 77: ["Snow grains", "snow"],
+    80: ["Showers", "showers"], 81: ["Showers", "showers"], 82: ["Violent showers", "rain"],
+    85: ["Snow showers", "snow"], 86: ["Snow showers", "snow"],
+    95: ["Thunderstorm", "thunder"], 96: ["Thunder & hail", "thunder"], 99: ["Thunder & hail", "thunder"]
   };
+  var SUN = '<circle cx="24" cy="24" r="9" fill="#f5c542"/><g stroke="#f5c542" stroke-width="3" stroke-linecap="round">' +
+    '<path d="M24 6v5M24 37v5M6 24h5M37 24h5M11.3 11.3l3.5 3.5M33.2 33.2l3.5 3.5M11.3 36.7l3.5-3.5M33.2 14.8l3.5-3.5"/></g>';
+  var MOON = '<path d="M30 8a17 17 0 1 0 12 26A14 14 0 0 1 30 8z" fill="#e9e2c3"/>';
+  var CLOUD = function (y, col) {
+    return '<path transform="translate(0 ' + y + ')" d="M18 52h28a11 11 0 0 0 0-22 15 15 0 0 0-28.5-3.5A12.5 12.5 0 0 0 18 52z" fill="' + col + '"/>';
+  };
+  var DROPS = function (n, col) {
+    var out = '<g stroke="' + col + '" stroke-width="3.2" stroke-linecap="round">', xs = n === 2 ? [26, 40] : [20, 32, 44];
+    for (var i = 0; i < xs.length; i++) out += '<path d="M' + xs[i] + ' 48l-3 8"/>';
+    return out + '</g>';
+  };
+  var FLAKES = '<g fill="#ffffff"><circle cx="20" cy="52" r="2.8"/><circle cx="32" cy="57" r="2.8"/><circle cx="44" cy="52" r="2.8"/></g>';
+  function svgIcon(kind, day) {
+    var b = "";
+    switch (kind) {
+      case "clear": b = day ? SUN : MOON; break;
+      case "fair": b = (day ? SUN : MOON) + '<g transform="translate(14 14) scale(.75)">' + CLOUD(0, "#dfe3ea") + '</g>'; break;
+      case "partly": b = '<g transform="translate(-4 -6) scale(.9)">' + (day ? SUN : MOON) + '</g>' + CLOUD(4, "#dfe3ea"); break;
+      case "cloud": b = CLOUD(4, "#cfd5de"); break;
+      case "fog": b = CLOUD(-4, "#b9c0ca") + '<g stroke="#b9c0ca" stroke-width="3.5" stroke-linecap="round"><path d="M12 54h40M18 61h30"/></g>'; break;
+      case "drizzle": b = CLOUD(-6, "#cfd5de") + DROPS(2, "#7cc4e8"); break;
+      case "rain": b = CLOUD(-6, "#a9b3bf") + DROPS(3, "#5fb3e6"); break;
+      case "showers": b = '<g transform="translate(-4 -8) scale(.8)">' + (day ? SUN : MOON) + '</g>' + CLOUD(-6, "#cfd5de") + DROPS(2, "#7cc4e8"); break;
+      case "sleet": b = CLOUD(-6, "#a9b3bf") + DROPS(2, "#7cc4e8") + '<circle cx="32" cy="57" r="2.8" fill="#fff"/>'; break;
+      case "snow": b = CLOUD(-6, "#cfd5de") + FLAKES; break;
+      case "thunder": b = CLOUD(-6, "#8f99a6") + '<path d="M34 40l-8 12h6l-4 11 11-15h-6l4-8z" fill="#f2c14e"/>'; break;
+      default: b = CLOUD(4, "#cfd5de");
+    }
+    return '<svg class="wx" viewBox="0 0 64 64" width="1em" height="1em" aria-hidden="true">' + b + '</svg>';
+  }
   function wmo(c, day) {
     if (day === undefined) day = 1;
-    var w = WMO[c] || ["—", "·"];
-    return { text: w[0], icon: (!day && w[2]) || w[1] };
+    var w = WMO[c] || ["\u2014", "cloud"];
+    return { text: w[0], icon: svgIcon(w[1], day) };
   }
   var DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   var MONTHS = ["January", "February", "March", "April", "May", "June", "July",
@@ -85,11 +116,11 @@
   /* ---------------- weather ---------------- */
   function loadWeather() {
     api("/api/weather", function (w) {
-      if (w.error) { $("wDesc").textContent = "Weather unavailable"; return; }
+      if (w.error) { if (!$("hours").innerHTML) $("wDesc").textContent = "Weather unavailable"; return; }
       var c = w.current, u = w.current_units || {};
       var now = wmo(c.weather_code, c.is_day);
       $("place").textContent = w.place || "Outside";
-      $("wIcon").textContent = now.icon;
+      $("wIcon").innerHTML = now.icon;
       $("wTemp").textContent = Math.round(c.temperature_2m) + "°";
       $("wDesc").textContent = now.text + (w.stale ? " (offline)" : "");
       var meta = ["Feels " + Math.round(c.apparent_temperature) + "°",
@@ -132,7 +163,11 @@
         $("days").innerHTML = rows;
       }
       stamp();
-    }, function () { $("wDesc").textContent = "Weather unavailable"; });
+    }, function () {
+      // keep the last forecast on screen; just mark it
+      if ($("hours").innerHTML) { if ($("wDesc").textContent.indexOf("(offline)") < 0) $("wDesc").textContent += " (offline)"; }
+      else $("wDesc").textContent = "Weather unavailable";
+    });
   }
 
   /* ---------------- energy ---------------- */

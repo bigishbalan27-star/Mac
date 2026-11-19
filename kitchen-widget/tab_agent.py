@@ -347,7 +347,7 @@ def get_weather():
     loc = CONFIG.get("location", {})
     if DEMO:
         w = demo_weather()
-        w["alerts"] = [{"level": "warn", "text": "\U0001F327 Rain likely in about 30 min"},
+        w["alerts"] = [{"level": "warn", "text": "\u2614 Rain likely in about 30 min"},
                        {"level": "warn", "text": "\u2744\ufe0f Frost likely - down to -1\u00b0 overnight"}]
         return w
     q = urllib.parse.urlencode({
@@ -397,10 +397,10 @@ def weather_alerts(w):
     for n, (t, r) in enumerate(upcoming):
         mins = (n + 1) * 15
         if not wet_now and r >= 0.2:
-            out.append({"level": "warn", "text": f"\U0001F327 Rain likely in about {mins} min"})
+            out.append({"level": "warn", "text": f"\u2614 Rain likely in about {mins} min"})
             break
         if wet_now and r < 0.05 and all((x or 0) < 0.05 for _, x in upcoming[n:n + 2]):
-            out.append({"level": "info", "text": f"\U0001F324 Rain should stop in about {mins} min"})
+            out.append({"level": "info", "text": f"\U0001F302 Rain should stop in about {mins} min"})
             break
     h = w.get("hourly") or {}
     ht = h.get("time") or []
@@ -417,7 +417,7 @@ def weather_alerts(w):
         if uv >= 6:
             out.append({"level": "warn", "text": f"\u2600\ufe0f High UV today ({round(uv)}) - sun cream"})
         if d["temperature_2m_max"][0] >= 28:
-            out.append({"level": "warn", "text": f"\U0001F975 Hot today - up to {round(d['temperature_2m_max'][0])}\u00b0"})
+            out.append({"level": "warn", "text": f"\U0001F525 Hot today - up to {round(d['temperature_2m_max'][0])}\u00b0"})
         if not any("Rain" in a["text"] for a in out) and d["precipitation_probability_max"][0] >= 80:
             out.append({"level": "info", "text": "\u2614 Rain very likely today - take a coat"})
     except (KeyError, IndexError, TypeError):
