@@ -265,6 +265,7 @@ https://gcdn.picsart.com/media-engine/c24b40ae-a458-49b6-a948-ec9c3cbdd2df.jpg (
 | 28–30 s | You closing the laptop | Next trip? Spreadsheet's ready. Twelve stops. | |
 
 Edit tips: hook card on screen from frame 1, text in the middle third, burn in captions (most watch muted). The last line ends on "Twelve stops" so the replay loops straight into the hook.
+
 **Caption** (linter READY, human score 87 PASS)
 
 > Parents, are you a planner or do you just go? Comment PLAN or GO 👇
