@@ -98,6 +98,17 @@ Run it again to add more calendars, such as a partner's or a family calendar. Ke
 
 **Ticker:** the bottom line rotates through weather alerts and BBC News headlines. The alerts are worked out from the forecast: rain starting or stopping soon, frost overnight, strong gusts, high UV, heat, rain very likely, and high pollen. They are **not** official Met Office warnings. To switch headlines off, set `"news": {"enabled": false}` in `config.json`.
 
+## 6. Night photo frame
+
+Put photos in **`~/Pictures/Kitchen Board`** on the Mac. The agent creates the folder the first time it runs, and subfolders work too. The board fades to a slideshow:
+
+- from **21:00 to 07:00**, dimmed a little, and
+- during the day after **10 minutes** without anyone touching the tablet.
+
+The clock, date and outside temperature stay in the corner. Tap anywhere to get back to the board. The slideshow never starts while a kitchen timer is running, and it gets out of the way when a timer rings.
+
+The Mac's built-in `sips` tool shrinks photos to 1280 px and converts iPhone HEIC photos to JPEG, so the old tablet stays quick. Change the times, idle minutes, seconds per photo or folder under `photos` in `config.json`. Set `"enabled": false` to switch it off.
+
 ## Files
 
 - `tab_agent.py`: USB agent, web server and data proxy (Python 3.8+, standard library only)

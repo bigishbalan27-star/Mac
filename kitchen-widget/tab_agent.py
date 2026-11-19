@@ -615,6 +615,87 @@ def get_calendar():
     return {"events": calendar_events(texts, int(c.get("days", 2)))}
 
 
+# --- night / idle photo frame ------------------------------------------------
+PHOTO_EXT = (".jpg", ".jpeg", ".png", ".gif", ".webp", ".heic", ".heif")
+PHOTO_CACHE = os.path.join(HERE, ".photo-cache")
+_photo_index = {"names": {}, "at": 0}
+
+
+def photo_cfg():
+    p = CONFIG.get("photos", {})
+    return {
+        "enabled": p.get("enabled", True),
+        "folder": os.path.expanduser(p.get("folder") or "~/Pictures/Kitchen Board"),
+        "night_start": p.get("night_start", 21), "night_end": p.get("night_end", 7),
+        "idle_minutes": p.get("idle_minutes", 10),
+        "seconds_per_photo": p.get("seconds_per_photo", 20),
+        "max_size": int(p.get("max_size", 1280)),
+    }
+
+
+def list_photos():
+    """Map public id -> source path for photos in the folder (refreshed each minute)."""
+    import hashlib
+    c = photo_cfg()
+    if time.time() - _photo_index["at"] < 60 and _photo_index["names"]:
+        return _photo_index["names"]
+    names = {}
+    folder = c["folder"]
+    if c["enabled"] and os.path.isdir(folder):
+        for root, _dirs, files in os.walk(folder):
+            for fn in files:
+                if fn.startswith(".") or not fn.lower().endswith(PHOTO_EXT):
+                    continue
+                full = os.path.join(root, fn)
+                try:
+                    st = os.stat(full)
+                except OSError:
+                    continue
+                pid = hashlib.sha1(f"{full}|{st.st_mtime}|{st.st_size}".encode()).hexdigest()[:16]
+                names[pid] = full
+    _photo_index.update(names=names, at=time.time())
+    return names
+
+
+def photo_file(pid):
+    """Return (path, content_type) for a photo, shrunk/converted to JPEG on macOS."""
+    src = list_photos().get(pid)
+    if not src:
+        return None, None
+    sips = shutil.which("sips")  # built into macOS
+    ext = os.path.splitext(src)[1].lower()
+    if sips:
+        os.makedirs(PHOTO_CACHE, exist_ok=True)
+        out = os.path.join(PHOTO_CACHE, pid + ".jpg")
+        if not os.path.exists(out):
+            r = subprocess.run([sips, "-s", "format", "jpeg", "-s", "formatOptions", "80",
+                                "-Z", str(photo_cfg()["max_size"]), src, "--out", out],
+                               capture_output=True, timeout=60)
+            if r.returncode != 0 or not os.path.exists(out):
+                out = None
+        if out:
+            return out, "image/jpeg"
+    if ext in (".heic", ".heif"):
+        return None, None  # browsers can't show HEIC without conversion
+    ctype = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png",
+             ".gif": "image/gif", ".webp": "image/webp"}[ext]
+    return src, ctype
+
+
+def get_photos():
+    c = photo_cfg()
+    if c["enabled"] and not os.path.isdir(c["folder"]):
+        try:
+            os.makedirs(c["folder"], exist_ok=True)
+            log(f"Created photo folder {c['folder']} - put photos there for the night frame")
+        except OSError:
+            pass
+    ids = list(list_photos().keys())
+    return {"enabled": c["enabled"] and bool(ids), "photos": ids, "count": len(ids),
+            "night_start": c["night_start"], "night_end": c["night_end"],
+            "idle_minutes": c["idle_minutes"], "seconds_per_photo": c["seconds_per_photo"]}
+
+
 def get_news():
     n = CONFIG.get("news", {})
     if n.get("enabled", True) is False:
@@ -1023,6 +1104,9 @@ class Handler(SimpleHTTPRequestHandler):
             self.send_header("Cache-Control", "no-store, max-age=0")
         super().end_headers()
 
+    def end_headers_raw(self):
+        super().end_headers()
+
     def do_POST(self):
         if self.path.split("?")[0] == "/api/log":
             n = min(int(self.headers.get("Content-Length") or 0), 2000)
@@ -1079,6 +1163,23 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_json(cached("calendar", ttl.get("calendar", 600), get_calendar))
         if path == "/api/news":
             return self.send_json(cached("news", ttl.get("news", 900), get_news))
+        if path == "/api/photos":
+            return self.send_json(get_photos())
+        if path.startswith("/photo/"):
+            pid = path[len("/photo/"):]
+            fpath, ctype = photo_file(pid) if re.fullmatch(r"[0-9a-f]{16}", pid) else (None, None)
+            if not fpath:
+                self.send_error(404)
+                return
+            with open(fpath, "rb") as f:
+                body = f.read()
+            self.send_response(200)
+            self.send_header("Content-Type", ctype)
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "max-age=86400")
+            self.end_headers_raw()
+            self.wfile.write(body)
+            return
         return super().do_GET()
 
 

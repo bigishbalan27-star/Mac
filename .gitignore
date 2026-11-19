@@ -32,3 +32,4 @@ graphify-out/.graphify_chunk_*.json
 # Kitchen board private config (tokens)
 kitchen-widget/config.json
 __pycache__/
+kitchen-widget/.photo-cache/

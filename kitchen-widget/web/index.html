@@ -18,7 +18,7 @@
   send("LOADED " + navigator.userAgent + " " + screen.width + "x" + screen.height + " css " + window.innerWidth + "x" + window.innerHeight);
 })();
 </script>
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 <main id="board">
@@ -83,7 +83,11 @@
 </main>
 
 <footer id="status"><span id="ticker"></span><span id="meta"><span id="dev"></span> <span id="upd"></span></span></footer>
+<div id="frame" hidden>
+  <div class="ph" id="ph0"></div><div class="ph" id="ph1"></div>
+  <div class="fr-info"><span id="frTime">--:--</span><span id="frSub"></span></div>
+</div>
 <div id="alarm" hidden><div><strong id="alarmText">Time's up</strong><button id="alarmStop">Stop</button></div></div>
-<script src="app.js?v=4"></script>
+<script src="app.js?v=5"></script>
 </body>
 </html>

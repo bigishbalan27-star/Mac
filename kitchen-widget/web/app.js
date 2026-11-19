@@ -303,6 +303,7 @@
   function ring(t) {
     $("alarmText").textContent = mmss(t.total) + " timer done";
     $("alarm").hidden = false;
+    if (pf.showing) hideFrame();
     clearInterval(beepTimer);
     beep(); beepTimer = setInterval(beep, 1500);
     if (navigator.vibrate) navigator.vibrate([400, 200, 400]);
@@ -335,6 +336,91 @@
     if (n.getHours() === 3 && n.getMinutes() === 0 && n.getSeconds() < 2) location.reload();
   }, 1000);
 
+  /* ---------------- night / idle photo frame ---------------- */
+  var pf = { cfg: null, list: [], order: [], pos: 0, showing: false, layer: 0, timer: null, lastTouch: Date.now(), dismissedAt: 0 };
+  function loadPhotos() {
+    api("/api/photos", function (p) {
+      pf.cfg = p;
+      if (p.photos.join(",") !== pf.list.join(",")) {
+        pf.list = p.photos; pf.order = shuffle(p.photos.slice()); pf.pos = 0;
+      }
+      if (!p.enabled && pf.showing) hideFrame();
+    });
+  }
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
+  function isNightHour(h, c) {
+    var s0 = c.night_start, e0 = c.night_end;
+    if (s0 === null || s0 === undefined || s0 === e0) return false;
+    return s0 > e0 ? (h >= s0 || h < e0) : (h >= s0 && h < e0);
+  }
+  function timerRunning() {
+    var now = Date.now();
+    for (var i = 0; i < timers.length; i++) if (timers[i].end > now) return true;
+    return false;
+  }
+  function wantFrame() {
+    var c = pf.cfg;
+    if (!c || !c.enabled || !pf.list.length || timerRunning() || !$("alarm").hidden) return false;
+    var idleMs = (c.idle_minutes || 0) * 60000, now = Date.now();
+    var idle = idleMs > 0 && now - pf.lastTouch >= idleMs;
+    // after a tap, stay on the board for at least 2 minutes (or the idle time)
+    var grace = Math.max(120000, idleMs);
+    var night = isNightHour(new Date().getHours(), c) && now - pf.dismissedAt >= grace && now - pf.lastTouch >= 120000;
+    return idle || night;
+  }
+  function showNext() {
+    if (!pf.order.length) return;
+    if (pf.pos >= pf.order.length) { pf.order = shuffle(pf.list.slice()); pf.pos = 0; }
+    var id = pf.order[pf.pos++], img = new Image();
+    img.onload = function () {
+      var next = 1 - pf.layer, el = $("ph" + next);
+      el.style.backgroundImage = "url(/photo/" + id + ")";
+      el.className = "ph on";
+      $("ph" + pf.layer).className = "ph";
+      pf.layer = next;
+    };
+    img.onerror = function () { setTimeout(showNext, 1000); };
+    img.src = "/photo/" + id;
+  }
+  function showFrame() {
+    pf.showing = true;
+    $("frame").hidden = false;
+    frameInfo();
+    showNext();
+    clearInterval(pf.timer);
+    pf.timer = setInterval(showNext, Math.max(5, (pf.cfg && pf.cfg.seconds_per_photo) || 20) * 1000);
+  }
+  function hideFrame() {
+    pf.showing = false;
+    clearInterval(pf.timer);
+    $("frame").hidden = true;
+    $("ph0").className = "ph"; $("ph1").className = "ph";
+  }
+  function frameInfo() {
+    if (!pf.showing) return;
+    var d = new Date();
+    $("frTime").textContent = fmtTime(d);
+    var t = $("wTemp").textContent;
+    $("frSub").textContent = DAYS[d.getDay()].slice(0, 3) + " " + d.getDate() + " " + MONTHS[d.getMonth()].slice(0, 3) + (t && t !== "--\u00B0" ? "  \u00B7  " + t : "");
+  }
+  function frameTick() {
+    var want = wantFrame();
+    if (want && !pf.showing) showFrame();
+    else if (!want && pf.showing && (timerRunning() || !$("alarm").hidden)) hideFrame();
+    frameInfo();
+  }
+  function touched() { pf.lastTouch = Date.now(); }
+  document.addEventListener("touchstart", touched, true);
+  document.addEventListener("mousedown", touched, true);
+  $("frame").addEventListener("click", function (e) {
+    e.stopPropagation();
+    pf.lastTouch = Date.now(); pf.dismissedAt = Date.now();
+    hideFrame();
+  });
+
   /* ---------------- start ---------------- */
   function start() {
     document.title = (cfg.title || "Kitchen") + " Board";
@@ -348,6 +434,8 @@
     loadCalendar(); setInterval(loadCalendar, 5 * 60 * 1000);
     loadNews(); setInterval(loadNews, 15 * 60 * 1000);
     setTimeout(nextTicker, 1500); setInterval(nextTicker, 9000);
+    loadPhotos(); setInterval(loadPhotos, 5 * 60 * 1000);
+    setInterval(frameTick, 5000);
   }
   api("/api/config", function (c) {
     for (var k in c) if (c.hasOwnProperty(k)) cfg[k] = c[k];
