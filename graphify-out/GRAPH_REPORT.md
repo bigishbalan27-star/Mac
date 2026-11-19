@@ -1,17 +1,17 @@
 # Graph Report - mac  (2026-11-19)
 
 ## Corpus Check
-- 78 files · ~57,957 words
+- 82 files · ~59,293 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 19 file(s) not represented in the graph (top: (none) 11, .woff2 7, .css 1)
 
 ## Summary
-- 618 nodes · 1060 edges · 37 communities (30 shown, 7 thin omitted)
+- 633 nodes · 1096 edges · 37 communities (31 shown, 6 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 67 edges (avg confidence: 0.86)
 - Token cost: 276,026 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `43c72282`
+- Built from commit: `08f1d13d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,18 +20,18 @@
 - RunnerTests
 - AI Video Studio Landing Page (docs/index.html)
 - Reel.tsx
-- Typography: Sofia Sans Extra Condensed + Sofia Sans
-- Viral swipe file: UK Malayali family creators
+- runner.py
+- ACT 2 — REVIEW (Claude ↔ Codex)
 - validate.yml
 - ML Python Dependencies
-- voice_clone_regen.py
+- claude-skill-setup_source/Reel.tsx
 - Board Animation Script
 - Graphify Usage Rules
 - numpy
-- Root.tsx
+- ACT 2 — REVIEW (Claude ↔ Codex)
 - README.md
 - made-by-claude_v1_9x16
-- package.json
+- remotion.config.ts
 - Community contributions and PR reconciliation
 - claudex-loop/SKILL.md
 - Claudex Loop
@@ -41,15 +41,15 @@
 - CLI runtime
 - Validation — bidirectional loop
 - Install
-- Reel5.tsx
+- Build and final inspection
 - Third-Party Notices
 - Third-Party Notices
 - AI Video Studio
 - Reel Edit Plans (Mykonos & Bonfire)
 - Viral swipe file: UK Malayali family creators
 - Editing Style
-- compilerOptions
-- compilerOptions
+- Mykonos Cost Breakdown Caption
+- claude-skill-setup_v1_9x16
 - Animated reels: Reel 5 and Reel 6
 - stills.mjs
 - Comment Replies Log
@@ -59,12 +59,12 @@
 2. `sp()` - 19 edges
 3. `run()` - 19 edges
 4. `Reel Edit Plans (Mykonos & Bonfire)` - 19 edges
-5. `Reel6Scenes()` - 15 edges
-6. `lin()` - 15 edges
-7. `Reel()` - 14 edges
+5. `Reel()` - 15 edges
+6. `Reel6Scenes()` - 15 edges
+7. `lin()` - 15 edges
 8. `RunError` - 14 edges
-9. `remotion` - 13 edges
-10. `Reel5Scenes()` - 13 edges
+9. `Reel5Scenes()` - 13 edges
+10. `Social Media Playbook` - 13 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Surface Brief: Landing Page` --semantically_similar_to--> `No Fabricated Evidence Constraint`  [INFERRED] [semantically similar]
@@ -81,7 +81,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (37 total, 7 thin omitted)
+## Communities (37 total, 6 thin omitted)
 
 ### Community 0 - "Social Media Playbook"
 Cohesion: 0.16
@@ -95,11 +95,11 @@ Nodes (35): Visitor Mode: Persuade (open the repository), Surface Brief: Landing
 Cohesion: 0.08
 Nodes (55): Asterisk(), Captions(), Card(), CHAPTERS, Check(), CHIPS, clamp, CODE (+47 more)
 
-### Community 4 - "Typography: Sofia Sans Extra Condensed + Sofia Sans"
+### Community 4 - "runner.py"
 Cohesion: 0.06
-Nodes (26): main(), matches(), norm(), finder(), f(), load_words(), main(), validate() (+18 more)
+Nodes (27): main(), matches(), norm(), n(), finder(), f(), load_words(), main() (+19 more)
 
-### Community 5 - "Viral swipe file: UK Malayali family creators"
+### Community 5 - "ACT 2 — REVIEW (Claude ↔ Codex)"
 Cohesion: 0.06
 Nodes (32): ADR Format, Numbering, Optional sections, Template, What qualifies, When to offer an ADR, CONTEXT.md Format, Rules (+24 more)
 
@@ -111,19 +111,19 @@ Nodes (18): jobs, validate, os, name, on, pull_request, push, permissions (+10 m
 Cohesion: 0.29
 Nodes (8): accelerate 1.15.0, auto-round 0.16.1, NVIDIA CUDA 13 Runtime Packages, datasets 5.2.0, huggingface_hub 2.4.0, Python Dependencies (requirements.txt), torch 2.15.0, transformers 5.23.0
 
-### Community 8 - "voice_clone_regen.py"
-Cohesion: 0.12
-Nodes (40): Arrow(), Asterisk(), Cap, Captions(), Card(), CardHead(), chapterOf(), CHAPTERS (+32 more)
+### Community 8 - "claude-skill-setup_source/Reel.tsx"
+Cohesion: 0.11
+Nodes (41): Arrow(), Asterisk(), Cap, Captions(), Card(), CardHead(), chapterOf(), CHAPTERS (+33 more)
 
 ### Community 9 - "Board Animation Script"
 Cohesion: 0.70
 Nodes (4): advance(), render(), stopPlaying(), tick()
 
 ### Community 11 - "numpy"
-Cohesion: 0.12
-Nodes (19): chime(), pop(), whoosh(), chime(), click(), pop(), whoosh(), add() (+11 more)
+Cohesion: 0.10
+Nodes (25): chime(), pop(), whoosh(), chime(), click(), pop(), add(), chime() (+17 more)
 
-### Community 12 - "Root.tsx"
+### Community 12 - "ACT 2 — REVIEW (Claude ↔ Codex)"
 Cohesion: 0.14
 Nodes (13): ACT 1 — GRILL (you ↔ Claude), ACT 2 — REVIEW (Claude ↔ Codex), ACT 3 (optional) — BUILD (Codex ↔ Claude, roles flipped), Each round, after Codex returns, Grill-Me-Codex — Get Grilled, Then Get Reviewed, Hard rules, Prerequisites (verify once, fast), Resolution (you sign off — final gate) (+5 more)
 
@@ -135,9 +135,9 @@ Nodes (8): Claudex Loop, Claudex Route: standalone task routing, Controls, Devel
 Cohesion: 0.40
 Nodes (4): Before posting, made-by-claude_v1_9x16, v3: voiceover in my voice.md style, v4: in my own voice
 
-### Community 15 - "package.json"
+### Community 15 - "remotion.config.ts"
 Cohesion: 0.11
-Nodes (20): dependencies, @fontsource/instrument-serif@^5.3.0, @fontsource/inter@^5.3.0, @fontsource/noto-sans-malayalam@^5.3.0, react@^18.3.1, react-dom@^18.3.1, remotion@^4.0.545, @remotion/cli@^4.0.545 (+12 more)
+Nodes (19): dependencies, @fontsource/instrument-serif@^5.3.0, @fontsource/inter@^5.3.0, @fontsource/noto-sans-malayalam@^5.3.0, react@^18.3.1, react-dom@^18.3.1, remotion@^4.0.545, @remotion/cli@^4.0.545 (+11 more)
 
 ### Community 16 - "Community contributions and PR reconciliation"
 Cohesion: 0.25
@@ -175,9 +175,9 @@ Nodes (4): Automated checks, Limits, Live model checks, Validation — bidirecti
 Cohesion: 0.50
 Nodes (4): Claude Code plugin, Codex or manual skill installation, Examples, Install
 
-### Community 25 - "Reel5.tsx"
+### Community 25 - "Build and final inspection"
 Cohesion: 0.11
-Nodes (42): Bubble(), C, Canvas(), Captions(), Centre(), clamp, Cross(), ease (+34 more)
+Nodes (40): Bubble(), C, Canvas(), Captions(), Centre(), clamp, Cross(), ease (+32 more)
 
 ### Community 28 - "AI Video Studio"
 Cohesion: 0.18
@@ -195,9 +195,13 @@ Nodes (6): Outliers, Unclassified, Viral swipe file: UK Malayali family creators
 Cohesion: 0.40
 Nodes (4): Editing Style, Style Guide (style-guide.md), Per-Video notes.md Brief, Reel Format (9:16, 15-30 s, middle-third text)
 
-### Community 32 - "compilerOptions"
+### Community 32 - "Mykonos Cost Breakdown Caption"
 Cohesion: 0.18
 Nodes (10): compilerOptions, esModuleInterop, jsx, module, moduleResolution, noEmit, resolveJsonModule, skipLibCheck (+2 more)
+
+### Community 33 - "claude-skill-setup_v1_9x16"
+Cohesion: 0.50
+Nodes (3): Before posting, claude-skill-setup_v1_9x16, v2: in my own voice
 
 ### Community 34 - "Animated reels: Reel 5 and Reel 6"
 Cohesion: 0.40
@@ -205,23 +209,23 @@ Nodes (4): Animated reels: Reel 5 and Reel 6, Before posting, Re-make, Voice
 
 ## Knowledge Gaps
 - **24 isolated node(s):** `Driven by passion Car Reel`, `Weekly Routine`, `graphify-out Knowledge Graph`, `Graphify Usage Rules (CLAUDE.md)`, `Break Strip Component` (+19 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 238 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 242 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `remotion` connect `Reel5.tsx` to `voice_clone_regen.py`, `Reel.tsx`, `package.json`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
+- **Why does `RunnerTests` connect `RunnerTests` to `runner.py`?**
+  _High betweenness centrality (0.027) - this node is a cross-community bridge._
 - **What connects `Driven by passion Car Reel`, `Weekly Routine`, `graphify-out Knowledge Graph` to the rest of the system?**
   _24 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `RunnerTests` be split into smaller, more focused modules?**
   _Cohesion score 0.08362369337979095 - nodes in this community are weakly interconnected._
-- **Why does `react` connect `Reel5.tsx` to `voice_clone_regen.py`, `Reel.tsx`, `package.json`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
+- **Why does `Reel Edit Plans (Mykonos & Bonfire)` connect `Reel Edit Plans (Mykonos & Bonfire)` to `Social Media Playbook`, `Animated reels: Reel 5 and Reel 6`, `AI Video Studio`, `Viral swipe file: UK Malayali family creators`, `Editing Style`?**
+  _High betweenness centrality (0.007) - this node is a cross-community bridge._
 - **Should `AI Video Studio Landing Page (docs/index.html)` be split into smaller, more focused modules?**
   _Cohesion score 0.05568627450980392 - nodes in this community are weakly interconnected._
-- **Why does `RunnerTests` connect `RunnerTests` to `Typography: Sofia Sans Extra Condensed + Sofia Sans`?**
-  _High betweenness centrality (0.026) - this node is a cross-community bridge._
+- **Why does `Social Media Playbook` connect `Social Media Playbook` to `Comment Replies Log`, `Reel Edit Plans (Mykonos & Bonfire)`, `Viral swipe file: UK Malayali family creators`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **Should `Reel.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.07853107344632769 - nodes in this community are weakly interconnected._

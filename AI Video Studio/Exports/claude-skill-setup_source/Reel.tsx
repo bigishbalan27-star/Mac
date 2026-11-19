@@ -17,9 +17,24 @@ if (typeof document !== 'undefined') {
     .catch((e) => { console.error(e); continueRender(h); });
 }
 
+import TIMING from './timing.json';
+
 export const FPS = 30;
-export const END = 30.5;
+const NOM_END = 30.5; // v1 timeline that the scene animations are written against
+export const END: number = TIMING.end;
 export const TOTAL_FRAMES = Math.ceil(END * FPS);
+// real (voiceover) time -> v1 animation time, piecewise linear between scene starts
+const warp = (t: number) => {
+  const A = TIMING.anchors as [number, number][];
+  for (let i = 1; i < A.length; i++) {
+    if (t <= A[i][0]) {
+      const [n0, o0] = A[i - 1];
+      const [n1, o1] = A[i];
+      return o0 + ((t - n0) / Math.max(1e-6, n1 - n0)) * (o1 - o0);
+    }
+  }
+  return NOM_END + (t - A[A.length - 1][0]);
+};
 
 // palette, same as the made-by-claude reels
 const BG = '#F6F5F1';
@@ -52,7 +67,7 @@ const SCENES: Cap[] = [
   {s: 16.0, e: 20.0, words: [['Claude', 'c'], ['writes'], ['the'], ['plan.', 'k'], ['Codex', 'k'], ['checks'], ['it.', 'e']]},
   {s: 20.0, e: 23.6, words: [['Claude', 'c'], ['builds'], ['it.', 'k'], ['Codex', 'k'], ['checks'], ['again.', 'e']]},
   {s: 23.6, e: 26.8, words: [['Every'], ['new'], ['session'], ['starts'], ['ready.', 'k'], ['Lovely.', 'e']]},
-  {s: 26.8, e: END, words: [['Comment'], ['STUDIO,', 'p'], ['and'], ['I'], ['can'], ['send'], ['you'], ['the'], ['setup.', 'e']]},
+  {s: 26.8, e: NOM_END, words: [['Comment'], ['STUDIO,', 'p'], ['and'], ['I'], ['can'], ['send'], ['you'], ['the'], ['setup.', 'e']]},
 ];
 const WORD_GAP = 0.17;
 const CHAPTERS = ['FOLDER', 'SKILLS', 'MAP', 'REVIEW', 'READY'];
@@ -333,13 +348,19 @@ const S_Cta: React.FC<{t: number}> = ({t}) => {
 };
 
 // ---------- captions ----------
+// captions run on real time: each word appears when it is spoken
 const Captions: React.FC<{t: number}> = ({t}) => {
-  const sc = SCENES.find((s) => t >= s.s && t < s.e) ?? SCENES[SCENES.length - 1];
-  const out = lin(t, sc.e - 0.18, sc.e, 0, 1, Easing.in(Easing.cubic));
+  const RS = TIMING.scenes as [number, number][];
+  let k = RS.findIndex(([a, b]) => t >= a && t < b);
+  if (k < 0) k = RS.length - 1;
+  const sc = SCENES[k];
+  const [, e] = RS[k];
+  const spoken = TIMING.words[k] as [string, number, number][];
+  const out = lin(t, e - 0.18, e, 0, 1, Easing.in(Easing.cubic));
   return (
-    <div style={{position: 'absolute', top: 1220, left: 70, width: 940, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'baseline', columnGap: 22, rowGap: 6, opacity: sc === SCENES[SCENES.length - 1] ? 1 : 1 - out}}>
+    <div style={{position: 'absolute', top: 1220, left: 70, width: 940, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'baseline', columnGap: 22, rowGap: 6, opacity: k === RS.length - 1 ? 1 : 1 - out}}>
       {sc.words.map(([w, st], i) => {
-        const at = sc.s + 0.15 + i * WORD_GAP;
+        const at = spoken[i] ? spoken[i][1] - 0.04 : RS[k][0] + 0.15 + i * WORD_GAP;
         const k = sp(t, at, {damping: 12, stiffness: 220});
         const base: React.CSSProperties = {display: 'inline-block', opacity: k, transform: `translateY(${(1 - k) * 30}px)`, fontSize: 92, lineHeight: 1.12};
         if (st === 'e') return <span key={i} style={{...base, fontFamily: SERIF, fontStyle: 'italic', color: BLUE, fontSize: 104}}>{w}</span>;
@@ -363,7 +384,8 @@ const Chapters: React.FC<{t: number}> = ({t}) => {
 };
 
 export const Reel: React.FC = () => {
-  const t = useCurrentFrame() / FPS;
+  const rt = useCurrentFrame() / FPS;
+  const t = warp(rt);
   return (
     <AbsoluteFill style={{background: BG}}>
       <AbsoluteFill style={{backgroundImage: `linear-gradient(${LINE} 2px, transparent 2px), linear-gradient(90deg, ${LINE} 2px, transparent 2px)`, backgroundSize: '72px 72px', opacity: 0.55}} />
@@ -376,12 +398,13 @@ export const Reel: React.FC = () => {
       <Stage t={t} s={16.0} e={20.0}><S_Plan t={t} /></Stage>
       <Stage t={t} s={20.0} e={23.6}><S_Build t={t} /></Stage>
       <Stage t={t} s={23.6} e={26.8}><S_Ready t={t} /></Stage>
-      <Stage t={t} s={26.8} e={END + 1}><S_Cta t={t} /></Stage>
-      <Captions t={t} />
+      <Stage t={t} s={26.8} e={NOM_END + 99}><S_Cta t={t} /></Stage>
+      <Captions t={rt} />
       <div style={{position: 'absolute', bottom: 90, width: 1080, textAlign: 'center', fontFamily: MONO, fontSize: 28, color: MUTE, letterSpacing: 1}}>
         @bigishbalan · made with claude
       </div>
-      <Audio src={staticFile('sfx.wav')} />
+      <Audio src={staticFile('voice.wav')} />
+      <Audio src={staticFile('sfx_v2.wav')} volume={0.55} />
     </AbsoluteFill>
   );
 };
