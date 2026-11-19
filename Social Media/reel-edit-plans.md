@@ -305,4 +305,18 @@ Say the keyword in the video too: change the 26–28 s line to "Parents, plan or
 | 25–29 s | You ask him something in Malayalam → he says "cheers" | Me? Still asking in Malayalam. He's still saying cheers. | Still saying cheers. |
 
 Edit tips: hook card on screen from frame 1, text in the middle third, burn in captions. The last word "cheers" loops back into the hook.
-Next: caption.
+**Caption** (linter READY, human score 75.5 PASS)
+
+> UK Mallu parents, what does your kid answer in? Comment MALAYALAM or ENGLISH 👇
+>
+> One rule in our house: Malayalam at home.
+>
+> I ask "choru venno?" at dinner and get "no thanks, chips please". Then "please", "thank you" and "cheers" all evening, every word of it in English.
+>
+> Raising bilingual kids in the UK means one Kerala dad versus the rest of Britain.
+>
+> Still asking in Malayalam. One day he'll be in Kerala, and I want him to understand every word.
+>
+> #UKMallu #MalayaliParents #BilingualKids
+
+Say the keyword in the video too: change the 22–25 s line to "UK Mallu parents, Malayalam or English? Comment below."
