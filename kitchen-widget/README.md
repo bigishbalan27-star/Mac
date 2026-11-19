@@ -138,6 +138,12 @@ cd ~/KitchenBoard && python3 tab_agent.py install-autostart
 
 Its messages go to `~/Library/Logs/kitchen-board.log`. To turn it off, run `python3 tab_agent.py remove-autostart`.
 
+## 9. Always on, full screen, never frozen
+
+- **Screen stays on:** while the tablet is plugged in by USB, the agent sets the tablet to stay awake while charging and never time out. Every 20 seconds it checks the screen and wakes it if it has gone off. After the first tap, the page also plays an invisible, silent 2-pixel looping video, which stops old Android Chrome from sleeping the screen even over Wi-Fi.
+- **Full screen:** any tap goes back to full screen if the board has dropped out of it. Over USB, the agent also hides Android's status and navigation bars around Chrome (`"immersive": true`).
+- **Never frozen:** if the board can't reach the Mac for 90 seconds it shows a warning and reloads itself once the Mac is back. It also reloads after the tablet has been asleep, every 6 hours, and at 3am, but never while a timer is running. Over USB, if another app has been in front for 3 minutes, the board is brought back (`"keep_on_top": true`).
+
 ## Files
 
 - `tab_agent.py`: USB agent, web server and data proxy (Python 3.8+, standard library only)

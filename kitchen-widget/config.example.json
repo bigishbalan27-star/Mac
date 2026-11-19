@@ -29,7 +29,9 @@
     "browser": "chrome",
     "keep_screen_on": true,
     "screen_timeout_minutes": null,
-    "brightness": null
+    "brightness": null,
+    "immersive": true,
+    "keep_on_top": true
   },
   "meter": {
     "source": "none",

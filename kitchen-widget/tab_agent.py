@@ -191,12 +191,21 @@ def prepare_tablet(serial, port):
     t = CONFIG.get("tablet", {})
     adb("reverse", f"tcp:{port}", f"tcp:{port}", serial=serial)
     if t.get("keep_screen_on", True):
-        # stay awake while charging over USB / AC
+        # stay awake while charging (USB, mains or wireless) - survives unplugging USB
         adb("shell", "svc", "power", "stayon", "true", serial=serial)
+        if not t.get("screen_timeout_minutes"):
+            # and never time out, even on battery (Android's maximum value)
+            adb("shell", "settings", "put", "system", "screen_off_timeout",
+                "2147483647", serial=serial)
     if t.get("screen_timeout_minutes"):
         ms = int(t["screen_timeout_minutes"]) * 60_000
         adb("shell", "settings", "put", "system", "screen_off_timeout",
             str(ms), serial=serial)
+    if t.get("immersive", True):
+        # hide Android's status + navigation bars around the browser (Android 4.4-10)
+        pkg = BROWSER_PKGS.get(t.get("browser", "chrome")) or "com.android.chrome"
+        adb("shell", "settings", "put", "global", "policy_control",
+            f"immersive.full={pkg}", serial=serial)
     if t.get("brightness") is not None:
         adb("shell", "settings", "put", "system", "screen_brightness_mode",
             "0", serial=serial)
@@ -207,15 +216,43 @@ def prepare_tablet(serial, port):
     adb("shell", "wm", "dismiss-keyguard", serial=serial)
 
 
+BROWSER_PKGS = {
+    "chrome": "com.android.chrome",
+    "samsung": "com.sec.android.app.sbrowser",
+    "fully": "de.ozerov.fully",
+    "default": None,
+}
+
+
+def keep_board_showing(serial, port, state):
+    """Wake the screen if it went off; bring the board back if another app
+    has been in front for a few minutes."""
+    t = CONFIG.get("tablet", {})
+    if not t.get("keep_screen_on", True):
+        return
+    power = adb("shell", "dumpsys power | grep -E 'mWakefulness=|Display Power: state='", serial=serial)
+    if "Asleep" in power or "Dozing" in power or "state=OFF" in power:
+        adb("shell", "input", "keyevent", "KEYCODE_WAKEUP", serial=serial)
+        adb("shell", "wm", "dismiss-keyguard", serial=serial)
+        log("Tablet screen was off - woke it")
+    if not t.get("keep_on_top", True):
+        return
+    pkg = BROWSER_PKGS.get(t.get("browser", "chrome")) or "com.android.chrome"
+    focus = adb("shell", "dumpsys window windows | grep -E 'mCurrentFocus'", serial=serial)
+    if focus and pkg not in focus:
+        state.setdefault("away_since", time.time())
+        if time.time() - state["away_since"] > 180:
+            log("Board wasn't on screen for 3 min - bringing it back")
+            open_dashboard(serial, port)
+            state.pop("away_since", None)
+    else:
+        state.pop("away_since", None)
+
+
 def open_dashboard(serial, port):
     url = f"http://localhost:{port}/"
     browser = CONFIG.get("tablet", {}).get("browser", "chrome")
-    pkg = {
-        "chrome": "com.android.chrome",
-        "samsung": "com.sec.android.app.sbrowser",
-        "fully": "de.ozerov.fully",
-        "default": None,
-    }.get(browser)
+    pkg = BROWSER_PKGS.get(browser)
     # same application_id = Chrome reuses one tab instead of opening a new one
     args = ["shell", "am", "start", "-a", "android.intent.action.VIEW", "-d", url,
             "--es", "com.android.browser.application_id", "kitchen-board"]
@@ -232,6 +269,7 @@ def open_dashboard(serial, port):
 def watch_tablet(port, interval=20):
     """Keep the USB link alive: re-apply reverse + reopen on reconnect."""
     was = None
+    keep_state = {}
     while True:
         try:
             serial = pick_device()
@@ -252,6 +290,7 @@ def watch_tablet(port, interval=20):
         elif serial:
             try:
                 adb("reverse", f"tcp:{port}", f"tcp:{port}", serial=serial)
+                keep_board_showing(serial, port, keep_state)
             except Exception:
                 pass
         elif was:

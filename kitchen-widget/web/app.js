@@ -50,6 +50,7 @@
   function esc(s) {
     return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; });
   }
+  var lastOk = Date.now();
   function api(path, ok, bad) {
     var x = new XMLHttpRequest();
     x.open("GET", path + (path.indexOf("?") < 0 ? "?" : "&") + "t=" + Date.now(), true);
@@ -57,6 +58,7 @@
     x.onload = function () {
       if (x.status !== 200) { if (bad) bad(); return; }
       var j; try { j = JSON.parse(x.responseText); } catch (e) { if (bad) bad(); return; }
+      lastOk = Date.now();
       ok(j);
     };
     x.onerror = x.ontimeout = function () { if (bad) bad(); };
@@ -336,21 +338,59 @@
   /* ---------------- kiosk bits ---------------- */
   function keepAwake() {
     try { if (navigator.wakeLock) navigator.wakeLock.request("screen").catch(function () { }); } catch (e) { }
+    // Old Android Chrome has no wake lock: a tiny silent looping video keeps the screen on
+    var v = $("awake");
+    if (!v) {
+      v = document.createElement("video");
+      v.id = "awake";
+      v.setAttribute("muted", ""); v.muted = true; v.loop = true;
+      v.setAttribute("playsinline", ""); v.setAttribute("webkit-playsinline", "");
+      v.style.cssText = "position:fixed;right:0;bottom:0;width:2px;height:2px;opacity:0.01;pointer-events:none;";
+      var s1 = document.createElement("source"); s1.src = "awake.webm"; s1.type = "video/webm";
+      var s2 = document.createElement("source"); s2.src = "awake.mp4"; s2.type = "video/mp4";
+      v.appendChild(s1); v.appendChild(s2);
+      document.body.appendChild(v);
+    }
+    try { var pr = v.play(); if (pr && pr.catch) pr.catch(function () { }); } catch (e) { }
   }
-  document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible") keepAwake(); });
-  var first = true;
-  document.addEventListener("click", function () {
-    if (!first) return; first = false;
-    unlockAudio();
+  function isFull() {
+    return !!(document.fullscreenElement || document.webkitFullscreenElement || document.webkitIsFullScreen);
+  }
+  function goFull() {
+    if (isFull()) return;
     var el = document.documentElement;
     var fs = el.requestFullscreen || el.webkitRequestFullscreen || el.webkitRequestFullScreen;
     try { if (fs) { var r = fs.call(el); if (r && r.catch) r.catch(function () { }); } } catch (e) { }
-  });
-  // reload once a day at ~3am to pick up changes and free memory
+  }
+  document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible") keepAwake(); });
+  // every tap: sound allowed, screen kept awake, back to full screen if it dropped out
+  document.addEventListener("click", function () { unlockAudio(); keepAwake(); goFull(); }, true);
+  document.addEventListener("touchend", function () { keepAwake(); }, true);
+
+  // Watchdog: recover from a frozen page, a sleeping tablet or a lost Mac connection
+  var lastBeat = Date.now(), wasDown = false;
+  setInterval(function () {
+    var now = Date.now();
+    if (now - lastBeat > 5 * 60000) { location.reload(); return; }  // tablet slept for a while
+    lastBeat = now;
+    if (now - lastOk > 90000) {
+      wasDown = true;
+      $("ticker").className = "warn";
+      $("ticker").textContent = "\u26A0 Can't reach the Mac - retrying\u2026";
+      api("/api/config", function () { location.reload(); });
+    } else if (wasDown) {
+      location.reload();
+    }
+  }, 15000);
+  // fresh start every 6 hours and at ~3am, to free memory on the old tablet
+  var bootAt = Date.now();
   setInterval(function () {
     var n = new Date();
-    if (n.getHours() === 3 && n.getMinutes() === 0 && n.getSeconds() < 2) location.reload();
-  }, 1000);
+    if ((n.getHours() === 3 && n.getMinutes() === 0) || Date.now() - bootAt > 6 * 3600000) {
+      if (!$("alarm").hidden || timerRunning()) return;  // never during a timer
+      location.reload();
+    }
+  }, 30000);
 
   /* ---------------- night / idle photo frame ---------------- */
   var pf = { cfg: null, list: [], order: [], pos: 0, showing: false, layer: 0, timer: null, lastTouch: Date.now(), dismissedAt: 0 };
