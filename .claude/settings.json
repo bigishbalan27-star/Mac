@@ -23,6 +23,12 @@
         "source": "github",
         "repo": "affaan-m/everything-claude-code"
       }
+    },
+    "claudex-loop": {
+      "source": {
+        "source": "github",
+        "repo": "chaseai-yt/claudex-loop"
+      }
     }
   },
   "enabledPlugins": {
@@ -31,7 +37,8 @@
     "agents-sales-marketing@buildwithclaude": true,
     "agents-design-experience@buildwithclaude": true,
     "marketing-skills@marketingskills": true,
-    "ecc@ecc": true
+    "ecc@ecc": true,
+    "claudex-loop@claudex-loop": true
   },
   "hooks": {
     "PreToolUse": [
