@@ -16,3 +16,5 @@ Descriptions (paste into each):
 - Temple: A blessed day at the temple with family 🙏 Keeping our traditions close, far from Kerala. #Shorts #UKMallu
 - Park day: Red jacket, favourite hat, and the whole park to himself 👒 Toddler play time in the UK. #Shorts #UKMallu
 - Wiltshire drive: keep the existing description; add at the top: "A full-day drive through the Wiltshire countryside: honey-stone villages, autumn colours and ancient history."
+
+19 Nov: tried to apply these automatically; YouTube connection (The roaming lens = Windsor account 79466, pkv.pachu@gmail.com) is read-only. Needs reconnect at https://onboard.windsor.ai/app/youtube_review with all permissions ticked.
