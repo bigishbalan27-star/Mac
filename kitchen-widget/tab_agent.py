@@ -324,7 +324,13 @@ def ha_value(entity):
 
 def get_meter():
     m = CONFIG.get("meter", {})
-    src = "demo" if DEMO else m.get("source", "none")
+    src = "demo" if DEMO else str(m.get("source") or "none").strip().lower()
+    # accept "E.ON", "e.on next", "eonnext", "Home Assistant", ...
+    key = "".join(ch for ch in src if ch.isalnum())
+    src = {"eon": "eon", "eonnext": "eon", "eonenergy": "eon",
+           "homeassistant": "homeassistant", "ha": "homeassistant",
+           "octopus": "octopus", "octopusenergy": "octopus",
+           "none": "none", "": "none", "demo": "demo"}.get(key, src)
     tariff = m.get("price_per_kwh")
     currency = m.get("currency", "£")
     if src == "none":
