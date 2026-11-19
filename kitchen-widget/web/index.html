@@ -18,7 +18,7 @@
   send("LOADED " + navigator.userAgent + " " + screen.width + "x" + screen.height + " css " + window.innerWidth + "x" + window.innerHeight);
 })();
 </script>
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 <main id="board">
@@ -26,6 +26,7 @@
     <div class="time"><span id="hm">--:--</span><span id="sec" class="sec">--</span><span id="ampm" class="ampm"></span></div>
     <div class="date" id="date">&nbsp;</div>
     <div class="sun" id="sun"></div>
+    <ul class="cal" id="cal"></ul>
   </section>
 
   <section class="tile weather" aria-live="polite">
@@ -81,8 +82,8 @@
   </section>
 </main>
 
-<footer id="status"><span id="dev"></span><span id="upd"></span></footer>
+<footer id="status"><span id="ticker"></span><span id="meta"><span id="dev"></span> <span id="upd"></span></span></footer>
 <div id="alarm" hidden><div><strong id="alarmText">Time's up</strong><button id="alarmStop">Stop</button></div></div>
-<script src="app.js?v=3"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@ body {
 body.night { filter: brightness(.55) sepia(.35); }
 
 #board {
-  height: calc(100vh - 28px);
+  height: calc(100vh - 34px);
   padding: clamp(8px, 1.2vw, 16px);
   display: grid;
   gap: clamp(8px, 1.2vw, 16px);
@@ -132,7 +132,7 @@ button:active { background: #3a332d; transform: scale(.97); }
 #days .rain { color: #7cc4e8; font-size: .75em; }
 
 footer {
-  height: 28px; padding: 0 calc(clamp(8px, 1.2vw, 16px) + 6px); display: flex; justify-content: space-between; align-items: center;
+  height: 34px; padding: 0 14px; display: -webkit-flex; display: flex; -webkit-justify-content: space-between; -webkit-align-items: center; justify-content: space-between; align-items: center;
   font-size: 12px; color: #7d7368;
 }
 
@@ -189,4 +189,34 @@ footer {
     .weather { width: -webkit-calc(42% - 10px); width: calc(42% - 10px); height: 50%; }
     .energy, .indoor, .timers, .forecast { width: -webkit-calc(25% - 10px); width: calc(25% - 10px); height: -webkit-calc(50% - 18px); height: calc(50% - 18px); }
   }
+}
+
+/* calendar under the clock */
+.cal { list-style: none; margin: .7em 0 0; padding: .6em 0 0; border-top: 1px solid #3a332d; overflow: hidden; }
+.cal li { display: -webkit-flex; display: flex; -webkit-align-items: baseline; align-items: baseline; font-size: 16px; font-size: clamp(14px, 1.7vw, 24px); line-height: 1.35; white-space: nowrap; overflow: hidden; }
+.cal .cd { color: #7d7368; width: 5.4em; -webkit-flex-shrink: 0; flex-shrink: 0; font-size: .8em; }
+.cal .ct { color: #f2a65a; width: 3.4em; -webkit-flex-shrink: 0; flex-shrink: 0; }
+.cal .cx { color: #f4ede4; overflow: hidden; text-overflow: ellipsis; }
+.cal li.tomorrow .cx { color: #b9ad9f; }
+.cal li.empty { color: #7d7368; font-size: 14px; }
+/* bottom ticker */
+footer { font-size: 14px; }
+#ticker { -webkit-flex: 1; flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: #b9ad9f; font-size: 16px; font-size: clamp(14px, 1.5vw, 20px); transition: opacity .4s; }
+#ticker.warn { color: #f2a65a; font-weight: 600; }
+#ticker.fade { opacity: 0; }
+#meta { -webkit-flex-shrink: 0; flex-shrink: 0; margin-left: 12px; font-size: 12px; }
+@media (max-aspect-ratio: 1/1) { .cal li { font-size: 3.4vw; } }
+
+/* with calendar events: smaller clock so up to 3 events fit */
+.cal { max-height: 4.3em; }
+.cal li { font-size: 14px; font-size: clamp(12px, 1.55vw, 22px); }
+#clockTile.has-cal #hm { font-size: 10.5vw; }
+#clockTile.has-cal .date { font-size: 2.5vw; margin-top: .15em; }
+#clockTile.has-cal .sun { margin-top: .3em; }
+#clockTile.has-cal .cal { margin-top: .4em; padding-top: .4em; }
+@media (max-aspect-ratio: 1/1) {
+  .cal li { font-size: 3.2vw; }
+  #clockTile.has-cal #hm { font-size: 17vw; }
+  #clockTile.has-cal .date { font-size: 4.4vw; }
+  @supports not (display: grid) { .clock { height: 27%; } .weather { height: 25%; } }
 }

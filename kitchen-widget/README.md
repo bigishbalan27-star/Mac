@@ -82,6 +82,22 @@ E.ON allows **one key per account**. The snippet only creates a key if your acco
 
 The tablet has no room-temperature sensor; its battery temperature is not room temperature. Set `indoor.source` to `homeassistant` and point `indoor.entities.temperature` / `humidity` / `co2` at any HA sensor, such as a cheap Zigbee or Bluetooth thermometer in the kitchen.
 
+## 5. Calendar, news and weather alerts
+
+**Calendar:** today's and tomorrow's events appear under the clock. Add a calendar with:
+
+```bash
+python3 tab_agent.py add-calendar
+```
+
+Paste its private iCal link:
+- **Google:** calendar.google.com › ⚙ Settings › click your calendar › *Integrate calendar* › **Secret address in iCal format**
+- **iCloud:** Calendar app › right-click the calendar › Share › tick **Public Calendar** › copy the link
+
+Run it again to add more calendars, such as a partner's or a family calendar. Keep the link private: anyone with it can read the calendar.
+
+**Ticker:** the bottom line rotates through weather alerts and BBC News headlines. The alerts are worked out from the forecast: rain starting or stopping soon, frost overnight, strong gusts, high UV, heat, rain very likely, and high pollen. They are **not** official Met Office warnings. To switch headlines off, set `"news": {"enabled": false}` in `config.json`.
+
 ## Files
 
 - `tab_agent.py`: USB agent, web server and data proxy (Python 3.8+, standard library only)

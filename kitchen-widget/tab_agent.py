@@ -305,13 +305,18 @@ def cached(key, ttl, fn):
 def get_weather():
     loc = CONFIG.get("location", {})
     if DEMO:
-        return demo_weather()
+        w = demo_weather()
+        w["alerts"] = [{"level": "warn", "text": "\U0001F327 Rain likely in about 30 min"},
+                       {"level": "warn", "text": "\u2744\ufe0f Frost likely - down to -1\u00b0 overnight"}]
+        return w
     q = urllib.parse.urlencode({
         "latitude": loc.get("latitude"),
         "longitude": loc.get("longitude"),
         "current": "temperature_2m,relative_humidity_2m,apparent_temperature,"
                    "weather_code,wind_speed_10m,precipitation,is_day",
-        "hourly": "temperature_2m,weather_code,precipitation_probability",
+        "hourly": "temperature_2m,weather_code,precipitation_probability,wind_gusts_10m",
+        "minutely_15": "precipitation",
+        "forecast_minutely_15": 12,
         "daily": "weather_code,temperature_2m_max,temperature_2m_min,"
                  "sunrise,sunset,precipitation_probability_max,uv_index_max",
         "timezone": "auto",
@@ -327,13 +332,301 @@ def get_weather():
             urllib.parse.urlencode({
                 "latitude": loc.get("latitude"),
                 "longitude": loc.get("longitude"),
-                "current": "european_aqi,pm2_5",
+                "current": "european_aqi,pm2_5,alder_pollen,birch_pollen,grass_pollen",
             }))
         w["air_quality"] = aq.get("current", {})
     except Exception:
         pass
     w["place"] = loc.get("name", "")
+    w["alerts"] = weather_alerts(w)
     return w
+
+
+def weather_alerts(w):
+    """Plain-English heads-ups worked out from the forecast (not official warnings)."""
+    out = []
+    cur = w.get("current") or {}
+    now = cur.get("time") or ""
+    mph = CONFIG.get("units", {}).get("wind", "kmh") == "mph"
+    # rain starting / stopping in the next 3 hours (15-minute data)
+    m = w.get("minutely_15") or {}
+    times, rain = m.get("time") or [], m.get("precipitation") or []
+    upcoming = [(t, r or 0) for t, r in zip(times, rain) if t > now][:12]
+    wet_now = (cur.get("precipitation") or 0) >= 0.1
+    for n, (t, r) in enumerate(upcoming):
+        mins = (n + 1) * 15
+        if not wet_now and r >= 0.2:
+            out.append({"level": "warn", "text": f"\U0001F327 Rain likely in about {mins} min"})
+            break
+        if wet_now and r < 0.05 and all((x or 0) < 0.05 for _, x in upcoming[n:n + 2]):
+            out.append({"level": "info", "text": f"\U0001F324 Rain should stop in about {mins} min"})
+            break
+    h = w.get("hourly") or {}
+    ht = h.get("time") or []
+    idx = [i for i, t in enumerate(ht) if t >= now[:13]][:18]
+    temps = [h["temperature_2m"][i] for i in idx if h.get("temperature_2m")]
+    if temps and min(temps) <= 0:
+        out.append({"level": "warn", "text": f"\u2744\ufe0f Frost likely - down to {round(min(temps))}\u00b0 overnight"})
+    gusts = [h["wind_gusts_10m"][i] or 0 for i in idx[:12] if h.get("wind_gusts_10m")]
+    if gusts and max(gusts) >= (37 if mph else 60):
+        out.append({"level": "warn", "text": f"\U0001F4A8 Gusts up to {round(max(gusts))} {'mph' if mph else 'km/h'} today"})
+    d = w.get("daily") or {}
+    try:
+        uv = d["uv_index_max"][0]
+        if uv >= 6:
+            out.append({"level": "warn", "text": f"\u2600\ufe0f High UV today ({round(uv)}) - sun cream"})
+        if d["temperature_2m_max"][0] >= 28:
+            out.append({"level": "warn", "text": f"\U0001F975 Hot today - up to {round(d['temperature_2m_max'][0])}\u00b0"})
+        if not any("Rain" in a["text"] for a in out) and d["precipitation_probability_max"][0] >= 80:
+            out.append({"level": "info", "text": "\u2614 Rain very likely today - take a coat"})
+    except (KeyError, IndexError, TypeError):
+        pass
+    aq = w.get("air_quality") or {}
+    for key, name in (("grass_pollen", "grass"), ("birch_pollen", "birch"), ("alder_pollen", "alder")):
+        v = aq.get(key)
+        if v is not None and v >= 50:
+            out.append({"level": "warn", "text": f"\U0001F33E High {name} pollen today"})
+    return out
+
+
+# --- calendar (.ics links from Google / iCloud / Outlook) --------------------
+from datetime import datetime as _dt, date as _date, timedelta as _td
+
+_WD = {"MO": 0, "TU": 1, "WE": 2, "TH": 3, "FR": 4, "SA": 5, "SU": 6}
+
+
+def http_text(url, timeout=20):
+    if url.startswith("webcal://"):
+        url = "https://" + url[len("webcal://"):]
+    req = urllib.request.Request(url, headers={"User-Agent": "kitchen-tab-agent/1.0"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read().decode("utf-8", "replace")
+
+
+def _ics_time(value, params):
+    """-> (aware datetime in local time, all_day)"""
+    local = _dt.now().astimezone().tzinfo
+    v = value.strip()
+    if params.get("VALUE") == "DATE" or (len(v) == 8 and v.isdigit()):
+        d = _date(int(v[:4]), int(v[4:6]), int(v[6:8]))
+        return _dt(d.year, d.month, d.day, tzinfo=local), True
+    t = _dt.strptime(v[:15], "%Y%m%dT%H%M%S")
+    if v.endswith("Z"):
+        from datetime import timezone
+        return t.replace(tzinfo=timezone.utc).astimezone(local), False
+    tz = local
+    if params.get("TZID"):
+        try:
+            from zoneinfo import ZoneInfo
+            tz = ZoneInfo(params["TZID"].strip('"'))
+        except Exception:
+            tz = local
+    return t.replace(tzinfo=tz).astimezone(local), False
+
+
+def _ics_events(text):
+    lines = []
+    for raw in text.replace("\r\n", "\n").split("\n"):
+        if raw[:1] in (" ", "\t") and lines:
+            lines[-1] += raw[1:]
+        else:
+            lines.append(raw)
+    events, cur = [], None
+    for ln in lines:
+        if ln == "BEGIN:VEVENT":
+            cur = {"exdates": []}
+        elif ln == "END:VEVENT":
+            if cur is not None:
+                events.append(cur)
+            cur = None
+        elif cur is not None and ":" in ln:
+            head, value = ln.split(":", 1)
+            parts = head.split(";")
+            name = parts[0].upper()
+            params = dict(p.split("=", 1) for p in parts[1:] if "=" in p)
+            if name in ("DTSTART", "DTEND", "RECURRENCE-ID"):
+                try:
+                    cur[name] = _ics_time(value, params)
+                except ValueError:
+                    pass
+            elif name == "EXDATE":
+                for v in value.split(","):
+                    try:
+                        cur["exdates"].append(_ics_time(v, params)[0])
+                    except ValueError:
+                        pass
+            elif name == "SUMMARY":
+                cur["SUMMARY"] = value.replace("\\,", ",").replace("\\;", ";").replace("\\n", " ").strip()
+            elif name in ("RRULE", "UID", "STATUS", "DURATION"):
+                cur[name] = value.strip()
+    return events
+
+
+def _rrule_starts(start, rule, until_limit):
+    """Yield occurrence start datetimes for common RRULEs (DAILY/WEEKLY/MONTHLY/YEARLY)."""
+    r = dict(p.split("=", 1) for p in rule.split(";") if "=" in p)
+    freq, interval = r.get("FREQ"), int(r.get("INTERVAL", "1") or 1)
+    count = int(r["COUNT"]) if "COUNT" in r else None
+    until = None
+    if "UNTIL" in r:
+        try:
+            until = _ics_time(r["UNTIL"], {})[0]
+        except ValueError:
+            until = None
+    byday = [b for b in r.get("BYDAY", "").split(",") if b]
+    bymonthday = [int(x) for x in r.get("BYMONTHDAY", "").split(",") if x.lstrip("-").isdigit()]
+    n, guard = 0, 0
+
+    def ok(t):
+        return (until is None or t <= until) and t <= until_limit
+
+    if freq == "DAILY":
+        t = start
+        while ok(t) and guard < 20000:
+            guard += 1
+            yield t
+            n += 1
+            if count and n >= count:
+                return
+            t += _td(days=interval)
+    elif freq == "WEEKLY":
+        days = sorted(_WD[b[-2:]] for b in byday) or [start.weekday()]
+        week0 = start - _td(days=start.weekday())
+        k = 0
+        while guard < 5000:
+            guard += 1
+            base = week0 + _td(weeks=k * interval)
+            for wd in days:
+                t = base + _td(days=wd)
+                if t < start:
+                    continue
+                if not ok(t):
+                    return
+                yield t
+                n += 1
+                if count and n >= count:
+                    return
+            k += 1
+    elif freq in ("MONTHLY", "YEARLY"):
+        import calendar as _cal
+        y, mth, k = start.year, start.month, 0
+        while guard < 3000:
+            guard += 1
+            cands = []
+            dim = _cal.monthrange(y, mth)[1]
+            if freq == "YEARLY" and mth != start.month:
+                pass
+            elif bymonthday:
+                cands = [d if d > 0 else dim + 1 + d for d in bymonthday]
+            elif byday:
+                for b in byday:
+                    wd = _WD[b[-2:]]
+                    nth = int(b[:-2]) if b[:-2].lstrip("-").isdigit() else 0
+                    matches = [d for d in range(1, dim + 1) if _date(y, mth, d).weekday() == wd]
+                    if nth > 0 and nth <= len(matches):
+                        cands.append(matches[nth - 1])
+                    elif nth < 0 and -nth <= len(matches):
+                        cands.append(matches[nth])
+                    elif nth == 0:
+                        cands.extend(matches)
+            else:
+                cands = [start.day] if start.day <= dim else []
+            for d in sorted(set(cands)):
+                if 1 <= d <= dim:
+                    t = start.replace(year=y, month=mth, day=d)
+                    if t < start:
+                        continue
+                    if not ok(t):
+                        return
+                    yield t
+                    n += 1
+                    if count and n >= count:
+                        return
+            if freq == "YEARLY":
+                y += interval
+            else:
+                mth += interval
+                while mth > 12:
+                    mth -= 12
+                    y += 1
+            if _dt(y, mth, 1, tzinfo=start.tzinfo) > until_limit:
+                return
+
+
+def calendar_events(texts, days=2):
+    local = _dt.now().astimezone().tzinfo
+    now = _dt.now(local)
+    win_start = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    win_end = win_start + _td(days=days)
+    found = []
+    for text in texts:
+        evs = _ics_events(text)
+        moved = {}
+        for e in evs:
+            if "RECURRENCE-ID" in e and "UID" in e:
+                moved.setdefault(e["UID"], []).append(e["RECURRENCE-ID"][0])
+        for e in evs:
+            if "DTSTART" not in e or e.get("STATUS", "").upper() == "CANCELLED":
+                continue
+            start, all_day = e["DTSTART"]
+            if "DTEND" in e:
+                length = e["DTEND"][0] - start
+            elif all_day:
+                length = _td(days=1)
+            else:
+                length = _td(0)
+            if "RRULE" in e and "RECURRENCE-ID" not in e:
+                skip = set(e["exdates"]) | set(moved.get(e.get("UID"), []))
+                starts = (t for t in _rrule_starts(start, e["RRULE"], win_end) if t not in skip)
+            else:
+                starts = [start]
+            for t in starts:
+                end = t + length
+                if t < win_end and (end > now if length else t >= now - _td(minutes=30)):
+                    if end > win_start or t >= win_start:
+                        found.append((t, all_day, e.get("SUMMARY", "(no title)")))
+    found.sort(key=lambda x: (x[0].date(), not x[1], x[0]))
+    out = []
+    for t, all_day, title in found[:12]:
+        day = (t.date() - now.date()).days
+        label = "Today" if day <= 0 else "Tomorrow" if day == 1 else t.strftime("%a")
+        out.append({"day": label, "time": "" if all_day else t.strftime("%H:%M"),
+                    "title": title[:80], "all_day": all_day})
+    return out
+
+
+def get_calendar():
+    c = CONFIG.get("calendar", {})
+    urls = [u for u in c.get("ics_urls", []) if u]
+    if DEMO and not urls:
+        return {"events": [{"day": "Today", "time": "18:00", "title": "Swimming", "all_day": False},
+                           {"day": "Tomorrow", "time": "", "title": "Bin day", "all_day": True},
+                           {"day": "Tomorrow", "time": "09:30", "title": "Dentist", "all_day": False}]}
+    if not urls:
+        return {"events": [], "source": "none"}
+    texts = []
+    for u in urls:
+        try:
+            texts.append(http_text(u))
+        except Exception as e:
+            log("calendar: " + str(e)[:120])
+    if not texts:
+        raise RuntimeError("calendar link not reachable")
+    return {"events": calendar_events(texts, int(c.get("days", 2)))}
+
+
+def get_news():
+    n = CONFIG.get("news", {})
+    if n.get("enabled", True) is False:
+        return {"headlines": []}
+    if DEMO:
+        return {"headlines": ["Demo headline: council approves new park",
+                              "Demo headline: trains running normally"]}
+    import xml.etree.ElementTree as ET
+    root = ET.fromstring(http_text(n.get("feed", "https://feeds.bbci.co.uk/news/rss.xml")))
+    titles = [i.findtext("title", "").strip() for i in root.iter("item")]
+    return {"headlines": [t for t in titles if t][:int(n.get("count", 8))],
+            "source": n.get("name", "BBC News")}
 
 
 def ha_state(entity):
@@ -782,6 +1075,10 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_json(cached("indoor", ittl, get_indoor))
         if path == "/api/device":
             return self.send_json(dict(_device_state))
+        if path == "/api/calendar":
+            return self.send_json(cached("calendar", ttl.get("calendar", 600), get_calendar))
+        if path == "/api/news":
+            return self.send_json(cached("news", ttl.get("news", 900), get_news))
         return super().do_GET()
 
 
@@ -840,6 +1137,34 @@ def cmd_setup_esi():
     return 0
 
 
+def cmd_add_calendar():
+    print("Paste your calendar's private iCal (.ics) link.")
+    print("  Google: calendar.google.com > Settings > your calendar > 'Secret address in iCal format'")
+    print("  iCloud: Calendar app > share calendar > Public Calendar > copy link")
+    url = input("Link: ").strip()
+    if not url:
+        return 1
+    try:
+        evs = calendar_events([http_text(url)], 7)
+    except Exception as e:
+        print("Could not read that link:", str(e)[:150])
+        return 1
+    print(f"OK - {len(evs)} event(s) in the next 7 days" + (":" if evs else "."))
+    for e in evs[:5]:
+        print(f"  {e['day']} {e['time'] or 'all day'}  {e['title']}")
+    path = CONFIG_PATH if os.path.exists(CONFIG_PATH) else EXAMPLE_PATH
+    with open(path, encoding="utf-8") as f:
+        cfg = json.load(f)
+    cal = cfg.setdefault("calendar", {})
+    urls = cal.setdefault("ics_urls", [])
+    if url not in urls:
+        urls.append(url)
+    with open(CONFIG_PATH, "w", encoding="utf-8") as f:
+        json.dump(cfg, f, indent=2)
+    print("Saved. Restart the board: python3 tab_agent.py run")
+    return 0
+
+
 def cmd_check():
     exe = adb_path()
     if not exe:
@@ -871,7 +1196,7 @@ def main():
     global CONFIG, DEMO
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("command", choices=["check", "run", "serve", "setup-esi"], nargs="?",
+    ap.add_argument("command", choices=["check", "run", "serve", "setup-esi", "add-calendar"], nargs="?",
                     default="run")
     ap.add_argument("--port", type=int, default=None)
     ap.add_argument("--lan", action="store_true",
@@ -888,6 +1213,8 @@ def main():
         sys.exit(cmd_check())
     if a.command == "setup-esi":
         sys.exit(cmd_setup_esi())
+    if a.command == "add-calendar":
+        sys.exit(cmd_add_calendar())
 
     if a.command == "run":
         if adb_path():

@@ -114,6 +114,7 @@
           '<span>' + Math.round(H.temperature_2m[i]) + '°</span><span class="p">' + (p >= 20 ? p + "%" : "") + '</span></div>';
       }
       $("hours").innerHTML = html;
+      alerts = w.alerts || [];
 
       var D = w.daily;
       if (D) {
@@ -192,6 +193,49 @@
     }, function () { $("dev").textContent = "Agent offline - showing last data"; });
   }
   function stamp() { $("upd").textContent = "Updated " + fmtTime(new Date()); }
+
+  /* ---------------- calendar ---------------- */
+  function loadCalendar() {
+    api("/api/calendar", function (c) {
+      var ul = $("cal");
+      if (c.error) { ul.innerHTML = '<li class="empty">Calendar unavailable</li>'; return; }
+      if (c.source === "none") { ul.innerHTML = ""; $("clockTile").classList.remove("has-cal"); return; }
+      var ev = c.events || [];
+      if (ev.length) $("clockTile").classList.add("has-cal"); else $("clockTile").classList.remove("has-cal");
+      if (!ev.length) { ul.innerHTML = '<li class="empty">Nothing on today or tomorrow</li>'; return; }
+      var html = "", last = "";
+      for (var i = 0; i < ev.length && i < 3; i++) {
+        var e = ev[i];
+        html += '<li class="' + (e.day === "Today" ? "today" : "tomorrow") + '">' +
+          '<span class="cd">' + (e.day !== last ? esc(e.day) : "") + '</span>' +
+          '<span class="ct">' + (e.time ? esc(e.time) : "all day") + '</span>' +
+          '<span class="cx">' + esc(e.title) + '</span></li>';
+        last = e.day;
+      }
+      ul.innerHTML = html;
+    });
+  }
+
+  /* ---------------- ticker: weather alerts + headlines ---------------- */
+  var alerts = [], headlines = [], tickPos = 0;
+  function loadNews() {
+    api("/api/news", function (n) { headlines = (n && n.headlines) || []; });
+  }
+  function nextTicker() {
+    var items = [], i;
+    for (i = 0; i < alerts.length; i++) items.push(alerts[i]);
+    // weave headlines in after the alerts
+    for (i = 0; i < headlines.length; i++) items.push({ level: "news", text: "\uD83D\uDCF0 " + headlines[i] });
+    var el = $("ticker");
+    if (!items.length) { el.textContent = ""; return; }
+    if (tickPos >= items.length) tickPos = 0;
+    var it = items[tickPos++];
+    el.className = "fade";
+    setTimeout(function () {
+      el.textContent = it.text;
+      el.className = it.level === "warn" ? "warn" : "";
+    }, 400);
+  }
 
   /* ---------------- timers ---------------- */
   var timers = [];
@@ -301,6 +345,9 @@
     loadMeter(); setInterval(loadMeter, 60 * 1000);
     loadIndoor(); setInterval(loadIndoor, 30 * 1000);
     loadDevice(); setInterval(loadDevice, 30 * 1000);
+    loadCalendar(); setInterval(loadCalendar, 5 * 60 * 1000);
+    loadNews(); setInterval(loadNews, 15 * 60 * 1000);
+    setTimeout(nextTicker, 1500); setInterval(nextTicker, 9000);
   }
   api("/api/config", function (c) {
     for (var k in c) if (c.hasOwnProperty(k)) cfg[k] = c[k];
