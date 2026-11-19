@@ -62,6 +62,27 @@ def load_config():
     return cfg
 
 
+def save_eon_key(key):
+    """Store the E.ON API key in config.json and use it straight away."""
+    path = CONFIG_PATH if os.path.exists(CONFIG_PATH) else EXAMPLE_PATH
+    with open(path, encoding="utf-8") as f:
+        cfg = json.load(f)
+    m = cfg.setdefault("meter", {})
+    m["source"] = "eon"
+    eon = m.setdefault("eon", {})
+    eon["api_key"] = key
+    eon.pop("password", None)
+    eon.pop("email", None)
+    with open(CONFIG_PATH, "w", encoding="utf-8") as f:
+        json.dump(cfg, f, indent=2)
+    CONFIG.clear()
+    CONFIG.update(cfg)
+    _eon.update(token=None, exp=0, refresh=None, refresh_exp=0, meters=None)
+    with _cache_lock:
+        _cache.pop("meter", None)
+    log("E.ON API key saved to config.json")
+
+
 def log(msg):
     print(time.strftime("[%H:%M:%S] ") + msg, flush=True)
 
@@ -614,6 +635,43 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-Type", "application/json")
         self.send_header("Cache-Control", "no-store")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    # --- one-click E.ON key: the bookmarklet on eonnext.com posts the key here
+    EON_ORIGINS = ("https://www.eonnext.com", "https://eonnext.com")
+
+    def _cors(self):
+        origin = self.headers.get("Origin", "")
+        if origin in self.EON_ORIGINS:
+            self.send_header("Access-Control-Allow-Origin", origin)
+            self.send_header("Access-Control-Allow-Methods", "POST, OPTIONS")
+            self.send_header("Access-Control-Allow-Headers", "Content-Type")
+            self.send_header("Access-Control-Allow-Private-Network", "true")
+        return origin in self.EON_ORIGINS
+
+    def do_OPTIONS(self):
+        allowed = self.headers.get("Origin", "") in self.EON_ORIGINS
+        self.send_response(204 if allowed else 403)
+        self._cors()
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+
+    def do_POST(self):
+        if self.path.split("?")[0] != "/api/eon-key":
+            self.send_error(404)
+            return
+        n = min(int(self.headers.get("Content-Length") or 0), 4096)
+        key = self.rfile.read(n).decode("utf-8", "replace").strip()
+        ok = False
+        if self.headers.get("Origin", "") in self.EON_ORIGINS and re.fullmatch(r"sk_live_\w{8,200}", key):
+            save_eon_key(key)
+            ok = True
+        body = json.dumps({"saved": ok}).encode()
+        self.send_response(200 if ok else 403)
+        self._cors()
+        self.send_header("Content-Type", "application/json")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
