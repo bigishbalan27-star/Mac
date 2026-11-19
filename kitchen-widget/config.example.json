@@ -1,0 +1,47 @@
+{
+  "title": "Kitchen",
+  "port": 8765,
+  "demo": false,
+  "locale": "en-GB",
+  "clock_24h": true,
+
+  "location": { "name": "London", "latitude": 51.5072, "longitude": -0.1276 },
+  "units": { "temperature": "celsius", "wind": "kmh" },
+
+  "night_mode": { "start": 22, "end": 6 },
+
+  "refresh_seconds": { "weather": 600, "meter": 10, "indoor": 30 },
+
+  "tablet": {
+    "serial": null,
+    "browser": "chrome",
+    "keep_screen_on": true,
+    "screen_timeout_minutes": null,
+    "brightness": null
+  },
+
+  "meter": {
+    "source": "none",
+    "currency": "£",
+    "price_per_kwh": 0.245,
+    "standing_charge_per_day": 0.60,
+    "entities": {
+      "power_w": "sensor.smart_meter_electricity_power",
+      "today_kwh": "sensor.smart_meter_electricity_import_today",
+      "yesterday_kwh": null,
+      "gas_today_kwh": "sensor.smart_meter_gas_import_today"
+    },
+    "octopus": { "api_key": "sk_live_...", "mpan": "", "serial": "" }
+  },
+
+  "indoor": {
+    "source": "none",
+    "entities": {
+      "temperature": "sensor.kitchen_temperature",
+      "humidity": "sensor.kitchen_humidity",
+      "co2": null
+    }
+  },
+
+  "homeassistant": { "url": "http://homeassistant.local:8123", "token": "" }
+}
