@@ -281,3 +281,28 @@ Edit tips: hook card on screen from frame 1, text in the middle third, burn in c
 > #Mykonos #TravelWithKids #UKMallu
 
 Say the keyword in the video too: change the 26–28 s line to "Parents, plan or go? Comment below."
+
+---
+
+## Reel 6 — "Kerala rules, UK kid" (talking to camera)
+**Status:** script ready · **Footage:** new: you to camera + dinner table with your son · **Length:** ~29 s
+**Why this one:** Manglish one-liners about kids beat place-only reels in [viral-swipe.md](viral-swipe.md). Hook scored 77.8 STRONG.
+
+**Check before shooting:** use his real words for the rice/chips exchange, and keep the camera rolling at dinner for a real "cheers" reply to a Malayalam question. Name a grandparent in the Kerala line if there's someone specific.
+
+| Time | Shot | Spoken | On-screen text |
+|---|---|---|---|
+| 0–3 s | You to camera, mid-sentence, son in the background | Malayalam only, I said. Cheers, said my son. | **KERALA RULES. UK KID. 🇬🇧** |
+| 3–5 s | You pointing at the floor | One rule in this house. Kerala rules. | |
+| 5–8 s | Dinner: you offer rice, he points at chips | Choru venno? No thanks. Chips please. | Choru venno? (Want rice?) → "Chips please" 🍟 |
+| 8–9 s | Close-up of him, pleased with himself | Very polite. Wrong language. | |
+| 9–11 s | Quick cuts: "please", "thank you", "cheers" | Please, thank you, cheers. | Polite ✅ Malayalam ❌ |
+| 11–13 s | You, deadpan | All of it in English, every single time. | |
+| 13–15 s | You, leaning in | But I'm not giving up. | |
+| 15–17 s | Photo or clip from Kerala | One day he'll visit Kerala, | One day, in Kerala… |
+| 17–22 s | You and him together, quieter moment | and I want him to understand every word the family says to him. | |
+| 22–25 s | You to camera | UK Mallu parents, which language does your kid answer in? | |
+| 25–29 s | You ask him something in Malayalam → he says "cheers" | Me? Still asking in Malayalam. He's still saying cheers. | Still saying cheers. |
+
+Edit tips: hook card on screen from frame 1, text in the middle third, burn in captions. The last word "cheers" loops back into the hook.
+Next: caption.
