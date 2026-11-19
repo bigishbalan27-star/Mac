@@ -604,7 +604,16 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 def serve(port, bind):
-    httpd = ThreadingHTTPServer((bind, port), Handler)
+    try:
+        httpd = ThreadingHTTPServer((bind, port), Handler)
+    except OSError as e:
+        if e.errno in (48, 98, 10048):  # address already in use (mac/linux/win)
+            log(f"Port {port} is already in use - the board is probably already "
+                f"running in another Terminal window.\n"
+                f"  Stop it:   lsof -ti tcp:{port} | xargs kill\n"
+                f"  Or run on another port:   python3 tab_agent.py run --port {port + 5}")
+            sys.exit(1)
+        raise
     log(f"Dashboard on http://{'localhost' if bind == '127.0.0.1' else bind}:{port}/")
     httpd.serve_forever()
 
