@@ -1226,8 +1226,106 @@ def serve(port, bind):
                 f"  Or run on another port:   python3 tab_agent.py run --port {port + 5}")
             sys.exit(1)
         raise
-    log(f"Dashboard on http://{'localhost' if bind == '127.0.0.1' else bind}:{port}/")
+    if bind == "127.0.0.1":
+        log(f"Dashboard on http://localhost:{port}/")
+    else:
+        log("Dashboard is on your network. Open one of these on the tablet or a phone:")
+        for name, ip in network_addresses():
+            log(f"   http://{ip}:{port}/      ({name})")
+    keep_mac_awake()
     httpd.serve_forever()
+
+
+def network_addresses():
+    """[(label, ip)] for the home network and Tailscale, best effort."""
+    import socket
+    out = []
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("192.0.2.1", 9))  # no packet is sent; picks the outgoing interface
+        out.append(("home Wi-Fi", s.getsockname()[0]))
+        s.close()
+    except OSError:
+        pass
+    ts = shutil.which("tailscale") or (
+        "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+        if os.path.exists("/Applications/Tailscale.app/Contents/MacOS/Tailscale") else None)
+    if ts:
+        try:
+            r = subprocess.run([ts, "ip", "-4"], capture_output=True, text=True, timeout=5)
+            for ip in r.stdout.split():
+                if ip.startswith("100."):
+                    out.append(("Tailscale - works away from home", ip))
+        except Exception:
+            pass
+    if not out:
+        out.append(("this Mac", "localhost"))
+    return out
+
+
+def keep_mac_awake():
+    """Stop the Mac idling to sleep while the board runs (macOS 'caffeinate')."""
+    if sys.platform == "darwin" and shutil.which("caffeinate"):
+        try:
+            subprocess.Popen(["caffeinate", "-i", "-s", "-w", str(os.getpid())])
+            log("Keeping the Mac awake while the board runs")
+        except OSError:
+            pass
+
+
+PLIST = os.path.expanduser("~/Library/LaunchAgents/com.kitchenboard.agent.plist")
+
+
+def cmd_install_autostart():
+    if sys.platform != "darwin":
+        print("Autostart is for macOS only.")
+        return 1
+    home = os.path.expanduser("~")
+    for protected in ("Downloads", "Documents", "Desktop"):
+        if HERE.startswith(os.path.join(home, protected) + os.sep):
+            print(f"macOS won't let background programs read your {protected} folder.")
+            print("Move the board to your home folder first, then run this again from there:")
+            print(f'  mv "{HERE}" ~/KitchenBoard && cd ~/KitchenBoard && python3 tab_agent.py install-autostart')
+            return 1
+    log_path = os.path.expanduser("~/Library/Logs/kitchen-board.log")
+    plist = f"""<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.kitchenboard.agent</string>
+  <key>ProgramArguments</key><array>
+    <string>{sys.executable}</string><string>{os.path.join(HERE, "tab_agent.py")}</string>
+    <string>run</string><string>--lan</string>
+  </array>
+  <key>WorkingDirectory</key><string>{HERE}</string>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+  <key>ThrottleInterval</key><integer>30</integer>
+  <key>StandardOutPath</key><string>{log_path}</string>
+  <key>StandardErrorPath</key><string>{log_path}</string>
+</dict></plist>
+"""
+    os.makedirs(os.path.dirname(PLIST), exist_ok=True)
+    subprocess.run(["launchctl", "unload", PLIST], capture_output=True)
+    with open(PLIST, "w", encoding="utf-8") as f:
+        f.write(plist)
+    r = subprocess.run(["launchctl", "load", "-w", PLIST], capture_output=True, text=True)
+    if r.returncode != 0:
+        print("launchctl said:", r.stderr.strip() or r.stdout.strip())
+        return 1
+    print("Done - the board now starts by itself when you log in to the Mac,")
+    print("and restarts if it ever stops. Close any Terminal window running it.")
+    print(f"Its messages go to: {log_path}")
+    print("  see them:  tail -f ~/Library/Logs/kitchen-board.log")
+    print("  turn off:  python3 tab_agent.py remove-autostart")
+    return 0
+
+
+def cmd_remove_autostart():
+    subprocess.run(["launchctl", "unload", "-w", PLIST], capture_output=True)
+    if os.path.exists(PLIST):
+        os.remove(PLIST)
+    print("Autostart removed. Start the board yourself with: python3 tab_agent.py run")
+    return 0
 
 
 # --------------------------------------------------------------------------
@@ -1332,7 +1430,8 @@ def main():
     global CONFIG, DEMO
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("command", choices=["check", "run", "serve", "setup-esi", "add-calendar", "setup-ring"], nargs="?",
+    ap.add_argument("command", choices=["check", "run", "serve", "setup-esi", "add-calendar", "setup-ring",
+                                        "install-autostart", "remove-autostart"], nargs="?",
                     default="run")
     ap.add_argument("--port", type=int, default=None)
     ap.add_argument("--lan", action="store_true",
@@ -1353,6 +1452,10 @@ def main():
         sys.exit(cmd_add_calendar())
     if a.command == "setup-ring":
         sys.exit(ring_bridge.setup_interactive(CONFIG_PATH, EXAMPLE_PATH))
+    if a.command == "install-autostart":
+        sys.exit(cmd_install_autostart())
+    if a.command == "remove-autostart":
+        sys.exit(cmd_remove_autostart())
 
     if a.command in ("run", "serve") and not DEMO:
         ring_bridge.start(CONFIG.get("ring"), log)

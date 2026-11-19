@@ -119,6 +119,25 @@ When someone presses the doorbell, the tablet shows **"Someone's at the Front Do
 
 Live video isn't possible on this tablet: Ring's live stream needs a much newer browser. Ring has no official public API. This uses the same community library as Home Assistant's Ring integration, so it can stop working if Ring changes things.
 
+## 8. Over Wi-Fi, on your phone, and away from home
+
+**Tablet over Wi-Fi (no USB cable):** run `python3 tab_agent.py run --lan`. It prints addresses such as `http://192.168.1.23:8765/`; open that on the tablet. If macOS asks whether Python may accept incoming connections, click **Allow**. To keep the tablet's screen on while it charges, turn on **Settings › Developer options › Stay awake**.
+
+**Phone:** open the same address in the phone's browser on the home Wi-Fi. On a phone the board becomes one scrolling column.
+
+**Away from home:** install the free **Tailscale** app on the Mac and on your phone, and sign in to both with the same account. `run --lan` then also prints a `http://100.x.x.x:8765/` address, which works from anywhere. Only your own signed-in devices can reach it.
+
+**Start automatically:** move the folder out of Downloads (macOS blocks background programs from reading Downloads), then install it as a login item. It starts when you log in, restarts if it stops, and keeps the Mac awake while it runs:
+
+```bash
+mv ~/Downloads/Mac-claude-dreamy-goldberg-bljkix/kitchen-widget ~/KitchenBoard
+```
+```bash
+cd ~/KitchenBoard && python3 tab_agent.py install-autostart
+```
+
+Its messages go to `~/Library/Logs/kitchen-board.log`. To turn it off, run `python3 tab_agent.py remove-autostart`.
+
 ## Files
 
 - `tab_agent.py`: USB agent, web server and data proxy (Python 3.8+, standard library only)

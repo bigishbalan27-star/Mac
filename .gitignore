@@ -35,3 +35,4 @@ __pycache__/
 kitchen-widget/.photo-cache/
 kitchen-widget/ring_token.json
 kitchen-widget/ring_push.json
+kitchen-widget/*.png
