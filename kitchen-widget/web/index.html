@@ -33,13 +33,13 @@
 
   <section class="tile energy" id="energyTile">
     <span class="label">Electricity</span>
-    <div class="big"><span id="pw">--</span><small>W now</small></div>
+    <div class="big"><span id="pw">--</span><small id="pwUnit">W now</small></div>
     <div class="bar"><i id="pwBar"></i></div>
     <dl class="stats">
-      <div><dt>Today</dt><dd id="kwh">--</dd></div>
-      <div><dt>Cost</dt><dd id="cost">--</dd></div>
-      <div><dt>Yesterday</dt><dd id="ykwh">--</dd></div>
-      <div id="gasRow" hidden><dt>Gas today</dt><dd id="gas">--</dd></div>
+      <div><dt id="kwhLbl">Today</dt><dd id="kwh">--</dd></div>
+      <div><dt id="costLbl">Cost</dt><dd id="cost">--</dd></div>
+      <div><dt id="ykwhLbl">Yesterday</dt><dd id="ykwh">--</dd></div>
+      <div id="gasRow" hidden><dt id="gasLbl">Gas today</dt><dd id="gas">--</dd></div>
     </dl>
     <p class="note" id="meterNote"></p>
   </section>

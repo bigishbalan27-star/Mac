@@ -341,6 +341,8 @@ def get_meter():
         }
     elif src == "octopus":
         out = octopus_usage(m.get("octopus", {}))
+    elif src == "eon":
+        out = eon_usage(m.get("eon", {}))
     else:
         return {"error": f"unknown meter source {src}"}
     out["source"] = src
@@ -377,6 +379,138 @@ def octopus_usage(o):
         out["last_half_hour_kwh"] = last["consumption"]
         out["power_w"] = round(last["consumption"] * 2000)  # avg W in slot
         out["note"] = "Octopus data lags ~24h"
+    return out
+
+
+# --- E.ON Next (UK) -------------------------------------------------------
+# No official public API. E.ON Next runs on Kraken; these GraphQL calls are
+# the ones the E.ON Next website uses, as used by the community Home
+# Assistant integration github.com/madmachinations/eon-next. Smart meters
+# send readings roughly daily, so this gives "usage per day", not live watts.
+
+EON_GQL = "https://api.eonnext-kraken.energy/v1/graphql/"
+_eon = {"token": None, "exp": 0, "refresh": None, "refresh_exp": 0, "meters": None}
+
+_EON_LOGIN = ("mutation loginEmailAuthentication($input: ObtainJSONWebTokenInput!) "
+              "{obtainKrakenToken(input: $input) {payload refreshExpiresIn refreshToken token}}")
+_EON_ACCOUNTS = "query headerGetLoggedInUser { viewer { accounts { ... on AccountType { number } } } }"
+_EON_METERS = (
+    "query getAccountMeterSelector($accountNumber: String!, $showInactive: Boolean!) {"
+    " properties(accountNumber: $accountNumber) {"
+    "  electricityMeterPoints { meters(includeInactive: $showInactive) { id serialNumber } }"
+    "  gasMeterPoints { meters(includeInactive: $showInactive) { id serialNumber } } } }")
+_EON_READINGS = (
+    "query r($accountNumber: String!, $cursor: String, $meterId: String!) {"
+    " readings: %sMeterReadings(accountNumber: $accountNumber, after: $cursor,"
+    " first: 12, meterId: $meterId) { edges { node { readAt registers { name value } } } } }")
+
+
+def eon_gql(query, variables=None, auth=True):
+    headers = {"Content-Type": "application/json"}
+    if auth:
+        headers["Authorization"] = "JWT " + eon_token()
+    body = json.dumps({"query": query, "variables": variables or {}}).encode()
+    req = urllib.request.Request(EON_GQL, data=body, headers=headers, method="POST")
+    req.add_header("User-Agent", "kitchen-tab-agent/1.0")
+    with urllib.request.urlopen(req, timeout=15) as r:
+        res = json.loads(r.read().decode("utf-8"))
+    if res.get("errors") and not res.get("data"):
+        raise RuntimeError("E.ON: " + res["errors"][0].get("message", "error"))
+    return res.get("data") or {}
+
+
+def eon_token():
+    now = time.time()
+    if _eon["token"] and _eon["exp"] - 60 > now:
+        return _eon["token"]
+    cfg = CONFIG.get("meter", {}).get("eon", {})
+    if _eon["refresh"] and _eon["refresh_exp"] > now:
+        inp = {"refreshToken": _eon["refresh"]}
+    else:
+        if not cfg.get("email") or not cfg.get("password"):
+            raise RuntimeError("set meter.eon.email and password in config.json")
+        inp = {"email": cfg["email"], "password": cfg["password"]}
+    d = eon_gql(_EON_LOGIN, {"input": inp}, auth=False).get("obtainKrakenToken")
+    if not d or not d.get("token"):
+        _eon["refresh"] = None
+        raise RuntimeError("E.ON login failed - check email/password")
+    _eon.update(token=d["token"], exp=d["payload"]["exp"],
+                refresh=d["refreshToken"], refresh_exp=d["refreshExpiresIn"])
+    return d["token"]
+
+
+def eon_meters():
+    if _eon["meters"] is None:
+        acct = CONFIG.get("meter", {}).get("eon", {}).get("account_number")
+        accounts = [acct] if acct else [
+            a["number"] for a in eon_gql(_EON_ACCOUNTS)["viewer"]["accounts"]]
+        meters = []
+        for num in accounts:
+            for prop in eon_gql(_EON_METERS, {"accountNumber": num,
+                                              "showInactive": False})["properties"]:
+                for kind, key in (("electricity", "electricityMeterPoints"),
+                                  ("gas", "gasMeterPoints")):
+                    for point in prop.get(key) or []:
+                        for m in point.get("meters") or []:
+                            meters.append({"kind": kind, "id": m["id"],
+                                           "serial": m["serialNumber"], "account": num})
+        _eon["meters"] = meters
+    return _eon["meters"]
+
+
+def gas_m3_to_kwh(m3, calorific=38.0):
+    return m3 * 1.02264 * calorific / 3.6
+
+
+def eon_readings(meter):
+    data = eon_gql(_EON_READINGS % meter["kind"], {
+        "accountNumber": meter["account"], "cursor": "", "meterId": meter["id"]})
+    rows = []
+    for e in (data.get("readings") or {}).get("edges", []):
+        n = e["node"]
+        total = sum(float(r["value"]) for r in n.get("registers") or [])  # sum day/night
+        rows.append((n["readAt"], total))
+    rows.sort()
+    return rows
+
+
+def eon_usage(cfg):
+    """Latest two meter readings per fuel -> kWh/day since the previous one."""
+    out = {"power_w": None, "today_kwh": None, "yesterday_kwh": None}
+    from datetime import datetime
+    seen = set()
+    for meter in eon_meters():
+        if meter["kind"] in seen:
+            continue
+        rows = eon_readings(meter)
+        if not rows:
+            continue
+        seen.add(meter["kind"])
+        last_at, last = rows[-1]
+        if meter["kind"] == "gas" and cfg.get("gas_units", "m3") == "m3":
+            conv = lambda v: gas_m3_to_kwh(v, cfg.get("gas_calorific_value", 38.0))
+        else:
+            conv = lambda v: v
+        per_day = None
+        if len(rows) > 1:
+            prev_at, prev = rows[-2]
+            days = (datetime.fromisoformat(last_at.replace("Z", "+00:00")) -
+                    datetime.fromisoformat(prev_at.replace("Z", "+00:00"))).total_seconds() / 86400
+            if days > 0:
+                per_day = round(conv(last - prev) / days, 2)
+        if meter["kind"] == "electricity":
+            out.update(today_kwh=per_day, latest_day_kwh=per_day,
+                       reading=round(last), reading_date=last_at[:10])
+            if len(rows) > 2:
+                p2_at, p2 = rows[-3]
+                d2 = (datetime.fromisoformat(rows[-2][0].replace("Z", "+00:00")) -
+                      datetime.fromisoformat(p2_at.replace("Z", "+00:00"))).total_seconds() / 86400
+                if d2 > 0:
+                    out["yesterday_kwh"] = round((rows[-2][1] - p2) / d2, 2)
+        else:
+            out["gas_today_kwh"] = per_day
+    if "reading_date" in out:
+        out["note"] = "E.ON reading " + out["reading_date"] + " · kWh per day"
     return out
 
 

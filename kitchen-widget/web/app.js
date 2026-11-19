@@ -117,14 +117,24 @@
         return;
       }
       tile.classList.remove("off");
-      $("pw").textContent = m.power_w == null ? "--" : m.power_w >= 10000 ? (m.power_w / 1000).toFixed(1) + "k" : Math.round(m.power_w);
+      const live = m.power_w != null;
+      // no live watts (e.g. E.ON readings): headline becomes kWh per day
+      $("pw").textContent = live ? (m.power_w >= 10000 ? (m.power_w / 1000).toFixed(1) + "k" : Math.round(m.power_w))
+        : m.today_kwh != null ? num(m.today_kwh, 1) : "--";
+      $("pwUnit").textContent = live ? "W now" : "kWh / day";
+      $("kwhLbl").textContent = m.reading_date ? "Meter" : "Today";
+      $("ykwhLbl").textContent = m.reading_date ? "Day before" : "Yesterday";
+      $("costLbl").textContent = m.reading_date ? "Cost / day" : "Cost";
+      $("pwBar").parentElement.hidden = !live;
       $("pwBar").style.width = Math.min(100, (m.power_w || 0) / 50) + "%"; // 5 kW = full
       $("pwBar").style.backgroundPosition = Math.min(100, (m.power_w || 0) / 30) + "% 0";
-      $("kwh").textContent = m.today_kwh == null ? "--" : num(m.today_kwh, 1) + " kWh";
+      $("kwh").textContent = m.reading_date ? Math.round(m.reading) + " kWh"
+        : m.today_kwh == null ? "--" : num(m.today_kwh, 1) + " kWh";
       $("ykwh").textContent = m.yesterday_kwh == null ? "--" : num(m.yesterday_kwh, 1) + " kWh";
       $("cost").textContent = m.today_cost == null ? "--" : (m.currency || "") + num(m.today_cost, 2);
       $("gasRow").hidden = m.gas_today_kwh == null;
       $("gas").textContent = num(m.gas_today_kwh, 1) + " kWh";
+      $("gasLbl").textContent = m.reading_date ? "Gas / day" : "Gas today";
       $("meterNote").textContent = m.note || (m.stale ? "Meter offline - last reading" : "");
     } catch (e) { /* agent unreachable; status bar shows it */ }
   }

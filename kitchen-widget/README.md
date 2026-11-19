@@ -44,9 +44,14 @@ Set `meter.source` in `config.json`:
 |---|---|
 | `homeassistant` | `homeassistant.url` and a long-lived token (HA › Profile › Security). Fill in your sensor entity IDs under `meter.entities`. This works with Glow/Hildebrand CAD, Shelly EM, P1 readers, Hildebrand MQTT, Octopus Home Mini via the HA integration, and similar. |
 | `octopus` | Octopus Energy API key, MPAN and meter serial (from octopus.energy › Account › Personal details › API access). Data is about 24 hours behind; for live readings, use an Octopus Home Mini through Home Assistant. |
+| `eon` | **E.ON Next** customers: your E.ON Next login email and password under `meter.eon` (optionally your account number). Shows kWh per day for electricity and gas, cost per day, and the meter reading. E.ON has no official API; this uses the same API as the E.ON Next website (as in the community [eon-next](https://github.com/madmachinations/eon-next) Home Assistant integration), so it could break if E.ON changes it. Smart meters send readings about once a day, so there are no live watts. |
 | `none` | the tile shows "No smart meter set up" |
 
-Set `price_per_kwh` and `standing_charge_per_day` to get a cost figure.
+Set `price_per_kwh` and `standing_charge_per_day` to get a cost figure. These are on your E.ON bill or in the app under *Tariff*.
+
+**Live watts with E.ON:** E.ON smart meters (SMETS2) send data only about once a day. For a live "W now" figure, add one of these, then use `homeassistant` as the source:
+- a **Hildebrand Glow display / CAD** (about £70), which reads the meter's home network every 10 seconds and feeds Home Assistant over local MQTT
+- the free **Glow Bright** app (Hildebrand), which links to your meter through the DCC and gives 30-minute data in Home Assistant through the `hildebrand_glow_ihd` / Bright integration
 
 ## 4. Indoor temperature
 
