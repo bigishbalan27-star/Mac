@@ -17,6 +17,12 @@
         "source": "github",
         "repo": "coreyhaines31/marketingskills"
       }
+    },
+    "ecc": {
+      "source": {
+        "source": "github",
+        "repo": "affaan-m/everything-claude-code"
+      }
     }
   },
   "enabledPlugins": {
@@ -24,7 +30,8 @@
     "agents-media-content@buildwithclaude": true,
     "agents-sales-marketing@buildwithclaude": true,
     "agents-design-experience@buildwithclaude": true,
-    "marketing-skills@marketingskills": true
+    "marketing-skills@marketingskills": true,
+    "ecc@ecc": true
   },
   "hooks": {
     "PreToolUse": [
@@ -50,6 +57,16 @@
       }
     ],
     "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "command -v graphify >/dev/null 2>&1 && { graphify hook install >/dev/null 2>&1; graphify update . >/dev/null 2>&1; }; exit 0",
+            "timeout": 120
+          }
+        ]
+      },
       {
         "matcher": "compact",
         "hooks": [
