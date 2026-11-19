@@ -33,3 +33,5 @@ graphify-out/.graphify_chunk_*.json
 kitchen-widget/config.json
 __pycache__/
 kitchen-widget/.photo-cache/
+kitchen-widget/ring_token.json
+kitchen-widget/ring_push.json

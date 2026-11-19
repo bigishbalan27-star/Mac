@@ -36,6 +36,8 @@ import urllib.parse
 import urllib.request
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
+import ring_bridge
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 WEB_DIR = os.path.join(HERE, "web")
 CONFIG_PATH = os.path.join(HERE, "config.json")
@@ -1114,6 +1116,12 @@ class Handler(SimpleHTTPRequestHandler):
         super().end_headers()
 
     def do_POST(self):
+        if self.path.split("?")[0] == "/api/ring/snapshot":
+            ok = ring_bridge.request_snapshot()
+            self.send_response(204 if ok else 429)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         if self.path.split("?")[0] == "/api/log":
             n = min(int(self.headers.get("Content-Length") or 0), 2000)
             log("[tablet] " + self.rfile.read(n).decode("utf-8", "replace"))
@@ -1169,6 +1177,24 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_json(cached("calendar", ttl.get("calendar", 600), get_calendar))
         if path == "/api/news":
             return self.send_json(cached("news", ttl.get("news", 900), get_news))
+        if path == "/api/ring":
+            st = dict(ring_bridge.STATE)
+            st["events"] = list(st["events"])
+            st["now"] = time.time()
+            if DEMO and not st["enabled"]:
+                st.update(enabled=True, status="demo", devices=["Front Door"], events=[])
+            return self.send_json(st)
+        if path == "/ring/snapshot.jpg":
+            img = ring_bridge.snapshot()
+            if not img:
+                self.send_error(404)
+                return
+            self.send_response(200)
+            self.send_header("Content-Type", "image/jpeg")
+            self.send_header("Content-Length", str(len(img)))
+            self.end_headers()
+            self.wfile.write(img)
+            return
         if path == "/api/photos":
             return self.send_json(get_photos())
         if path.startswith("/photo/"):
@@ -1306,7 +1332,7 @@ def main():
     global CONFIG, DEMO
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("command", choices=["check", "run", "serve", "setup-esi", "add-calendar"], nargs="?",
+    ap.add_argument("command", choices=["check", "run", "serve", "setup-esi", "add-calendar", "setup-ring"], nargs="?",
                     default="run")
     ap.add_argument("--port", type=int, default=None)
     ap.add_argument("--lan", action="store_true",
@@ -1325,6 +1351,11 @@ def main():
         sys.exit(cmd_setup_esi())
     if a.command == "add-calendar":
         sys.exit(cmd_add_calendar())
+    if a.command == "setup-ring":
+        sys.exit(ring_bridge.setup_interactive(CONFIG_PATH, EXAMPLE_PATH))
+
+    if a.command in ("run", "serve") and not DEMO:
+        ring_bridge.start(CONFIG.get("ring"), log)
 
     if a.command == "run":
         if adb_path():

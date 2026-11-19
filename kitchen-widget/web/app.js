@@ -238,6 +238,7 @@
   }
   function nextTicker() {
     var items = [], i;
+    for (i = 0; i < rg.notes.length; i++) items.push(rg.notes[i]);
     for (i = 0; i < alerts.length; i++) items.push(alerts[i]);
     // weave headlines in after the alerts
     for (i = 0; i < headlines.length; i++) items.push({ level: "news", text: "\uD83D\uDCF0 " + headlines[i] });
@@ -378,7 +379,7 @@
   }
   function wantFrame() {
     var c = pf.cfg;
-    if (!c || !c.enabled || !pf.list.length || timerRunning() || !$("alarm").hidden) return false;
+    if (!c || !c.enabled || !pf.list.length || timerRunning() || !$("alarm").hidden || !$("door").hidden) return false;
     var idleMs = (c.idle_minutes || 0) * 60000, now = Date.now();
     var idle = idleMs > 0 && now - pf.lastTouch >= idleMs;
     // after a tap, stay on the board for at least 2 minutes (or the idle time)
@@ -436,6 +437,79 @@
     hideFrame();
   });
 
+  /* ---------------- Ring doorbell ---------------- */
+  var rg = { first: true, lastDing: 0, snapAt: 0, notes: [], openSince: 0, hideTimer: null, skew: 0 };
+  function clockOf(at) { return fmtTime(new Date((at - rg.skew) * 1000)); }
+  function pollRing() {
+    api("/api/ring", function (r) {
+      if (!r.enabled) { $("camBtn").hidden = true; return; }
+      $("camBtn").hidden = false;
+      $("camBtn").textContent = "\uD83D\uDCF7 " + ((r.devices && r.devices[0]) || "Door");
+      rg.skew = r.now - Date.now() / 1000;
+      var ev = r.events || [], i, newestDing = null;
+      rg.notes = [];
+      for (i = 0; i < ev.length; i++) {
+        var e = ev[i], age = r.now - e.at;
+        if (e.kind === "ding" && (!newestDing || e.at > newestDing.at)) newestDing = e;
+        if (e.kind === "motion" && age < 600) rg.notes.push({ level: "warn", text: "\uD83D\uDC40 Motion at " + e.device + " \u00B7 " + clockOf(e.at) });
+      }
+      if (rg.notes.length > 1) rg.notes.length = 1;
+      if (newestDing) {
+        if (rg.first) rg.lastDing = newestDing.at;      // don't alert for old presses
+        else if (newestDing.at > rg.lastDing && r.now - newestDing.at < 180) {
+          rg.lastDing = newestDing.at;
+          openDoor(true, newestDing);
+        }
+      }
+      rg.first = false;
+      if (r.snapshot_at && r.snapshot_at !== rg.snapAt) {
+        rg.snapAt = r.snapshot_at;
+        if (!$("door").hidden) showSnap();
+      }
+      if (!$("door").hidden && r.error) $("doorSub").textContent = r.error;
+    });
+  }
+  function showSnap() {
+    if (!rg.snapAt) { $("doorWait").textContent = "No picture yet"; return; }
+    var img = $("doorImg");
+    img.onload = function () { $("doorWait").textContent = ""; };
+    img.onerror = function () { $("doorWait").textContent = "No picture available"; };
+    img.src = "/ring/snapshot.jpg?t=" + rg.snapAt;
+    $("doorSub").textContent = "Picture from " + clockOf(rg.snapAt);
+  }
+  function chime() {
+    if (!actx) return;
+    [[659, 0], [523, 0.45]].forEach(function (n) {
+      var o = actx.createOscillator(), g = actx.createGain();
+      o.frequency.value = n[0]; o.connect(g); g.connect(actx.destination);
+      g.gain.setValueAtTime(0.5, actx.currentTime + n[1]);
+      g.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + n[1] + 0.9);
+      o.start(actx.currentTime + n[1]); o.stop(actx.currentTime + n[1] + 0.9);
+    });
+  }
+  function openDoor(isDing, e) {
+    if (pf.showing) hideFrame();
+    $("door").className = isDing ? "ding" : "";
+    $("doorTitle").textContent = isDing ? "\uD83D\uDD14 Someone's at the " + e.device : "\uD83D\uDCF7 " + ($("camBtn").textContent.replace("\uD83D\uDCF7 ", ""));
+    $("doorImg").removeAttribute("src");
+    $("doorWait").textContent = "Getting a picture\u2026";
+    $("door").hidden = false;
+    rg.openSince = Date.now(); pf.lastTouch = Date.now();
+    if (isDing) { chime(); setTimeout(chime, 2500); if (navigator.vibrate) navigator.vibrate([300, 150, 300]); }
+    showSnap();
+    clearTimeout(rg.hideTimer);
+    rg.hideTimer = setTimeout(closeDoor, isDing ? 90000 : 60000);
+  }
+  function closeDoor() { clearTimeout(rg.hideTimer); $("door").hidden = true; }
+  function askSnapshot() {
+    var x = new XMLHttpRequest(); x.open("POST", "/api/ring/snapshot", true);
+    x.onload = function () { $("doorSub").textContent = x.status === 204 ? "Asking the camera for a new picture\u2026" : "Please wait a minute between pictures"; };
+    x.send("");
+  }
+  $("camBtn").addEventListener("click", function (e) { e.stopPropagation(); unlockAudio(); openDoor(false, null); askSnapshot(); });
+  $("doorClose").addEventListener("click", function (e) { e.stopPropagation(); closeDoor(); });
+  $("doorRefresh").addEventListener("click", function (e) { e.stopPropagation(); askSnapshot(); });
+
   /* ---------------- start ---------------- */
   function start() {
     document.title = (cfg.title || "Kitchen") + " Board";
@@ -451,6 +525,7 @@
     setTimeout(nextTicker, 1500); setInterval(nextTicker, 9000);
     loadPhotos(); setInterval(loadPhotos, 5 * 60 * 1000);
     setInterval(frameTick, 5000);
+    pollRing(); setInterval(pollRing, 4000);
   }
   api("/api/config", function (c) {
     for (var k in c) if (c.hasOwnProperty(k)) cfg[k] = c[k];

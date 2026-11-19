@@ -18,7 +18,7 @@
   send("LOADED " + navigator.userAgent + " " + screen.width + "x" + screen.height + " css " + window.innerWidth + "x" + window.innerHeight);
 })();
 </script>
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 <main id="board">
@@ -83,12 +83,20 @@
   </section>
 </main>
 
-<footer id="status"><span id="ticker"></span><span id="meta"><span id="dev"></span> <span id="upd"></span></span></footer>
+<footer id="status"><span id="ticker"></span><span id="meta"><button id="camBtn" hidden>📷 Door</button> <span id="dev"></span> <span id="upd"></span></span></footer>
 <div id="frame" hidden>
   <div class="ph" id="ph0"></div><div class="ph" id="ph1"></div>
   <div class="fr-info"><span id="frTime">--:--</span><span id="frSub"></span></div>
 </div>
+<div id="door" hidden>
+  <div class="door-box">
+    <strong id="doorTitle">Front door</strong>
+    <div class="door-img"><img id="doorImg" alt=""><span id="doorWait">Getting a picture…</span></div>
+    <div class="door-sub" id="doorSub"></div>
+    <div class="door-btns"><button id="doorRefresh">↻ New picture</button><button id="doorClose">Close</button></div>
+  </div>
+</div>
 <div id="alarm" hidden><div><strong id="alarmText">Time's up</strong><button id="alarmStop">Stop</button></div></div>
-<script src="app.js?v=6"></script>
+<script src="app.js?v=7"></script>
 </body>
 </html>

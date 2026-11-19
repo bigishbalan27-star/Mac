@@ -109,6 +109,16 @@ The clock, date and outside temperature stay in the corner. Tap anywhere to get 
 
 The Mac's built-in `sips` tool shrinks photos to 1280 px and converts iPhone HEIC photos to JPEG, so the old tablet stays quick. Change the times, idle minutes, seconds per photo or folder under `photos` in `config.json`. Set `"enabled": false` to switch it off.
 
+## 7. Ring doorbell / camera
+
+1. Install the Ring library once on the Mac: `python3 -m pip install ring_doorbell`
+2. Run `python3 tab_agent.py setup-ring`. Log in with your Ring email and password and enter the code Ring texts or emails you. Then pick the doorbell or cameras to use. Only Ring's login token is saved, in `ring_token.json`, never your password.
+3. Restart the board.
+
+When someone presses the doorbell, the tablet shows **"Someone's at the Front Door"** full screen with a fresh snapshot and a chime. Motion shows in the bottom ticker for 10 minutes. The **📷** button in the bottom-right corner shows the latest picture and can ask for a new one, at most one a minute to spare the battery.
+
+Live video isn't possible on this tablet: Ring's live stream needs a much newer browser. Ring has no official public API. This uses the same community library as Home Assistant's Ring integration, so it can stop working if Ring changes things.
+
 ## Files
 
 - `tab_agent.py`: USB agent, web server and data proxy (Python 3.8+, standard library only)
