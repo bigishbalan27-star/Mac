@@ -174,6 +174,8 @@
   function loadMeter() {
     api("/api/meter", function (m) {
       var tile = $("energyTile");
+      var noMeter = m.source === "none";
+      if (noMeter !== calTileMode) { calTileMode = noMeter; applyCalMode(); }
       if (m.source === "none" || m.error) {
         tile.classList.add("off");
         $("meterNote").textContent = m.error ? "Meter: " + m.error : "No smart meter set up";
@@ -247,16 +249,36 @@
   function stamp() { $("upd").textContent = "Updated " + fmtTime(new Date()); }
 
   /* ---------------- calendar ---------------- */
+  var calTileMode = false;
+  function applyCalMode() {
+    $("energyTile").hidden = calTileMode;
+    $("calBox").hidden = !calTileMode;
+    if (calTileMode) { $("cal").innerHTML = ""; $("clockTile").classList.remove("has-cal"); }
+    loadCalendar();
+  }
   function loadCalendar() {
-    api("/api/calendar", function (c) {
+    api("/api/calendar" + (calTileMode ? "?days=7" : ""), function (c) {
+      var ev = c.events || [], i, html = "", last = "";
+      if (calTileMode) {
+        var box = $("calList");
+        if (c.error) { box.innerHTML = '<li class="empty">Calendar unavailable</li>'; return; }
+        if (c.source === "none") { box.innerHTML = '<li class="empty">Add your calendar: python3 tab_agent.py add-calendar</li>'; return; }
+        if (!ev.length) { box.innerHTML = '<li class="empty">Nothing in the next 7 days</li>'; return; }
+        var lines = 0;
+        for (i = 0; i < ev.length && lines < 9; i++) {
+          if (ev[i].day !== last) { html += '<li class="dh">' + esc(ev[i].day) + '</li>'; last = ev[i].day; lines++; }
+          html += '<li><span class="ct">' + (ev[i].time ? esc(ev[i].time) : "all day") + '</span> ' + esc(ev[i].title) + '</li>';
+          lines++;
+        }
+        box.innerHTML = html;
+        return;
+      }
       var ul = $("cal");
       if (c.error) { ul.innerHTML = '<li class="empty">Calendar unavailable</li>'; return; }
       if (c.source === "none") { ul.innerHTML = ""; $("clockTile").classList.remove("has-cal"); return; }
-      var ev = c.events || [];
       if (ev.length) $("clockTile").classList.add("has-cal"); else $("clockTile").classList.remove("has-cal");
       if (!ev.length) { ul.innerHTML = '<li class="empty">Nothing on today or tomorrow</li>'; return; }
-      var html = "", last = "";
-      for (var i = 0; i < ev.length && i < 3; i++) {
+      for (i = 0; i < ev.length && i < 3; i++) {
         var e = ev[i];
         html += '<li class="' + (e.day === "Today" ? "today" : "tomorrow") + '">' +
           '<span class="cd">' + (e.day !== last ? esc(e.day) : "") + '</span>' +

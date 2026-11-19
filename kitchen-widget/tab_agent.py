@@ -628,21 +628,25 @@ def calendar_events(texts, days=2):
                         found.append((t, all_day, e.get("SUMMARY", "(no title)")))
     found.sort(key=lambda x: (x[0].date(), not x[1], x[0]))
     out = []
-    for t, all_day, title in found[:12]:
+    for t, all_day, title in found[:20]:
         day = (t.date() - now.date()).days
-        label = "Today" if day <= 0 else "Tomorrow" if day == 1 else t.strftime("%a")
+        label = "Today" if day <= 0 else "Tomorrow" if day == 1 else t.strftime("%a ") + str(t.day)
         out.append({"day": label, "time": "" if all_day else t.strftime("%H:%M"),
                     "title": title[:80], "all_day": all_day})
     return out
 
 
-def get_calendar():
+def get_calendar(days=None):
     c = CONFIG.get("calendar", {})
+    days = days or int(c.get("days", 2))
     urls = [u for u in c.get("ics_urls", []) if u]
     if DEMO and not urls:
         return {"events": [{"day": "Today", "time": "18:00", "title": "Swimming", "all_day": False},
                            {"day": "Tomorrow", "time": "", "title": "Bin day", "all_day": True},
-                           {"day": "Tomorrow", "time": "09:30", "title": "Dentist", "all_day": False}]}
+                           {"day": "Tomorrow", "time": "09:30", "title": "Dentist", "all_day": False},
+                           {"day": "Sat 22", "time": "14:00", "title": "Football - Aarav", "all_day": False},
+                           {"day": "Sun 23", "time": "", "title": "Mum's birthday", "all_day": True},
+                           {"day": "Tue 25", "time": "19:30", "title": "Parents' evening", "all_day": False}]}
     if not urls:
         return {"events": [], "source": "none"}
     texts = []
@@ -653,7 +657,7 @@ def get_calendar():
             log("calendar: " + str(e)[:120])
     if not texts:
         raise RuntimeError("calendar link not reachable")
-    return {"events": calendar_events(texts, int(c.get("days", 2)))}
+    return {"events": calendar_events(texts, days)}
 
 
 # --- night / idle photo frame ------------------------------------------------
@@ -1213,7 +1217,13 @@ class Handler(SimpleHTTPRequestHandler):
         if path == "/api/device":
             return self.send_json(dict(_device_state))
         if path == "/api/calendar":
-            return self.send_json(cached("calendar", ttl.get("calendar", 600), get_calendar))
+            q = urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
+            try:
+                days = max(1, min(14, int(q.get("days", ["0"])[0]))) or None
+            except ValueError:
+                days = None
+            return self.send_json(cached(f"calendar{days}", ttl.get("calendar", 600),
+                                         lambda: get_calendar(days)))
         if path == "/api/news":
             return self.send_json(cached("news", ttl.get("news", 900), get_news))
         if path == "/api/ring":

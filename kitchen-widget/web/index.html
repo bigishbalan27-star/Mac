@@ -18,7 +18,7 @@
   send("LOADED " + navigator.userAgent + " " + screen.width + "x" + screen.height + " css " + window.innerWidth + "x" + window.innerHeight);
 })();
 </script>
-<link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 <main id="board">
@@ -54,6 +54,11 @@
       <div id="gasRow" hidden><dt id="gasLbl">Gas today</dt><dd id="gas">--</dd></div>
     </dl>
     <p class="note" id="meterNote"></p>
+  </section>
+
+  <section class="tile energy caltile" id="calBox" hidden>
+    <span class="label">Calendar</span>
+    <ul class="cal-list" id="calList"><li class="empty">Loading…</li></ul>
   </section>
 
   <section class="tile indoor" id="indoorTile">
@@ -97,6 +102,6 @@
   </div>
 </div>
 <div id="alarm" hidden><div><strong id="alarmText">Time's up</strong><button id="alarmStop">Stop</button></div></div>
-<script src="app.js?v=8"></script>
+<script src="app.js?v=9"></script>
 </body>
 </html>
