@@ -1006,13 +1006,19 @@ def esi_indoor(cfg):
     devs = esi_devices(cfg)
     if not devs:
         raise RuntimeError("ESi: no thermostats on this account")
-    want = (cfg.get("device_name") or "").strip().lower()
-    d = next((x for x in devs if want and str(x.get("device_name", "")).lower() == want), devs[0])
-    return {"temperature": _tenths(d.get("inside_temparature")),
-            "target": _tenths(d.get("current_temprature")),
-            "humidity": None, "co2": None,
-            "name": d.get("device_name"), "online": d.get("online"),
-            "source": "esi"}
+    wanted = cfg.get("device_names") or ([cfg["device_name"]] if cfg.get("device_name") else [])
+    by_name = {str(d.get("device_name", "")).strip().lower(): d for d in devs}
+    picked = [by_name[w.strip().lower()] for w in wanted if w and w.strip().lower() in by_name]
+    if not picked:
+        picked = devs[:3] if not wanted else devs[:1]
+    rooms = [{"name": d.get("device_name") or "Thermostat",
+              "temperature": _tenths(d.get("inside_temparature")),
+              "target": _tenths(d.get("current_temprature")),
+              "online": d.get("online")} for d in picked[:3]]
+    first = rooms[0]
+    return {"temperature": first["temperature"], "target": first["target"],
+            "humidity": None, "co2": None, "name": first["name"], "online": first["online"],
+            "rooms": rooms, "source": "esi"}
 
 
 def get_indoor():
@@ -1220,21 +1226,24 @@ def cmd_setup_esi():
     for n, d in enumerate(devs, 1):
         print(f"  {n}. {d.get('device_name')}: room {_tenths(d.get('inside_temparature'))}°C, "
               f"set to {_tenths(d.get('current_temprature'))}°C")
-    pick = devs[0]
+    picks = [devs[0]]
     if len(devs) > 1:
-        a = input(f"Which one is the kitchen? [1-{len(devs)}]: ").strip()
-        if a.isdigit() and 1 <= int(a) <= len(devs):
-            pick = devs[int(a) - 1]
+        a = input(f"Which to show? e.g. 1  or  1,2  (up to 3, Enter = all): ").strip()
+        if not a:
+            picks = devs[:3]
+        else:
+            nums = [int(x) for x in a.replace(" ", "").split(",") if x.isdigit() and 1 <= int(x) <= len(devs)]
+            picks = [devs[n - 1] for n in dict.fromkeys(nums)][:3] or [devs[0]]
+    names = [d.get("device_name") for d in picks]
     path = CONFIG_PATH if os.path.exists(CONFIG_PATH) else EXAMPLE_PATH
     with open(path, encoding="utf-8") as f:
         cfg = json.load(f)
     cfg.setdefault("indoor", {}).update(
-        source="esi", esi={"email": email, "password": password,
-                           "device_name": pick.get("device_name")})
+        source="esi", esi={"email": email, "password": password, "device_names": names})
     with open(CONFIG_PATH, "w", encoding="utf-8") as f:
         json.dump(cfg, f, indent=2)
-    print(f"Saved. The Indoors tile will show '{pick.get('device_name')}'. "
-          "Restart the board: python3 tab_agent.py run")
+    print("Saved. The Indoors tile will show: " + ", ".join(str(n) for n in names) +
+          ". Restart the board: python3 tab_agent.py run")
     return 0
 
 

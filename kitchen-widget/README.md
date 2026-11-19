@@ -77,7 +77,7 @@ E.ON allows **one key per account**. The snippet only creates a key if your acco
 
 ## 4. Indoor temperature
 
-**ESi Wi-Fi thermostat (ESi Centro app):** run `python3 tab_agent.py setup-esi`. Log in with the same email and password you use for the ESi Centro app. It lists your thermostats, saves the one you pick, and the Indoors tile then shows the room temperature and what the heating is set to. ESi has no official API; this uses the same calls as the ESi Centro app (as in the community `pyesicentro` library), and the board checks it every 2 minutes.
+**ESi Wi-Fi thermostat (ESi Centro app):** run `python3 tab_agent.py setup-esi`. Log in with the same email and password you use for the ESi Centro app. It lists your thermostats and lets you pick up to three (e.g. `1,2`). With two or more, the Indoors tile shows one row per room, and the Indoors tile then shows the room temperature and what the heating is set to. ESi has no official API; this uses the same calls as the ESi Centro app (as in the community `pyesicentro` library), and the board checks it every 2 minutes.
 
 
 The tablet has no room-temperature sensor; its battery temperature is not room temperature. Set `indoor.source` to `homeassistant` and point `indoor.entities.temperature` / `humidity` / `co2` at any HA sensor, such as a cheap Zigbee or Bluetooth thermometer in the kitchen.

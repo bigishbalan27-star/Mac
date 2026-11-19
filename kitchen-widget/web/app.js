@@ -174,6 +174,21 @@
         return;
       }
       tile.classList.remove("off");
+      var unit = cfg.units.temperature === "fahrenheit" ? "\u00B0F" : "\u00B0C";
+      if (i.rooms && i.rooms.length > 1) {
+        var html = "";
+        for (var r = 0; r < i.rooms.length; r++) {
+          var rm = i.rooms[r], off = rm.online === false || rm.online === "0";
+          html += '<div class="room' + (off ? " off" : "") + '"><div class="rl"><div class="rn">' + esc(rm.name) + (off ? " (offline)" : "") + '</div>' +
+            '<div class="rs">' + (rm.target !== null && rm.target !== undefined ? "set " + num(rm.target, 1) + "\u00B0" : "") + '</div></div>' +
+            '<div class="rt">' + num(rm.temperature, 1) + '<small>' + unit + '</small></div></div>';
+        }
+        $("rooms").innerHTML = html;
+        $("rooms").hidden = false; $("inBig").hidden = true;
+        $("inHum").textContent = ""; $("inCo2").textContent = ""; $("inNote").textContent = "";
+        return;
+      }
+      $("rooms").hidden = true; $("inBig").hidden = false;
       $("inTemp").textContent = num(i.temperature, 1);
       $("inUnit").textContent = cfg.units.temperature === "fahrenheit" ? "°F" : "°C";
       $("inHum").textContent = i.humidity !== null && i.humidity !== undefined ? "💧 " + Math.round(i.humidity) + "%" : "";

@@ -18,7 +18,7 @@
   send("LOADED " + navigator.userAgent + " " + screen.width + "x" + screen.height + " css " + window.innerWidth + "x" + window.innerHeight);
 })();
 </script>
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 <main id="board">
@@ -58,7 +58,8 @@
 
   <section class="tile indoor" id="indoorTile">
     <span class="label">Indoors</span>
-    <div class="big"><span id="inTemp">--</span><small id="inUnit">°</small></div>
+    <div class="big" id="inBig"><span id="inTemp">--</span><small id="inUnit">°</small></div>
+    <div class="rooms" id="rooms" hidden></div>
     <div class="row"><span id="inHum"></span><span id="inCo2"></span></div>
     <p class="note" id="inNote"></p>
   </section>
@@ -88,6 +89,6 @@
   <div class="fr-info"><span id="frTime">--:--</span><span id="frSub"></span></div>
 </div>
 <div id="alarm" hidden><div><strong id="alarmText">Time's up</strong><button id="alarmStop">Stop</button></div></div>
-<script src="app.js?v=5"></script>
+<script src="app.js?v=6"></script>
 </body>
 </html>
