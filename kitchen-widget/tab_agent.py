@@ -421,8 +421,20 @@ def eon_gql(query, variables=None, auth=True):
     body = json.dumps({"query": query, "variables": variables or {}}).encode()
     req = urllib.request.Request(EON_GQL, data=body, headers=headers, method="POST")
     req.add_header("User-Agent", "kitchen-tab-agent/1.0")
-    with urllib.request.urlopen(req, timeout=15) as r:
-        res = json.loads(r.read().decode("utf-8"))
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            res = json.loads(r.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        # Kraken puts the useful message in the body of 4xx replies
+        body = e.read().decode("utf-8", "replace")
+        try:
+            errs = json.loads(body).get("errors") or []
+            msg = "; ".join(x.get("message", "") for x in errs) or body[:200]
+        except ValueError:
+            msg = body[:200]
+        if auth and e.code in (400, 401):
+            _eon["token"] = None  # force a fresh login next time
+        raise RuntimeError(f"E.ON HTTP {e.code}: {msg}")
     if res.get("errors") and not res.get("data"):
         raise RuntimeError("E.ON: " + res["errors"][0].get("message", "error"))
     return res.get("data") or {}
