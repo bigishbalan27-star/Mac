@@ -24,6 +24,7 @@ Usage:
 
 import argparse
 import json
+import re
 import os
 import shutil
 import subprocess
@@ -262,11 +263,17 @@ def cached(key, ttl, fn):
     try:
         val = fn()
     except Exception as e:
-        if hit:  # serve stale rather than nothing
+        log(f"{key}: {e}")
+        if hit and "error" not in hit[1]:  # serve stale rather than nothing
             stale = dict(hit[1])
             stale["stale"] = True
-            return stale
-        return {"error": str(e)}
+            val = stale
+        else:
+            val = {"error": str(e)}
+        # back off before trying again (E.ON blocks clients that retry fast)
+        with _cache_lock:
+            _cache[key] = (now - ttl + max(60, min(ttl, 900)), val)
+        return val
     with _cache_lock:
         _cache[key] = (now, val)
     return val
@@ -400,7 +407,7 @@ def octopus_usage(o):
 EON_GQL = "https://api.eonnext-kraken.energy/v1/graphql/"
 _eon = {"token": None, "exp": 0, "refresh": None, "refresh_exp": 0, "meters": None}
 
-_EON_LOGIN = ("mutation loginEmailAuthentication($input: ObtainJSONWebTokenInput!) "
+_EON_LOGIN = ("mutation obtainKrakenToken($input: ObtainJSONWebTokenInput!) "
               "{obtainKrakenToken(input: $input) {payload refreshExpiresIn refreshToken token}}")
 _EON_ACCOUNTS = "query headerGetLoggedInUser { viewer { accounts { ... on AccountType { number } } } }"
 _EON_METERS = (
@@ -412,6 +419,17 @@ _EON_READINGS = (
     "query r($accountNumber: String!, $cursor: String, $meterId: String!) {"
     " readings: %sMeterReadings(accountNumber: $accountNumber, after: $cursor,"
     " first: 12, meterId: $meterId) { edges { node { readAt registers { name value } } } } }")
+
+
+def _redact(msg):
+    """Never let credentials echoed by the API reach logs or the screen."""
+    msg = re.sub(r"got invalid value \{.*?\};", "got invalid value [hidden];", msg)
+    eon = CONFIG.get("meter", {}).get("eon", {})
+    for secret in (eon.get("password"), eon.get("api_key")):
+        if secret and len(secret) > 4:
+            msg = msg.replace(secret, "[hidden]")
+    msg = re.sub(r"sk_live_\w+", "sk_live_[hidden]", msg)
+    return msg
 
 
 def eon_gql(query, variables=None, auth=True):
@@ -432,11 +450,12 @@ def eon_gql(query, variables=None, auth=True):
             msg = "; ".join(x.get("message", "") for x in errs) or body[:200]
         except ValueError:
             msg = body[:200]
+        msg = _redact(msg)
         if auth and e.code in (400, 401):
             _eon["token"] = None  # force a fresh login next time
         raise RuntimeError(f"E.ON HTTP {e.code}: {msg}")
     if res.get("errors") and not res.get("data"):
-        raise RuntimeError("E.ON: " + res["errors"][0].get("message", "error"))
+        raise RuntimeError("E.ON: " + _redact(res["errors"][0].get("message", "error")))
     return res.get("data") or {}
 
 
@@ -448,15 +467,17 @@ def eon_token():
     if _eon["refresh"] and _eon["refresh_exp"] > now:
         inp = {"refreshToken": _eon["refresh"]}
     else:
-        if not cfg.get("email") or not cfg.get("password"):
-            raise RuntimeError("set meter.eon.email and password in config.json")
-        inp = {"email": cfg["email"], "password": cfg["password"]}
+        key = (cfg.get("api_key") or "").strip()
+        if not key.startswith("sk_"):
+            raise RuntimeError("E.ON needs an API key (sk_live_...) since Oct 2026 - "
+                               "see README 'E.ON API key'")
+        inp = {"APIKey": key}
     d = eon_gql(_EON_LOGIN, {"input": inp}, auth=False).get("obtainKrakenToken")
     if not d or not d.get("token"):
         _eon["refresh"] = None
-        raise RuntimeError("E.ON login failed - check email/password")
+        raise RuntimeError("E.ON login failed - check the API key")
     _eon.update(token=d["token"], exp=d["payload"]["exp"],
-                refresh=d["refreshToken"], refresh_exp=d["refreshExpiresIn"])
+                refresh=d.get("refreshToken"), refresh_exp=d.get("refreshExpiresIn") or 0)
     return d["token"]
 
 
@@ -613,7 +634,10 @@ class Handler(SimpleHTTPRequestHandler):
         if path == "/api/weather":
             return self.send_json(cached("weather", ttl.get("weather", 600), get_weather))
         if path == "/api/meter":
-            return self.send_json(cached("meter", ttl.get("meter", 10), get_meter))
+            mttl = ttl.get("meter", 10)
+            if str(CONFIG.get("meter", {}).get("source", "")).lower().replace(".", "").startswith("eon"):
+                mttl = max(mttl, 1800)
+            return self.send_json(cached("meter", mttl, get_meter))
         if path == "/api/indoor":
             return self.send_json(cached("indoor", ttl.get("indoor", 30), get_indoor))
         if path == "/api/device":

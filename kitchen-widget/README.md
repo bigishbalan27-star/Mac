@@ -50,10 +50,26 @@ Set `meter.source` in `config.json`:
 |---|---|
 | `homeassistant` | `homeassistant.url` and a long-lived token (HA › Profile › Security). Fill in your sensor entity IDs under `meter.entities`. This works with Glow/Hildebrand CAD, Shelly EM, P1 readers, Hildebrand MQTT, Octopus Home Mini via the HA integration, and similar. |
 | `octopus` | Octopus Energy API key, MPAN and meter serial (from octopus.energy › Account › Personal details › API access). Data is about 24 hours behind; for live readings, use an Octopus Home Mini through Home Assistant. |
-| `eon` | **E.ON Next** customers: your E.ON Next login email and password under `meter.eon` (optionally your account number). Shows kWh per day for electricity and gas, cost per day, and the meter reading. E.ON has no official API; this uses the same API as the E.ON Next website (as in the community [eon-next](https://github.com/madmachinations/eon-next) Home Assistant integration), so it could break if E.ON changes it. Smart meters send readings about once a day, so there are no live watts. |
+| `eon` | **E.ON Next** customers: an API key (`sk_live_…`) under `meter.eon.api_key` (see *E.ON API key* below). Shows kWh per day for electricity and gas, cost per day, and the meter reading. E.ON has no official API; this uses the same Kraken API as the E.ON Next website. E.ON's data arrives **3–5 days late**, and there are no live watts. |
 | `none` | the tile shows "No smart meter set up" |
 
 Set `price_per_kwh` and `standing_charge_per_day` to get a cost figure. These are on your E.ON bill or in the app under *Tariff*.
+
+### E.ON API key
+
+Since October 2026, E.ON Next signs customers in through Auth0, and the API no longer accepts an email and password. Instead you create an API key once:
+
+1. Open https://www.eonnext.com in **Chrome** and sign in.
+2. Open **View › Developer › JavaScript Console**.
+3. Paste the contents of `eon_api_key_snippet.js` and press Enter. If Chrome asks, type `allow pasting` first.
+4. It prints "Key copied to the clipboard". Save the key in your password manager too.
+5. Add the key to the board:
+
+```bash
+python3 -c "import json,getpass; c=json.load(open('config.json')); c['meter']['source']='eon'; c['meter'].setdefault('eon',{})['api_key']=getpass.getpass('Paste E.ON API key (hidden): ').strip(); c['meter']['eon'].pop('password',None); c['meter']['eon'].pop('email',None); json.dump(c,open('config.json','w'),indent=2); print('Saved')"
+```
+
+E.ON allows **one key per account**. The snippet only creates a key if your account has none, so it won't break another app that already uses one. Another way to create the key is the browser helper in [savagelands-net/homeassistant-eon-next](https://github.com/savagelands-net/homeassistant-eon-next#getting-an-api-key).
 
 **Live watts with E.ON:** E.ON smart meters (SMETS2) send data only about once a day. For a live "W now" figure, add one of these, then use `homeassistant` as the source:
 - a **Hildebrand Glow display / CAD** (about £70), which reads the meter's home network every 10 seconds and feeds Home Assistant over local MQTT

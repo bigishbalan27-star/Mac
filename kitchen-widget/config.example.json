@@ -33,8 +33,7 @@
     },
     "octopus": { "api_key": "sk_live_...", "mpan": "", "serial": "" },
     "eon": {
-      "email": "you@example.com",
-      "password": "",
+      "api_key": "sk_live_...",
       "account_number": null,
       "gas_units": "m3",
       "gas_calorific_value": 38.0
