@@ -7,12 +7,26 @@ captions, blue serif-italic key words, one drawn scene per spoken line).
 
 | File | Script | Length |
 |---|---|---|
-| `mykonos-spreadsheet_animated_v1_9x16.mp4` | Reel 5, "Kerala dad's Mykonos spreadsheet" | 37.0 s |
-| `kerala-rules_animated_v1_9x16.mp4` | Reel 6, "Kerala rules, UK kid" | 33.5 s |
+| **`mykonos-spreadsheet_animated_v2_9x16.mp4`** | Reel 5, "Kerala dad's Mykonos spreadsheet" | 36.7 s |
+| **`kerala-rules_animated_v2_9x16.mp4`** | Reel 6, "Kerala rules, UK kid" | 35.0 s |
+| `*_animated_v1_9x16.mp4` | first versions, kept for comparison | |
 
-1080×1920, 30 fps, H.264 + AAC. The voice is normalised to −15 LUFS.
+1080×1920, 30 fps, H.264 + AAC. The voice is normalised to −15 LUFS. **Use v2.**
 
-## Voice
+## v2: cloned from my original recording
+
+- **Reference:** 1–16 s of my own recording, `AI Video Studio/References/voice-recording-bigishbalan.m4a`
+  (the same window as made-by-claude v4).
+- **Checks:** all 24 lines (12 per reel) matched their script when transcribed back with Whisper. The check
+  accepts Whisper's spellings of the Malayalam words ("Coruveno" for "Choru venno", "Malu" for "Mallu"), so
+  "Choru venno" is still an English model's attempt at Malayalam: **record that line yourself** if it
+  should sound right.
+- **Closer to me:** median pitch is 117 Hz against 121 Hz in v1; my recording is 103 Hz.
+- **Pace:** the v2 clone already speaks faster (Reel 5 at 132 wpm, Reel 6 at 144 wpm), so it is only
+  sped up 1.15× and 1.05× respectively, to about 151 wpm. My measured pace is 155.
+- Animation, captions and sound design are unchanged apart from the new timing.
+
+## v1 voice
 
 - **Whose voice:** a clone of my voice, made locally with the open-source **Chatterbox** model,
   the same as made-by-claude v4. Nothing was sent to a voice service.
@@ -39,8 +53,8 @@ captions, blue serif-italic key words, one drawn scene per spoken line).
 ```bash
 cd animated-reels_source && npm install
 # in pipeline/ next to a 15 s ref.wav of my voice:
-python3 voice_gen.py reel5 && python3 tempo.py reel5 1.3 && python3 sfx_gen.py reel5
-npx remotion render Reel5 out/mykonos-spreadsheet_animated_v1_9x16.mp4
+python3 voice_gen.py reel5 && python3 tempo.py reel5 1.15 && python3 sfx_gen.py reel5   # reel6: 1.05
+npx remotion render Reel5 out/mykonos-spreadsheet_animated_v2_9x16.mp4
 ```
 
 `voice_gen.py` and `tempo.py` write the voice track to `public/` and the word timings to `src/reel*_timing.json`.

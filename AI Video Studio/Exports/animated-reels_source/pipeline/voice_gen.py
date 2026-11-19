@@ -49,7 +49,10 @@ SPELL = {"color": "colour", "o'clock": "o'clock", "a.m": "am", "a.m.": "am"}
 def norm(s):
     s = s.lower().replace("a.m.", "am").replace("10/10", "ten out of ten").replace("-", " ")
     s = re.sub(r"\b(\d+)\b", lambda m: NUM.get(m.group(1), m.group(1)), s)
-    s = s.replace("color", "colour")
+    s = s.replace("color", "colour").replace("he is ", "he's ").replace("he will ", "he'll ")
+    # Whisper's spellings of the Malayalam words: treat them as the loose words
+    s = re.sub(r"\b(malu|maloo|mallu)\b", "mallu", s)
+    s = re.sub(r"\b(go to veno|coru ?venn?[ou]|coruvenu|jiroveno|choru venno)\b", "choru venno", s)
     return re.sub(r"[^a-z' ]", " ", s).split()
 
 

@@ -2,10 +2,10 @@
  {
   "line": 0,
   "text": "Twelve stops planned. My toddler cancelled nine.",
-  "heard": "12 stops planned my toddler cancelled 9",
+  "heard": "12 stops planned. My toddler cancelled. 9",
   "verified": true,
   "seed": 7,
-  "dur": 4.35
+  "dur": 3.89
  },
  {
   "line": 1,
@@ -13,7 +13,7 @@
   "heard": "Because I'm a Kerala dad, so obviously",
   "verified": true,
   "seed": 7,
-  "dur": 3.1
+  "dur": 2.89
  },
  {
   "line": 2,
@@ -21,47 +21,47 @@
   "heard": "I made a color-coded spreadsheet for a Greek island.",
   "verified": true,
   "seed": 7,
-  "dur": 4.26
+  "dur": 3.3
  },
  {
   "line": 3,
   "text": "Seven a.m. breakfast. Eight sharp, windmills.",
-  "heard": "7 a.m. breakfast 8 sharp windmills",
+  "heard": "7 am breakfast  8 sharp windmills",
   "verified": true,
   "seed": 7,
-  "dur": 4.37
+  "dur": 3.9
  },
  {
   "line": 4,
   "text": "Ten o'clock, Little Venice. Lunch already booked.",
-  "heard": "10 o'clock, Little Venice. Lunch already booked.",
+  "heard": "10 o'clock. Little Venice. Lunch already booked.",
   "verified": true,
   "seed": 7,
-  "dur": 4.4
+  "dur": 3.62
  },
  {
   "line": 5,
   "text": "Day one. He's busy inspecting the hotel bed.",
-  "heard": "Day 1. He's busy inspecting the hotel bed.",
+  "heard": "Day 1. He is busy inspecting the hotel bed.",
   "verified": true,
   "seed": 7,
-  "dur": 3.88
+  "dur": 3.37
  },
  {
   "line": 6,
   "text": "Ten out of ten. Plan gone.",
-  "heard": "10 out of 10  Plan gone",
+  "heard": "10 out of 10, plan gone",
   "verified": true,
   "seed": 7,
-  "dur": 2.88
+  "dur": 2.38
  },
  {
   "line": 7,
   "text": "Then he found the beach, in October,",
-  "heard": "Then he found the beach in October.",
+  "heard": "Then, he found the beach in October.",
   "verified": true,
   "seed": 7,
-  "dur": 2.67
+  "dur": 2.2
  },
  {
   "line": 8,
@@ -69,7 +69,7 @@
   "heard": "And that was it. Nobody was moving.",
   "verified": true,
   "seed": 7,
-  "dur": 2.84
+  "dur": 2.52
  },
  {
   "line": 9,
@@ -77,22 +77,22 @@
   "heard": "3 stops Best holiday we've had",
   "verified": true,
   "seed": 7,
-  "dur": 2.91
+  "dur": 2.84
  },
  {
   "line": 10,
   "text": "Parents, plan or go? Comment below.",
-  "heard": "Parents, plan or go, comment below.",
+  "heard": "Parents, plan or go, comment below",
   "verified": true,
   "seed": 7,
-  "dur": 3.37
+  "dur": 2.82
  },
  {
   "line": 11,
   "text": "Next trip? Spreadsheet's ready. Twelve stops.",
   "heard": "Next trip spreadsheets ready 12 stops",
   "verified": true,
-  "seed": 23,
-  "dur": 4.19
+  "seed": 7,
+  "dur": 3.66
  }
 ]
