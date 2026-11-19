@@ -74,6 +74,9 @@ def adb_path():
     if p:
         return p
     for guess in (
+        os.path.join(HERE, "platform-tools", "adb"),
+        os.path.expanduser("~/platform-tools/adb"),
+        os.path.expanduser("~/Downloads/platform-tools/adb"),
         os.path.expanduser("~/Library/Android/sdk/platform-tools/adb"),
         os.path.expanduser("~/Android/Sdk/platform-tools/adb"),
         "/opt/homebrew/bin/adb",

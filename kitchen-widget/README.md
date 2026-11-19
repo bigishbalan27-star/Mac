@@ -21,7 +21,13 @@ Turns a Galaxy Tab plugged into your computer by USB into an always-on kitchen s
 
 ## 2. On the computer
 
-Install adb (macOS: `brew install android-platform-tools`), then:
+Install adb. The easiest way, which needs no Homebrew or git, is Google's download:
+
+```bash
+curl -L -o ~/platform-tools.zip https://dl.google.com/android/repository/platform-tools-latest-darwin.zip && unzip -o ~/platform-tools.zip -d ~ && xattr -dr com.apple.quarantine ~/platform-tools
+```
+
+The agent finds `~/platform-tools/adb` by itself. With a working Homebrew, `brew install android-platform-tools` also works. Then:
 
 ```bash
 cd kitchen-widget
