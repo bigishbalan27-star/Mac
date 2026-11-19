@@ -24,3 +24,10 @@ Update 12 Nov: Instagram now allows max 5 hashtags. Use these when editing on th
 - Gym reel: #DadLife #FitDad #DadAndSon #UKMallu #MalayaliInUK
 - Breakfast reel: #Mykonos #HolidayBreakfast #FamilyTravel #TravelWithKids #UKMallu
 Scheduled posts (Thu hotel, Wed carousel reminder, Sun lunch) updated to 5 hashtags.
+
+# 19 Nov 2026
+| Reel | Comment | Reply |
+|---|---|---|
+| Paris in winter (16 Nov) | prabhakaran_kadappuram_veedu: "❤️❤️❤️" | Thank you! 🙏❤️ Paris in winter was pure magic ❄️ |
+
+Still to fix on the phone: toddler dance "# theroaminglens" → "#theroaminglens" (and 6 hashtags → 5); Paris caption remove "Hashtags:" and "# TravelReels" → "#TravelReels". Wed 18 Nov carousel was not posted.
