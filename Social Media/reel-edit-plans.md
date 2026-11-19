@@ -265,4 +265,18 @@ https://gcdn.picsart.com/media-engine/c24b40ae-a458-49b6-a948-ec9c3cbdd2df.jpg (
 | 28–30 s | You closing the laptop | Next trip? Spreadsheet's ready. Twelve stops. | |
 
 Edit tips: hook card on screen from frame 1, text in the middle third, burn in captions (most watch muted). The last line ends on "Twelve stops" so the replay loops straight into the hook.
-Next: run `/ig-caption` for the caption.
+**Caption** (linter READY, human score 87 PASS)
+
+> Parents, are you a planner or do you just go? Comment PLAN or GO 👇
+>
+> Twelve stops on the spreadsheet. 7am breakfast, 8am windmills, 10am Little Venice. I'm a UK Mallu dad, so yes, it was colour-coded.
+>
+> Then we did Mykonos with a toddler in October, and he took one look at the hotel bed, bounced on it, found the beach after that and refused to leave for the rest of the day.
+>
+> Three stops. Best family holiday we've had.
+>
+> Family holiday planning for the next one? Already started.
+>
+> #Mykonos #TravelWithKids #UKMallu
+
+Say the keyword in the video too: change the 26–28 s line to "Parents, plan or go? Comment below."
