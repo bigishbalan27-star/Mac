@@ -430,5 +430,17 @@
     "seen": 1795056099.054662,
     "ast_hash": "20ec699681e44baf35840870aa497116",
     "semantic_hash": ""
+  },
+  "AI Video Studio/References/Voice-recording-part2.m4a": {
+    "mtime": 1795057461.065689,
+    "seen": 1795057462.977502,
+    "ast_hash": "406a4a3fc711b567355a646170f445ad",
+    "semantic_hash": ""
+  },
+  "AI Video Studio/References/voice-recording-bigishbalan.m4a": {
+    "mtime": 1795057461.0683587,
+    "seen": 1795057462.9775057,
+    "ast_hash": "08ae38f882d0fdba416bdb0f814094b5",
+    "semantic_hash": ""
   }
 }
