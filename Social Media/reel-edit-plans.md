@@ -320,3 +320,7 @@ Edit tips: hook card on screen from frame 1, text in the middle third, burn in c
 > #UKMallu #MalayaliParents #BilingualKids
 
 Say the keyword in the video too: change the 22–25 s line to "UK Mallu parents, Malayalam or English? Comment below."
+
+---
+
+Animated versions of Reels 5 and 6 (cloned voice): `AI Video Studio/Exports/` · notes in [animated-reels_notes.md](../AI%20Video%20Studio/Exports/animated-reels_notes.md)

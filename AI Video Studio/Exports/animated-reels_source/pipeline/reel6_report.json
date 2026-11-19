@@ -1,0 +1,98 @@
+[
+ {
+  "line": 0,
+  "text": "Malayalam only, I said. Cheers, said my son.",
+  "heard": "Malayalam only, I said.  Cheers, said my son.",
+  "verified": true,
+  "seed": 7,
+  "dur": 4.38
+ },
+ {
+  "line": 1,
+  "text": "One rule in this house. Kerala rules.",
+  "heard": "One rule in this house  Kerala Rules",
+  "verified": true,
+  "seed": 7,
+  "dur": 3.94
+ },
+ {
+  "line": 2,
+  "text": "Choru venno? No thanks. Chips please.",
+  "heard": "Coruveno, no thanks. Chips please.",
+  "verified": false,
+  "seed": 7,
+  "dur": 3.28
+ },
+ {
+  "line": 3,
+  "text": "Very polite. Wrong language.",
+  "heard": "Very polite wrong language",
+  "verified": true,
+  "seed": 7,
+  "dur": 3.06
+ },
+ {
+  "line": 4,
+  "text": "Please, thank you, cheers.",
+  "heard": "Please, thank you, cheers.",
+  "verified": true,
+  "seed": 7,
+  "dur": 2.11
+ },
+ {
+  "line": 5,
+  "text": "All of it in English, every single time.",
+  "heard": "All of it in English, every single time.",
+  "verified": true,
+  "seed": 7,
+  "dur": 2.92
+ },
+ {
+  "line": 6,
+  "text": "But I'm not giving up.",
+  "heard": "But I'm not giving up.",
+  "verified": true,
+  "seed": 7,
+  "dur": 1.55
+ },
+ {
+  "line": 7,
+  "text": "One day he'll visit Kerala,",
+  "heard": "One day, he'll visit Kerala.",
+  "verified": true,
+  "seed": 11,
+  "dur": 2.19
+ },
+ {
+  "line": 8,
+  "text": "and I want him to understand",
+  "heard": "and I want him to understand.",
+  "verified": true,
+  "seed": 7,
+  "dur": 2.0
+ },
+ {
+  "line": 9,
+  "text": "every word the family says to him.",
+  "heard": "Every word the family says to him",
+  "verified": true,
+  "seed": 7,
+  "dur": 2.48
+ },
+ {
+  "line": 10,
+  "text": "UK Mallu parents, Malayalam or English? Comment below.",
+  "heard": "UK Malu parents Malayalam or English  Comment below.",
+  "verified": false,
+  "seed": 7,
+  "dur": 5.99
+ },
+ {
+  "line": 11,
+  "text": "Me? Still asking in Malayalam. He's still saying cheers.",
+  "heard": "Me? Still asking in Malayalam. He's still saying cheers.",
+  "verified": true,
+  "seed": 77,
+  "dur": 4.72
+ }
+]

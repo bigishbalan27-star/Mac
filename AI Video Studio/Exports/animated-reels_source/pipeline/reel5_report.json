@@ -1,0 +1,98 @@
+[
+ {
+  "line": 0,
+  "text": "Twelve stops planned. My toddler cancelled nine.",
+  "heard": "12 stops planned my toddler cancelled 9",
+  "verified": true,
+  "seed": 7,
+  "dur": 4.35
+ },
+ {
+  "line": 1,
+  "text": "Because I'm a Kerala dad, so obviously",
+  "heard": "Because I'm a Kerala dad, so obviously",
+  "verified": true,
+  "seed": 7,
+  "dur": 3.1
+ },
+ {
+  "line": 2,
+  "text": "I made a colour-coded spreadsheet. For a Greek island.",
+  "heard": "I made a color-coded spreadsheet for a Greek island.",
+  "verified": true,
+  "seed": 7,
+  "dur": 4.26
+ },
+ {
+  "line": 3,
+  "text": "Seven a.m. breakfast. Eight sharp, windmills.",
+  "heard": "7 a.m. breakfast 8 sharp windmills",
+  "verified": true,
+  "seed": 7,
+  "dur": 4.37
+ },
+ {
+  "line": 4,
+  "text": "Ten o'clock, Little Venice. Lunch already booked.",
+  "heard": "10 o'clock, Little Venice. Lunch already booked.",
+  "verified": true,
+  "seed": 7,
+  "dur": 4.4
+ },
+ {
+  "line": 5,
+  "text": "Day one. He's busy inspecting the hotel bed.",
+  "heard": "Day 1. He's busy inspecting the hotel bed.",
+  "verified": true,
+  "seed": 7,
+  "dur": 3.88
+ },
+ {
+  "line": 6,
+  "text": "Ten out of ten. Plan gone.",
+  "heard": "10 out of 10  Plan gone",
+  "verified": true,
+  "seed": 7,
+  "dur": 2.88
+ },
+ {
+  "line": 7,
+  "text": "Then he found the beach, in October,",
+  "heard": "Then he found the beach in October.",
+  "verified": true,
+  "seed": 7,
+  "dur": 2.67
+ },
+ {
+  "line": 8,
+  "text": "and that was it. Nobody was moving.",
+  "heard": "And that was it. Nobody was moving.",
+  "verified": true,
+  "seed": 7,
+  "dur": 2.84
+ },
+ {
+  "line": 9,
+  "text": "Three stops. Best holiday we've had.",
+  "heard": "3 stops Best holiday we've had",
+  "verified": true,
+  "seed": 7,
+  "dur": 2.91
+ },
+ {
+  "line": 10,
+  "text": "Parents, plan or go? Comment below.",
+  "heard": "Parents, plan or go, comment below.",
+  "verified": true,
+  "seed": 7,
+  "dur": 3.37
+ },
+ {
+  "line": 11,
+  "text": "Next trip? Spreadsheet's ready. Twelve stops.",
+  "heard": "Next trip spreadsheets ready 12 stops",
+  "verified": true,
+  "seed": 23,
+  "dur": 4.19
+ }
+]
