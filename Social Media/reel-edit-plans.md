@@ -240,3 +240,29 @@ v10 (22.25 s, NO music): for posting from the phone with an Instagram library so
 https://gcdn.picsart.com/media-engine/1366d3d4-7370-4cf6-96c6-ecb0cc3847d7.mp4 (Picsart Drive: dad-gym-reel-v10-no-music.mp4)
 Cover (1080x1920 JPEG): seated row frame, same grade, "I DON'T TRAIN / to look good..." kept inside the 4:5 grid-safe area.
 https://gcdn.picsart.com/media-engine/c24b40ae-a458-49b6-a948-ec9c3cbdd2df.jpg (Picsart Drive: dad-gym-reel-cover.jpg)
+
+---
+
+## Reel 5 — "Kerala dad's Mykonos spreadsheet" (talking to camera)
+**Status:** script ready · **Footage:** new shots of you + spreadsheet screen recording, then Mykonos clips · **Length:** ~30 s
+**Why this one:** person-first hooks beat place-only ones in [viral-swipe.md](viral-swipe.md). Hook scored 80.8 STRONG.
+
+**Check before shooting:** the numbers (12 planned / 9 cancelled / 3 done) and the plan times (7 am breakfast, 8 am windmills, 10 am Little Venice, lunch booked). Swap in the real ones.
+
+| Time | Shot | Spoken | On-screen text |
+|---|---|---|---|
+| 0–2 s | You holding up laptop/phone with the spreadsheet, already mid-gesture | Twelve stops planned. My toddler cancelled nine. | **KERALA DAD'S MYKONOS PLAN 📋** |
+| 2–5 s | Close-up of you, deadpan | Because I'm a Kerala dad, so obviously | |
+| 5–8 s | Screen recording: scroll the colour-coded spreadsheet | I made a colour-coded spreadsheet. For a Greek island. | Colour-coded. Obviously. |
+| 8–11 s | Windmills (or any town shot) | Seven a.m. breakfast. Eight sharp, windmills. | |
+| 11–13 s | Little Venice (or any town shot) | Ten o'clock Little Venice, lunch already booked. | |
+| 13–16 s | Son exploring room (20261016_103454) | Day one. He's busy inspecting the hotel bed. | PLAN vs TODDLER |
+| 16–19 s | Bed bounce (20261016_104015) | Ten out of ten. Plan gone. | Bed test: 10/10 ✅ |
+| 19–21 s | Son running onto the beach (Reel 3 footage) | Then he found the beach in October | Plan: cancelled ❌ |
+| 21–24 s | Wide: family settled on the sand | and that was it, nobody was moving. | |
+| 24–26 s | Sunset or family meal | Three stops. Best holiday we've had. | 3 stops. Best trip. |
+| 26–28 s | You, to camera | Parents, plan or no plan? Tell me. | |
+| 28–30 s | You closing the laptop | Next trip? Spreadsheet's ready. Twelve stops. | |
+
+Edit tips: hook card on screen from frame 1, text in the middle third, burn in captions (most watch muted). The last line ends on "Twelve stops" so the replay loops straight into the hook.
+Next: run `/ig-caption` for the caption.
