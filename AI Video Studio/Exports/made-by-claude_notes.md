@@ -26,4 +26,4 @@
 - **Voice:** a clone of my own voice, made from my two recordings in Drive (`AI Video Studio/References/voice-recording-bigishbalan.m4a`, first 15 s used as the reference). ElevenLabs cloning needs a paid plan and this account is on Free, so it was made locally with the open-source **Chatterbox** model (MIT licence). The recordings never left this machine and Drive.
 - **Checks:** every line was transcribed back and compared word for word. Six lines were regenerated until they matched. The clone's median pitch is 113 Hz against 107 Hz in my recording.
 - **Script:** same `voice.md` script as v3, at my natural pace. Length is 54 s.
-- **Re-make:** `voice_clone_gen.py` then `voice_clone_regen.py` (needs `ref.wav` cut from my recording; it is not in the repo), then `build_timing.py`.
+- **Re-make:** `voice_clone_gen.py` then `voice_clone_regen.py` (needs `ref.wav` cut from my recording; it is not in the repo), then `build_timing.py`. To rebuild `timing.ts` in place from the words it already holds, run `python3 build_timing.py --words timing.ts --out timing.ts --anchors anchors.json` inside `made-by-claude_source/`.
