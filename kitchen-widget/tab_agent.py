@@ -214,7 +214,9 @@ def open_dashboard(serial, port):
         "fully": "de.ozerov.fully",
         "default": None,
     }.get(browser)
-    args = ["shell", "am", "start", "-a", "android.intent.action.VIEW", "-d", url]
+    # same application_id = Chrome reuses one tab instead of opening a new one
+    args = ["shell", "am", "start", "-a", "android.intent.action.VIEW", "-d", url,
+            "--es", "com.android.browser.application_id", "kitchen-board"]
     if pkg:
         args += ["-p", pkg]
     out = adb(*args, serial=serial)
