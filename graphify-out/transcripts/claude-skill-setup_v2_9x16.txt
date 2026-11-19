@@ -1,0 +1,1 @@
+This is how I set up Claude. It all lives in one folder on GitHub. One small file switches on the skills. A skill is just simple notes Claude can read. A map shows how every file connects. Claude writes the plan. Codex checks it. Claude builds it. Codex checks again. Every new session starts ready. Lovely. Comment studio and I can send you the setup.
