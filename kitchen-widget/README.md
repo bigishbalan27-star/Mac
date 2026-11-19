@@ -51,7 +51,7 @@ Set `price_per_kwh` and `standing_charge_per_day` to get a cost figure. These ar
 
 **Live watts with E.ON:** E.ON smart meters (SMETS2) send data only about once a day. For a live "W now" figure, add one of these, then use `homeassistant` as the source:
 - a **Hildebrand Glow display / CAD** (about £70), which reads the meter's home network every 10 seconds and feeds Home Assistant over local MQTT
-- the free **Glow Bright** app (Hildebrand), which links to your meter through the DCC and gives 30-minute data in Home Assistant through the `hildebrand_glow_ihd` / Bright integration
+- the free **Glow Bright** app (Hildebrand), which links to your meter through the DCC and gives 30-minute data in Home Assistant through a Hildebrand Glow integration (search "Glow" in HACS)
 
 ## 4. Indoor temperature
 
