@@ -8,7 +8,17 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="data:,">
 <title>Kitchen Board</title>
-<link rel="stylesheet" href="style.css">
+<script>
+/* Report the browser version and any script error to the Mac (shown in Terminal). */
+(function () {
+  function send(msg) {
+    try { var x = new XMLHttpRequest(); x.open("POST", "/api/log", true); x.setRequestHeader("Content-Type", "text/plain"); x.send(String(msg).slice(0, 500)); } catch (e) {}
+  }
+  window.onerror = function (msg, src, line, col) { send("ERROR " + msg + " @ " + (src || "").split("/").pop() + ":" + line + ":" + (col || "")); };
+  send("LOADED " + navigator.userAgent + " " + screen.width + "x" + screen.height + " css " + window.innerWidth + "x" + window.innerHeight);
+})();
+</script>
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <main id="board">
@@ -73,6 +83,6 @@
 
 <footer id="status"><span id="dev"></span><span id="upd"></span></footer>
 <div id="alarm" hidden><div><strong id="alarmText">Time's up</strong><button id="alarmStop">Stop</button></div></div>
-<script src="app.js"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>

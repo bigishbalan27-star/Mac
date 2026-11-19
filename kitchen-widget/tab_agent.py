@@ -660,7 +660,20 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_header("Content-Length", "0")
         self.end_headers()
 
+    def end_headers(self):
+        # never let the tablet keep an old copy of the page
+        if not self.path.startswith("/api/"):
+            self.send_header("Cache-Control", "no-store, max-age=0")
+        super().end_headers()
+
     def do_POST(self):
+        if self.path.split("?")[0] == "/api/log":
+            n = min(int(self.headers.get("Content-Length") or 0), 2000)
+            log("[tablet] " + self.rfile.read(n).decode("utf-8", "replace"))
+            self.send_response(204)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         if self.path.split("?")[0] != "/api/eon-key":
             self.send_error(404)
             return
