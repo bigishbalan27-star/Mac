@@ -63,3 +63,39 @@ npx remotion render Reel5 out/mykonos-spreadsheet_animated_v2_9x16.mp4
 **Remotion gotcha found while building this:** give CSS `scale` a string (`scale: String(x)`). React adds `px`
 to a plain number, so the browser ignores every value except `0`, and an element whose first frame
 is scale 0 stays invisible for the whole render.
+
+## Captions for the animated versions
+
+When posting, switch on Instagram's **AI info** label (Advanced settings), because the voice is AI-generated.
+
+### Reel 5 animated (`mykonos-spreadsheet_animated_v2_9x16.mp4`)
+
+> Parents, are you a planner or do you just go? Comment PLAN or GO 👇
+>
+> Twelve stops on the spreadsheet. 7am breakfast, 8am windmills, 10am Little Venice. I'm a UK Mallu dad, so yes, it was colour-coded 📋
+>
+> Then we did Mykonos with a toddler in October, and he took one look at the hotel bed, bounced on it, found the beach after that and refused to leave for the rest of the day 🏖️
+>
+> Three stops. Best family holiday we've had.
+>
+> This one is a little animation, and the voice is an AI copy of my own.
+>
+> Family holiday planning for the next one? Already started.
+>
+> #Mykonos #TravelWithKids #UKMallu
+
+### Reel 6 animated (`kerala-rules_animated_v2_9x16.mp4`)
+
+> UK Mallu parents, what does your kid answer in? Comment MALAYALAM or ENGLISH 👇
+>
+> One rule in our house: Malayalam at home.
+>
+> I ask "choru venno?" at dinner and get "no thanks, chips please". Then "please", "thank you" and "cheers" all evening, every word of it in English 🍟
+>
+> Raising bilingual kids in the UK means one Kerala dad versus the rest of Britain.
+>
+> Still asking in Malayalam. One day he'll be in Kerala, and I want him to understand every word 🌴
+>
+> This one is a little animation, and the voice is an AI copy of my own.
+>
+> #UKMallu #MalayaliParents #BilingualKids
