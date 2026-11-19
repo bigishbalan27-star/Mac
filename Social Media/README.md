@@ -70,3 +70,7 @@ Ideas for later: car follow-up (the 1,300-view car reel), Christmas markets, Mal
 - **Monday:** I pull last week's numbers and flag the best/worst reel.
 - **Before each post:** I write the caption + hashtags + on-screen hook text.
 - **Daily:** I draft replies to new comments — you approve, I post them.
+
+---
+
+Viral research (what beats its own account in this niche): [viral-swipe.md](viral-swipe.md)
