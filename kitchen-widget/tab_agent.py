@@ -746,8 +746,12 @@ def get_news():
     if n.get("enabled", True) is False:
         return {"headlines": []}
     if DEMO:
-        return {"headlines": ["Demo headline: council approves new park",
-                              "Demo headline: trains running normally"]}
+        return {"headlines": ["Discrimination claims by McDonald's workers can go ahead, court says",
+                              "Council approves plans for new park and play area in town centre",
+                              "Trains running normally after weekend engineering works",
+                              "Scientists say this winter could be milder than average",
+                              "Local bakery wins national award for its sourdough",
+                              "Petrol prices fall for third month in a row"], "source": "BBC News"}
     import xml.etree.ElementTree as ET
     root = ET.fromstring(http_text(n.get("feed", "https://feeds.bbci.co.uk/news/rss.xml")))
     titles = [i.findtext("title", "").strip() for i in root.iter("item")]
@@ -1200,6 +1204,7 @@ class Handler(SimpleHTTPRequestHandler):
                 "clock_24h": CONFIG.get("clock_24h", True),
                 "night_mode": CONFIG.get("night_mode", {}),
                 "title": CONFIG.get("title", "Kitchen"),
+                "third_tile": CONFIG.get("board", {}).get("third_tile", "news"),
                 "demo": DEMO,
             })
         if path == "/api/weather":

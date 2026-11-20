@@ -18,7 +18,7 @@
   send("LOADED " + navigator.userAgent + " " + screen.width + "x" + screen.height + " css " + window.innerWidth + "x" + window.innerHeight);
 })();
 </script>
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 <main id="board">
@@ -69,7 +69,12 @@
     <p class="note" id="inNote"></p>
   </section>
 
-  <section class="tile timers">
+  <section class="tile timers newstile" id="newsBox" hidden>
+    <span class="label" id="newsSrc">News</span>
+    <ul class="news-list" id="newsList"><li class="empty">Loading headlines…</li></ul>
+  </section>
+
+  <section class="tile timers" id="timerBox">
     <div class="t-head">
       <span class="label">Timers</span>
       <span class="t-add">
@@ -102,6 +107,6 @@
   </div>
 </div>
 <div id="alarm" hidden><div><strong id="alarmText">Time's up</strong><button id="alarmStop">Stop</button></div></div>
-<script src="app.js?v=9"></script>
+<script src="app.js?v=10"></script>
 </body>
 </html>

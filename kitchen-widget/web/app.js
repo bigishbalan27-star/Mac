@@ -291,16 +291,40 @@
   }
 
   /* ---------------- ticker: weather alerts + headlines ---------------- */
-  var alerts = [], headlines = [], tickPos = 0;
+  var alerts = [], headlines = [], tickPos = 0, newsPage = 0, newsSource = "News";
+  function newsTileMode() { return cfg.third_tile !== "timers"; }
   function loadNews() {
-    api("/api/news", function (n) { headlines = (n && n.headlines) || []; });
+    api("/api/news", function (n) {
+      headlines = (n && n.headlines) || [];
+      newsSource = (n && n.source) || "News";
+      renderNews(false);
+    });
+  }
+  function renderNews(advance) {
+    if (!newsTileMode()) return;
+    var ul = $("newsList");
+    $("newsSrc").textContent = newsSource;
+    if (!headlines.length) { ul.innerHTML = '<li class="empty">No headlines right now</li>'; return; }
+    var per = window.innerWidth <= 600 ? headlines.length : (window.innerHeight > 700 ? 4 : window.innerHeight > 600 ? 3 : 2);
+    if (advance) newsPage = (newsPage + 1) * per >= headlines.length ? 0 : newsPage + 1;
+    if (newsPage * per >= headlines.length) newsPage = 0;
+    var html = "";
+    for (var i = newsPage * per; i < headlines.length && i < (newsPage + 1) * per; i++) html += "<li>" + esc(headlines[i]) + "</li>";
+    if (!advance) { ul.innerHTML = html; return; }
+    ul.className = "news-list fade";
+    setTimeout(function () { ul.innerHTML = html; ul.className = "news-list"; }, 500);
+  }
+  function applyThirdTile() {
+    var news = newsTileMode();
+    $("newsBox").hidden = !news;
+    $("timerBox").hidden = news;
   }
   function nextTicker() {
     var items = [], i;
     for (i = 0; i < rg.notes.length; i++) items.push(rg.notes[i]);
     for (i = 0; i < alerts.length; i++) items.push(alerts[i]);
     // weave headlines in after the alerts
-    for (i = 0; i < headlines.length; i++) items.push({ level: "news", text: "\uD83D\uDCF0 " + headlines[i] });
+    if (!newsTileMode()) for (i = 0; i < headlines.length; i++) items.push({ level: "news", text: "\uD83D\uDCF0 " + headlines[i] });
     var el = $("ticker");
     if (!items.length) { el.textContent = ""; return; }
     if (tickPos >= items.length) tickPos = 0;
@@ -618,7 +642,9 @@
     loadIndoor(); setInterval(loadIndoor, 30 * 1000);
     loadDevice(); setInterval(loadDevice, 30 * 1000);
     loadCalendar(); setInterval(loadCalendar, 5 * 60 * 1000);
+    applyThirdTile();
     loadNews(); setInterval(loadNews, 15 * 60 * 1000);
+    setInterval(function () { renderNews(true); }, 20000);
     setTimeout(nextTicker, 1500); setInterval(nextTicker, 9000);
     loadPhotos(); setInterval(loadPhotos, 5 * 60 * 1000);
     setInterval(frameTick, 5000);

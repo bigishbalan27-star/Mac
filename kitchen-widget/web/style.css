@@ -299,3 +299,21 @@ svg.wx { display: inline-block; vertical-align: middle; overflow: visible; }
 @media (max-width: 600px) { .cal-list li { font-size: 4.2vw; } .cal-list li.dh { font-size: 3.4vw; } }
 
 .cal:empty { display: none; }
+
+/* News tile (in place of Timers) */
+.news-list { list-style: none; margin: .5em 0 0; padding: 0; overflow: hidden; -webkit-flex: 1; flex: 1; transition: opacity .5s; }
+.news-list.fade { opacity: 0; }
+.news-list li { font-size: 16px; font-size: clamp(14px, 1.75vw, 26px); line-height: 1.28; color: #f4ede4;
+  padding: .35em 0; border-bottom: 1px solid #3a332d;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.news-list li:last-child { border-bottom: 0; }
+.news-list li.empty { color: #7d7368; }
+@supports not (width: clamp(1px, 1vw, 2px)) { .news-list li { font-size: 1.8vw; } }
+@media (max-aspect-ratio: 1/1) { .news-list li { font-size: 3.3vw; } }
+@media (max-width: 600px) { .news-list li { font-size: 4.4vw; } }
+/* bigger alert line at the bottom */
+#board { height: calc(100vh - 44px); }
+footer { height: 44px; }
+#ticker { font-size: 20px; font-size: clamp(16px, 2.1vw, 28px); }
+@supports not (width: clamp(1px, 1vw, 2px)) { #ticker { font-size: 2.3vw; } }
+@media (max-width: 600px) { #board { height: auto; } footer { height: auto; } }
