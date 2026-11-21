@@ -9,7 +9,8 @@ import json, sys, wave, numpy as np
 reel = sys.argv[1]
 T = json.load(open(f"{reel}_timing_fast.json"))
 EMPH = {"twelve", "nine", "kerala", "colour-coded", "windmills", "booked", "ten", "gone", "beach", "three", "plan", "go",
-        "malayalam", "cheers", "chips", "polite", "wrong", "please", "thank", "english", "giving", "understand", "family"}
+        "malayalam", "cheers", "chips", "polite", "wrong", "please", "thank", "english", "giving", "understand", "family",
+        "nurse", "code", "graphify", "remotion", "viral", "human", "robot", "connected", "path", "seventy-two", "twenty-seven", "eighty-four", "eighty-three"}
 sr = 48000
 out = np.zeros(int(sr * (T["end"] + 1.5)))
 rng = np.random.default_rng(5)
@@ -47,6 +48,10 @@ for w in T["words"]:
         seen.add((w["line"], key))
         add(pop(500 + 60 * (w["line"] % 6)), w["s"] - 0.03, 0.13)
 add(chime(), T["lineStarts"][-1] + 0.1, 0.14)
+# skills reel: an unlock chime as each "Number …" line lands
+for li, line in enumerate(T.get("lines", [])):
+    if line.startswith("Number"):
+        add(chime(), T["lineStarts"][li] + 0.55, 0.12)
 out = np.tanh(out * 1.2) * 0.9
 f = wave.open(f"proj/public/{reel}_sfx.wav", "wb"); f.setnchannels(1); f.setsampwidth(2); f.setframerate(sr)
 f.writeframes((out * 32767).astype(np.int16).tobytes()); f.close()

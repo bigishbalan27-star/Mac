@@ -324,3 +324,5 @@ Say the keyword in the video too: change the 22–25 s line to "UK Mallu parents
 ---
 
 Animated versions of Reels 5 and 6 (cloned voice): `AI Video Studio/Exports/` · notes in [animated-reels_notes.md](../AI%20Video%20Studio/Exports/animated-reels_notes.md)
+
+Claude skills reel (animated, my cloned voice, reference style): `AI Video Studio/Exports/claude-skills-studio_v1_9x16.mp4` · notes in [claude-skills-studio_notes.md](../AI%20Video%20Studio/Exports/claude-skills-studio_notes.md)
