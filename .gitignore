@@ -28,3 +28,11 @@ graphify-out/.graphify_semantic_new.json
 graphify-out/.graphify_analysis.json
 graphify-out/.graphify_partial.txt
 graphify-out/.graphify_chunk_*.json
+
+# Kitchen board private config (tokens)
+kitchen-widget/config.json
+__pycache__/
+kitchen-widget/.photo-cache/
+kitchen-widget/ring_token.json
+kitchen-widget/ring_push.json
+kitchen-widget/*.png

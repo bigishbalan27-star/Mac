@@ -1,0 +1,9 @@
+{
+  "name": "Kitchen Board",
+  "short_name": "Kitchen",
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#14110f",
+  "theme_color": "#14110f"
+}

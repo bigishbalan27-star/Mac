@@ -1,0 +1,319 @@
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #14110f; color: #f4ede4; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "SamsungOne", sans-serif;
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: filter 2s;
+}
+body.night { filter: brightness(.55) sepia(.35); }
+
+#board {
+  height: calc(100vh - 34px);
+  padding: clamp(8px, 1.2vw, 16px);
+  display: grid;
+  gap: clamp(8px, 1.2vw, 16px);
+  grid-template-columns: 1.35fr 1fr 1fr;
+  grid-template-rows: 1.15fr 1fr;
+  grid-template-areas:
+    "clock clock weather"
+    "energy indoor timers"
+    ;
+}
+/* forecast squeezes into the weather column on landscape */
+.clock { grid-area: clock; }
+.weather { grid-area: weather; }
+.energy { grid-area: energy; }
+.indoor { grid-area: indoor; }
+.timers { grid-area: timers; }
+.forecast { display: none; }
+
+@media (min-aspect-ratio: 3/2) {
+  #board {
+    grid-template-columns: 1.1fr .9fr .9fr .9fr;
+    grid-template-areas:
+      "clock clock weather weather"
+      "energy indoor timers forecast";
+  }
+  .forecast { display: flex; grid-area: forecast; }
+}
+@media (max-aspect-ratio: 1/1) { /* portrait */
+  #board {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr 1fr;
+    grid-template-areas:
+      "clock clock" "weather weather" "energy indoor" "timers forecast";
+  }
+  .forecast { display: flex; grid-area: forecast; }
+}
+
+.tile {
+  background: #1f1b18;
+  border: 1px solid #3a332d;
+  border-radius: 22px;
+  padding: clamp(12px, 1.6vw, 24px);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.label {
+  font-size: clamp(12px, 1.1vw, 16px);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #7d7368;
+  font-weight: 600;
+}
+.note { margin: auto 0 0; color: #7d7368; font-size: clamp(11px, 1vw, 14px); }
+
+/* clock */
+.clock { justify-content: center; background: linear-gradient(160deg, #26211d, #1f1b18); }
+.time { display: flex; align-items: baseline; line-height: .9; font-weight: 300; }
+#hm { font-size: clamp(80px, 13.5vw, 230px); letter-spacing: -.03em; }
+.sec { font-size: clamp(22px, 3vw, 52px); color: #7d7368; margin-left: .25em; font-weight: 400; }
+.ampm { font-size: clamp(20px, 2.4vw, 40px); color: #b9ad9f; margin-left: .3em; }
+.date { font-size: clamp(22px, 2.9vw, 48px); color: #f2a65a; margin-top: .35em; font-weight: 500; }
+.sun { margin-top: .6em; color: #b9ad9f; font-size: clamp(14px, 1.4vw, 22px); display: flex; gap: 1.4em; }
+
+/* weather */
+.w-head { display: flex; justify-content: space-between; align-items: center; }
+.aq { font-size: clamp(11px, 1vw, 14px); padding: .25em .7em; border-radius: 99px; background: #26211d; color: #b9ad9f; }
+.w-now { display: flex; align-items: center; gap: .2em; margin-top: .2em; }
+.w-icon { font-size: clamp(48px, 6vw, 96px); line-height: 1; }
+.w-temp { font-size: clamp(64px, 8vw, 132px); font-weight: 300; line-height: 1; letter-spacing: -.03em; }
+.w-desc { font-size: clamp(18px, 1.9vw, 30px); color: #f4ede4; }
+.w-meta { color: #b9ad9f; font-size: clamp(13px, 1.25vw, 19px); margin-top: .3em; display: flex; flex-wrap: wrap; gap: .3em 1.2em; }
+.hours { margin-top: auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; text-align: center; padding-top: .6em; border-top: 1px solid #3a332d; }
+.hours div { display: flex; flex-direction: column; gap: 2px; font-size: clamp(12px, 1.15vw, 17px); }
+.hours .h { color: #7d7368; }
+.hours .i { font-size: 1.4em; }
+.hours .p { color: #7cc4e8; font-size: .85em; min-height: 1.1em; }
+
+/* energy & indoor */
+.big { display: flex; align-items: baseline; gap: .3em; margin: .25em 0; }
+.big span { font-size: clamp(44px, 5.6vw, 92px); font-weight: 300; line-height: 1; letter-spacing: -.02em; }
+.big small { color: #b9ad9f; font-size: clamp(14px, 1.4vw, 22px); }
+.bar { height: 8px; border-radius: 9px; background: #26211d; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #8fd18b, #f2a65a, #f07a5a); background-size: 300% 100%; transition: width 1s ease; border-radius: 9px; }
+.stats { margin: .9em 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: .6em 1em; }
+.stats dt { color: #7d7368; font-size: clamp(11px, 1vw, 14px); }
+.stats dd { margin: 0; font-size: clamp(18px, 1.9vw, 28px); }
+.indoor .row { display: flex; gap: 1.2em; color: #b9ad9f; font-size: clamp(16px, 1.6vw, 24px); }
+.tile.off .big span { color: #7d7368; }
+
+/* timers */
+.t-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.t-add { display: flex; flex-wrap: wrap; gap: 6px; }
+.t-add button { padding: .45em .6em; }
+button {
+  font: inherit; color: #f4ede4; background: #26211d;
+  border: 1px solid #3a332d; border-radius: 12px;
+  padding: .55em .8em; font-size: clamp(13px, 1.2vw, 17px); cursor: pointer;
+  touch-action: manipulation;
+}
+button:active { background: #3a332d; transform: scale(.97); }
+#timerList { list-style: none; margin: .7em 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; overflow: auto; }
+#timerList li { display: flex; align-items: center; justify-content: space-between; gap: 8px; background: #26211d; border-radius: 14px; padding: .4em .5em .4em .9em; }
+#timerList li.empty { background: none; color: #7d7368; padding: 0; font-size: clamp(13px, 1.2vw, 17px); }
+#timerList .left { font-size: clamp(24px, 2.8vw, 50px); font-weight: 300; white-space: nowrap; }
+#timerList .ctl button { padding: .45em .6em; }
+#timerList li.done .left { color: #f07a5a; }
+#timerList .ctl { display: flex; gap: 6px; }
+
+/* forecast */
+#days { list-style: none; margin: .5em 0 0; padding: 0; display: flex; flex-direction: column; justify-content: space-between; flex: 1; }
+#days li { display: grid; grid-template-columns: 3.2em 1.6em 1fr auto; align-items: center; gap: .4em; font-size: clamp(14px, 1.45vw, 22px); }
+#days .d { color: #b9ad9f; }
+#days .lo { color: #7d7368; }
+#days .rain { color: #7cc4e8; font-size: .75em; }
+
+footer {
+  height: 34px; padding: 0 14px; display: -webkit-flex; display: flex; -webkit-justify-content: space-between; -webkit-align-items: center; justify-content: space-between; align-items: center;
+  font-size: 12px; color: #7d7368;
+}
+
+#alarm { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(240,122,90,.92); display: grid; place-items: center; z-index: 10; animation: pulse 1s infinite alternate; }
+#alarm[hidden], [hidden] { display: none !important; }
+#alarm > div { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+#alarm strong { font-size: clamp(40px, 7vw, 110px); color: #fff; font-weight: 600; }
+#alarm button { font-size: 32px; padding: .5em 2em; background: #fff; color: #222; border: 0; }
+@keyframes pulse { to { background: rgba(200,80,50,.95); } }
+@media (prefers-reduced-motion: reduce) { #alarm { animation: none; } }
+
+/* Older Chrome (e.g. Android 5 tablets) has no clamp(): use vw sizes */
+@supports not (width: clamp(1px, 1vw, 2px)) {
+  #hm { font-size: 13.5vw; } .sec { font-size: 3vw; } .ampm { font-size: 2.4vw; }
+  .date { font-size: 2.9vw; } .sun { font-size: 1.6vw; }
+  .w-icon { font-size: 6vw; } .w-temp { font-size: 8vw; } .w-desc { font-size: 2vw; }
+  .w-meta, .hours div, #days li { font-size: 1.5vw; }
+  .big span { font-size: 5.6vw; } .big small, .stats dd, .indoor .row { font-size: 1.9vw; }
+  .label, .stats dt, .note, button, #timerList li.empty { font-size: 1.3vw; }
+  #timerList .left { font-size: 2.8vw; }
+  .tile { padding: 1.6vw; }
+}
+@media (max-aspect-ratio: 1/1) {
+  @supports not (width: clamp(1px, 1vw, 2px)) {
+    #hm { font-size: 22vw; } .date { font-size: 5vw; } .w-temp { font-size: 13vw; } .w-icon { font-size: 10vw; }
+    .big span { font-size: 9vw; } .stats dd, .w-desc { font-size: 3.4vw; }
+    .label, .stats dt, .note, button, .w-meta, .hours div, #days li, .sun { font-size: 2.6vw; }
+    #timerList .left { font-size: 5.5vw; }
+  }
+}
+
+/* ---- Old Chrome without CSS grid (e.g. Android 5 tablets): flexbox layout ---- */
+@supports not (display: grid) {
+  #board { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap;
+           -webkit-align-content: stretch; align-content: stretch; padding: 4px; gap: 0; }
+  .tile { margin: 4px; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  .clock { width: -webkit-calc(100% - 10px); width: calc(100% - 10px); }
+  .weather { width: -webkit-calc(100% - 10px); width: calc(100% - 10px); }
+  .energy, .indoor, .timers, .forecast { width: -webkit-calc(50% - 10px); width: calc(50% - 10px); }
+  .forecast { display: -webkit-flex; display: flex; }
+  .clock { height: 22%; } .weather { height: 28%; }
+  .energy, .indoor, .timers, .forecast { height: -webkit-calc(25% - 10px); height: calc(25% - 10px); }
+  .hours { display: -webkit-flex; display: flex; }
+  .hours div { -webkit-flex: 1; flex: 1; }
+  .sun span, .w-meta span, .t-add button, .indoor .row span { margin-right: 12px; }
+  .stats { display: block; } .stats div { display: inline-block; width: 48%; margin-bottom: 6px; }
+  #timerList li { margin-bottom: 8px; } .ctl button { margin-left: 6px; }
+  #days li { display: -webkit-flex; display: flex; -webkit-justify-content: space-between; justify-content: space-between; }
+  #alarm { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; }
+}
+@media (min-aspect-ratio: 1/1) {
+  @supports not (display: grid) {
+    .clock { width: -webkit-calc(58% - 10px); width: calc(58% - 10px); height: 50%; }
+    .weather { width: -webkit-calc(42% - 10px); width: calc(42% - 10px); height: 50%; }
+    .energy, .indoor, .timers, .forecast { width: -webkit-calc(25% - 10px); width: calc(25% - 10px); height: -webkit-calc(50% - 18px); height: calc(50% - 18px); }
+  }
+}
+
+/* calendar under the clock */
+.cal { list-style: none; margin: .7em 0 0; padding: .6em 0 0; border-top: 1px solid #3a332d; overflow: hidden; }
+.cal li { display: -webkit-flex; display: flex; -webkit-align-items: baseline; align-items: baseline; font-size: 16px; font-size: clamp(14px, 1.7vw, 24px); line-height: 1.35; white-space: nowrap; overflow: hidden; }
+.cal .cd { color: #7d7368; width: 5.4em; -webkit-flex-shrink: 0; flex-shrink: 0; font-size: .8em; }
+.cal .ct { color: #f2a65a; width: 3.4em; -webkit-flex-shrink: 0; flex-shrink: 0; }
+.cal .cx { color: #f4ede4; overflow: hidden; text-overflow: ellipsis; }
+.cal li.tomorrow .cx { color: #b9ad9f; }
+.cal li.empty { color: #7d7368; font-size: 14px; }
+/* bottom ticker */
+footer { font-size: 14px; }
+#ticker { -webkit-flex: 1; flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: #b9ad9f; font-size: 16px; font-size: clamp(14px, 1.5vw, 20px); transition: opacity .4s; }
+#ticker.warn { color: #f2a65a; font-weight: 600; }
+#ticker.fade { opacity: 0; }
+#meta { -webkit-flex-shrink: 0; flex-shrink: 0; margin-left: 12px; font-size: 12px; }
+@media (max-aspect-ratio: 1/1) { .cal li { font-size: 3.4vw; } }
+
+/* with calendar events: smaller clock so up to 3 events fit */
+.cal { max-height: 4.3em; }
+.cal li { font-size: 14px; font-size: clamp(12px, 1.55vw, 22px); }
+#clockTile.has-cal #hm { font-size: 10.5vw; }
+#clockTile.has-cal .date { font-size: 2.5vw; margin-top: .15em; }
+#clockTile.has-cal .sun { margin-top: .3em; }
+#clockTile.has-cal .cal { margin-top: .4em; padding-top: .4em; }
+@media (max-aspect-ratio: 1/1) {
+  .cal li { font-size: 3.2vw; }
+  #clockTile.has-cal #hm { font-size: 17vw; }
+  #clockTile.has-cal .date { font-size: 4.4vw; }
+  @supports not (display: grid) { .clock { height: 27%; } .weather { height: 25%; } }
+}
+
+/* night / idle photo frame */
+#frame { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: #000; z-index: 5; }
+#frame .ph { position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: #000 center / contain no-repeat;
+             opacity: 0; -webkit-transition: opacity 2s ease; transition: opacity 2s ease; }
+#frame .ph.on { opacity: 1; }
+#frame .fr-info { position: absolute; right: 18px; bottom: 14px; text-align: right; color: #fff;
+                  text-shadow: 0 1px 6px rgba(0,0,0,.9), 0 0 2px rgba(0,0,0,.9); }
+#frTime { display: block; font-size: 44px; font-size: 7vw; font-weight: 300; line-height: 1; }
+#frSub { display: block; font-size: 16px; font-size: 2.2vw; opacity: .9; margin-top: 4px; }
+body.night #frame .ph { opacity: 0; }
+body.night #frame .ph.on { opacity: .75; }
+@media (prefers-reduced-motion: reduce) { #frame .ph { -webkit-transition: none; transition: none; } }
+
+/* several thermostats in the Indoors tile: one row per room */
+.rooms { margin-top: .3em; }
+.room { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; padding: .35em 0; }
+.room + .room { border-top: 1px solid #3a332d; }
+.room .rl { -webkit-flex: 1; flex: 1; min-width: 0; }
+.room .rn { color: #f4ede4; font-size: 15px; font-size: clamp(13px, 1.6vw, 22px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.room .rs { color: #7d7368; font-size: 12px; font-size: clamp(11px, 1.25vw, 17px); }
+.room .rt { font-size: 32px; font-size: clamp(26px, 4vw, 64px); font-weight: 300; line-height: 1; letter-spacing: -.02em; white-space: nowrap; }
+.room .rt small { font-size: .42em; color: #b9ad9f; margin-left: 2px; }
+.room.off .rt, .room.off .rn { color: #7d7368; }
+@supports not (width: clamp(1px, 1vw, 2px)) { .room .rt { font-size: 4vw; } .room .rn { font-size: 1.7vw; } .room .rs { font-size: 1.3vw; } }
+@media (max-aspect-ratio: 1/1) { .room .rt { font-size: 7vw; } .room .rn { font-size: 3vw; } .room .rs { font-size: 2.4vw; } }
+
+/* Ring doorbell */
+#camBtn { padding: 3px 10px; font-size: 13px; border-radius: 9px; margin-right: 6px; }
+#door { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 8; background: rgba(10,8,7,.94);
+        display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; }
+#door.ding { background: rgba(30,20,10,.96); }
+.door-box { width: 92%; max-width: 900px; text-align: center; }
+#doorTitle { display: block; font-size: 28px; font-size: 4vw; font-weight: 600; color: #f4ede4; margin-bottom: 10px; }
+#door.ding #doorTitle { color: #f2a65a; }
+.door-img { position: relative; background: #000; border-radius: 16px; overflow: hidden; height: 62vh; }
+.door-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+#doorWait { position: absolute; top: 50%; left: 0; right: 0; margin-top: -10px; color: #7d7368; }
+.door-sub { color: #b9ad9f; margin: 8px 0; font-size: 15px; }
+.door-btns button { font-size: 18px; padding: .6em 1.4em; margin: 0 6px; }
+
+/* phones: one scrolling column instead of a fixed one-screen grid */
+@media (max-width: 600px) {
+  body { overflow: auto; }
+  #board { height: auto; display: block; padding: 10px; }
+  .tile { margin: 0 0 10px; width: auto !important; height: auto !important; }
+  .forecast { display: flex; }
+  #hm { font-size: 24vw; } .sec { font-size: 6vw; } .date { font-size: 6vw; }
+  #clockTile.has-cal #hm { font-size: 22vw; } #clockTile.has-cal .date { font-size: 5.6vw; }
+  .cal { max-height: none; } .cal li { font-size: 4.2vw; }
+  .w-temp { font-size: 18vw; } .w-icon { font-size: 13vw; } .w-desc { font-size: 5.5vw; }
+  .w-meta, .hours div, #days li { font-size: 4vw; }
+  .big span { font-size: 14vw; } .big small, .stats dd { font-size: 4.6vw; }
+  .label, .stats dt, .note { font-size: 3.4vw; }
+  #timerList .left { font-size: 9vw; } button { font-size: 4vw; }
+  .room .rt { font-size: 10vw; } .room .rn { font-size: 4.4vw; } .room .rs { font-size: 3.4vw; }
+  footer { height: auto; padding: 8px 12px 16px; display: block; }
+  #ticker { display: block; white-space: normal; font-size: 4vw; margin-bottom: 6px; }
+  #meta { margin-left: 0; }
+}
+
+/* drawn weather icons */
+svg.wx { display: inline-block; vertical-align: middle; overflow: visible; }
+.w-icon svg.wx { width: 1em; height: 1em; }
+.hours .i svg.wx { width: 1.6em; height: 1.6em; }
+#days li svg.wx { width: 1.5em; height: 1.5em; }
+
+/* Calendar tile (takes the Electricity tile's place when there's no smart meter) */
+.cal-list { list-style: none; margin: .5em 0 0; padding: 0; overflow: hidden; -webkit-flex: 1; flex: 1; }
+.cal-list li { font-size: 15px; font-size: clamp(13px, 1.55vw, 22px); line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cal-list li.dh { color: #f2a65a; font-size: 12px; font-size: clamp(11px, 1.2vw, 16px); letter-spacing: .06em; text-transform: uppercase; margin-top: .55em; }
+.cal-list li.dh:first-child { margin-top: 0; }
+.cal-list .ct { color: #b9ad9f; display: inline-block; min-width: 3.3em; }
+.cal-list li.empty { color: #7d7368; white-space: normal; }
+@supports not (width: clamp(1px, 1vw, 2px)) { .cal-list li { font-size: 1.6vw; } .cal-list li.dh { font-size: 1.25vw; } }
+@media (max-aspect-ratio: 1/1) { .cal-list li { font-size: 3vw; } .cal-list li.dh { font-size: 2.4vw; } }
+@media (max-width: 600px) { .cal-list li { font-size: 4.2vw; } .cal-list li.dh { font-size: 3.4vw; } }
+
+.cal:empty { display: none; }
+
+/* News tile (in place of Timers) */
+.news-list { list-style: none; margin: .5em 0 0; padding: 0; overflow: hidden; -webkit-flex: 1; flex: 1; transition: opacity .5s; }
+.news-list.fade { opacity: 0; }
+.news-list li { font-size: 16px; font-size: clamp(14px, 1.75vw, 26px); line-height: 1.28; color: #f4ede4;
+  padding: .35em 0; border-bottom: 1px solid #3a332d;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.news-list li:last-child { border-bottom: 0; }
+.news-list li.empty { color: #7d7368; }
+@supports not (width: clamp(1px, 1vw, 2px)) { .news-list li { font-size: 1.8vw; } }
+@media (max-aspect-ratio: 1/1) { .news-list li { font-size: 3.3vw; } }
+@media (max-width: 600px) { .news-list li { font-size: 4.4vw; } }
+/* bigger alert line at the bottom */
+#board { height: calc(100vh - 44px); }
+footer { height: 44px; }
+#ticker { font-size: 20px; font-size: clamp(16px, 2.1vw, 28px); }
+@supports not (width: clamp(1px, 1vw, 2px)) { #ticker { font-size: 2.3vw; } }
+@media (max-width: 600px) { #board { height: auto; } footer { height: auto; } }

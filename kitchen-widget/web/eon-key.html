@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>E.ON Key Setup</title>
+<style>
+  :root { --bg: #14110f; --tile: #1f1b18; --line: #3a332d; --ink: #f4ede4; --ink-2: #b9ad9f; --warm: #f2a65a; color-scheme: dark; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 18px/1.5 system-ui, -apple-system, sans-serif; }
+  main { max-width: 640px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 28px; font-weight: 600; margin: 0 0 8px; }
+  p.lead { color: var(--ink-2); margin: 0 0 28px; }
+  ol { padding: 0; margin: 0; list-style: none; counter-reset: s; display: grid; gap: 14px; }
+  li { counter-increment: s; background: var(--tile); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px 16px 60px; position: relative; }
+  li::before { content: counter(s); position: absolute; left: 18px; top: 14px; width: 28px; height: 28px; border-radius: 50%; background: var(--warm); color: #222; font-weight: 700; display: grid; place-items: center; font-size: 15px; }
+  kbd { background: #2c2622; border: 1px solid var(--line); border-radius: 6px; padding: 1px 7px; font: inherit; font-size: 15px; }
+  a.bm { display: inline-block; margin-top: 10px; padding: 12px 22px; border-radius: 12px; background: var(--warm); color: #1a1410; font-weight: 700; text-decoration: none; cursor: grab; }
+  .small { color: var(--ink-2); font-size: 15px; margin-top: 6px; }
+  #status { margin-top: 28px; padding: 14px 18px; border-radius: 14px; border: 1px solid var(--line); color: var(--ink-2); }
+  #status.ok { border-color: #8fd18b; color: #8fd18b; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Connect your E.ON meter</h1>
+  <p class="lead">Do this once. Your key goes straight from E.ON's website into the kitchen board on this Mac.</p>
+  <ol>
+    <li>Show the bookmarks bar: press <kbd>⇧ Shift</kbd> + <kbd>⌘ Cmd</kbd> + <kbd>B</kbd>.</li>
+    <li>Drag this orange button up onto the bookmarks bar:<br>
+      <a class="bm" id="bm" href="#">⚡ Get E.ON key</a>
+      <div class="small">Drag it, don't click it here.</div></li>
+    <li>Go to <strong>www.eonnext.com</strong> and sign in, until you see your account.</li>
+    <li>On that E.ON page, click <strong>⚡ Get E.ON key</strong> in the bookmarks bar. Wait a few seconds for the message "Done".</li>
+  </ol>
+  <div id="status">Waiting for your key…</div>
+</main>
+<script>
+(function () {
+  var port = location.port || "8765";
+  function grab(PORT) {
+    var tok = null;
+    Object.keys(localStorage).forEach(function (k) {
+      if (k.indexOf("@@auth0spajs@@") !== 0) return;
+      try { var v = JSON.parse(localStorage.getItem(k)); tok = tok || (v.body && v.body.id_token) || v.id_token; } catch (e) {}
+    });
+    if (location.hostname.indexOf("eonnext.com") < 0) { alert("Open www.eonnext.com and sign in first, then click this bookmark there."); return; }
+    if (!tok) { alert("You don't seem to be signed in. Sign in to E.ON on this page, then click the bookmark again."); return; }
+    function gql(q) {
+      return fetch("https://api.eonnext-kraken.energy/v1/graphql/", {
+        method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + tok },
+        body: JSON.stringify({ query: q })
+      }).then(function (r) { return r.json(); });
+    }
+    function fail(r) { alert("E.ON said: " + r.errors.map(function (e) { return e.message; }).join("; ")); }
+    function send(key) {
+      fetch("http://localhost:" + PORT + "/api/eon-key", { method: "POST", headers: { "Content-Type": "text/plain" }, body: key })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (j.saved) alert("Done! Your E.ON key is saved in the kitchen board. You can close this tab.");
+          else throw 0;
+        })
+        .catch(function () {
+          prompt("Couldn't reach the kitchen board (is it running?). Copy this key with Cmd+C and keep it safe:", key);
+        });
+    }
+    gql("{ viewer { liveSecretKey } }").then(function (v) {
+      if (v.errors) return fail(v);
+      var key = v.data.viewer.liveSecretKey;
+      if (key) return send(key);
+      return gql("mutation { regenerateSecretKey { key } }").then(function (r) {
+        if (r.errors) return fail(r);
+        send(r.data.regenerateSecretKey.key);
+      });
+    }).catch(function (e) { alert("Something went wrong talking to E.ON: " + e); });
+  }
+  document.getElementById("bm").href =
+    "javascript:(" + encodeURIComponent(grab.toString()) + ")(" + JSON.stringify(port) + ");void 0";
+  document.getElementById("bm").addEventListener("click", function (e) {
+    e.preventDefault();
+    alert("Drag this button to the bookmarks bar, then click it while you are on eonnext.com.");
+  });
+  // tell the user when the key has arrived
+  var st = document.getElementById("status");
+  setInterval(function () {
+    fetch("/api/meter", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (m) {
+      if (m.source === "eon" && !m.error) { st.className = "ok"; st.textContent = "✓ E.ON connected. Your readings are on the kitchen board."; }
+      else if (m.error) { st.textContent = "Board says: " + m.error; }
+    }).catch(function () {});
+  }, 5000);
+})();
+</script>
+</body>
+</html>

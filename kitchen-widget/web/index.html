@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14110f">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="data:,">
+<title>Kitchen Board</title>
+<script>
+/* Report the browser version and any script error to the Mac (shown in Terminal). */
+(function () {
+  function send(msg) {
+    try { var x = new XMLHttpRequest(); x.open("POST", "/api/log", true); x.setRequestHeader("Content-Type", "text/plain"); x.send(String(msg).slice(0, 500)); } catch (e) {}
+  }
+  window.onerror = function (msg, src, line, col) { send("ERROR " + msg + " @ " + (src || "").split("/").pop() + ":" + line + ":" + (col || "")); };
+  send("LOADED " + navigator.userAgent + " " + screen.width + "x" + screen.height + " css " + window.innerWidth + "x" + window.innerHeight);
+})();
+</script>
+<link rel="stylesheet" href="style.css?v=9">
+</head>
+<body>
+<main id="board">
+  <section class="tile clock" id="clockTile">
+    <div class="time"><span id="hm">--:--</span><span id="sec" class="sec">--</span><span id="ampm" class="ampm"></span></div>
+    <div class="date" id="date">&nbsp;</div>
+    <div class="sun" id="sun"></div>
+    <ul class="cal" id="cal"></ul>
+  </section>
+
+  <section class="tile weather" aria-live="polite">
+    <div class="w-head">
+      <span class="label" id="place">Outside</span>
+      <span class="aq" id="aq"></span>
+    </div>
+    <div class="w-now">
+      <span class="w-icon" id="wIcon">·</span>
+      <span class="w-temp" id="wTemp">--°</span>
+    </div>
+    <div class="w-desc" id="wDesc">Loading weather…</div>
+    <div class="w-meta" id="wMeta"></div>
+    <div class="hours" id="hours"></div>
+  </section>
+
+  <section class="tile energy" id="energyTile">
+    <span class="label">Electricity</span>
+    <div class="big"><span id="pw">--</span><small id="pwUnit">W now</small></div>
+    <div class="bar"><i id="pwBar"></i></div>
+    <dl class="stats">
+      <div><dt id="kwhLbl">Today</dt><dd id="kwh">--</dd></div>
+      <div><dt id="costLbl">Cost</dt><dd id="cost">--</dd></div>
+      <div><dt id="ykwhLbl">Yesterday</dt><dd id="ykwh">--</dd></div>
+      <div id="gasRow" hidden><dt id="gasLbl">Gas today</dt><dd id="gas">--</dd></div>
+    </dl>
+    <p class="note" id="meterNote"></p>
+  </section>
+
+  <section class="tile energy caltile" id="calBox" hidden>
+    <span class="label">Calendar</span>
+    <ul class="cal-list" id="calList"><li class="empty">Loading…</li></ul>
+  </section>
+
+  <section class="tile indoor" id="indoorTile">
+    <span class="label">Indoors</span>
+    <div class="big" id="inBig"><span id="inTemp">--</span><small id="inUnit">°</small></div>
+    <div class="rooms" id="rooms" hidden></div>
+    <div class="row"><span id="inHum"></span><span id="inCo2"></span></div>
+    <p class="note" id="inNote"></p>
+  </section>
+
+  <section class="tile timers newstile" id="newsBox" hidden>
+    <span class="label" id="newsSrc">News</span>
+    <ul class="news-list" id="newsList"><li class="empty">Loading headlines…</li></ul>
+  </section>
+
+  <section class="tile timers" id="timerBox">
+    <div class="t-head">
+      <span class="label">Timers</span>
+      <span class="t-add">
+        <button data-add="60">+1m</button>
+        <button data-add="300">+5m</button>
+        <button data-add="600">+10m</button>
+        <button data-add="1800">+30m</button>
+      </span>
+    </div>
+    <ul id="timerList"><li class="empty">Tap a button to start a timer</li></ul>
+  </section>
+
+  <section class="tile forecast">
+    <span class="label">Next days</span>
+    <ol id="days"></ol>
+  </section>
+</main>
+
+<footer id="status"><span id="ticker"></span><span id="meta"><button id="camBtn" hidden>📷 Door</button> <span id="dev"></span> <span id="upd"></span></span></footer>
+<div id="frame" hidden>
+  <div class="ph" id="ph0"></div><div class="ph" id="ph1"></div>
+  <div class="fr-info"><span id="frTime">--:--</span><span id="frSub"></span></div>
+</div>
+<div id="door" hidden>
+  <div class="door-box">
+    <strong id="doorTitle">Front door</strong>
+    <div class="door-img"><img id="doorImg" alt=""><span id="doorWait">Getting a picture…</span></div>
+    <div class="door-sub" id="doorSub"></div>
+    <div class="door-btns"><button id="doorRefresh">↻ New picture</button><button id="doorClose">Close</button></div>
+  </div>
+</div>
+<div id="alarm" hidden><div><strong id="alarmText">Time's up</strong><button id="alarmStop">Stop</button></div></div>
+<script src="app.js?v=10"></script>
+</body>
+</html>
