@@ -49,3 +49,21 @@ python3 voice_gen.py skills && python3 tempo.py skills 1.0 && python3 sfx_gen.py
 python3 graph_layout.py ../../../../graphify-out/graph.json && python3 skills_data.py
 npx remotion render SkillsReel out/claude-skills-studio_v1_9x16.mp4
 ```
+
+## Caption (linter READY · human score 91.9 PASS)
+
+> Comment SKILLS and I'll send you all five 👇
+>
+> I'm a nurse in the UK. I don't code. Five Claude skills now run my whole video studio 🎬
+>
+> 1. Everything Claude Code. 327 skills, one install.
+> 2. Graphify. It turns my project into one map, so Claude follows the path instead of reading every single file.
+> 3. IG Viral. Finds the reels that beat their own normal.
+> 4. IG Human. Takes the robot out of my captions.
+> 5. Remotion. This is the AI video editing part, and this whole reel was made with it, slowly by slowly.
+>
+> New to Claude? This is Claude Code for beginners, the easy way.
+>
+> The cartoon is me. The voice is an AI copy of mine.
+>
+> #ClaudeSkills #ClaudeCode #AIVideo
