@@ -28,4 +28,6 @@ ai-memory's MCP bridge and hooks ignore HTTPS proxies, but a cloud container can
    `AI_MEMORY_REMOTE=https://<tunnel-host> nohup python3 scripts/ai_memory_relay.py >/tmp/aim-relay.log 2>&1 &`
    and run `AI_MEMORY_AUTH_TOKEN=placeholder ai-memory call memory_status '{}'`. The placeholder only gets past the CLI's "token required" check; the proxy replaces it.
 
-A quick tunnel gets a new random host every time `cloudflared` restarts, so steps 1–3 must be redone with the new host. A named Cloudflare tunnel on your own domain keeps a fixed host.
+**Automated:** the `mac` environment sets `AI_MEMORY_REMOTE`, and a SessionStart hook in `.claude/settings.json` runs `scripts/ai_memory_session_start.sh`. That script installs the client (checksum-verified) and starts the relay in every new session. If the server can't be reached, it prints a one-line notice and the session carries on.
+
+A quick tunnel gets a new random host every time `cloudflared` restarts, so redo steps 1–2 with the new host and update `AI_MEMORY_REMOTE` on the `mac` environment. A named Cloudflare tunnel on your own domain keeps a fixed host.
