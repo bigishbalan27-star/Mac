@@ -1,2 +1,4 @@
 # Installed skills/plugins, not project content
 .claude/
+# Graphs of other repos (each has its own graphify-out)
+graphs/

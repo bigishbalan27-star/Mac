@@ -8,3 +8,7 @@ Rules:
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
 - A committed graphify-out/graph.json is rewritten whole on every build, so a large diff to it in a pull request is expected. Do not flag it as churn or suggest skipping the graph rebuild or its hooks.
+
+## Other graphs
+
+- `graphs/craft-anything/graphify-out/graph.json` is a code graph of [storytold/craft-anything](https://github.com/storytold/craft-anything) (not this repo). For any question about craft-anything, query it first with `--graph`: `graphify query "<question>" --graph graphs/craft-anything/graphify-out/graph.json` (also `path` / `explain`). Node `src=`/`loc=` point into the craft-anything repo; clone it with `git clone --depth 1 https://github.com/storytold/craft-anything` only to read lines the graph located. Rebuild: `scripts/build_craft_anything_graph.sh`. Details: `graphs/craft-anything/README.md`.

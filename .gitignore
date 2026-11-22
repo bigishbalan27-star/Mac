@@ -28,3 +28,7 @@ graphify-out/.graphify_semantic_new.json
 graphify-out/.graphify_analysis.json
 graphify-out/.graphify_partial.txt
 graphify-out/.graphify_chunk_*.json
+# graphify machine-local state for graphs under graphs/
+graphs/*/graphify-out/.graphify_python
+graphs/*/graphify-out/.graphify_root
+graphs/*/graphify-out/cache/
