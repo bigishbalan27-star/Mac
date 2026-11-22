@@ -1,0 +1,626 @@
+{
+  "hermes-arxiv/scripts/search_arxiv.py": {
+    "mtime": 1795311436.6334205,
+    "seen": 1795312237.7586899,
+    "ast_hash": "89eb3d641706555bd4e2f7f9adb777a4",
+    "semantic_hash": "89eb3d641706555bd4e2f7f9adb777a4"
+  },
+  "hermes-blocked-page-recovery/scripts/recover_page.py": {
+    "mtime": 1795311436.731227,
+    "seen": 1795312237.7586977,
+    "ast_hash": "dac5ecf529faba4995389ca7f25453f7",
+    "semantic_hash": "dac5ecf529faba4995389ca7f25453f7"
+  },
+  "hermes-github/scripts/gh-env.sh": {
+    "mtime": 1795311436.6818628,
+    "seen": 1795312237.7587013,
+    "ast_hash": "98173b64153916e787b09e4f00b2bb39",
+    "semantic_hash": "98173b64153916e787b09e4f00b2bb39"
+  },
+  "hermes-github/scripts/git-credential-token.py": {
+    "mtime": 1795311436.6818721,
+    "seen": 1795312237.758703,
+    "ast_hash": "9a1bd874bbe7effd74ec9526220d70a8",
+    "semantic_hash": "9a1bd874bbe7effd74ec9526220d70a8"
+  },
+  "hermes-google-workspace/scripts/_hermes_home.py": {
+    "mtime": 1795311436.572769,
+    "seen": 1795312237.758705,
+    "ast_hash": "f65896e08b73b0aa7501a6c4285e435f",
+    "semantic_hash": "f65896e08b73b0aa7501a6c4285e435f"
+  },
+  "hermes-google-workspace/scripts/_secure_storage.py": {
+    "mtime": 1795311436.5727859,
+    "seen": 1795312237.7587059,
+    "ast_hash": "ea96a3800e07808e721e1dd436b6afa5",
+    "semantic_hash": "ea96a3800e07808e721e1dd436b6afa5"
+  },
+  "hermes-google-workspace/scripts/google_api.py": {
+    "mtime": 1795311436.5728,
+    "seen": 1795312237.7587078,
+    "ast_hash": "2f0d6825204b6f31d372f2f8f31bcf80",
+    "semantic_hash": "2f0d6825204b6f31d372f2f8f31bcf80"
+  },
+  "hermes-google-workspace/scripts/gws_bridge.py": {
+    "mtime": 1795311436.5728312,
+    "seen": 1795312237.758709,
+    "ast_hash": "8d4ddf0948edd8529f59222e4cd09aa3",
+    "semantic_hash": "8d4ddf0948edd8529f59222e4cd09aa3"
+  },
+  "hermes-google-workspace/scripts/setup.py": {
+    "mtime": 1795311436.5728474,
+    "seen": 1795312237.7587104,
+    "ast_hash": "51b3a241a638b23691bdaddbe375c619",
+    "semantic_hash": "51b3a241a638b23691bdaddbe375c619"
+  },
+  "hermes-grounded-citations/scripts/_hermes_home.py": {
+    "mtime": 1795311436.650967,
+    "seen": 1795312237.7587118,
+    "ast_hash": "56f92fd4002712fa0b4fd55be9aa568a",
+    "semantic_hash": "56f92fd4002712fa0b4fd55be9aa568a"
+  },
+  "hermes-grounded-citations/scripts/sources.py": {
+    "mtime": 1795311436.651025,
+    "seen": 1795312237.758713,
+    "ast_hash": "83520fd5c17fda9c6f1acad7a2f7c047",
+    "semantic_hash": "83520fd5c17fda9c6f1acad7a2f7c047"
+  },
+  "hermes-hermes-agent/templates/clock.mjs": {
+    "mtime": 1795311436.4499564,
+    "seen": 1795312237.7587154,
+    "ast_hash": "35bcd50d0973d3cf4bf75d0dfb90a969",
+    "semantic_hash": "35bcd50d0973d3cf4bf75d0dfb90a969"
+  },
+  "hermes-hermes-agent/templates/plugin.js": {
+    "mtime": 1795311436.449966,
+    "seen": 1795312237.7587168,
+    "ast_hash": "1046699c7ea4377e668ce325c35dbdd0",
+    "semantic_hash": "1046699c7ea4377e668ce325c35dbdd0"
+  },
+  "hermes-hermes-agent/templates/skin.yaml": {
+    "mtime": 1795311436.450102,
+    "seen": 1795312237.7587187,
+    "ast_hash": "e9e0b227c6b00c59e8d34cb682c3ca80",
+    "semantic_hash": "e9e0b227c6b00c59e8d34cb682c3ca80"
+  },
+  "hermes-manim-video/scripts/setup.sh": {
+    "mtime": 1795311436.4957738,
+    "seen": 1795312237.75872,
+    "ast_hash": "ccf932353c0cb99ce35dc05106889bc4",
+    "semantic_hash": "ccf932353c0cb99ce35dc05106889bc4"
+  },
+  "hermes-maps/scripts/maps_client.py": {
+    "mtime": 1795311436.581011,
+    "seen": 1795312237.7587214,
+    "ast_hash": "8b17aac74ac2b99be9f58fc6f7cfd4d9",
+    "semantic_hash": "8b17aac74ac2b99be9f58fc6f7cfd4d9"
+  },
+  "hermes-microsoft-office/scripts/csv_to_xlsx.py": {
+    "mtime": 1795311436.596492,
+    "seen": 1795312237.7587225,
+    "ast_hash": "f3b9626bc3e3087440bea4563fa0d303",
+    "semantic_hash": "f3b9626bc3e3087440bea4563fa0d303"
+  },
+  "hermes-microsoft-office/scripts/docx_comments.py": {
+    "mtime": 1795311436.5965047,
+    "seen": 1795312237.7587237,
+    "ast_hash": "45db3858fabfc35c341b96e8fdc0125e",
+    "semantic_hash": "45db3858fabfc35c341b96e8fdc0125e"
+  },
+  "hermes-microsoft-office/scripts/docx_common.py": {
+    "mtime": 1795311436.5965214,
+    "seen": 1795312237.758725,
+    "ast_hash": "db6317654c60c0756ce6d1fe33b6bc04",
+    "semantic_hash": "db6317654c60c0756ce6d1fe33b6bc04"
+  },
+  "hermes-microsoft-office/scripts/docx_create.py": {
+    "mtime": 1795311436.596532,
+    "seen": 1795312237.7587264,
+    "ast_hash": "91422b6e2a5085b440674ae13b7c3a77",
+    "semantic_hash": "91422b6e2a5085b440674ae13b7c3a77"
+  },
+  "hermes-microsoft-office/scripts/docx_edit.py": {
+    "mtime": 1795311436.5965447,
+    "seen": 1795312237.7587278,
+    "ast_hash": "d2a5e76143aa07d2cc8cf42d3d642e33",
+    "semantic_hash": "d2a5e76143aa07d2cc8cf42d3d642e33"
+  },
+  "hermes-microsoft-office/scripts/docx_read.py": {
+    "mtime": 1795311436.596559,
+    "seen": 1795312237.758729,
+    "ast_hash": "129d63f686bb19a3faeb23618d211e97",
+    "semantic_hash": "129d63f686bb19a3faeb23618d211e97"
+  },
+  "hermes-microsoft-office/scripts/docx_revisions.py": {
+    "mtime": 1795311436.5965717,
+    "seen": 1795312237.7587306,
+    "ast_hash": "b05973971dea3c5774654c3d180f253f",
+    "semantic_hash": "b05973971dea3c5774654c3d180f253f"
+  },
+  "hermes-microsoft-office/scripts/docx_template.py": {
+    "mtime": 1795311436.596584,
+    "seen": 1795312237.758732,
+    "ast_hash": "be065dcdd3c063d3aa34a1cf40bc5a19",
+    "semantic_hash": "be065dcdd3c063d3aa34a1cf40bc5a19"
+  },
+  "hermes-microsoft-office/scripts/docx_validate.py": {
+    "mtime": 1795311436.596594,
+    "seen": 1795312237.7587335,
+    "ast_hash": "9116b5968e8b308f3bcf3308064b0e11",
+    "semantic_hash": "9116b5968e8b308f3bcf3308064b0e11"
+  },
+  "hermes-microsoft-office/scripts/pptx_create.py": {
+    "mtime": 1795311436.5966055,
+    "seen": 1795312237.758735,
+    "ast_hash": "20f5f480d2e236231a0f42ecdb49c3cb",
+    "semantic_hash": "20f5f480d2e236231a0f42ecdb49c3cb"
+  },
+  "hermes-microsoft-office/scripts/pptx_edit.py": {
+    "mtime": 1795311436.59662,
+    "seen": 1795312237.758736,
+    "ast_hash": "de0fcd383bb5eb107c0ac5056d824871",
+    "semantic_hash": "de0fcd383bb5eb107c0ac5056d824871"
+  },
+  "hermes-microsoft-office/scripts/pptx_from_template.py": {
+    "mtime": 1795311436.5966353,
+    "seen": 1795312237.758737,
+    "ast_hash": "0a4fa37082c9898ccde9d545a3838748",
+    "semantic_hash": "0a4fa37082c9898ccde9d545a3838748"
+  },
+  "hermes-microsoft-office/scripts/pptx_read.py": {
+    "mtime": 1795311436.5966473,
+    "seen": 1795312237.7587385,
+    "ast_hash": "405d1c4c1ca81cf489b102bb1b53a97e",
+    "semantic_hash": "405d1c4c1ca81cf489b102bb1b53a97e"
+  },
+  "hermes-microsoft-office/scripts/pptx_render.py": {
+    "mtime": 1795311436.596659,
+    "seen": 1795312237.7587397,
+    "ast_hash": "8193832727ce2f0c767e627b4a7e3d2f",
+    "semantic_hash": "8193832727ce2f0c767e627b4a7e3d2f"
+  },
+  "hermes-microsoft-office/scripts/xlsx_create.py": {
+    "mtime": 1795311436.5966697,
+    "seen": 1795312237.758741,
+    "ast_hash": "845ab39d8cf1f9f44344a4a48cfe78df",
+    "semantic_hash": "845ab39d8cf1f9f44344a4a48cfe78df"
+  },
+  "hermes-microsoft-office/scripts/xlsx_edit.py": {
+    "mtime": 1795311436.596683,
+    "seen": 1795312237.758742,
+    "ast_hash": "2a858900599054b802bf475d8f7d6de6",
+    "semantic_hash": "2a858900599054b802bf475d8f7d6de6"
+  },
+  "hermes-microsoft-office/scripts/xlsx_read.py": {
+    "mtime": 1795311436.5966969,
+    "seen": 1795312237.7587433,
+    "ast_hash": "feffb3e03015913779469724b465f5cd",
+    "semantic_hash": "feffb3e03015913779469724b465f5cd"
+  },
+  "hermes-microsoft-office/scripts/xlsx_recalc.py": {
+    "mtime": 1795311436.5967097,
+    "seen": 1795312237.7587445,
+    "ast_hash": "4f0d2da12d0bbb2efa5831c0d6e29f4d",
+    "semantic_hash": "4f0d2da12d0bbb2efa5831c0d6e29f4d"
+  },
+  "hermes-microsoft-office/scripts/xlsx_restructure.py": {
+    "mtime": 1795311436.596739,
+    "seen": 1795312237.7587457,
+    "ast_hash": "781e2cfe873b0203733f0c5b0a498a8e",
+    "semantic_hash": "781e2cfe873b0203733f0c5b0a498a8e"
+  },
+  "hermes-microsoft-office/scripts/xlsx_to_csv.py": {
+    "mtime": 1795311436.5967813,
+    "seen": 1795312237.7587466,
+    "ast_hash": "e1294cca5fee1ff1e109c7038d3b7308",
+    "semantic_hash": "e1294cca5fee1ff1e109c7038d3b7308"
+  },
+  "hermes-microsoft-office/tests/test_docx_skill.py": {
+    "mtime": 1795311436.5968323,
+    "seen": 1795312237.7587476,
+    "ast_hash": "19f61dc724e46c3a1dd23ee45ed3a6ff",
+    "semantic_hash": "19f61dc724e46c3a1dd23ee45ed3a6ff"
+  },
+  "hermes-microsoft-office/tests/test_powerpoint_skill.py": {
+    "mtime": 1795311436.596855,
+    "seen": 1795312237.7587492,
+    "ast_hash": "7a593af5040eabbaea805b7ebdc8df90",
+    "semantic_hash": "7a593af5040eabbaea805b7ebdc8df90"
+  },
+  "hermes-microsoft-office/tests/test_xlsx_skill.py": {
+    "mtime": 1795311436.596871,
+    "seen": 1795312237.7587504,
+    "ast_hash": "d58efbe5ede0fc86945921af4f50b8fd",
+    "semantic_hash": "d58efbe5ede0fc86945921af4f50b8fd"
+  },
+  "hermes-p5js/scripts/export-frames.js": {
+    "mtime": 1795311436.5028048,
+    "seen": 1795312237.7587516,
+    "ast_hash": "68b4163b2b8410574c40200ea55d2e8a",
+    "semantic_hash": "68b4163b2b8410574c40200ea55d2e8a"
+  },
+  "hermes-p5js/scripts/render.sh": {
+    "mtime": 1795311436.5028195,
+    "seen": 1795312237.758753,
+    "ast_hash": "fded82d5939b160735b6bfc8c601e5e9",
+    "semantic_hash": "fded82d5939b160735b6bfc8c601e5e9"
+  },
+  "hermes-p5js/scripts/serve.sh": {
+    "mtime": 1795311436.5028281,
+    "seen": 1795312237.7587543,
+    "ast_hash": "dc65ecadab367c4ce50ab8d6171d83ae",
+    "semantic_hash": "dc65ecadab367c4ce50ab8d6171d83ae"
+  },
+  "hermes-p5js/scripts/setup.sh": {
+    "mtime": 1795311436.502837,
+    "seen": 1795312237.7587557,
+    "ast_hash": "165ff8c06b4a4bd233a47a9fb97ef060",
+    "semantic_hash": "165ff8c06b4a4bd233a47a9fb97ef060"
+  },
+  "hermes-pdf/scripts/_raster.py": {
+    "mtime": 1795311436.6029043,
+    "seen": 1795312237.7587585,
+    "ast_hash": "2f18744dd66eb6dcfc0da20ac91358cb",
+    "semantic_hash": "2f18744dd66eb6dcfc0da20ac91358cb"
+  },
+  "hermes-pdf/scripts/extract_marker.py": {
+    "mtime": 1795311436.6029158,
+    "seen": 1795312237.75876,
+    "ast_hash": "d9f58f0f0d0c28e36f9341319921b4cc",
+    "semantic_hash": "d9f58f0f0d0c28e36f9341319921b4cc"
+  },
+  "hermes-pdf/scripts/extract_pymupdf.py": {
+    "mtime": 1795311436.6029248,
+    "seen": 1795312237.7587612,
+    "ast_hash": "dc3d57e57d8c20715a0cac1484f8117f",
+    "semantic_hash": "dc3d57e57d8c20715a0cac1484f8117f"
+  },
+  "hermes-pdf/scripts/pdf_create.py": {
+    "mtime": 1795311436.6029344,
+    "seen": 1795312237.7587626,
+    "ast_hash": "abcf2f0d70847cfcd59bc4f5875f7b2a",
+    "semantic_hash": "abcf2f0d70847cfcd59bc4f5875f7b2a"
+  },
+  "hermes-pdf/scripts/pdf_fill_form.py": {
+    "mtime": 1795311436.6029503,
+    "seen": 1795312237.758764,
+    "ast_hash": "774323d7b41e12f3e43ad93831ab8010",
+    "semantic_hash": "774323d7b41e12f3e43ad93831ab8010"
+  },
+  "hermes-pdf/scripts/pdf_form_layout.py": {
+    "mtime": 1795311436.6029596,
+    "seen": 1795312237.758765,
+    "ast_hash": "79aa26de77b600de58f3f0297584e0dc",
+    "semantic_hash": "79aa26de77b600de58f3f0297584e0dc"
+  },
+  "hermes-pdf/scripts/pdf_make_form.py": {
+    "mtime": 1795311436.602969,
+    "seen": 1795312237.7587664,
+    "ast_hash": "4c6d4a70c9ef50d9cebd0737ef76a68a",
+    "semantic_hash": "4c6d4a70c9ef50d9cebd0737ef76a68a"
+  },
+  "hermes-pdf/scripts/pdf_merge.py": {
+    "mtime": 1795311436.6030047,
+    "seen": 1795312237.7587674,
+    "ast_hash": "d608aefefac5d6eddc301b2b8a16024e",
+    "semantic_hash": "d608aefefac5d6eddc301b2b8a16024e"
+  },
+  "hermes-pdf/scripts/pdf_meta.py": {
+    "mtime": 1795311436.6030142,
+    "seen": 1795312237.7587686,
+    "ast_hash": "8d0393a1af45f6dc7b1d718a10a2aaca",
+    "semantic_hash": "8d0393a1af45f6dc7b1d718a10a2aaca"
+  },
+  "hermes-pdf/scripts/pdf_page_image.py": {
+    "mtime": 1795311436.6030247,
+    "seen": 1795312237.75877,
+    "ast_hash": "80383edce15614fac803c8044d7a2ad4",
+    "semantic_hash": "80383edce15614fac803c8044d7a2ad4"
+  },
+  "hermes-pdf/scripts/pdf_read.py": {
+    "mtime": 1795311436.6030326,
+    "seen": 1795312237.758771,
+    "ast_hash": "a22147db9d295413a32d1be6676ed261",
+    "semantic_hash": "a22147db9d295413a32d1be6676ed261"
+  },
+  "hermes-pdf/scripts/pdf_secure.py": {
+    "mtime": 1795311436.6030424,
+    "seen": 1795312237.7587721,
+    "ast_hash": "485c0e7830a014eed81948a2dc459b79",
+    "semantic_hash": "485c0e7830a014eed81948a2dc459b79"
+  },
+  "hermes-pdf/scripts/pdf_split.py": {
+    "mtime": 1795311436.603052,
+    "seen": 1795312237.7587736,
+    "ast_hash": "5c4318a3993d4d0f70b38adeb429d1b5",
+    "semantic_hash": "5c4318a3993d4d0f70b38adeb429d1b5"
+  },
+  "hermes-pdf/scripts/pdf_stamp.py": {
+    "mtime": 1795311436.6030607,
+    "seen": 1795312237.7587748,
+    "ast_hash": "ce32ac2bf3e14159b41fee7a60cae394",
+    "semantic_hash": "ce32ac2bf3e14159b41fee7a60cae394"
+  },
+  "hermes-pdf/scripts/pdf_watermark.py": {
+    "mtime": 1795311436.6030707,
+    "seen": 1795312237.7587757,
+    "ast_hash": "a1592ac9e05a5e4268a2cd63f96df83b",
+    "semantic_hash": "a1592ac9e05a5e4268a2cd63f96df83b"
+  },
+  "hermes-pdf/tests/test_pdf_skill.py": {
+    "mtime": 1795311436.6030908,
+    "seen": 1795312237.7587774,
+    "ast_hash": "db3592300f54396f372288cec811ba02",
+    "semantic_hash": "db3592300f54396f372288cec811ba02"
+  },
+  "hermes-youtube-content/scripts/fetch_transcript.py": {
+    "mtime": 1795311436.5477657,
+    "seen": 1795312237.7587786,
+    "ast_hash": "893f7519ef15112afea2c1fc7df8c802",
+    "semantic_hash": "893f7519ef15112afea2c1fc7df8c802"
+  },
+  "HERMES_SKILLS.md": {
+    "mtime": 1795311436.7360783,
+    "seen": 1795312237.75878,
+    "ast_hash": "83014eeaf0188b46e3f19290ffb40b59",
+    "semantic_hash": "83014eeaf0188b46e3f19290ffb40b59"
+  },
+  "hermes-apple-notes/SKILL.md": {
+    "mtime": 1795311436.3992393,
+    "seen": 1795312237.758781,
+    "ast_hash": "e8f30e30956fd0d2a3d33366ee868862",
+    "semantic_hash": "e8f30e30956fd0d2a3d33366ee868862"
+  },
+  "hermes-apple-reminders/SKILL.md": {
+    "mtime": 1795311436.4060416,
+    "seen": 1795312237.7587821,
+    "ast_hash": "e8de169c9dba63428678245bfbfcd11c",
+    "semantic_hash": "e8de169c9dba63428678245bfbfcd11c"
+  },
+  "hermes-architecture-diagram/SKILL.md": {
+    "mtime": 1795311436.459531,
+    "seen": 1795312237.7587833,
+    "ast_hash": "b266d843cbc4fb02db9c05f48546e4ed",
+    "semantic_hash": "b266d843cbc4fb02db9c05f48546e4ed"
+  },
+  "hermes-arxiv/SKILL.md": {
+    "mtime": 1795311436.6350148,
+    "seen": 1795312237.7587843,
+    "ast_hash": "58520fe085c910646fce849b652cd8aa",
+    "semantic_hash": "58520fe085c910646fce849b652cd8aa"
+  },
+  "hermes-ascii-video/SKILL.md": {
+    "mtime": 1795311436.4674535,
+    "seen": 1795312237.7587855,
+    "ast_hash": "1652b7e15289592674a3e67a431c90ab",
+    "semantic_hash": "1652b7e15289592674a3e67a431c90ab"
+  },
+  "hermes-baoyu-infographic/SKILL.md": {
+    "mtime": 1795311436.4752476,
+    "seen": 1795312237.758787,
+    "ast_hash": "fbd13ff3094ee0d251f7e4632011629a",
+    "semantic_hash": "fbd13ff3094ee0d251f7e4632011629a"
+  },
+  "hermes-blocked-page-recovery/SKILL.md": {
+    "mtime": 1795311436.7327766,
+    "seen": 1795312237.7587879,
+    "ast_hash": "0668bbe2da0f14567c0f607c0b6bdba7",
+    "semantic_hash": "0668bbe2da0f14567c0f607c0b6bdba7"
+  },
+  "hermes-claude-code/SKILL.md": {
+    "mtime": 1795311436.4273684,
+    "seen": 1795312237.7587893,
+    "ast_hash": "eff1332956abf2849bbb8ba8baa41cef",
+    "semantic_hash": "eff1332956abf2849bbb8ba8baa41cef"
+  },
+  "hermes-claude-design/SKILL.md": {
+    "mtime": 1795311436.4838202,
+    "seen": 1795312237.7587905,
+    "ast_hash": "508a0891a128987947bbece8a12affdb",
+    "semantic_hash": "508a0891a128987947bbece8a12affdb"
+  },
+  "hermes-codebase-inspection/SKILL.md": {
+    "mtime": 1795311436.6687453,
+    "seen": 1795312237.758792,
+    "ast_hash": "1edb57e83a991bdd5b591de6af88a31a",
+    "semantic_hash": "1edb57e83a991bdd5b591de6af88a31a"
+  },
+  "hermes-codex/SKILL.md": {
+    "mtime": 1795311436.4358597,
+    "seen": 1795312237.7587929,
+    "ast_hash": "a8c9b6ba93f00f2d4580ddbd7615fb19",
+    "semantic_hash": "a8c9b6ba93f00f2d4580ddbd7615fb19"
+  },
+  "hermes-competitor-news-monitor/SKILL.md": {
+    "mtime": 1795311436.6434774,
+    "seen": 1795312237.758794,
+    "ast_hash": "673b3abc5c609269fedde5b41b6437d7",
+    "semantic_hash": "673b3abc5c609269fedde5b41b6437d7"
+  },
+  "hermes-computer-use/SKILL.md": {
+    "mtime": 1795311436.4433856,
+    "seen": 1795312237.758795,
+    "ast_hash": "c74bd1d1bec815a30ed84bf111bc5367",
+    "semantic_hash": "c74bd1d1bec815a30ed84bf111bc5367"
+  },
+  "hermes-document-to-action-items/SKILL.md": {
+    "mtime": 1795311436.5652964,
+    "seen": 1795312237.7587962,
+    "ast_hash": "6c8bc45e77a4997e6424c56046019109",
+    "semantic_hash": "6c8bc45e77a4997e6424c56046019109"
+  },
+  "hermes-dogfood/SKILL.md": {
+    "mtime": 1795311436.6756716,
+    "seen": 1795312237.7587976,
+    "ast_hash": "9f69ea2200c1ffeb3bea7a164259a1c3",
+    "semantic_hash": "9f69ea2200c1ffeb3bea7a164259a1c3"
+  },
+  "hermes-email-inbox-triage/SKILL.md": {
+    "mtime": 1795311436.5341773,
+    "seen": 1795312237.7587988,
+    "ast_hash": "45bed6a8b0c413e5ed06c351583cd3c7",
+    "semantic_hash": "45bed6a8b0c413e5ed06c351583cd3c7"
+  },
+  "hermes-findmy/SKILL.md": {
+    "mtime": 1795311436.4128687,
+    "seen": 1795312237.7588,
+    "ast_hash": "39a5ede3125ea9894701f3519c01f964",
+    "semantic_hash": "39a5ede3125ea9894701f3519c01f964"
+  },
+  "hermes-github/SKILL.md": {
+    "mtime": 1795311436.6832163,
+    "seen": 1795312237.758802,
+    "ast_hash": "53a5c07ca3f9666e018b3ddb04a4a0f0",
+    "semantic_hash": "53a5c07ca3f9666e018b3ddb04a4a0f0"
+  },
+  "hermes-google-workspace/SKILL.md": {
+    "mtime": 1795311436.5747948,
+    "seen": 1795312237.7588031,
+    "ast_hash": "2bb66ae701e033b7e4e8772e7d430dc7",
+    "semantic_hash": "2bb66ae701e033b7e4e8772e7d430dc7"
+  },
+  "hermes-grounded-citations/SKILL.md": {
+    "mtime": 1795311436.6526756,
+    "seen": 1795312237.7588046,
+    "ast_hash": "3889a7e53498b901aca812e1a4c52085",
+    "semantic_hash": "3889a7e53498b901aca812e1a4c52085"
+  },
+  "hermes-hermes-agent/SKILL.md": {
+    "mtime": 1795311436.4518325,
+    "seen": 1795312237.7588058,
+    "ast_hash": "dc8e39233680558fa8a8e3295153d2ea",
+    "semantic_hash": "dc8e39233680558fa8a8e3295153d2ea"
+  },
+  "hermes-himalaya/SKILL.md": {
+    "mtime": 1795311436.542405,
+    "seen": 1795312237.758807,
+    "ast_hash": "45715da5dd9e39ac7dd8e74f96614746",
+    "semantic_hash": "45715da5dd9e39ac7dd8e74f96614746"
+  },
+  "hermes-humanizer/SKILL.md": {
+    "mtime": 1795311436.491105,
+    "seen": 1795312237.7588084,
+    "ast_hash": "a710ebbdfae9595ccf9b007d0c1c6bb3",
+    "semantic_hash": "a710ebbdfae9595ccf9b007d0c1c6bb3"
+  },
+  "hermes-imessage/SKILL.md": {
+    "mtime": 1795311436.4202137,
+    "seen": 1795312237.7588096,
+    "ast_hash": "9c0d1bd811c1f5cb72793ee7481e1a14",
+    "semantic_hash": "9c0d1bd811c1f5cb72793ee7481e1a14"
+  },
+  "hermes-manim-video/SKILL.md": {
+    "mtime": 1795311436.4971776,
+    "seen": 1795312237.7588105,
+    "ast_hash": "841dd38bc13ecd3edc5e79720e00526e",
+    "semantic_hash": "841dd38bc13ecd3edc5e79720e00526e"
+  },
+  "hermes-maps/SKILL.md": {
+    "mtime": 1795311436.5827186,
+    "seen": 1795312237.7588131,
+    "ast_hash": "4c84229cd172431c8be2aac1631a6d89",
+    "semantic_hash": "4c84229cd172431c8be2aac1631a6d89"
+  },
+  "hermes-meeting-action-items/SKILL.md": {
+    "mtime": 1795311436.5896592,
+    "seen": 1795312237.7588146,
+    "ast_hash": "fdf4835dd2eb46131ca449845ae91c26",
+    "semantic_hash": "fdf4835dd2eb46131ca449845ae91c26"
+  },
+  "hermes-microsoft-office/SKILL.md": {
+    "mtime": 1795311436.5986593,
+    "seen": 1795312237.7588155,
+    "ast_hash": "5b83622d982727cbfff557b35e37e205",
+    "semantic_hash": "5b83622d982727cbfff557b35e37e205"
+  },
+  "hermes-obsidian/SKILL.md": {
+    "mtime": 1795311436.5567725,
+    "seen": 1795312237.7588167,
+    "ast_hash": "0bd5da23889d8e8f0b95e2d74b7d907b",
+    "semantic_hash": "0bd5da23889d8e8f0b95e2d74b7d907b"
+  },
+  "hermes-p5js/SKILL.md": {
+    "mtime": 1795311436.5042524,
+    "seen": 1795312237.758818,
+    "ast_hash": "b02f8cfcce1519831eb9e48a680db358",
+    "semantic_hash": "b02f8cfcce1519831eb9e48a680db358"
+  },
+  "hermes-pdf/SKILL.md": {
+    "mtime": 1795311436.6043766,
+    "seen": 1795312237.758819,
+    "ast_hash": "73d2a59478039fafaed8219d7f7de032",
+    "semantic_hash": "73d2a59478039fafaed8219d7f7de032"
+  },
+  "hermes-product-price-monitor/SKILL.md": {
+    "mtime": 1795311436.6102018,
+    "seen": 1795312237.75882,
+    "ast_hash": "683b1425545aace179a80a7b7352ac98",
+    "semantic_hash": "683b1425545aace179a80a7b7352ac98"
+  },
+  "hermes-requesting-code-review/SKILL.md": {
+    "mtime": 1795311436.6912394,
+    "seen": 1795312237.7588215,
+    "ast_hash": "13ccacaa1c72554239569810fa44971a",
+    "semantic_hash": "13ccacaa1c72554239569810fa44971a"
+  },
+  "hermes-sdlc-review/SKILL.md": {
+    "mtime": 1795311436.5272295,
+    "seen": 1795312237.7588224,
+    "ast_hash": "cbefa646800896e07cededf57d54a34f",
+    "semantic_hash": "cbefa646800896e07cededf57d54a34f"
+  },
+  "hermes-simplify-code/SKILL.md": {
+    "mtime": 1795311436.6992164,
+    "seen": 1795312237.7588236,
+    "ast_hash": "1cf3402ad0a1f395a8d310896fdfa7ad",
+    "semantic_hash": "1cf3402ad0a1f395a8d310896fdfa7ad"
+  },
+  "hermes-songwriting-and-ai-music/SKILL.md": {
+    "mtime": 1795311436.5204682,
+    "seen": 1795312237.758825,
+    "ast_hash": "0bfd92b60b3b735a7dbbc6a936e8b37e",
+    "semantic_hash": "0bfd92b60b3b735a7dbbc6a936e8b37e"
+  },
+  "hermes-spike/SKILL.md": {
+    "mtime": 1795311436.7078094,
+    "seen": 1795312237.758826,
+    "ast_hash": "373c89b8c11f8594a72fbd16e56bb360",
+    "semantic_hash": "373c89b8c11f8594a72fbd16e56bb360"
+  },
+  "hermes-systematic-debugging/SKILL.md": {
+    "mtime": 1795311436.71614,
+    "seen": 1795312237.7588272,
+    "ast_hash": "4021ea0fdbad016ccafbf36e12de8b85",
+    "semantic_hash": "4021ea0fdbad016ccafbf36e12de8b85"
+  },
+  "hermes-teams-meeting-pipeline/SKILL.md": {
+    "mtime": 1795311436.6198065,
+    "seen": 1795312237.7588284,
+    "ast_hash": "8b97ee80da4b0fab74685311107fdc54",
+    "semantic_hash": "8b97ee80da4b0fab74685311107fdc54"
+  },
+  "hermes-test-driven-development/SKILL.md": {
+    "mtime": 1795311436.7242327,
+    "seen": 1795312237.7588296,
+    "ast_hash": "1bf40de4eeebfac41d6c584f439d0816",
+    "semantic_hash": "1bf40de4eeebfac41d6c584f439d0816"
+  },
+  "hermes-weekly-review-planning/SKILL.md": {
+    "mtime": 1795311436.6273649,
+    "seen": 1795312237.758831,
+    "ast_hash": "5c60d7a38b927524c34e487584c2282e",
+    "semantic_hash": "5c60d7a38b927524c34e487584c2282e"
+  },
+  "hermes-xurl/SKILL.md": {
+    "mtime": 1795311436.6600387,
+    "seen": 1795312237.7588322,
+    "ast_hash": "0496ce5d0b7bb895957a2d2d36dfcb72",
+    "semantic_hash": "0496ce5d0b7bb895957a2d2d36dfcb72"
+  },
+  "hermes-youtube-content/SKILL.md": {
+    "mtime": 1795311436.5490854,
+    "seen": 1795312237.7588336,
+    "ast_hash": "7be3a2ed51ceb9938f581d7cc37a5767",
+    "semantic_hash": "7be3a2ed51ceb9938f581d7cc37a5767"
+  }
+}
