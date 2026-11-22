@@ -1,0 +1,50 @@
+{
+  "AI_MEMORY_SKILLS.md": {
+    "mtime": 1795316603.5131981,
+    "seen": 1795316748.5287714,
+    "ast_hash": "c72ad15df8182d835aaac2d8d3d91957",
+    "semantic_hash": "c72ad15df8182d835aaac2d8d3d91957"
+  },
+  "ai-memory-durable-pages/SKILL.md": {
+    "mtime": 1795316603.481897,
+    "seen": 1795316748.5287764,
+    "ast_hash": "ac4e31aa4d8402055e29405f021086ba",
+    "semantic_hash": "ac4e31aa4d8402055e29405f021086ba"
+  },
+  "ai-memory-handoff/SKILL.md": {
+    "mtime": 1795316603.4865549,
+    "seen": 1795316748.5287788,
+    "ast_hash": "6a5ccdcd6382f16a42a663d4b70f3e74",
+    "semantic_hash": "6a5ccdcd6382f16a42a663d4b70f3e74"
+  },
+  "ai-memory-learning-maintenance/SKILL.md": {
+    "mtime": 1795316603.491333,
+    "seen": 1795316748.5287797,
+    "ast_hash": "b2c578815171b465269fc095a5ec0b60",
+    "semantic_hash": "b2c578815171b465269fc095a5ec0b60"
+  },
+  "ai-memory-messaging/SKILL.md": {
+    "mtime": 1795316603.4957874,
+    "seen": 1795316748.5287807,
+    "ast_hash": "6ac9ea920f529645ec414a1f0a0c37f0",
+    "semantic_hash": "6ac9ea920f529645ec414a1f0a0c37f0"
+  },
+  "ai-memory-retrieval/SKILL.md": {
+    "mtime": 1795316603.5001864,
+    "seen": 1795316748.528782,
+    "ast_hash": "0a14792b0d3cb7d1c58d3c8de4200ece",
+    "semantic_hash": "0a14792b0d3cb7d1c58d3c8de4200ece"
+  },
+  "ai-memory-routing-install/SKILL.md": {
+    "mtime": 1795316603.5041375,
+    "seen": 1795316748.5287828,
+    "ast_hash": "cfa27e53f82e4334a8f35f7031a4a9dd",
+    "semantic_hash": "cfa27e53f82e4334a8f35f7031a4a9dd"
+  },
+  "ai-memory-status/SKILL.md": {
+    "mtime": 1795316603.5118384,
+    "seen": 1795316748.5287838,
+    "ast_hash": "d69c0b54797846f6bd6b2d4abbe9df56",
+    "semantic_hash": "d69c0b54797846f6bd6b2d4abbe9df56"
+  }
+}
