@@ -13,3 +13,7 @@ Rules:
 
 - `graphs/craft-anything/graphify-out/graph.json` is a code graph of [storytold/craft-anything](https://github.com/storytold/craft-anything) (not this repo). For any question about craft-anything, query it first with `--graph`: `graphify query "<question>" --graph graphs/craft-anything/graphify-out/graph.json` (also `path` / `explain`). Node `src=`/`loc=` point into the craft-anything repo; clone it with `git clone --depth 1 https://github.com/storytold/craft-anything` only to read lines the graph located. Rebuild: `scripts/build_craft_anything_graph.sh`. Details: `graphs/craft-anything/README.md`.
 - `graphs/hermes-skills/graphify-out/graph.json` is a graph of the 44 `.claude/skills/hermes-*` skills (SKILL.md concepts + helper scripts). To find which Hermes skill fits a task or how they relate, query it first: `graphify query "<question>" --graph graphs/hermes-skills/graphify-out/graph.json`. `src=` paths are relative to `.claude/skills/`. Details: `graphs/hermes-skills/README.md`.
+
+## ai-memory skills
+
+- The `.claude/skills/ai-memory-*` skills only apply when an ai-memory server is reachable: the `memory_*` MCP tools are loaded, or `ai-memory status` succeeds. Otherwise ignore them and do not call `memory_*` tools or `ai-memory call`. Setup steps: `.claude/skills/AI_MEMORY_SKILLS.md`.
