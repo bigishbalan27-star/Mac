@@ -31,3 +31,7 @@ ai-memory's MCP bridge and hooks ignore HTTPS proxies, but a cloud container can
 **Automated:** the `mac` environment sets `AI_MEMORY_REMOTE`, and a SessionStart hook in `.claude/settings.json` runs `scripts/ai_memory_session_start.sh`. That script installs the client (checksum-verified) and starts the relay in every new session. If the server can't be reached, it prints a one-line notice and the session carries on.
 
 A quick tunnel gets a new random host every time `cloudflared` restarts, so redo steps 1–2 with the new host and update `AI_MEMORY_REMOTE` on the `mac` environment. A named Cloudflare tunnel on your own domain keeps a fixed host.
+
+## When the quick tunnel's address changes
+
+On the Mac, run `bash ai-memory-quick-tunnel.sh` from `scripts/mac/` and leave the window open. It starts the tunnel, puts the new host in `allowed_hosts`, restarts ai-memory and prints `NEW ADDRESS`. Give that address to Claude, who updates `AI_MEMORY_REMOTE` and the allowed host on the `mac` environment. The network secret is tied to one host, so add it again for the new host in the environment settings, with the same token as before.
