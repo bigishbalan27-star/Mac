@@ -56,7 +56,7 @@ Every post needs a preview and your OK before it goes live. Nothing repeats shot
 | Thu 12 Nov (5:31 pm) | Mykonos Bay Hotel, officially inspected 🕵️✅ | Picsart v4, 15 s, opens on hotel sign, music | ✅ Posted: https://www.instagram.com/reel/DfpmOqpjall/ |
 | Tue 10 Nov | Breakfast with a sea view ☕🌊 | Picsart cinematic render (11 s) + Instagram music | ✅ Reposted from your phone with Instagram music (first post without music, DfkkMezGZfJ, deleted) |
 | Wed 18 Nov | Our last morning in Mykonos 🤍 (carousel) | 4 Box photos | ⚠️ Not posted (reminder sent). Needs a new day |
-| Sun 22 Nov | Mykonos, from lunch to dessert 🍽️🍦 | Picsart cinematic render (12.7 s) | ✅ Approved, scheduled |
+| Sun 22 Nov (5:31 pm) | Mykonos, from lunch to dessert 🍽️🍦 | Picsart cinematic render (12.7 s) + music | ✅ Posted: https://www.instagram.com/reel/DgDWNYaALT0/ |
 | Sun 7 Mar 2027 | Mother's Day 💐 | Box mum-and-son photos | 🔒 Reserved |
 
 Already posted by you (removed from schedule): beach bucket & spade, October swim.
