@@ -17,4 +17,4 @@ Rules:
 
 ## ai-memory skills
 
-- The `.claude/skills/ai-memory-*` skills only apply when an ai-memory server is reachable: the `memory_*` MCP tools are loaded, or `ai-memory status` succeeds. Otherwise ignore them and do not call `memory_*` tools or `ai-memory call`. Setup steps: `.claude/skills/AI_MEMORY_SKILLS.md`.
+- The `.claude/skills/ai-memory-*` skills only apply when an ai-memory server is reachable: the `memory_*` MCP tools are loaded, or `ai-memory status` succeeds. Otherwise ignore them and do not call `memory_*` tools or `ai-memory call`. In a cloud session the server is reached through `scripts/ai_memory_relay.py` (start it first; see the "Cloud sessions" section of `.claude/skills/AI_MEMORY_SKILLS.md`).

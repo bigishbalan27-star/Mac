@@ -17,3 +17,15 @@ The 7 Claude Code skills from [akitaonrails/ai-memory](https://github.com/akitao
 ## Privacy
 
 Once set up, the hooks send every prompt and tool call (sanitized) to your server. Read the upstream `DATA_HANDLING.md` and `SECURITY.md` before turning that on.
+
+## Cloud sessions (Claude Code on the web)
+
+ai-memory's MCP bridge and hooks ignore HTTPS proxies, but a cloud container can only reach the internet through its proxy. `scripts/ai_memory_relay.py` bridges the two: it listens on `127.0.0.1:49374`, where ai-memory looks by default, and forwards through the proxy to your server. Setup used here:
+
+1. On the Mac, run `cloudflared tunnel --url http://127.0.0.1:49374` (version 2025.4.0 or older on macOS before 12), and add the tunnel host to `allowed_hosts` on line 33 of `~/Library/Application Support/ai-memory/config.toml`.
+2. In the `mac` cloud environment, add the tunnel host to the allowed hosts and save a network secret for it: header `Authorization`, prefix `Bearer`, value from `auth-tokens/default`. The proxy adds the token, so it is never in the repo or the session.
+3. In the session, install the client from the `ai-memory-linux-x86_64.tar.gz` release and check its `.sha256`. Then start the relay:
+   `AI_MEMORY_REMOTE=https://<tunnel-host> nohup python3 scripts/ai_memory_relay.py >/tmp/aim-relay.log 2>&1 &`
+   and run `AI_MEMORY_AUTH_TOKEN=placeholder ai-memory call memory_status '{}'`. The placeholder only gets past the CLI's "token required" check; the proxy replaces it.
+
+A quick tunnel gets a new random host every time `cloudflared` restarts, so steps 1–3 must be redone with the new host. A named Cloudflare tunnel on your own domain keeps a fixed host.
