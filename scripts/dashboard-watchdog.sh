@@ -29,7 +29,7 @@ ADB=(adb)
 
 log() { printf '%s %s\n' "$(date '+%F %T')" "$*" | tee -a "$LOG"; }
 
-server_up() { curl -fsS -o /dev/null --max-time 5 "http://127.0.0.1:${PORT}/"; }
+server_up() { curl -fs -o /dev/null --max-time 5 "http://127.0.0.1:${PORT}/"; }
 
 tunnel_up() { "${ADB[@]}" reverse --list 2>/dev/null | grep -q "tcp:${PORT}"; }
 
