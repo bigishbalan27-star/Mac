@@ -32,3 +32,5 @@ graphify-out/.graphify_chunk_*.json
 graphs/*/graphify-out/.graphify_python
 graphs/*/graphify-out/.graphify_root
 graphs/*/graphify-out/cache/
+# graphify extraction cache written under the scanned skills folder
+.claude/skills/graphify-out/
