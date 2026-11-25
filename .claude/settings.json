@@ -29,6 +29,12 @@
         "source": "github",
         "repo": "chaseai-yt/claudex-loop"
       }
+    },
+    "lemolab": {
+      "source": {
+        "source": "github",
+        "repo": "lemomo-ai/lemo-opuscar"
+      }
     }
   },
   "enabledPlugins": {
@@ -38,7 +44,8 @@
     "agents-design-experience@buildwithclaude": true,
     "marketing-skills@marketingskills": true,
     "ecc@ecc": true,
-    "claudex-loop@claudex-loop": true
+    "claudex-loop@claudex-loop": true,
+    "lemo-opuscar@lemolab": true
   },
   "hooks": {
     "PreToolUse": [
