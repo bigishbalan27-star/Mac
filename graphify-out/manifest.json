@@ -66,9 +66,9 @@
     "semantic_hash": "b17e070992c4155ec2bb0676eb2fafbe"
   },
   "CLAUDE.md": {
-    "mtime": 1795353215.2254217,
-    "seen": 1795496098.4036,
-    "ast_hash": "e20e7d67e0d5fffe38a232750dab6cec",
+    "mtime": 1795571347.0188832,
+    "seen": 1795571354.6220846,
+    "ast_hash": "0082bd5afa9e427832ccfc76654af09b",
     "semantic_hash": ""
   },
   "DESIGN.md": {
@@ -717,6 +717,12 @@
     "mtime": 1795353410.2294333,
     "seen": 1795496098.4036376,
     "ast_hash": "5be6b566c09fb31478b672125a0e0132",
+    "semantic_hash": ""
+  },
+  "scripts/build_voicestudio_graph.sh": {
+    "mtime": 1795571275.3025172,
+    "seen": 1795571354.622061,
+    "ast_hash": "3475a220555fd4f69b68654fc87f3007",
     "semantic_hash": ""
   }
 }

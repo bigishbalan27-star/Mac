@@ -1,17 +1,17 @@
-# Graph Report - Mac  (2026-11-24)
+# Graph Report - Mac  (2026-11-25)
 
 ## Corpus Check
-- 99 files · ~97,693 words
+- 100 files · ~98,142 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 21 file(s) not represented in the graph (top: (none) 11, .woff2 9, .css 1)
 
 ## Summary
-- 770 nodes · 1422 edges · 38 communities (31 shown, 7 thin omitted)
+- 772 nodes · 1423 edges · 39 communities (31 shown, 8 thin omitted)
 - Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 129 edges (avg confidence: 0.88)
 - Token cost: 922,144 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `46cce801`
+- Built from commit: `f5b5110f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -54,6 +54,7 @@
 - ai_memory_session_start.sh
 - build_craft_anything_graph.sh
 - ai-memory-quick-tunnel.sh
+- build_voicestudio_graph.sh
 
 ## God Nodes (most connected - your core abstractions)
 1. `RunnerTests` - 41 edges
@@ -70,10 +71,10 @@
 ## Surprising Connections (you probably didn't know these)
 - `Surface Brief: Landing Page` --semantically_similar_to--> `No Fabricated Evidence Constraint`  [INFERRED] [semantically similar]
   .impeccable/surfaces/docs-index-html.md → PRODUCT.md
-- `viral-swipe.md` --semantically_similar_to--> `Social Media/viral-swipe.md`  [INFERRED] [semantically similar]
-  Social Media/reel-edit-plans.md → AI Video Studio/Exports/claude-skills-studio_notes.md
 - `Say the comment keyword in the video` --semantically_similar_to--> `Comment SKILLS call to action`  [INFERRED] [semantically similar]
   Social Media/reel-edit-plans.md → AI Video Studio/Exports/animated-reels_source/pipeline/skills_script.txt
+- `viral-swipe.md` --semantically_similar_to--> `Social Media/viral-swipe.md`  [INFERRED] [semantically similar]
+  Social Media/reel-edit-plans.md → AI Video Studio/Exports/claude-skills-studio_notes.md
 - `Direction Contract (stripboard thesis)` --semantically_similar_to--> `The Production Stripboard (Creative North Star)`  [INFERRED] [semantically similar]
   .impeccable/surfaces/docs-index-html.md → DESIGN.md
 - `Signature Interaction: Job Strip Through Five Steps` --semantically_similar_to--> `Motion: Deal, Drop, Rise on Exponential Ease-Out`  [INFERRED] [semantically similar]
@@ -97,7 +98,7 @@
 - **Person-first / Manglish hook strategy driving Reels 5 and 6** — social_media_viral_swipe_person_or_feeling_hook, social_media_viral_swipe_manglish_one_liner, social_media_reel_edit_plans_reel6_kerala_rules_uk_kid [INFERRED 0.85]
 - **claudex-loop phased planning workflow** — plugins_claudex_loop_assets_run_phase_0_recon, plugins_claudex_loop_assets_run_phase_1_interrogate, plugins_claudex_loop_assets_run_phase_2_review, plugins_claudex_loop_assets_run_plan_locked [INFERRED 0.85]
 
-## Communities (38 total, 7 thin omitted)
+## Communities (39 total, 8 thin omitted)
 
 ### Community 0 - "Voice and Sound Pipeline"
 Cohesion: 0.06
@@ -225,23 +226,23 @@ Nodes (5): Claudex Loop Logo (logo.svg), CLAUDEX pixel wordmark (coral #d97757),
 
 ## Knowledge Gaps
 - **62 isolated node(s):** `Brand Assets (logos, colors.md, fonts, intros/outros, music)`, `Style Guide (style-guide.md)`, `feedback.md Draft Notes`, `Versioned Export Naming (name_vN, _9x16/_16x9)`, `One Subfolder per Editing Job` (+57 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 235 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 237 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `claude-skills-studio_v1_9x16 notes` connect `Skills Reel Notes` to `Voice and Sound Pipeline`, `Claudex Runner Code`, `Reel Edit Plans`, `Animated Reels Notes`, `Skills reel script (skills_script.txt)`, `Cloned Voice Pipeline`?**
+- **Why does `claude-skills-studio_v1_9x16 notes` connect `Skills Reel Notes` to `Voice and Sound Pipeline`, `Reel Edit Plans`, `Animated Reels Notes`, `Skills reel script (skills_script.txt)`, `Cloned Voice Pipeline`?**
   _High betweenness centrality (0.062) - this node is a cross-community bridge._
 - **What connects `Brand Assets (logos, colors.md, fonts, intros/outros, music)`, `Style Guide (style-guide.md)`, `feedback.md Draft Notes` to the rest of the system?**
   _62 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Voice and Sound Pipeline` be split into smaller, more focused modules?**
-  _Cohesion score 0.06394230769230769 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06151062867480778 - nodes in this community are weakly interconnected._
 - **Why does `Reel edit plans: Mykonos & Bonfire footage` connect `Reel Edit Plans` to `Animated Reels Notes`, `Skills reel script (skills_script.txt)`, `Skills Reel Notes`?**
   _High betweenness centrality (0.050) - this node is a cross-community bridge._
 - **Should `Claudex Runner Code` be split into smaller, more focused modules?**
-  _Cohesion score 0.07627118644067797 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07985480943738657 - nodes in this community are weakly interconnected._
 - **Why does `RunnerTests` connect `Claudex Runner Tests` to `Claudex Runner Code`?**
-  _High betweenness centrality (0.040) - this node is a cross-community bridge._
+  _High betweenness centrality (0.039) - this node is a cross-community bridge._
 - **Should `Made-by-Claude Reel Code` be split into smaller, more focused modules?**
   _Cohesion score 0.07853107344632769 - nodes in this community are weakly interconnected._
