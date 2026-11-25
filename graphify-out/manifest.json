@@ -66,9 +66,9 @@
     "semantic_hash": "b17e070992c4155ec2bb0676eb2fafbe"
   },
   "CLAUDE.md": {
-    "mtime": 1795571347.0188832,
-    "seen": 1795571354.6220846,
-    "ast_hash": "0082bd5afa9e427832ccfc76654af09b",
+    "mtime": 1795576186.4416447,
+    "seen": 1795576188.592795,
+    "ast_hash": "55430c0e03d6b5adf4f0b8cf7849a67f",
     "semantic_hash": ""
   },
   "DESIGN.md": {
@@ -723,6 +723,12 @@
     "mtime": 1795571275.3025172,
     "seen": 1795571354.622061,
     "ast_hash": "3475a220555fd4f69b68654fc87f3007",
+    "semantic_hash": ""
+  },
+  "scripts/build_ruflo_graph.sh": {
+    "mtime": 1795576103.0831559,
+    "seen": 1795576188.5927694,
+    "ast_hash": "7ad4c43bd7b5d4dae92e501dade59960",
     "semantic_hash": ""
   }
 }
