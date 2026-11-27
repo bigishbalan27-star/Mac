@@ -38,7 +38,7 @@ Three new reels, built fully automatically from photos in Dropbox (none used bef
 ## Automation
 Each reel is a one-off scheduled task that posts it to Instagram through Windsor, checks it went live, and sends the link.
 - Thailand: trig_01RsJH6YBnv7NocdBbkB9r2i, posted 25 Nov 17:31 UTC: https://www.instagram.com/reel/DgLEi-xz-Ha/
-- Amsterdam: trig_01SzKFa8YDAEQT2HEa8Ld21N
+- Amsterdam: trig_01SzKFa8YDAEQT2HEa8Ld21N, posted 27 Nov 17:31 UTC: https://www.instagram.com/reel/DgQOJA1zh3v/
 - Saree: trig_01WZGVAwoGAcEVWJQ1o76uvu
 
 To stop one, say "hold the Amsterdam reel" (for example) before it runs.
